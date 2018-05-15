@@ -1,0 +1,160 @@
+Zielbestimmung
+	Musskriterien
+		Zufällige Generierung von Graphen und Hypergraphen nach zu spezifizierenden Kriterien oder per Nutzereingabe
+		Anwendung von verschiedener (zu spezifizierender) Heuristiken auf die generierten Graphen
+		Ausgabe von Graphen
+		Modifikation der Graphen
+		Anwendung: Heuristiken für "Total Coloring Conjecture" und "Erdos Faber Lovasz Conjecture"
+
+	Wunschkriterien
+		Erkennung gewisser Grapheigenschaften (connected, k-connected?, tree, bipartite, planar, outerplanar?, chordal?)
+		Weitere Heuristiken für "Total Coloring Conjecture" und "Erdös Faber Lovasz Conjecture"
+		(Einfache Parallelisierung NF)
+		Implementierung neuer Heuristiken möglich -> Lua? Einfache Erweiterbarkeit in Java?
+		Eingriff in die Heuristiken zur Laufzeit möglich "durchsteppen"
+		Sprachen auswählbar? -> nachfragen
+
+	Abgrenzungskriterien
+		Keine hochgradige Parallelisierung (z.B. durch parallelisierte Bearbeitung von Subgraphen)
+		
+Produkteinsatz
+	Das Produkt dient zur Generierung und Auswertung von Graphen für offene Probleme der Graphentheorie und Informatik
+	
+	Anwendungsbereiche
+		Forschung
+	Zielgruppe
+		Menschen mit Interesse an offenen Fragen der Graphentheorie z.B. Studenten / Wissenschaftler
+	Betriebsbedingungen
+		Auf möglichst vielen Desktop-PCs / Laptop benutzbar / Büroumgebung
+		Einsatz im Hintergrund
+
+Produktumgebung
+	Software
+		Windows, Linux, Mac
+		Java 8
+	Hardware
+		"LOW END SPECS"
+		2 CPU-Kerne 2GHz
+		4GB RAM
+		2GB Festplattenplatz
+		Mouse ggf. Tastatur
+	Schnittstellen
+		Speichern der Graphen als Tabellen in .txt?
+		Speichern der Graphen als Bilder in .png? .jpeg?
+		Speichern der Graphen als Text in .graphviz?
+		Laden von Graphen aus Text von .graphviz?
+		Laden von Graphen aus Tabellen von .txt?
+		Speichern von Information zu den Graphen?
+
+Produktdaten
+	Graphen (Struktur und Ergebnisse)
+	Statistiken?
+	Einstellungen (z.B. für Heuristiken)
+	
+Funktionale Anforderungen
+	Generierung von Graphen
+		FA00 Die Anzahl der zu generierenden (Hyper-)Graphen kann festgelegt werden (1 .. 10000)
+		FA01 Auswahl von Graph / Hypergraph
+
+		FA10 Es können einfache ungerichtete Graphen mit folgenden Einschränkungen generiert werden
+		FA11 Die Anzahl der Knoten n kann frei festgelegt werden (1 <= n <= 10000)
+		FA12 Der Minimalgrad und Maximalgrad kann beschränkt werden (0 <= delta <= DELTA <= n-1)
+
+		FA20 Es können einfache Hypergraphen mit folgenden Einschränkungen generiert werden
+		FA21 Die Anzahl der Knoten n kann frei festgelegt werden
+		FA22 Es kann festgelegt werden, ob die Hypergraphen n-uniform sein müssen		
+
+	Anwendung von Heuristiken
+		FA50 Es kann eine Liste von Heuristiken bestimmt werden, die auf jeden der generierten Graphen angewendet werden sollen
+		FA60 Für die Heuristiken können individuelle Einstellungen vorgenommen werden (in Abhängigkeit von der Heuristik)
+
+	Ausgabe der generierten Graphen
+		FA80 Die generierten Graphen werden mit nachfolgenden Einstellungsmöglichkeiten in einer Preview angezeigt 
+		FA81 In der Preview ist ersichtlich, welche der Heuristiken erfolgreich waren und welche nicht
+
+		FA90 Für die gegebenen Heuristiken kann wie folgt ausgewählt werden, welche generierten Graphen dargestellt werden sollen
+		FA91 Stelle alle Graphen unabhängig vom Ergebnis der Heuristik dar
+		FA92 Stelle alle Graphen dar, für die die Heuristik erfolgreich war
+		FA93 Stelle alle Graphen dar, für die die Heuristik nicht erfolgreich war
+
+		FA100 Die Reihenfolge der Darstellung kann wie folgt festgelegt werden
+		FA101 Reihenfolge der Bearbeitung (im Prinzip zufällig)
+		FA102 Reihenfolge aufsteigend bzgl der Geschwindigkeit einer Heuristik X
+		FA103 Reihenfolge absteigend bzgl der Geschwindigkeit einer Heuristik X
+
+		FA110 Aus der Preview lässt sich für jeden Graphen eine Detailansicht mit den folgenden Funktionen öffnen
+		FA111 Jeder Graph kann in den folgenden Repräsentationen dargestellt werden
+		FA112 Kreisdarstellung
+		FA113 Tabellarische Darstellung
+		FA114 Die Repräsentationen zeigen das Ergebnis einer auswählbaren Heuristik zur Zeit ihres Abbruchs an
+
+	Modifikation der Graphen
+		FA150 Graphen können wie folgt modifiziert werden
+		FA151 Es können neue Knoten hinzugefügt werden
+		FA152 Es können neue Kanten hinzugefügt werden
+		FA153 Es können Knoten entfernt werden
+		FA154 Es können Kanten entfernt werden
+		FA155 Es können Knoten kontrahiert werden
+		FA156 Die Knotenordnung kann geändert werden
+		
+	Anwendung auf Total Coloring Conjecture
+		FA200 Die folgenden, im Anhang genauer spezifizierten Heuristiken sind implementiert
+		FA201 Es wird eine gleichmäßige Farbverteilung gewährleistet
+		FA202 Die Gewichtung der freien Farben von Knoten vs. der von Kanten kann eingestellt werden
+		
+		FA210 "Greedy"
+		FA211 "Greedy + One"
+		FA212 "Greedy + Few"
+		FA213 "Greedy + Set" mit Einstellungsoption, welche Knoten bevorzugt gewählt werden (z.B. niedrigster Index / niedrigster Grad)
+		FA214 "Greedy + Connected" mit Einstellungsoption für die Größe k der Teilgraphen
+		
+		FA220 "Mixed Greedy" (Knotenfärbung auf G' = (V', E') mit V' = (V u E), E' = {(x,y) | x inzident zu y in G})
+		FA221 "Line Greedy" (Zunächst Färbung der Kanten, dann der Knoten)
+		
+		FA230 Die Ergebnisse der verschiedenen Heuristiken werden wie folgt in einer Statistik zusammengefasst
+		TODO
+
+	Anwendung auf Erdös Faber Lovasz Conjecture
+		TODO Was ist hier zu tun? Genau dieselben Heuristiken?
+		
+Nichtfunktionale Anforderungen
+		NA00 Die Graphische Oberfläche Skaliert
+		NA01 Sprachauswahl möglich
+		NA02 In der Preview wird angezeigt, ob ein Graph noch bearbeitet werden muss bzw in Bearbeitung ist
+		NA03 In der Preview werden modifizierte Graphen nah aneinander angezeigt
+
+Optionale Anforderungen
+		OA00 Benennung der Graphen möglich
+
+		OA20 Die folgenden Grapheigenschaften / Strukturen können erkannt werden
+		OA21 Zusammenhang
+		OA22 Baum
+		OA23 Bipartite
+		OA24 Planarität
+		OA25 Intervallgraph
+
+		OA30 Es ist möglich die Graphgeneration anhand der erkennbaren Eigenschaften / Strukturen einzuschränken
+
+		OA50 Es können die folgenden Sprachen ausgewählt werden
+		OA51 Deutsch
+		OA52 Englisch
+Globale Testfälle
+Systemmodelle
+	Szenarien
+	Anwendungsfälle
+	Objektmodell
+	Dynamische Modelle
+	Benutzerschnittstelle
+Glossar
+	einfacher ungerichteter Graph		G = (V,E) mit Knotenmenge V={1,...,n} und Kantenmenge E \subset {X \subset V | #X = 2}
+	zusammenhängend				Je zwei Knoten sind durch einen Pfad verbunden
+	Baum					zusammenhängender und azyklischer Graph
+	bipartite				Es gibt eine Partition V = A + B mit der Eigenschaft, dass keine zwei Knoten in A bzw in B adjazent sind
+	
+	Hypergraph				G = (V,E) mit Knotenmenge V={1,...,n} und Kantenmenge E \subset P(V) \setminus {\emptyset}
+	einfacher Hypergraph			je zwei Knoten sind in maximal einer Kante enthalten und es gibt keine Kanten der Kardinalität 1
+	r-uniformer Hypergraph			Alle Kanten haben Kardinalität r
+	
+Addendum
+	Spezifikation der Heuristiken
+
