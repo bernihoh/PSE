@@ -1,8 +1,13 @@
 Zielbestimmung
+	Das Programm ermöglicht die Generierung von Graphen und Evaluation von Heuristiken. Die Ergebnisse der Anwendungen werden auf verständliche Weise 
+
+	TODO folgenden Satz in "technische Sprache" überführen
+	Es sollen unterschiedliche Heuristiken zum Kolorieren von Graphen getestet werden, um zu sehen wie gut sie funktionieren, auf welchen Graphen sie wie gut funktionieren, und ob es gar eine Heuristik gibt, für die wir keinen Graph finden können, auf dem sie nicht funktioniert...
+
 	Musskriterien
 		Zufällige Generierung von Graphen und Hypergraphen nach zu spezifizierenden Kriterien oder per Nutzereingabe
 		Anwendung von verschiedener (zu spezifizierender) Heuristiken auf die generierten Graphen
-		Ausgabe von Graphen
+		Ausgabe von Graphen in einer graphischen Oberfläche
 		Modifikation der Graphen
 		Anwendung: Heuristiken für "Total Coloring Conjecture" und "Erdos Faber Lovasz Conjecture"
 
@@ -10,7 +15,7 @@ Zielbestimmung
 		Erkennung gewisser Grapheigenschaften (connected, k-connected?, tree, bipartite, planar, outerplanar?, chordal?)
 		Weitere Heuristiken für "Total Coloring Conjecture" und "Erdös Faber Lovasz Conjecture"
 		(Einfache Parallelisierung NF)
-		Implementierung neuer Heuristiken möglich -> Lua? Einfache Erweiterbarkeit in Java?
+		Implementierung neuer Heuristiken über Einbindung von Plugins möglich
 		Eingriff in die Heuristiken zur Laufzeit möglich "durchsteppen"
 		Sprachen auswählbar? -> nachfragen
 
@@ -37,14 +42,11 @@ Produktumgebung
 		2 CPU-Kerne 2GHz
 		4GB RAM
 		2GB Festplattenplatz
-		Mouse ggf. Tastatur
+		Maus ggf. Tastatur
 	Schnittstellen
-		Speichern der Graphen als Tabellen in .txt?
-		Speichern der Graphen als Bilder in .png? .jpeg?
-		Speichern der Graphen als Text in .graphviz?
-		Laden von Graphen aus Text von .graphviz?
-		Laden von Graphen aus Tabellen von .txt?
-		Speichern von Information zu den Graphen?
+		Speichern der Graphen in einem zu spezifizierenden Textformat
+		Laden von Graphen von dem spezifizierten Textformat
+		Speichern von Information zu den Graphen (angewandte Heuristiken etc...)?
 
 Produktdaten
 	Graphen (Struktur und Ergebnisse)
@@ -66,6 +68,7 @@ Funktionale Anforderungen
 
 	Anwendung von Heuristiken
 		FA50 Es kann eine Liste von Heuristiken bestimmt werden, die auf jeden der generierten Graphen angewendet werden sollen
+		FA51 Eine Veränderung der Liste zur Laufzeit führt zu einer Neuberechnung der Heuristiken auf den generierten Graphen
 		FA60 Für die Heuristiken können individuelle Einstellungen vorgenommen werden (in Abhängigkeit von der Heuristik)
 
 	Ausgabe der generierten Graphen
@@ -96,6 +99,11 @@ Funktionale Anforderungen
 		FA154 Es können Kanten entfernt werden
 		FA155 Es können Knoten kontrahiert werden
 		FA156 Die Knotenordnung kann geändert werden
+
+	Speichern und Laden
+		FA180 Die generierten und modifizierten Graphen können gespeichert und wieder geladen werden
+		FA190 Die Einstellungen für die Heuristiken können gespeichert und wieder geladen werden
+		FA191 Die erhobene Statistik kann in einem menschenlesbaren Format gespeichert werden
 		
 	Anwendung auf Total Coloring Conjecture
 		FA200 Die folgenden, im Anhang genauer spezifizierten Heuristiken sind implementiert
