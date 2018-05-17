@@ -1,0 +1,198 @@
+% !TEX TS-program = glossary_run
+\documentclass{article}
+
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Pflichtenheft},
+bookmarks = true
+}
+\usepackage[toc]{glossaries}
+
+\usepackage{graphicx}
+
+\usepackage[shortlabels]{enumitem}
+
+\makeglossaries
+
+\title{Pflichtenheft}
+\author{Jonas, Bernard, Thomas, Christian, Jonas Linßen}
+
+\begin{document}
+	\maketitle
+	
+	\newglossaryentry{Graph}{
+		name = ungerichteter einfacher Graph,
+		description = {Tupel $G = (V,E)$ mit Knotenmenge $V$ und Kantenmenge $E \subseteq \{X \subset V \mid \#X = 2\}$}
+	}
+	
+	\newpage
+	
+	\tableofcontents
+	
+	\newpage
+	
+	
+	\section{Zielbestimmung}
+	Das Produkt ermöglicht dem Lehrstuhl IPD Böhm die automatische Generierung ungerichteter, einfacher Graphen sowie einfacher Hypergraphen und die automatisierte Evaluation verschiedener Heuristiken zur Lösung von bisher ungelösten Problemen der Informatik.
+	
+	\subsection{Musskriterien}
+	\begin{enumerate}[(M1)]
+		\item{Es können einfache, ungerichtete Graphen und einfache Hypergraphen nach durch den Nutzer spezifizierten Kriterien zufällig generiert werden.}
+		\item{Auf die generierten Graphen können durch den Nutzer auszuwählende Heuristiken angewandt werden.}
+		\item{Die Graphen und Ergebnisse der Heuristiken werden in einer graphischen Oberfläche angezeigt.}
+		\item{Die Graphen können durch den Nutzer modifiziert werden, d.h. es können Knoten und Kanten hinzugefügt und gelöscht werden. Insbesondere ist es möglich Graphen von Hand zu zeichnen.}
+		\item{Für die folgenden offenen Probleme sind Heuristiken implementiert:
+			\begin{enumerate}[i)]
+				\item{Total Coloring Conjecture}
+				\item{Erdös Faber Lovasz Conjecture}
+			\end{enumerate}
+		}
+	\end{enumerate}
+	
+	\subsection{Kannkriterien}
+	\begin{enumerate}[(K1)]
+		\item{Die folgenden Eigenschaften von Graphen können erkannt werden:
+			\begin{enumerate}[i)]
+				\item{Zusammenhang}
+				\item{Baum}
+				\item{Bipartition}
+				\item{Planarität}
+				\item{Intervallgraph / Chordalität}
+			\end{enumerate}
+			Die zufällige Generierung der Graphen lässt sich insbesondere auf eine Auswahl dieser Eigenschaften einschränken bzw. einige der genannten Eigenschaften können dabei ausgeschlossen werden.
+		}
+		\item{Weitere Heuristiken können als Plugins in das Programm eingebunden werden. Dies ermöglicht die Anwendung auf andere ungelöste Probleme der Informatik als die, für die bereits Heuristiken implementiert sind.}
+		\item{Die folgenden Sprachen werden unterstützt
+			\begin{enumerate}[i)]
+				\item{Deutsch}
+				\item{Englisch}
+			\end{enumerate}
+		}
+	\end{enumerate}
+	
+	\subsection{Abgrenzungskriterien}
+	\begin{enumerate}[(A1)]
+		\item{Die Heuristiken sind nicht an sich parallelisierbar.}
+		\item{Bei der Generierung erfolgt keine Erkennung von Duplikaten. Die Erkennung von Graphenisomorphie ist nicht möglich.}
+		\item{Das Programm kann weder für das Total Coloring Conjecture, noch für das Erdös Faber Lovasz Conjecture einen Beweis finden.}
+	\end{enumerate}
+	
+	
+	
+	
+	\section{Produkteinsatz}
+	Das Produkt dient der Auswertung von Heuristiken für ungelöste Probleme der Graphentheorie auf möglichst vielen generierten Graphen.
+	
+	\subsection{Anwendungsbereiche}
+	Das Programm ist für die Forschung in der Mathematik und Informatik, genauer der Graphentheorie, vorgesehen.
+	
+	\subsection{Zielgruppen}
+	Das Produkt wird für die Nutzung im Lehrstuhl IPD Böhm am KIT entwickelt. Eine Anwendung in anderen Forschungseinrichtungen, Universitäten und Hochschulen sowie durch Privatpersonen mit Interesse an offenen Problemen der Graphentheorie ist möglich und erwünscht.
+	
+	\subsection{Betriebsbedingungen}
+	Das Programm läuft auf Privat- und Betriebsrechnern (z.B. in einer Büroumgebung).
+	
+	
+	
+	\section{Produktumgebung}
+	
+	\subsection{Software}
+	Die folgende Software ist für die Lauffähigkeit des Programms hinreichend:
+	\begin{itemize}
+		\item{Windows 10}
+		\item{Java 8 Runtime Environment}
+	\end{itemize}
+	Durch die Plattformunabhängigkeit der JRE ist auch eine Anwendung auf anderen Betriebssystemen möglich.
+	
+	\subsection{Hardware}
+	Das Programm läuft auf Rechnern mit durchschnittlicher Rechenleistung. Es benötigt mindestens:
+	\begin{itemize}
+		\item{4GB Arbeitsspeicher}
+		\item{4GB Festplattenspeicher}
+		\item{Maus und ggf. Tastatur}
+	\end{itemize}
+	
+	
+	
+	\newpage
+	\section{Funktionale Anforderungen}
+	
+	\subsection*{/F10/ Zufällige Generierung von Graphen}
+	\subsubsection*{/F11/ Voreinstellungen}
+	Die folgenden Voreinstellungen können getroffen werden:
+	\begin{enumerate}[i)]
+		\item{Es kann ausgewählt werden, ob einfache ungerichtete Graphen (SGs) oder einfache Hypergraphen (SH) generiert werden sollen}
+		\item{Die Anzahl der zu generierenden (Hyper-) Graphen kann eingestellt werden. Es werden zwischen 1 und 100 000 Graphen unterstützt.}
+	\end{enumerate}
+	
+	\subsubsection*{/F12/ Einstellungen für Graphen}
+	Hat der Nutzer die Generierung von SGs gewählt, so kann er die folgenden Einstellungen vornehmen:
+	\begin{enumerate}[i)]
+		\item{Die Anzahl von Knoten $n$ der zu generierenden Graphen kann festgelegt werden. Es gilt $1 \leq n \leq 1000$.}
+		\item{Der minimale und maximale Knotengrad $\delta_{min}$ und $\Delta_{max}$ der zu generierenden Graphen kann festgelegt werden. Für einen beliebigen generierten Graphen $G$ gilt dann $$0 \leq \delta_{min} \leq \delta(G) \leq \Delta(G) \leq \Delta_{max} \leq n-1.$$}
+		\item{TODO Einschränkung durch Grapheigenschaften???}
+	\end{enumerate}
+	
+	\subsubsection*{/F13/ Einstellungen für Hypergraphen}
+	Hat der Nutzer die Generierung von SHs gewählt, so kann er die folgenden Einstellungen vornehmen:
+	\begin{enumerate}[i)]
+		\item{Die Anzahl von Knoten $n$ der zu generierenden Graphen kann festgelegt werden. Es gilt $1 \leq n \leq 1000$.}
+		\item{Der minimale und maximale Knotengrad $\delta_{min}$ und $\Delta_{max}$ der zu generierenden Graphen kann festgelegt werden. Für einen beliebigen generierten Graphen $G$ gilt dann $$0 \leq \delta_{min} \leq \delta(G) \leq \Delta(G) \leq \Delta_{max} \leq n-1.$$}
+		\item{Es kann (falls gewünscht) ein $r$ festgelegt werden, sodass die generierten SHs $r$-uniform sind. Dabei gilt $$2 \leq r \leq n.$$}
+	\end{enumerate}
+	
+	
+	\subsection*{/F20/ Anwendung von Heuristiken}
+	Es kann eine Liste von Heuristiken bestimmt werden, die auf jeden der generierten Graphen angewandt werden. Diese obliegt den folgenden Einschränkungen:
+	\begin{enumerate}[i)]
+		\item{Die möglichen Heuristiken sind abhängig von dem generierten Graphentyp.}
+		\item{Dieselbe Heuristik kann mit unterschiedlichen individuellen Einstellungen mehrfach in der Liste vorkommen.}
+		\item{Dieselbe Heuristik kann nicht mehrfach mit den gleichen Einstellungen in der Liste vorkommen.}
+		\item{Eine Änderung der Liste bewirkt eine Neuberechnung aller neuen oder veränderten Heuristiken auf allen generierten Graphen, nicht jedoch die Neuberechnung von bereits angewandten und unverändert gebliebenen Heuristiken.}
+	\end{enumerate}
+	
+	TODO Erwähnung der Pluginarchitektur?
+	
+	
+	\subsection*{/F30/ Ausgabe über eine graphischer Benutzeroberfläche}
+	Die graphische Benutzeroberfläche gliedert sich im wesentlichen in die folgenden Bereiche:
+	
+	\subsubsection*{/F31/ Graphgenerierung}
+	In diesem Fenster können alle Einstellungen für die zu generierenden Graphen vorgenommen werden. Nach Bestätigung werden die Graphen unter ihrer Berücksichtigung generiert.
+	
+	\subsubsection*{/F32/ Preview}
+	
+	\subsubsection*{/F33/ Detailansicht}
+	
+	\subsubsection*{/F34/ Grapheditor}
+	
+	
+	\subsection*{/F40/ Modifikation von Graphen}
+	\subsection*{/F50/ Speichern und Laden}
+	\subsection*{/F60/ Heuristiken für das Total Coloring Conjecture}
+	\subsection*{/F70/ Heuristiken für das Erdös Faber Lovasz Conjecture}
+	
+	
+	
+	\section{Nichtfunktionale Anforderungen}
+	
+	
+	
+	\section{Produktdaten}
+	
+	
+	
+	\section{Systemmodelle}
+	\subsection{Szenarien}
+	\subsection{Anwendungsfälle}
+	
+	\section{Glossar}
+	\glsaddall
+	\printglossaries
+\end{document}
