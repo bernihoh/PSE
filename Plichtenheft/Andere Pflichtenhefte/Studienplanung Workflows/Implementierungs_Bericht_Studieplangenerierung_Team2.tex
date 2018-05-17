@@ -1,0 +1,612 @@
+\documentclass[parskip=full]{scrartcl}
+
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc} % avoid garbled Unicode text in pdf
+\usepackage[german]{babel} % german hyphenation, quotes, etc
+\usepackage{hyperref} % detailed hyperlink/pdf configuration
+\hypersetup{ % ‘texdoc hyperref‘ for options
+	pdftitle={PSE Projekt: Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung. IPD Böhm}
+}
+\usepackage{csquotes} % provides \enquote{} macro for "quotes"
+
+\usepackage{graphicx} 
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+%automatic newlines on new section
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung.
+	\newline IPD Böhm}
+%\author{The<<Bitshifters}
+\date{14.02.2017}
+\begin{document}
+	
+	\maketitle
+	\vfill
+	\begin{center}
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Phase} & \textbf{Verantwortlicher} \\
+			\hline
+			Pflichtenheft & Ali Bejhad \\
+			Entwurf & Janek Westfechtel \\
+			Implementierung & Clemens Naseband \\
+			Qualitätssicherung & Robin Berger \\
+			Präsentation  & Jacques Huss \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\pagebreak
+	\tableofcontents
+	
+	\section{Einleitung}
+		Dieses Dokument beschreibt die Implementierungsphase des PSE-Projekts \glqq Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung\grqq.
+	
+	\section{Kriterien}
+	\subsection{Musskriterien}
+	\begin{tabular}{|c|c|}
+		\hline 
+		\textbf{Kriterium} & \textbf{Eingebaut?} \\ 
+		\hline 
+		Auslesen der Datenbank zu Beginn &  \checkmark \\ 
+		Mehrere Studienpläne pro Nutzer & \checkmark \\ 
+		Generierung mit Constraints &  \checkmark \\ 
+		Berücksichtigung der Präferenzen & \checkmark \\ 
+		Erbrachte Leistung berücksichtigen & \checkmark \\ 
+		Änderungen verifizieren & \checkmark \\ 
+		Studienpläne anzeigen & \checkmark \\ 
+		Module werden angezeigt & \checkmark \\ 
+		Unterscheidung der Module &  \checkmark \\ 
+		\hline 
+	\end{tabular} 
+	
+	\subsection{Wunschkriterien}
+	\begin{tabular}{|c|c|}
+		\hline 
+		\textbf{Kriterium} & \textbf{Eingebaut?} \\ 
+		\hline 
+		Kurze Wartezeiten & (\checkmark) kein Stresstest \\ 
+		Echtzeit aktualisieren & \checkmark \\ 
+		Übungsschein & $X$ \\ 
+		Exportieren & \checkmark als PNG \\ 
+		Speichern der Einstellungen & (\checkmark) ohne Präferenzen \\ 
+		Verschiedene Sprachen & (\checkmark) fehlende Einträge \\ 
+		Weitere Optimierungen & $X$ \\ 
+		\hline 
+	\end{tabular} 	
+	
+	\section{Probleme und Änderungen am Entwurf}
+		Hier werden alle Änderungen am Entwurf dokumentiert. Nicht erwähnte Klassen wurden nicht geändert.
+		Die Klassen sind in alphabetischer Reihenfolge nach ihren Packages aufgeführt.
+		\subsection{Model}
+		
+			\subsubsection{studyplanning.model.data}
+				Dies ist ein neues Package in der sich Klassen, die sich mit der Datenhaltung von Studiengänge befassen, befinden.
+				Alle hierhin verschobenen Klassen werden die Verschiebung erwähnen.
+			
+			\subsubsection{Attribute}
+				Dies ist eine neue Klasse, die wichtige Eigenschaften die ein Modul haben kann repräsentiert, hierzu gehören zur Zeit Pflichtmodule und Stammmodule. Dies ermöglicht eine viel dynamischere Verwendung des Generierungsalgorithmus, da man zur Einhaltung von Regeln des Studienganges, nur eine neue Instanz dieser Klasse erstellen muss.
+				Diese Klasse befindet sich im neuen Package: \textit{studyplanning.model.data}
+			
+				\begin{itemize}
+					\item \textit{public Attribute(String name, int required)} - Erstellt ein neues Attribut mit einem Namen und die Anzahl der Module die in jedem Studienplan eines Studienganges enthalten sein soll. (Bsp. 2 Stammmodule).
+					\item \textit{public String getName()} - Gibt den Namen des Attributes zurück.
+					\item \textit{public int getRequieredModule()} - Gibt die Anzahl der benötigten Module zurück.
+				\end{itemize}
+			
+			\subsubsection{ChoiceCategoryPreference}
+				Die Klasse hat sich den Änderungen an der Superklasse \hyperlink{model:ModulePreference}{ModulePreference} angepasst und deren Methoden implementiert.
+			
+			\subsubsection{ChoiceModulePreference}
+				Die Klasse hat sich den Änderungen an der Superklasse \hyperlink{model:ModulePreference}{ModulePreference} angepasst und deren Methoden implementiert. Bestehende Methoden haben sich nicht geändert.
+				
+			\subsubsection{ConstraintType}
+				Folgende Methoden wurden entfernt:
+				\begin{itemize}
+					\item \textit{public static ConstraintType valueOf(String name)} - Die Datenbank wurde so angepasst, dass man direkt über den Index auf den Constraint kommt und nicht mehr über den Namen.
+					\item \textit{public static ConstraintType[] values()} - Diese Methode war redundant da man über das Values Field auf alle Elemente zugreifen kann.
+				\end{itemize}
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item \textit{public boolean isBiDirectional} - Diese Methode gibt an ob ein Constraint in beiden affektierten Module stehen sollte. (Bspw. braucht HM 1 nicht zu Wissen, dass es von HM2 benötigt wird)
+				\end{itemize}
+			
+			\subsubsection{DataIO}
+				Im Verlauf der Implementierung ist aufgefallen, dass die Verwendung von UUID für Benutzer viel zu lang sind. Insbesondere deshalb wenn man bedenkt, dass man die Benutzer ID auch \glqq leicht\grqq{} von Hand übertragen können soll. Dementsprechend wurden die Schnittstellen angepasst. 
+				
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item \textit{public boolean deleteWorkflow(UUID id)} - Mit dieser Methode wird ein Workflow aus der Datenbank mit all seinen Referenzierungen gelöscht. Zurückgegeben wird ob das Löschen erfolgreich war.
+					\item \textit{public StudySubject getDataForStudySubject(String subject)} - Gibt den Studiengang mit dem angegebenen Index an, falls vorhanden.
+					\item \textit{public Collection<StudySubject> getAvailableSubjects()} - Gibt alle Studiengänge die das System ausgelesen hat.
+				\end{itemize}
+				
+			\subsubsection{DataSet}
+				Durch die erweiterte Datenbank (siehe Email vom 11.01.2017) hat ein Studiengang für \hyperlink{model:SubjectSection}{Bereiche} und \hyperlink{model:SubjectSpecialization}{Vertiefungen} eigene Klassen. Dementsprechend wurde die Klasse geändert.
+				Diese Klasse befindet sich nun im neuen \textit{Package studyplanning.model.data}.
+				
+				Der Konstruktor hat sich geändert:
+				\begin{itemize}
+					\item \textit{public DataSet(Iterable<SubjectSection> sections)} - Das DataSet enthält nun alle Bereiche in dem Konstruktor, da diese vorher ausgelesen werden müssen. 
+				\end{itemize}
+				
+				Folgende Methoden wurden entfernt:
+				\begin{itemize}
+					\item \textit{public Collection<Module> getCompulsaryModules()} - Da verpflichtende Module nun ein Attribut ist, wird diese Methode nicht mehr benötigt.
+					\item \textit{public Collection<Module> getModulesInCategory(String category)} - Diese Methode wurde in \hyperlink{model:DataSet:getSection}{\textit getSection(String)} umbenannt. Da Bereiche nun eine eigene Klasse haben.
+				\end{itemize}
+				 
+				 Folgende Methoden wurden hinzugefügt:
+				 \begin{itemize}
+				 	\item \textit{public Module getModule(String name)} - Gibt das Modul mit dem angegeben Namen zurück.
+				 	\item \textit{public SubjectSection getSection(String name)} - Gibt den Bereich mit dem angegebenen Namen zurück.
+				 	\item \textit{public SubjectSpecialization getSpecialization(String name)} - Gibt die Vertiefung mit dem angegeben Namen zurück. 
+				 	\item \hypertarget{model:DataSet:getSection}{t\textit{public Collection<SubjectSection> getSubjectSections()}} - Gibt alle Bereiche zurück.
+				 	\item \textit{\textit{public Iterable<SubjectSpecialization> getSubjectSpecializations()}} - Gibt alle Vertiefungen zurück.
+				 \end{itemize}
+			
+			\subsubsection{IECTSCap}
+			\hypertarget{model:IECTSCap}{}
+			Da viele neue Klassen eine mindest- und maximale Anzahl an ECTS angeben muss, wurde entschieden ein Interface hinzuzufügen.
+			Diese Klasse befindet sich im neuen Package \textit{Package studyplanning.model.data}.
+			
+			Folgende Methoden wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{boolean doesModuleCount(Module module)} - Gibt an, ob das gegebene Modul zur ECTS Grenze des Objekts hinzuzählt.
+				\item \textit{float getMaxAllowedECTS()} - Gibt die maximale Anzahl an ECTS, die erreicht werden darf.
+				\item \textit{float getRequiredECTS()} - Gibt die Mindestanzahl an ECTS an, die erreicht werden muss.
+				\item \textit{public static IECTSCap unionOf(Iterable<? extends IECTSCap> caps)} - Gibt ein neues IECTSCap Objekt zurück, das die Vereinigung der gegebenen IECTSCaps darstellt. Hierbei wird das Modul akzeptiert, wenn es von einem der gegebenen IECTSCaps akzeptiert wird und die minimale und maximale ECTS sind die minimale bzw. maximale ECTS der IECTSCaps zusammen addiert.
+			\end{itemize}
+			
+			\hypertarget{model:Evaluation}{}
+			\subsubsection{ModuleEvaluation $\rightarrow $ Evaluation}
+				
+				Die Klasse wurde in Evaluation umbenannt, da sie nun generische Evaluierung unterstützt. Sie übernimmt in diesem Fall die Bewertung von Modulen.
+				
+				Die Klasse hat nun folgende Methoden:
+				\begin{itemize}
+					\item \textit{public void addValue(K obj, int value)} - Erhöht den Wert der Instanz um den angegeben Wert.
+					\item \textit{public Iterator<K> getValuedObjects()} - Gibt einen Iterator in absteigender Reihenfolge der bewertenden Instanzen zurück.
+					\item \textit{public int getValue(K obj)} - Gibt den Wert der angegeben Instanz zurück.
+					\item \textit{public void initValues(Iterable<K> objs)} - Initialisiert die Evaluierung und gibt allen Instanzen den Wert 0.
+					\item \textit{public void setValue(K obj, int value)} - Setzt den Wert der Instanz auf den gegeben Wert.
+				\end{itemize}
+				
+			\subsubsection{MistakeAttribute}
+				Durch die Einführung der Attribute, ist es nun möglich auch Fehler zu machen, die diese nicht vollständig berücksichtigen. Diese Klasse erbt von \textbf{Mistake} und implementiert deren Methoden.
+				
+				Folgender Konstruktor ist hinzugefügt worden.
+				\begin{itemize}
+					\item \textit{public MistakeAttribute(String localizationKey, Attribute attrib)} - Erschafft eine neue Instanz, falls beim Verifizieren ein Fehler auftritt. 
+				\end{itemize}
+				
+				Folgende Methoden sind hinzugekommen:
+				\begin{itemize}
+					\item \textit{public String getLocalizedMessage(Locale language)} - Gibt eine Zeichenkette, die den genauen Fehler, in der gewählten Sprache ausgibt.
+					\item \textit{public Attribute getViolatedAttribute()} - Gibt das betroffenen Attribut zurück.
+				\end{itemize}
+				
+			\subsubsection{Mistakes}
+				Im Verlauf der Implementierung sind noch einige andere Fehlermöglichkeiten aufgefallen, durch die geeignete Wahl in der Entwurfsphase mussten nur neue Methoden hinzugefügt werden.
+				
+				Folgende Methoden wurden geändert:
+				\begin{itemize}
+					\item \textit{public static Mistake getMissingECTS(SubjectSection subject)} - Hat nun einen Parameter, aus dem man herauslesen kann, in welchem Bereich ECTS fehlen.
+					\item \textit{public static Mistake getTooManyECTS(SubjectSection subject)} - Die gleiche Änderung wurde auch hier übernommen.
+					\item \textit{public static Mistake getMissingECTS(SubjectSection subject)} - Die gleiche Änderung wurde auch hier übernommen.
+				\end{itemize}
+			
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public static Mistake getAddModuleMistake(Module module)} - Wird verwendet, falls beim Hinzufügen eines Moduls ein Fehler entstanden ist.
+					\item \textit{public static Mistake getLoadingWorkflowFailedMistake(UUID WorkflowID)} - Wird verwendet, falls beim Laden eines Workflows ein Fehler entstanden ist.
+					\item \textit{public static Mistake getLoadingWorkflowsMistake()} - Wird verwendet, falls beim Laden der Workflows eines Benutzers ein Fehler entstanden ist.
+					\item \textit{public static Mistake getMistakeTooFewAttribs(Attribute attrib)} - Wird verwendet, falls ein Attribut nicht berücksichtigt wurde (bspw. Es fehlen die Stammmodule).
+					\item \textit{public static Mistake getRemoveModuleMistake(Module module)} - Wird verwendet, falls das Entfernen eines Moduls aus einem Workflow ein Fehler entstanden ist.
+					\item \textit{public static Mistake getWrongSemesterType(Module module)} - Wird verwendet, falls versucht wird eine Sommersemester Veranstaltung in ein Wintersemester oder andersherum einzufügen.
+				\end{itemize}
+			
+			\subsubsection{Module}
+				Durch einige Anpassungen an der Logik musste auch diese Klasse an vielen Stellen geändert werden.
+				Diese Klasse befindet sich nun im neuen \textit{Package studyplanning.model.data}.
+				Der Konstruktor wurde geändert.
+				\begin{itemize}
+					\item \textit{public Module(String name, int id, SemesterType semester, float ects, Attribute... attribs)} - Das Modul nimmt jetzt auch die ID, die sie in der Datenbank hat entgegen um später leichter auf diese zuzugreifen. ECTS können auch Dezimalzahlen sein, weshalb der Datentyp angepasst wurde. Außerdem wird nicht mehr anhand eines boolean entschieden ob ein Modul verpflichtend ist, sondern ob er ein bestimmtes Attribut hat (bspw. Pflicht oder Stammmodul).
+				\end{itemize}
+			
+				Folgende Methode wurde entfernt:
+				\begin{itemize}
+					\item \textit{public boolean isCompulsory()} - Da diese Eigenschaft anhand von Attributen ablesbar ist, wurde diese Methode obsolet.
+				\end{itemize}
+			
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public void addConstraint(Constraint constraint)} - Fügt ein Constraint hinzu, sobald dieser aus der Datenbank ausgelesen wird.
+					\item \textit{public ImmutableCollection<Attribute> getAttributes()} - Gibt alle Attribute dieses Moduls zurück.
+					\item \textit{public int getID()} - Gibt die ID des Moduls zurück.
+					\item \textit{public SubjectSection getSection()} - Gibt den Bereich dieses Moduls zurück.
+					\item \textit{public SubjectSpecialization getSpecialization()} - Gibt die Vertiefung dieses Moduls zurück.
+					\item \textit{void setSection(SubjectSection section)} - Setzt den Bereich dieses Moduls.
+					\item \textit{void setSpecialization(SubjectSpecialization spec)} - Setzt die Vertiefung dieses Moduls.
+				\end{itemize}
+			
+			\subsubsection{ModulePreference}
+				Die Klasse hatte sich in den Parametern angepasst durch die Änderungen von \hyperlink{model:Evaluation}{\textbf{Evaluation}}.
+				
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public abstract ImmutableCollection<Module> getAffectedModules()} - Gibt eine Collection an Modulen, die von einer Präferenz betroffen sind, zurück.
+					\item \textit{public abstract SubjectSection getSection()} - Gibt die SubjectSection zurück, in der die Module dieser Preference sind.
+				\end{itemize}
+			
+			\subsubsection{ModuleWrapper}
+				Die Klasse wurde in das Package \textit{studyplanning.model.data} verschoben.
+				
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item\textit{public void setHasMistakes(boolean value)} - Setzt ob das Modul in dem Workflow einen Fehler hat.
+				\end{itemize}
+			
+			\subsubsection{Preferences}
+				Der Konstruktor wurde geändert:
+				\begin{itemize}
+					\item \textit{public Preferences(int preferredDuration, int preferredECTSPerSemester, int currentSemester, Collection<ModulePreference> preferences)} - Erhält Informationen über die Präferenzen des Benutzers, darunter:
+					\\ \\
+						\begin{tabular}{|c|c|}
+							\hline 
+							\textbf{Attribut Name} & \textbf{Aufgabe} \\
+							\hline
+							preferredDuration & Die Länge des Studiums \\ 
+
+							preferredECTSPerSemester & Die Anzahl der ECTS pro Semester \\ 
+
+							currentSemester & Das Startsemester \\ 
+
+							preferences & Die modulgebundene Präferenzen \\ 
+							\hline 
+						\end{tabular} 
+				\end{itemize}
+			
+			\subsubsection{Semester}
+				Folgende Methode hat sich geändert:
+				\begin{itemize}
+					\item \textit{public float getECTSPoints(IECTSCap cap)} - Gibt die Summe aller ECTS Punke in diesem Semester zurück, die die gegebene IECTSCap akzeptiert.
+				\end{itemize}
+				
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item \textit{public int getNumber()} - Gibt zurück, um das wievielte Semester es sich in dem Workflow handelt.
+				\end{itemize}
+			
+			\subsubsection{SemesterType}
+				Folgende Methode wurde entfernt:
+				\begin{itemize}
+					\item  \textit{public static SemesterType[] values()} - Die Methode war redundant, da man über ein public Field darauf zugreifen kann.
+				\end{itemize}
+			
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item \textit{public boolean matches(SemesterType type)} - Überprüft ob diese Instanz und die Übergebene im gleichen Semester stattfinden.
+				\end{itemize}
+			
+			\subsubsection{StudySubject}
+				Die Klasse implementiert von von \hyperlink{model:IECTSCap}{IECTSCap} und deren Methoden.
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public void addAttribute(Attribute attrib)} - Fügt dem Studiengang das gegebene Attribut hinzu.
+					\item \textit{public void addSubjectSection(SubjectSection section)} - Fügt dem Studiengang den gegebenen Bereich hinzu.
+					\item \textit{public Attribute getAttribute(String name)} - Gibt das Attribut mit den angegeben Identifizierer zurück.
+					\item \textit{public Collection<Attribute> getAttributes()} - Gibt alle Attribute dieses Studienganges zurück.
+					\item \textit{public int getID()} - Gibt die ID, die der Studiengang in der Datenbank hat, zurück.
+					\item \textit{public Collection<SubjectSection> getSections()} - Gibt alle Bereiche dieses Studienganges zurück.
+				\end{itemize}
+			
+			\subsubsection{SubjectSection}
+				Diese Klasse ist neu hinzugekommen und beschreibt einen Bereich eines Studienganges. Jeder Bereich besteht aus Spezialisierungen. Diese Klasse befindet sich in dem neuen Package studyplanning.model.data.
+				Die Klasse implementiert von von \hyperlink{model:IECTSCap}{IECTSCap} und deren Methoden.
+			
+				Folgende Methoden wurden eingefügt:
+				\begin{itemize}
+					\item \textit{public void addSubjectSpecialization(SubjectSpecialization spec)} - Fügt dem Bereich eine Spezialisierung hinzu.
+					\item Zusätzliche Getter wurden hinzugefügt: 
+					\\ \\
+						\begin{tabular}{|c|c|}
+							\hline 
+							\textbf{Signatur} & \textbf{Rückgabewert} \\ 
+							\hline 
+							Iterable<Module> getModules() &  Alle Module dieses Bereiches \\ 
+							String getName() &  Der Name dieses Bereiches \\ 
+							SubjectSpecialization getSubjectSpecialization(String name) & Die angegebene Vertiefung \\ 
+							Collection<SubjectSpecialization> getSubjectSpecializations() & Alle Vertiefungen dieses Bereiches\\
+							\hline 
+						\end{tabular} 
+				\end{itemize}
+			
+			\subsubsection{SubjectSpecialization}
+				Diese Klasse ist neu hinzugekommen und beschreibt eine Vertiefung, die Teile eines Bereiches sind. Diese Klasse befindet sich in dem neuen Package studyplanning.model.data.
+				
+				Folgende Methoden wurden eingefügt:
+				\begin{itemize}
+					\item \textit{public void addModule(Module mod)} - Fügt der Vertiefung das gegebene Modul zurück.
+					\item \textit{public Collection<Module> getModules()} - Gibt alle Module dieser Vertiefung zurück.
+					\item \textit{public String getName()} - Gibt den Namen der Vertiefung zurück.
+				\end{itemize}
+
+			\subsubsection{WorkflowOperations}
+				Hier wurden alle Parameter, die einen String für den Namen des Moduls entgegen nahmen, durch das Modul Objekt ersetzt.
+				
+			\subsubsection{WorkflowTasks}
+				Folgende Methode wurde geändert:
+				\begin{itemize}
+					\item \textit{public static Collection<Mistake> generate(Workflow workflow, StudySubject subject, Preferences prefs)} - Es wurde ein Parameter für die Präferenzen hinzugefügt.
+				\end{itemize}
+			
+		\subsection{View}
+		
+			\subsubsection{HTMLBuilder}
+				Die Klasse hat inzwischen nur eine Methode, die als Fabrikmethode agiert und andere Methoden aufruft. Dementsprechend wurden alle anderen Methoden auf \textit{private} gesetzt.
+				Folgende Methoden haben sich geändert:
+				\begin{itemize}
+					\item \textit{public String printPage(StudySubject studySubject, Languages languages, String localeName, int userID, Workflow workflow, UUID workflowID, Collection<UUID> loadedWorkflows, Collection<StudySubject> subjects, Collection<Mistake> mistakes)} - Diese Methode wurde hinzugefügt und agiert als Fabrikmethode, die andere Methoden aufruft.
+				\end{itemize}
+		
+			\subsubsection{ImageBuilder}
+				Diese Klasse wurde neu hinzugefügt und dient als Hilfsklasse um Workflows als Bilder zu exportieren. Sie erbt genauso wie \hyperlink{view:ViewBuilder}{ViewBuilder} von HTTPServlet und implementiert die abstrakten Methoden.
+		
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item \textit{public BufferedImage getImageFor(Workflow wf, Locale locale, boolean valid)} - Gibt ein generiertes Bild zurück.
+				\end{itemize}
+		
+			\subsubsection{JavaScriptBuilder}
+				Die Klasse hat inzwischen nur eine Methode, die als Fabrikmethode agiert und andere Methoden aufruft. Dementsprechend wurden alle anderen Methoden auf \textit{private} gesetzt.
+		
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item \textit{public String printJavaScript(int userID, UUID workflowID, String studySubjectName, Collection<UUID> loadedWorkflows)} - Fabrikmethode, die Java-Script erzeugt.
+				\end{itemize}
+		
+			\subsubsection{Languages}
+				Folgende Methode wurde hinzugefügt:
+				\begin{itemize}
+					\item \textit{public Locale[] getStoredLanguages()} - Gibt alle \glqq Sprachen\grqq{} zurück.
+				\end{itemize}
+		
+			\subsubsection{ViewConfig}
+				Die Klasse wurde neu hinzugefügt und sorgt für die Initialisierung des Programmes. Sie implementiert \textbf{javax.servlet.ServletContextListener} und deren Methoden.
+				Folgende Getter wurden hinzugefügt:
+				\\ \\
+				\begin{tabular}{|c|c|}
+					\hline 
+					\textbf{Signatur} & \textbf{Rückgabewert} \\ 
+					\hline 
+					Controller getController() & Die Controller Instanz \\ 
+					static ViewConfig getInstance() & Die eigene Instanz \\ 
+					Languages getLanguages() & Gibt die Language Instanz zurück \\ 
+					\hline 
+				\end{tabular} 
+			
+		\subsection{Controller}
+		
+		
+			\subsubsection{controller.commands.iosubcommands}
+				\hypertarget{controller:controller.commands.iosubcommands}{}
+				Das Paket wurde neu hinzugefügt. In dem Paket befinden sich die vom IOCommand aufrufbaren Subcommands.
+				
+		
+			\subsubsection{Command}
+			\hypertarget{controller:commandSection}{}
+				Jedes Command hat nun einen festgelegten Namen. Die Änderungen wurden in allen Command-Kind-Klassen auch übernommen.
+
+				Folgende Methoden wurden geändert:
+				\begin{itemize}
+					\item \textit{public Command(String... name)} - Der Konstruktor nimmt nun einen Namen als Parameter entgegen.
+					\item \textit{public abstract Response execute(	Map<String, String> input,Controller controller)} - Die execute Methode nimmt nun eine Map von String Schlüssel-Wert Paaren, und die ausführende Controller Instanz als Parameter entgegen.
+				\end{itemize}	
+
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{ public String getName()} - Gibt den Namen des Commands zurück
+				\end{itemize}
+			
+			\subsubsection{CommandException}
+			Neu hinzugefügte Exception-Klasse, die im Falle eines Fehlers während der Ausführung der Commands geworfen wird. 
+			
+			Folgender Konstruktor wurde hinzugefügt:	
+			\begin{itemize}
+			\item \textit{public CommandException(String message)} - Erstellt eine neue CommandException mit einer gegebenen Message
+			\end{itemize}
+
+
+			\subsubsection{CommandRegistry}
+				Die CommandRegistry wurde neu hinzugefügt und koordiniert die Ausführung der einzelnen \hyperlink{controller:commandSection}{\textbf{Commands}}.
+				
+				Folgende Konstruktoren wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public CommandRegistry(String key)} - Erstellt eine neue Instanz, mit einem anegegbenen Schlüssel String					
+				\end{itemize}
+				
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public Response execute(Map<String, String> args, Controller controller)} - Nimmt die aufgespaltene Nachricht der View entgegen und führt das angegebene Command aus
+					\item \textit{public void registerCommand(Command command)} - Registriert ein neues Command
+					\item \textit{public Command getCommand(String name)} - Getter Methode für registrierte Commands
+				\end{itemize}
+				
+				
+			\subsubsection{Controller}
+				Dem Konstruktor des Controllers muss keine \textbf{ViewBuilder} Instanz mehr übergeben werden.
+				
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public getDataIO()} - Erlaubt die Übergabe der DataIO Schnittstelle
+					\item \textit{public getWorkflowOperations()} - Erlaubt die Übergabe der WorkflowOperations Schnittstelle 	
+				\end{itemize}
+			
+			\subsubsection{DuplicateWorkflowCommand}
+				Die Klasse wurde neu hinzugefügt und ermöglicht es einen Workflow zu kopieren.
+				Sie befindet sich im Package \hyperlink{controller:controller.commands.iosubcommands}{\textit{controller.commands.iosubcommands}}.
+				
+				\begin{itemize}
+					\item \textit{public DuplicateWorkflowCommand()} - Erstellt eine neue Instanz
+				\end{itemize}
+				
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Dupliziert den gegebenen Workflow
+				\end{itemize}
+				
+			
+			\subsubsection{FlushWorkflowCommand}
+			Die Klasse wurde neu hinzugefügt und ermöglicht es einen Workflow neu aufzusetzen. Somit muss der Nutzer nicht jedes Modul einzeln entfernen. Sie befindet sich im Package \textit{controller.commands}.
+			Folgende Konstruktoren wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public FlushWorkflowCommand()} - Erstellt eine neue Instanz
+			\end{itemize}
+			
+			Folgende Methoden wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Ersetzt den Workflow durch einen neuen, leeren Workflow				
+			\end{itemize}
+
+			\subsubsection{InputParser}
+				Alle Methoden, außer der ParseInput()-Methode, nehmen nun als Parameter eine String-Function aus Schlüssel-Werte Paaren entgegen. 
+				
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public static Map<String, String> parseInput(String)} - Übersetzt den gegebenen String zu einer Map mit String Schlüssel Werte Paaren
+					
+				
+				\end{itemize}
+			
+				Folgende Methoden wurden geändert:
+				\begin{itemize}
+					\item \textit{public static int parseUserID()} - Rückgabewert von UUID zu Int geändert
+					\item \textit{public static Workflow parseWorkflow(Function<String, String> input, DataIO dataio)} - Nimmt eine \textbf{DataIO} Instanz entgegen
+					\item \textit{public static StudySubject parseStudySubject(Function<String, String> input, DataIO dataio)}
+					\item \textit{public static Preferences parsePreferences(Function<String, String> input, StudySubject studySubject)}
+				\end{itemize}
+			
+				Folgende Methoden wurden entfernt:
+				\begin{itemize}
+					\item \textit{public static Workflow parseWorkflow()}
+				\end{itemize}
+		 
+			\subsubsection{Response}
+				Die Response beinhaltet keinen HTML-Code mehr. Allerdings ist es der Response nun möglich die \textbf{UserID}, \textbf{WorkflowID} und eine Sammlung an \textbf{WorkflowIDs} zu speichern. Dies ist notwendig um dem Nutzer das speichern der Workflows zu ermöglichen. Der Konstruktor wurde den neuen Variablen entsprechend angepasst.
+				
+				Folgende Methoden wurden hinzugefügt:
+				\begin{itemize}
+					\item \textit{public UUID getWorkflowID()} - Getter Methode für die UUID des aktuellen Workflows
+					\item \textit{public int getUserID()} - Getter Methode für die ID des aktuellen Nutzers
+					\item \textit{public Collection<UUID> getWorkflows()} - Getter-Methode für eine Sammlung aller UUIDs der Workflows des aktuellen Nutzers
+					\item \textit{public void setWorkflows(Collection<UUID> workflows)} - Setter-Methode für eine Sammlung aller UUIDs der Workflows des aktuellen Nutzers	
+				\end{itemize}
+			
+				Folgende Methoden wurden geändert:
+				\begin{itemize}
+					\item \textit{public Response(Workflow workflow, Collection<Mistake> mistakes, UUID workflowID, int userID)} - Erweiterung des Konstruktors mit den Parametern workflowID und userID
+				\end{itemize}
+			
+				Folgende Methoden wurden entfernt:
+				\begin{itemize}
+					\item \textit{public getHTMLCode()} 
+					\item \textit{public Controller(Workflow,Collection,int)} 
+				\end{itemize}
+			
+			\subsubsection{Util}
+			Die Klasse wurde neu hinzugefügt und beinhaltet Funktionalitäten, die in keine der anderen Schnittstellen passen. 
+			Sie lädt config-Dateien und überprüft ob Debugging aktiviert ist. Debugging gilt als aktiviert wenn Assertions angeschaltet sind.
+			
+			Die Klasse befindet sich im Package \textit{controller}.
+					
+			Folgende Methoden wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public static boolean debugModeEnabled()}	- Überprüft ob Debugging aktiviert ist	
+				\item \textit{public static Properties loadConfigFile(String name)} - Lädt die angegebe Config-Datei
+			\end{itemize}
+			%TODO Paragraph füllen
+			
+		
+
+			\subsubsection{IOCommand}
+				Die Klasse wurde angepasst und beinhaltet nun eine eigene \textbf{CommandRegistry}. Die Funktionalität wurde grösstenteils in die neu hinzugefügten SubCommands ausgelagert.
+								
+				Folgende Methoden wurden geändert:
+				\begin{itemize}
+					\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Führt nun das angegebene subCommand aus
+				\end{itemize}
+				%TODO referenz hinzufügen
+			
+			 \subsubsection{MoveModuleCommand}
+			 Die Klasse erbt von Command, und wurde neu hinzugefügt um Module zwischen Semestern zu verschieben.
+			 Folgende Konstruktoren wurden hinzugefügt:
+			 \begin{itemize}
+			 	\item \textit{public MoveModuleCommand()} - Erstellt eine neue Instanz			 	
+			 \end{itemize}
+			 
+			 Folgende Methoden wurden hinzugefügt:
+			 \begin{itemize}
+			 	\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Verschiebt ein Modul vom einen Semester ins andere.
+			 	
+			 \end{itemize}
+			
+		
+	
+				
+
+			\subsubsection{GetWorkflowsCommand}
+			Die Klasse wurde neu hinzugefügt, erbt von Command und befindet sich im  \hyperlink{controller:controller.commands.iosubcommands}{iosubcommands-package}. Sie wird verwendet um die UUIDs der vom Nutzer erstellten Workflows zu laden. 
+			Folgende Konstruktoren wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public GetWorkflowsCommand()} - Erstellt eine neue Instanz				
+			\end{itemize}
+			
+			Folgende Methoden wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Lädt die verschiedenen WorkflowIDs die einem Nutzer zugeordnet sind
+				
+			\end{itemize}
+			
+			\subsubsection{LoadWorkflowCommand}
+			Die Klasse wurde neu hinzugefügt, erbt von Command und befindet sich im  \hyperlink{controller:controller.commands.iosubcommands}{iosubcommands-package}. Sie wird verwendet um den Workflow eines Nutzers zu laden.
+			Folgende Konstruktoren wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public LoadWorkflowCommand()} - Erstellt eine neue Instanz				
+			\end{itemize}
+			
+			Folgende Methoden wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Lädt den Workflow eines Nutzers				
+			\end{itemize}
+		
+			\subsubsection{NewUserCommand}
+			Die Klasse wurde neu hinzugefügt, erbt von Command und befindet sich im  \hyperlink{controller:controller.commands.iosubcommands}{iosubcommands-package}. Sie legt einen neuen Nutzer an und gibt dem Nutzer einen neuen leeren Workflow.
+			Folgende Konstruktoren wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public NewUserCommand()} - Erstellt eine neue Instanz				
+			\end{itemize}
+			
+			Folgende Methoden wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Erstellt einen neuen Nutzer und einen neuen Workflow
+			\end{itemize}
+			
+			\subsubsection{NewWorkflowCommand}
+			Die Klasse wurde neu hinzugefügt, erbt von Command und befindet sich im  \hyperlink{controller:controller.commands.iosubcommands}{iosubcommands-package}.
+			Sie legt einen neuen Workflow an und speichert diesen.
+			Folgende Konstruktoren wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public NewWorkflowCommand()} - Erstellt eine neue Instanz				
+			\end{itemize}
+			
+			Folgende Methoden wurden hinzugefügt:
+			\begin{itemize}
+				\item \textit{public Response execute(Map<String, String> input, Controller controller)} - Erstellt einen neuen Workflow	
+			\end{itemize}
+	\newpage
+	
+\end{document}

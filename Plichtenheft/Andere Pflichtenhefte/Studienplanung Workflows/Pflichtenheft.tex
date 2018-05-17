@@ -1,0 +1,707 @@
+\documentclass[parskip=full]{scrartcl}
+
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc} % avoid garbled Unicode text in pdf
+\usepackage[german]{babel} % german hyphenation, quotes, etc
+\usepackage{hyperref} % detailed hyperlink/pdf configuration
+\hypersetup{ % ‘texdoc hyperref‘ for options
+	pdftitle={PSE Projekt: Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung. IPD Böhm}
+}
+\usepackage{csquotes} % provides \enquote{} macro for "quotes"
+
+\usepackage{graphicx} 
+
+\usepackage[nonumberlist]{glossaries} 
+
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{makeidx}
+\usepackage{showidx}
+
+%automatic newlines on new section
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+
+
+%add leading zeroes to counter
+\def\threedigits#1{% 
+	\ifnum#1<10 0\fi 
+	\number#1}
+
+\setglossarystyle{long3col}
+
+\makeindex
+\makeglossaries
+
+\title{Studienplanung als Generierung von Workflows mit Compliance-Anforderungen: Planerstellung und Visualisierung.
+	\newline IPD Böhm}
+%\author{The<<Bitshifters}
+
+\newcounter{funktioncounter} %counter for the Funktionentabelle
+\newcounter{labelcounter} %counter for the labels
+\setcounter{labelcounter}{1}
+
+
+\newcommand{\testlabel}{\label{F\thelabelcounter}\stepcounter{labelcounter}}
+%replaces the bracketed mess in the testsection
+
+%\newlist{produktdatenenumerate}{enumerate}{1}
+%\setlist{produktdatenenumerate}{label={\arabic*0.}, ref={\arabic*0}}
+
+
+\begin{document}
+	
+	\maketitle
+	\renewcommand{\arraystretch}{1.25}%
+	\begin{center}
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Phase} & \textbf{Verantwortlicher} \\
+			\hline
+			Pflichtenheft & Ali Bejhad \\
+			Entwurf & Janek Westfechtel \\
+			Implementierung & Clemens Naseband \\
+			Qualitätssicherung & Robin Berger \\
+			Präsentation  & Jacques Huss \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\pagebreak
+	\tableofcontents
+	
+	% author: Ali
+	%author: Clemens
+	\section{Einleitung}
+	
+		Mit wechselnden Prüfungsordnungen und großen \glspl{Modulhandbuch}n steigt die Unübersichtlichkeit des Studienplanes. Mithilfe dieser Software soll es Studenten ermöglicht werden, ihre Studienpläne mit allen \glspl{Pflichtmodul}n, \glspl{Orientierungspruefung}, \glspl{Wahlmodul}n und Sonstigen, als ein Prozessmodell/\gls{Workflow} darzustellen. Hierbei sollen sowohl \glspl{Constraint} als auch benötigte \gls{ECTS} vom System berücksichtigt werden. Zusätzlich soll der Student in der Lage sein, zu bestimmen wie viele Semester er studieren will und in welchem er welches Modul abschließen will. Hierbei soll dem Studenten eine Rückmeldung zurückgegeben werden, die ihn auf Fehler aufmerksam macht.
+	
+		Das System soll intuitiv nutzbar sein und den Nutzer bei der Bedienung unterstützen.
+	
+		Die Constraints sind hierbei von einer Datenbank vorgegeben. 
+		Es sollen Tools zur Generierung und Verifizierung des Studienplanes erstellt werden, welche später durch andere ersetzt werden können.
+	
+		Mit dieser Software sollen Fehler und Missverständnisse beim Studium minimiert werden. Einsätze von Workflows haben sich bereits in anderen Gebieten als hilfreich erwiesen.
+	
+	% author: Clemens
+	% author: Ali
+	\section{Zielbestimmung}
+	
+		\subsection{Musskriterien}
+		
+			\begin{itemize}
+				\item Das Programm liest die Module und deren Constraints, zu Beginn des Einsatzes, aus einer Datenbank aus.
+				\item Der Benutzer kann mehrere Studienpläne als Alternativen erstellen und jederzeit wechseln.
+				\item Das Programm generiert Studienpläne, unter Berücksichtigung der Constraints.
+				\item Der Benutzer kann angeben, unter welchen Punkten seine Studienplangenerierung berücksichtigt werden soll. Darunter gehören, die Wunschlänge des Studiums, Anzahl der ECTS pro Semester, Wunschmodule oder Vertiefungsgebiete.
+				\item Der Benutzer kann seine bisher erbrachten Leistungen angeben, welche vom System berücksichtigt werden.
+				\item Manuelle Änderungen am Studienplan werden verifiziert.
+				\item Studienpläne werden dem Benutzer, in Form einer Tabelle, auf einer aufrufbaren Website, visuell dargestellt.
+				\item Das System ordnet die ausgewählten und ergänzten Module in deren zugehörigen Semester ein und zeigt diese an.
+				\item Das System unterscheidet zwischen \glspl{Pflichtmodul}n, \glspl{Wahlmodul}n und Vertiefungsfächer.
+			\end{itemize}
+	
+		\subsection{Wunschkriterien}
+			
+			\begin{itemize}
+				\item Kurze Wartezeit des Nutzers bei kleinen Änderungen.
+				\item Der Studienplan wird in Echtzeit aktualisiert.
+				\item Das System informiert den Nutzer über die Art des \gls{Uebungsschein}s eines Moduls.
+				\item Exportieren des generierten Studienplan als Bild oder PDF.
+				\item Speichern der bereits ausgewählten Einstellungen und Eingaben des Benutzers und laden dieser bei der nächsten Verwendung des Systems.
+				\item Die GUI ist auf verschiedenen Sprachen verfügbar.
+				\item Dem System werden weitere Optimierungsoptionen zur Verfügung gestellt.
+			\end{itemize}
+	
+		\subsection{Abgrenzungskriterien}
+	
+			\begin{itemize}
+				\item Es werden keine anderen Studiengänge als Informatik Bachelor/Master betrachtet, jedoch im Entwurf berücksichtigt.
+				\item Die Seite wird nicht für Mobilgeräte wie Mobiltelefone oder Tablets angeboten.
+				\item Eine Ansicht für Dozenten wird im Entwurf beachtet, jedoch nicht implementiert.
+			\end{itemize}
+	
+	% author: Clemens
+	% author: Ali
+	\section{Produkteinsatz}
+	
+		\subsection{Anwendungsbereich}
+			
+			Das Programm dient der Planung des Studiums.
+			Der Nutzer kann sich einen vorgeschlagenen Ablauf seines Studiums als Tabelle anzeigen lassen und diesen modifizieren und anpassen. 
+			Dazu verwendet er einen \gls{Browser} auf einem Computer.
+	
+		\subsection{Zielgruppe}
+			
+			Das Programm richtet sich an Informatikstudenten des KIT, die ihr Studium planen wollen.
+			%author : Jacques 
+			Die graphische Benutzeroberfläche des Systems soll benutzerfreundlich sein. Die Bedienung des Systems setzt von Studentenseite keine Vorkenntnisse voraus.
+	
+			Für den Einsatz durch die Systemadministratoren wird eine Bedienungsanleitung in Verbindung mit ausreichender Dokumentation verfasst.
+	
+		\subsection{Betriebsbedingungen}
+			
+			Es müssen folgende Voraussetzungen erfüllt sein:
+			
+			\begin{itemize}
+				\item Ein Computer mit aktuellem Browser und Internetanbindung.
+				\item Ein Server mit \gls{JVM} Unterstützung.
+				\item Während der Nutzung muss die Strom- und Internetversorgung, sowohl auf Seite des Client als auch des Servers, gewährleistet sein.
+			\end{itemize}
+	
+	% author: Robin
+	\section{Produktumgebung}
+	
+		\subsection{Software}
+	
+			\begin{itemize}
+				\item Die JVM 1.8 oder höher auf der Serverseite.
+				\item Apache Tomcat als Java \gls{Servlet} Umgebung auf der Serverseite.
+				\item Ein moderner Webbrowser wie Google Chrome 54.0, Opera 40.0 oder Firefox 50.0 auf der Clientseite.
+				\item \gls{JavaScript} muss auf dem Browser aktiviert sein.
+			\end{itemize}
+	
+		\subsection{Hardware}
+	
+			\begin{itemize}
+				\item Ein Computer mit Internetanschluss und mindestens 2GB Arbeitsspeicher als Server.
+				\item Ein Computer mit Internetanschluss und mindestens 1GB Arbeitsspeicher als Client.
+				\item Ein Farbbildschirm mit einer Auflösung von 1280x720 Pixel (HD) am Client.
+				\item Mindestens eine Maus als Eingabegerät, sowie eine Tastatur zur Unterstützung.
+			\end{itemize}
+	
+	\section{Produktfunktionen}
+	
+		\subsection{Grundfunktionen}
+	
+			\begin{tabular}{|>{\stepcounter{funktioncounter}/F\threedigits{\thefunktioncounter}0/}c|l|l|} \hline
+				\multicolumn{1}{|c|}{\textbf{Nummer}} & \textbf{Beschreibung} & \textbf{Serverseite/Clientseite} \\ \hline
+				& Das Programm lädt die Datenbank. & S \\\hline
+				& Anzeigen des Startbildschirmes. & C \\\hline
+				& Auswahl eines Moduls aus der Liste. & C \\\hline
+				& Modul hinzufügen. & C \\\hline
+				& Modul als schon Bestanden markieren. & C\\\hline
+				& Erstellung eines Studienplanes. & S \\\hline
+				& Eingaben des Benutzers beim Client speichern. & C \\\hline 
+				& Eingaben des Benutzers beim Client laden. & C \\\hline
+				& Wechseln von Studienplänen (Neuer Studienplan). & C \\\hline
+				& Anzeigen eines Studienplanes. & C \\\hline
+				& Studienplan verifizieren. & S \\\hline
+
+			\end{tabular}
+	
+		\subsection{Erweiterte Funktionen}
+	
+			Notwendige Funktionen um die Wunschkriterien zu erfüllen.\newline
+			
+			\begin{tabular}{|>{\stepcounter{funktioncounter}/F\threedigits{\thefunktioncounter}0/}c|l|l|}\hline
+				\multicolumn{1}{|c|}{\textbf{Nummer}} & \textbf{Beschreibung} & \textbf{Serverseite/Clientseite} \\\hline
+				& Studienfach auswählen. &  C \\\hline
+				& Studienplan als PDF/Bild exportieren. & C/S \\\hline 
+				& Sprache auswählen. & C \\\hline
+				& Drag and Drop Unterstützung. & C \\\hline
+			\end{tabular}
+	
+	\section{Produktdaten}
+	
+		\subsection{Systemdaten}
+	
+			\begin{enumerate}[label={/D\protect\threedigits{\theenumi}0/}]
+				\item Module mit zugehörigen Vorlesungen.
+				\item Prüfungsvoraussetzungen und Abhängigkeiten zu anderen Modulen.
+				\item Anzahl der \glspl{ECTS} der Module.
+				\item Vorlesung im Sommer- oder Wintersemester. 
+				\item Sprachdateien (\gls{properties}).
+				\item Styledateien (\gls{CSS}).
+			\end{enumerate}
+	
+		\subsection{Benutzerdaten}
+	
+			\begin{enumerate}[label=/D\protect\threedigits{\theenumi}0/,resume]
+				\item Bereits bestandene Prüfungen.
+				\item Fachsemester.
+				\item Einstellungen und Präferenzen.
+			\end{enumerate}
+	
+	\section{Systemmodell}
+	%author: Janek
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Resources/Systemmodell.png}
+			\caption{Systemmodell}
+			\label{fig:Systemmodell}
+		\end{figure}
+
+		Die Grundstruktur dieses Programmes basiert auf einer MVC-Struktur. Dabei soll die Dreiteilung in Model, View und Controller sowohl eine erleichterte Modifikation am Programmcode als auch ein einfaches Einbinden von weiterführenden Tools gewährleisten. Die drei Komponenten sollen dabei folgenden Aufgaben erfüllen:
+		\\ \\
+
+		\textbf{Model:}\\
+		Das Model enthält die Datenstruktur des Modulhandbuches, die generierten Workflows und die Workflowalgorithmen. Die Datenstruktur (eine MySQL-Datenbank) speichert die einzelnen Module und Veranstaltungen des Modulhandbuchs, mit ihren Einschränkungen und Voraussetzungen. Die Algorithmen dienen zur Generierung und Verifizierung der Workflows. Die Algorithmen werden modularisiert, so dass verschiedene Strategien die Probleme lösen können.
+		\\ \\
+		
+		\textbf{View:}\\
+		Die View hat zwei Aufgaben. Zum einen gibt sie dem Benutzer eine Weboberfläche, in dem er seine Präferenzen für den Studienplan angeben kann, damit diese in den Workflow einfließen können. Zum anderen stellt sie den generierten Workflow dar.
+		\\ \\
+		
+		\textbf{Controller:}\\
+		Der Controller ist die Zentraleinheit des Systems. Er koordiniert die Erstellung und die Verifizierung der Workflows, indem er die Angaben des Benutzers empfängt, auswertet und den generierten Workflow auf dem Webinterface anzeigen lässt. Zudem stellt er für den Benutzer die Option bereit, den eigenen generierten Workflow herunterzuladen und abzuspeichern, um diesen auch ohne die Benutzung des Internetdienstes anzuschauen. Ebenso wird es möglich sein, einen abgespeicherten Workflow zu laden und diesen weiter zu modifizieren. Die Workflow-Generierung und Workflow-Verifizierung sind einzelne Tools, die beliebig ausgetauscht werden können.
+	
+		\begin{figure}
+			\includegraphics[height=0.9\textheight, keepaspectratio]{Resources/SequenceDiagram.png}
+			\caption{Beispielinteraktion zwischen Server und Client}
+			\label{fig:server_client_interaction}
+		\end{figure}
+	
+	\section{Produktleistungen}
+	
+		\begin{enumerate}[label=/L\protect\threedigits{\theenumi}0/]
+			\item Das Einlesen der Datenbank, darf nur einmalig beim Start des System oder bei Eingabe eines Administrators stattfinden. Dieser Vorgang darf lange dauern.
+			\item Als Serveranwendung muss das System dauerhaft laufen.
+			\item Das System darf, beim öffnen der Seite, nicht länger als 3 Sekunden brauchen, um das Auswahl- und Eingabefenster für den Benutzer anzuzeigen.
+			\item Das System muss vollständig mit einer Maus bedienbar sein. 
+		\end{enumerate}
+	
+	% Noch relativ holprig
+	\section{Bedienoberfläche}
+	%author: Clemens
+		\subsection{Einführung}
+	
+			Da die Bedienoberfläche in einem Browser angezeigt wird muss diese mit flexiblen Dimensionen zurecht kommen und dennoch dem Nutzer möglichst simpel und eingängig sein.
+			Deswegen wird eine Explorer-GUI mit einem festen Menü am linken Rand und einer großen variablen Leinwand zur Anzeige des Studienplans verwendet. 
+			\\ \\
+
+			Der Nutzer benötigt keine Vorkenntnisse, die Bedienung soll nur durch die Maus erfolgen und bei Eingaben durch eine Tastatur unterstützt werden. \\
+			Er kann den vorgeschlagenen Studienplan durch Änderungen im Menü beliebig ändern und gegebenen Falls bei Missfallen rückgängig machen. Die intuitive Verwendung wird durch vertraute Symbole sichergestellt (eine Lupe ermöglicht das Vergrößern, ein Diskettensymbol speichert, usw.). \\
+	
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=1\linewidth]{Resources/GUIMockupBoxes.png}
+				\caption{Ansicht im Browser}
+				\label{fig:guimockup}
+			\end{figure}
+			\bigskip
+			
+			Der hier angegebene Entwurf ist nur Vorläufig und dient als Leitfaden. Die Bedienoberfläche kann sich auf Grund von Wunschkriterien oder Vereinfachungen ändern.\\
+	
+		\subsection{Aufbau}
+			Das grau hinterlegte Menü auf der linken Seite ermöglicht dem Nutzer weitere Module hinzuzufügen. Die \gls{MenueHierarchie} soll möglichst flach sein. Zunächst sieht der Nutzer nur die eingeklappten Überpunkte aus denen er auswählen kann. Die Breite des Menüs ist festgelegt.
+			\\
+
+			Auf der rechten Seite befindet sich die Leinwand, welche dem Nutzer seinen Studienplan präsentiert. Sie nimmt die restliche Breite der Seite ein, da auf ihr das Hauptaugenmerk liegen soll.
+			\\
+			
+			Im unteren Bereich der Leinwand, werden dem Nutzer Informationen, wie seine ID, mit der er von einem anderen Rechner auf seinen Studienplan zugreifen kann, angezeigt oder ihm die Möglichkeit geboten, die Größe des Studienplans manuell zu verändern.
+	
+		\subsection{Bedienung}
+			Im gesonderten ersten Punkt kann er seine Präferenzen eingeben wie z.B. Anzahl der ECTS Punkte, angestrebte Studiendauer oder Ähnliches. Darunter werden ihm alle Überkategorien der belegbaren Module angezeigt.\\
+			Durch einen Klick auf den Überpunkt kann der Nutzer sich diesen anzeigen oder ausblenden lassen, falls er ihn nicht benötigt.
+	
+	\section{Qualitätszielbestimmungen}
+	%author: Janek
+	
+		\begin{enumerate}[label=/Q\protect\threedigits{\theenumi}0/]
+			\item Die Robustheit, für bis zu 100 Anfragen, zur gleichen Zeit, wird sichergestellt.
+			\item Die Unterstützung der gängigsten Browser (Mozilla Firefox, Google Chrome, Opera) wird gewährleistet.
+			\item Die Benutzerfreundlichkeit wird, zum einen durch eine einfache übersichtliche GUI verwirklicht, und zum anderen, durch eine einfache Handhabung gewährleistet.
+			\item Eine kurze Wartezeit von wenigen Sekunden zur Generierung der Studienplans wird sichergestellt.
+			\item Die Korrektheit der Studienpläne, im Sinne des Modulhandbuchs und der Anforderungen des Benutzers, wird sichergestellt.
+			\item Wart – und Wiederverwendbarkeit bzw. eine leichte Weiterentwicklung und Einbinden von Tools, wird durch die Implementierung der MVC-Architektur gewährleistet.
+			\item Eine geringe Auslastung der Ressourcen des Benutzers, wird durch eine Client-Serverstruktur gewährleistet.
+			\item Eine dauerhafte Verfügbarkeit des Dienstes für die Benutzer wird durch den Einsatz eines Servers gewährleistet.
+		\end{enumerate}
+		
+	%author: Jacques
+	% Wenn euch weitere Testfälle einfallen 
+	% schreibt sie in die Liste
+	\section{Testfälle und Testszenarien}
+	
+		\subsection{Testfälle}
+			
+			Jede Funktion wird durch einen Testfall geprüft. Testfälle sind \glspl{Atomarer Vorgang}. Es wird zwischen Basis, und erweiterten Testfällen unterschieden.
+	
+		\subsubsection{Basis-Testfälle}
+	
+			\begin{enumerate}[label = /T\protect\threedigits{\theenumi}0/]
+				\item \gls{Website} lässt sich aufrufen. \testlabel
+				\item System kann sich mit \gls{Datenbank} verbinden.\testlabel 
+				\item System liest Datenbank korrekt aus.\testlabel 
+				\item System verarbeitet \glspl{Moduldatei} korrekt. \testlabel
+				\item \gls{GUI} stellt Module korrekt dar. \testlabel
+				\item Modul lässt sich auswählen. \testlabel
+				\item Modul lässt sich als bestanden markieren. \testlabel
+				\item Modul lässt sich hinzufügen. \testlabel
+				\item Präferenzen lassen sich auswählen.  \testlabel
+				\item Studienplan wird generiert. \testlabel
+				\item GUI zeigt Studienplan korrekt an. \testlabel
+				\item Studienplan wird verifiziert. \testlabel
+				\item Studienplan wird gespeichert. \testlabel
+				\item Studienplan wird geladen. \testlabel
+				\item Neuer Studienplan wird erstellt. \testlabel
+			\end{enumerate}
+
+		\subsubsection{Erweiterte Testfälle}
+	
+			\begin{enumerate}[label = /T\protect\threedigits{\theenumi}0/,resume]
+				\item Ein Studienfach lässt sich auswählen. \testlabel
+				\item Studienplan wird als PDF/Bild ausgegeben. \testlabel
+				\item GUI zeigt bei Sprachänderung korrekte Zeichen und die Zielsprache an. \testlabel
+			\end{enumerate}
+	
+		\subsection{Testszenarien}
+	
+			Die Anwendungsszenarien sollen sicherstellen dass das System größtenteils fehlerfrei benutzbar ist. Sie stellen beispielhaft Szenarien dar, die das System bei Benutzung durchläuft. Sie setzen sich aus den Testfällen zusammen.
+	
+			Mit (\#) markierte Testszenarien setzen erweiterte Testfälle ein.
+	
+		\subsubsection{Testszenario: Studienplan Generierung}
+		
+			Der Benutzer ruft die Seite auf, wählt verschiedene Präferenzen (Studienlänge, Wahlmodule, Vertiefungsgebiet, etc.) aus, und lässt sich vom System einen Studienplan generieren.
+	
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen
+				\item /T050/ GUI stellt Module korrekt dar.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T100/ Studienplan wird generiert.
+				\item /T110/ GUI zeigt Studienplan korrekt an.
+			\end{enumerate}
+	
+		\subsubsection{Testszenario: Möglichkeiten prüfen}
+	
+			Der Benutzer gibt seine bereits bestandenen Studienfächer ein, und prüft verschiedene Konfigurationen an Modulen und Bedingungen.
+	
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen
+				\item /T050/ GUI stellt Module korrekt dar.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T100/ Studienplan wird generiert.
+				\item /T110/ GUI zeigt Studienplan korrekt an.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item Wiederholen von 9.-12.
+				\item /T120/ Studienplan wird verifiziert.
+				\item Beliebiges Wiederholen von 9.-14.
+			\end{enumerate}
+	
+		\subsubsection{Testszenario: Systemstart}
+	
+			Das System liest Einträge aus der Datenbank ein und verarbeitet diese korrekt.
+		
+			\begin{enumerate}
+				\item /T020/ System kann sich mit Datenbank verbinden.
+				\item /T030/ System liest Datenbank korrekt aus.
+				\item /T040/ System verarbeitet Moduldateien korrekt.
+			\end{enumerate}
+
+		\subsubsection{Testszenario: Fehlerhafter Studienplan}
+
+			Ein Benutzer gibt Vorgaben deren Einhaltung unmöglich ist. Das System gibt eine Fehlermeldung.
+
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen
+				\item /T050/ GUI stellt Module korrekt dar.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T100/ Studienplan wird generiert.
+				\item /T110/ GUI zeigt Studienplan korrekt an.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T120/ Studienplan wird verifiziert (Schlägt fehl).
+			\end{enumerate}
+	 
+		\subsubsection{Manuelles Erstellen} 
+	
+			Ein Benutzer erstellt sich einen Studienplan komplett manuell, ohne Hilfe der Generierung.
+	
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen.
+				\item /T050/ GUI stellt Module korrekt dar.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item Wiederholen von 3.-5. bis der Studienplan vollständig gefüllt ist.
+				\item /T120/ Studienplan wird verifiziert.
+			\end{enumerate} 
+
+		\subsubsection{Testszenario: Studienplan wird gespeichert}
+
+			Ein Benutzer bearbeitet einen Studienplan, dieser wird gespeichert.
+		
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen.
+				\item /T050/ GUI stellt Module korrekt dar.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T100/ Studienplan wird generiert.
+				\item /T110/ GUI zeigt Studienplan korrekt an.
+				\item /T130/ Studienplan wird gespeichert.
+			\end{enumerate}
+
+		\subsubsection{Testszenario: Studienplan wird geladen}
+	
+			Das System lädt einen gespeicherten Studienplan, und  der Benutzer bearbeitet diesen. Wenn die Bearbeitung fertig ist, wird der neue Studienplan abgespeichert
+	
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen.
+				\item /T140/ Studienplan wird geladen.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T120/ Studienplan wird verifiziert.
+				\item /T130/ Studienplan wird gespeichert.
+			\end{enumerate}
+			
+		\subsection{Testszenario: Alternativer Studienplan}
+		
+			Der Benutzer möchte einen alternativen Studienplan erstellen, wobei der alte nicht gelöscht wird
+
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen.
+				\item /T140/ Studienplan wird geladen.
+				\item /T150/ Neuer Studienplan wird erstellt.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T100/ Studienplan wird generiert.
+				\item /T110/ GUI zeigt Studienplan korrekt an.
+			\end{enumerate}
+			
+		\subsubsection{Testszenario: Studienplan extern speichern (\#)}
+	
+			Ein Benutzer speichert seinen Studienplan als PDF/Bild ab.
+	
+			\begin{enumerate}
+				\item /T010/ Webseite lässt sich aufrufen.
+				\item /T050/ GUI stellt Module korrekt dar.
+				\item /T060/ Modul lässt sich auswählen.
+				\item /T070/ Modul lässt sich als bestanden markieren.
+				\item /T080/ Modul lässt sich hinzufügen.
+				\item /T090/ Präferenzen lassen sich auswählen.
+				\item /T100/ Studienplan wird generiert.
+				\item /T110/ GUI zeigt Studienplan korrekt an.
+				\item /T160/ Studienplan wird als PDF ausgegeben.	
+			\end{enumerate}
+
+		\subsubsection{Testszenario: Studienfach-/ Sprachauswahl(\#)}
+
+			Der Benutzer wählt ein anderes Studienfach  oder eine Sprache aus.
+
+			\begin{itemize}
+				\item /T010/ Webseite lässt sich aufrufen
+				\item /T150/ Ein Studienfach lässt sich auswählen.
+				\item /T170/ GUI zeigt bei Sprachänderung korrekte Zeichen und die Zielsprache an.
+				\item /T050/ GUI stellt Module korrekt dar.
+			\end{itemize}
+	
+	% author: Robin
+	\section{Entwicklungsumgebung}
+	
+			\subsection{Software}
+	
+				\begin{itemize}
+					\item Beriebssysteme
+						\begin{itemize}
+							\item Windows 7/8.1/10
+							\item Antergos
+							\item MAC OS X 10.11
+						\end{itemize}
+					\item Modellierung
+						\begin{itemize}
+							\item BOUML
+						\end{itemize}
+					\item Entwicklung
+						\begin{itemize}
+							\item Eclipse Neon (4.6.1)
+							\item Die \gls{JVM}-Entwicklerumgebung 1.8.
+							\item \gls{HTML}
+							\item \gls{CSS}
+						\end{itemize}
+					\item Versionsverwaltung
+						\begin{itemize}
+							\item Git
+						\end{itemize}
+					\item Continuous Integration
+						\begin{itemize}
+							\item \gls{Jenkins} 2.4
+						\end{itemize}
+					\item Sonstige
+						\begin{itemize}
+							\item \gls{draw.io}
+							\item \gls{Gimp} 2.x
+							\item \LaTeX
+								\item \gls{Pencil}
+						\end{itemize}
+				\end{itemize}
+	
+		\subsection{Hardware}
+
+			\begin{itemize}
+				\item Standard-PCs mit echten und virtualisierten Intel und AMD CPUs.
+			\end{itemize}
+	
+	\printglossaries
+	
+	\newglossaryentry{Modulhandbuch}{
+		name={Modulhandbuch},
+		plural = Modulhandbücher,
+		description={Eine Übersicht über die angebotenen Module, sowie deren Constraints. Diese Übersicht soll als Datenbank dargestellt werden.}
+	}
+	
+	\newglossaryentry{Workflow}{
+		name={Workflow},
+		description={Eine definierte Abfolge von Aktivitäten in einem Arbeitssystem.}
+	}
+	
+	\newglossaryentry{Constraint}{
+		name = Constraint,
+		plural = Constraints,
+		description = {Einschränkungen gegeben durch Auflagen und Studienfach.}
+	}
+	
+	\newglossaryentry{ECTS}{
+		name = ECTS,
+		plural = ECTS,
+		description={Credits die für den Abschluss von Modulen angerechnet werden.}
+	}
+	
+	\newglossaryentry{Pflichtmodul}{
+		name = Pflichtmodul,
+		plural = Pflichtmodule,
+		description = {Module die zum erfolgreichen Abschluss des Studiums benötigt sind.}
+	}
+	
+	\newglossaryentry{Orientierungspruefung}{
+		name = 	Orientierungsprüfung,
+		plural = Orientierungsprüfungen,
+		description = {Module die bis zu einem bestimmten Semester versucht bzw. bestanden sein muss.}
+	}
+	
+	\newglossaryentry{Wahlmodul}{
+		name = Wahlmodul,
+		plural = Wahlmodule,
+		description={Module die vom Studenten gewählt werden.}
+	}
+	
+	\newglossaryentry{Uebungsschein}{
+		name={Übungsschein},
+		description={Zusatzbedingung für ein Modul.Je nach Modul freiwillig, verpflichtend oder als Bonus, sowie in Form einer Klausur möglich.}
+	}
+	
+	\newglossaryentry{Atomarer Vorgang}{
+		name={Atomarer Vorgang},
+		plural={atomare Vorgänge},
+		description={Ein Vorgang, bei dem sichergestellt ist, der von keinem anderen Vorgang beeinflusst werden kann.}
+	}
+
+	\newglossaryentry{Website}{
+		name={Webseite},
+		plural={Webseiten},
+		description={Ein virtueller Platz im World Wide Web, an dem sich meist mehrere Webseiten (Dateien) und andere Ressourcen befinden. }
+	}
+	
+	\newglossaryentry{Browser}{
+		name={Browser},
+		description={Programme die zum Aufrufen von Webseiten benötigt werden. Je nach Browser unterscheiden sich Anzeige und Unterstützung für bestimmte Tools.}
+	}
+	
+	\newglossaryentry{Datenbank}{
+		name={Datenbank},
+		plural={Datenbänke},
+		description={ Ein System zu elektronischer Datenverwaltung, in diesem Fall auf Basis von SQL. } 
+	}
+	
+	\newglossaryentry{Moduldatei}{
+		name={Moduldatei},
+		plural={Moduldateien},
+		description={Eine Datei die einem Modul zugeordnet ist, wie z.B. Modul-Vorraussetzungen, Semester, erreichbare ECTS, etc.}
+	}
+	\newglossaryentry{GUI}{
+		name={GUI},
+		description={Abkürzung: Graphical user interface. Bezeichnet eine Form der Benutzerschnittstelle zwischen Benutzer und Computer. Sie hat die Aufgabe, Anwendungssoftware auf einem Rechner mittels grafischer Symbole bedienbar zu machen.}
+	}	
+	
+	\newglossaryentry{JVM}{
+		name=JVM,
+		description={Die Java Virtual Machine, abgekürzt JVM ist die Virtuelle Maschine, die als Laufzeitumgebung für Java-Programme dient.}
+	}
+	
+	\newglossaryentry{JavaScript}{
+		name={JavaScript},
+		description={JavaScript ist eine Skriptsprache für dynamische Interaktionen mit HTML Dokumenten.}
+	}
+	
+	\newglossaryentry{Servlet}{
+		name=Servlet,
+		description={Eine Webserverumgebung, die es erlaubt, mit Java-Klassen dynamisch webseiten zu erzeugen.}
+	}
+	
+	\newglossaryentry{HTML}{
+		name={HTML},
+		description={\textbf{Hypertext Markup Language} ist eine Auszeichnungssprache zur Strukturierung von digitalen Dokumenten. HTML Dokumente werden von Webbrowsern dargestellt.}
+	}
+	
+	\newglossaryentry{CSS}{
+		name={CSS},
+		description={\textbf{Cascading Style Sheets} ist eine Stylesheet-Sprache, die für HTML verwendet wird und von der W3C weiterentwickelt wird. Stylesheet-Sprachen legen das Erscheinungsbild von Dokumenten/Benutzeroberflächen fest.}
+	}
+	
+	\newglossaryentry{properties}{
+		name={properties},
+		description={Sprachdateien werden in .properties Dateien gespeichert. In diesen werden alle Texte in den unterschiedlichen Sprachen angegeben.}
+	}
+	
+	\newglossaryentry{Jenkins}{
+		name={Jenkins CI},
+		plural={Jenkins CI},
+		description={Eine Continuous Integration System, das automatisch Softwareprojekte baut, testet und und in einer Testumgebung startet.}
+	}
+	
+	\newglossaryentry{draw.io}{
+		name=draw.io,
+		description={https://www.draw.io/},
+	}
+	
+	\newglossaryentry{Gimp}{
+		name=Gimp,
+		description={https://www.gimp.org/},
+	}
+	
+	\newglossaryentry{Pencil}{
+		name={Pencil},
+		description={http://pencil.evolus.vn/}
+	}	
+		
+	\newglossaryentry{Standard-Studienplan}{
+		name=Standard-Studienplan,
+		description={Ein beispielhafter Studienplan welcher ohne vorher belegte Fächer und in Regelstudienzeit abläuft.},
+	}
+	\newglossaryentry{Standard Workflow}{
+		name=Standard Workflow,
+		plural=Standard Workflows,
+		description={Ein Workflow nach Vorbild des Standard-Studienplans.},
+	}
+	
+	\newglossaryentry{MenueHierarchie}{
+		name={Menü-Hierarchie},
+		description={Ein Menü, welches selber eigene Menüs verfügt. Solche Anordnungen sind hierarchisch.} 
+	}
+	
+\end{document}
