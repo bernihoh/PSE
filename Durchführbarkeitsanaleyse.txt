@@ -1,0 +1,37 @@
+Durchführbarkeitsanalyse:
+Technische Durchführbarkeit:
+	HW:
+	- Moderne Rechner für jedes Teammitglied.
+
+	SW:
+	- Entwicklungstools:
+		1. Java als Programmiersprache
+		2. Netbeans / Eclipse als IDE
+		3. Screenbuilder2 für GUI
+		4. JUNIT für das Testen
+		5. GIT als Versionskontrolle
+		6. LaTeX um Dokumente zu vefassen
+
+	Betriebssystem:
+	- Windows 10
+	- macOS
+
+	Orgaware:
+	- Github
+	- WhatsApp
+
+Personelle Durchführbarkeit:
+
+- Alle Voraussetzungen um beim PSE teilzunehmen wurden erfüllt.
+- Die benötigten fachlichen Grundlagen sind Teil unseres Know-hows.
+- Jedes Teammitglied hat Erfahrung in den oben genannten Werkzeugen.
+
+Das Projekt sollte aufgrund der soliden Vorraussetzung in gegebener Zeit fertiggestellt werden.
+
+Alternative Lösungsvorschläge:
+
+Es gibt bereits die Möglichkeit diverse Programme im Internet offen zugänglich zu finden, die Graphen kolorieren.
+Man kann diese selbstständig erweitern:
+
+- https://github.com/CSCsw/ColPack
+- http://graphstream-project.org/
