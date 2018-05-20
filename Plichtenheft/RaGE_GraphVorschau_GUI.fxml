@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <children>
+                <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Graphische Ansicht">
+                    <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                    </content>
+                </TitledPane>
+                <TitledPane expanded="false" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Tabellarische Ansicht">
+                    <content>
+                        <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                    </content>
+                </TitledPane>
+            </children>
+        </VBox>
+    </center>
+    <right>
+        <TableView BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn prefWidth="102.0" text="Eigenschaft" />
+                <TableColumn prefWidth="67.0" text="Wert" />
+            </columns>
+        </TableView>
+    </right>
+    <top>
+        <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <menus>
+                <Menu mnemonicParsing="false" text="Einstellungen">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Importieren" />
+                        <MenuItem mnemonicParsing="false" text="Exportieren" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Aktionen">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Graph anpassen" />
+                        <Menu mnemonicParsing="false" text="Heuristik erneut ausführen">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="..." />
+                            </items>
+                        </Menu>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>
