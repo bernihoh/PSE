@@ -35,26 +35,41 @@
             </columns>
         </TableView>
     </right>
-    <top>
-        <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+    <bottom>
+        <MenuBar nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
             <menus>
+                <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Funktionalität" />
+                        <MenuItem mnemonicParsing="false" text="Bedienung" />
+                        <Menu mnemonicParsing="false" text="Sprachauswahl">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="English" />
+                                <MenuItem mnemonicParsing="false" text="Deutsch" />
+                            </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+                    </items>
+                </Menu>
                 <Menu mnemonicParsing="false" text="Einstellungen">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Importieren" />
                         <MenuItem mnemonicParsing="false" text="Exportieren" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Aktionen">
+                <Menu mnemonicParsing="false" text="Graphen">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Graph anpassen" />
-                        <Menu mnemonicParsing="false" text="Heuristik erneut ausführen">
+                        <MenuItem mnemonicParsing="false" text="Importieren" />
+                        <MenuItem mnemonicParsing="false" text="Exportieren" />
+                        <Menu mnemonicParsing="false" text="Generierung">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="..." />
+                                <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+                                <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
                             </items>
                         </Menu>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-    </top>
+    </bottom>
 </BorderPane>
