@@ -17,6 +17,7 @@ bookmarks = true
 
 \usepackage[shortlabels]{enumitem}
 \usepackage{parskip}
+%\renewcommand{\newline}{~\newline}
 
 
 \makeglossaries
@@ -70,7 +71,7 @@ bookmarks = true
 			\end{enumerate}
 			Die zufällige Generierung der Graphen lässt sich insbesondere auf eine Auswahl dieser Eigenschaften einschränken bzw. einige der genannten Eigenschaften können dabei ausgeschlossen werden.
 		}
-		\item{Weitere Heuristiken können als Plugins in das Programm eingebunden werden. Dies ermöglicht die Anwendung auf andere ungelöste Probleme der Informatik als die, für die bereits Heuristiken implementiert sind.}
+		\item{Weitere Heuristiken können als Plugins in das Programm eingebunden werden. Dies ermöglicht die Anwendung auf weitere ungelöste Probleme der Informatik.}
 		\item{Die folgenden Sprachen werden unterstützt
 			\begin{enumerate}[i)]
 				\item{Deutsch}
@@ -80,11 +81,11 @@ bookmarks = true
 	\end{enumerate}
 	
 	\subsection{Abgrenzungskriterien}
-	\begin{enumerate}[(A1)]
-		\item{Die Heuristiken sind nicht an sich parallelisierbar.}
-		\item{Es können keine gerichteten (Multi-)Graphen und keine allgemeinen Hypergraphen generiert werden.}
-		\item{Bei der Generierung erfolgt keine Erkennung von Duplikaten. Die Erkennung von Graphenisomorphie ist nicht möglich.}
-		\item{Das Programm kann weder für das Total Coloring Conjecture, noch für das Erdös Faber Lovasz Conjecture einen Beweis finden.}
+	\begin{enumerate}
+		\item[(A1)]{Die Heuristiken sind nicht an sich parallelisierbar.}
+		\item[(A2)]{Es können keine gerichteten (Multi-)Graphen und keine allgemeinen Hypergraphen generiert werden.}
+		\item[(A3)]{Bei der Generierung erfolgt keine Erkennung von Duplikaten. Die Erkennung von Graphenisomorphie ist nicht möglich.}
+		\item[(A4)]{Das Programm kann weder für das Total Coloring Conjecture, noch für das Erdös Faber Lovasz Conjecture einen Beweis finden.}
 	\end{enumerate}
 	
 	
@@ -108,19 +109,19 @@ bookmarks = true
 	
 	\subsection{Software}
 	Die folgende Software ist für die Lauffähigkeit des Programms hinreichend:
-	\begin{itemize}
+	\begin{enumerate}[--]
 		\item{Windows 10}
 		\item{Java 8 Runtime Environment}
-	\end{itemize}
+	\end{enumerate}
 	Durch die Plattformunabhängigkeit der JRE ist auch eine Anwendung auf anderen Betriebssystemen möglich.
 	
 	\subsection{Hardware}
 	Das Programm läuft auf Rechnern mit durchschnittlicher Rechenleistung. Es benötigt mindestens:
-	\begin{itemize}
+	\begin{enumerate}[--]
 		\item{4GB Arbeitsspeicher}
 		\item{4GB Festplattenspeicher}
 		\item{Maus und ggf. Tastatur}
-	\end{itemize}
+	\end{enumerate}
 	
 	
 	
@@ -144,7 +145,7 @@ bookmarks = true
 		\item{Die Anzahl von Knoten $n$ der zu generierenden Graphen kann festgelegt werden. Es gilt $1 \leq n \leq 1000$.}
 		\item{Der minimale und maximale Knotengrad $\delta_{min}$ und $\Delta_{max}$ der zu generierenden Graphen kann festgelegt werden. Für einen beliebigen generierten Graphen $G$ gilt dann $$0 \leq \delta_{min} \leq \delta(G) \leq \Delta(G) \leq \Delta_{max} \leq n-1.$$}
 		\item[iii)*]{Die folgenden Grapheigenschaften können (falls gewünscht) bei der Generierung ausgeschlossen oder forciert werden:
-			\begin{enumerate}[-]
+			\begin{enumerate}[--]
 				\item{Zusammenhang}
 				\item{Baum}
 				\item{Bipartition}
@@ -163,6 +164,7 @@ bookmarks = true
 		\item[iii)*]{Es kann (falls gewünscht) die minimale und maximale Kardinalität $k_{min}$ und $k_{max}$ der Hyperkanten festgelegt werden. Für einen beliebigen generierten Hypergraph $G$ und eine Hyperkante $e \in E(G)$ gilt dann $$2 \leq k_{min} \leq \# e \leq k_{max} \leq n.$$ Insbesondere lässt sich die Generierung über $k_{min} = k_{max} =: k$ auch auf $k$-uniforme Hypergraphen beschränken.}
 	\end{enumerate}
 	
+	
 	\newpage
 	
 	\subsection*{/F20/ Anwendung von Heuristiken} \label{f20} \addcontentsline{toc}{subsection}{\nameref{f20}}
@@ -171,13 +173,13 @@ bookmarks = true
 	Es kann eine Liste von Heuristiken bestimmt werden, die auf jeden der generierten Graphen angewandt werden. Diese obliegt den folgenden Einschränkungen:
 	\begin{enumerate}[i)]
 		\item{Die möglichen Heuristiken sind abhängig von dem generierten Graphentyp.}
-		\item{Dieselbe Heuristik kann mit unterschiedlichen individuellen Einstellungen mehrfach in der Liste vorkommen.}
-		\item{Dieselbe Heuristik kann nicht mehrfach mit den gleichen Einstellungen in der Liste vorkommen.}
+		\item{Derselbe Algorithmus kann mit unterschiedlichen Einstellungen mehrfach als Heuristik in der Liste vorkommen.}
+		\item{Derselbe Algorithmus kann nicht mehrfach mit den gleichen Einstellungen als Heuristik in der Liste vorkommen.}
 		\item{Eine Änderung der Liste bewirkt eine Neuberechnung aller neuen oder veränderten Heuristiken auf allen generierten Graphen, nicht jedoch die Neuberechnung von bereits angewandten und unverändert gebliebenen Heuristiken.}
 	\end{enumerate}
 	
-	\subsubsection*{/F22/* Ergänzung neuer Heuristiken} \label{f22} \addcontentsline{toc}{subsubsection}{\nameref{f22}}
-	Es können neue Heuristiken als Plugins hinzugefügt werden. Die Erkennung der Plugins geschieht zum Programmstart und ist während der Laufzeit nicht mehr möglich.
+	\subsubsection*{/F22/* Ergänzung neuer Algorithmen} \label{f22} \addcontentsline{toc}{subsubsection}{\nameref{f22}}
+	Es können neue Algorithmen als Plugins hinzugefügt werden. Die Erkennung der Plugins geschieht zum Programmstart und ist während der Laufzeit nicht mehr möglich.
 	
 	
 	\newpage
@@ -192,6 +194,7 @@ bookmarks = true
 		\item{Der Nutzer kann Kanten löschen.}
 		\item{Knoten können kontrahiert werden. Auftretende Mehrfachkanten werden automatisch zu einfachen Kanten reduziert. Auftretende Schleifen werden gelöscht.}
 		\item{Jeder Knoten $v$ kann dupliziert werden, d.h. es wird ein neuer Knoten $v$ mit derselben Nachbarschaft wie $v$ hinzugefügt.}
+		\item{Die Reihenfolge der Knoten kann verändert werden.}
 	\end{enumerate}
 	
 	Eine beliebige Auswahl von $n$ Knoten kann auf die folgenden Graphen ergänzt werden:
@@ -201,32 +204,99 @@ bookmarks = true
 		\item{\textbf{Kreis} $C_n$: Die Knoten werden wie beim Pfad in der Reihenfolge ihrer Auswahl verbunden mit dem Unterschied, dass auch der erste und letzte Knoten explizit verbunden werden.}
 		\item{\textbf{Clique} $K_n$: Je zwei Knoten aus der Auswahl, die nicht bereits adjazent sind, werden durch eine neue Kante verbunden.}
 	\end{enumerate}
+	Es wird sichergestellt, dass der resultierende Graph auch wieder ein einfacher ungerichteter Graph ist.
 	
 	\subsubsection*{/F32/ Modifikation der Hypergraphen} \label{f32} \addcontentsline{toc}{subsubsection}{\nameref{f32}}
-	TODO Hypergraph modifikation
+	Hypergraphen können wie folgt modifiziert werden:
+	\begin{enumerate}[i)]
+		\item{Es können Knoten hinzugefügt werden}
+		\item{Durch Auswahl von mehr als einem Knoten kann eine Hyperkante hinzugefügt werden, wenn der Hypergraph keine Hyperkante besitzt, die mehr als einen der ausgewählten Knoten enthält.}
+		\item{Jeder Knoten kann gelöscht werden. Dabei werden alle Hyperkanten, die diesen Knoten enthalten gelöscht.}
+		\item{Jede Hyperkante kann gelöscht werden.}
+		\item{Die Reihenfolge der Knoten kann verändert werden.}
+	\end{enumerate}
+	Es wird sichergestellt, dass der resultierende Hypergraph auch wieder einfach ist.
 	
 	\subsubsection*{/F33/ Manuelle Erstellung von Graphen und Hypergraphen} \label{f33} \addcontentsline{toc}{subsubsection}{\nameref{f33}}
-	Die in /F31/ und /F32/ erwähnten Modifikationen implizieren die Möglichkeit Graphen von Hand im Programm einzutragen.
+	Die in /F31/ und /F32/ erwähnten Modifikationen implizieren die Möglichkeit Graphen von Hand im Programm einzutragen. Der Typ des Graphen wird durch die Auswahl in /F11/ festgelegt.
+	\newpage
 	
-	
-	\subsection*{/F40/ Speichern und Laden} \label{f40} \addcontentsline{toc}{subsection}{\nameref{f40}}
-	
-	
-	\subsection*{/F50/ Ausgabe über eine graphischer Benutzeroberfläche} \label{f50} \addcontentsline{toc}{subsection}{\nameref{f50}}
+	\subsection*{/F40/ Ausgabe über eine graphischer Benutzeroberfläche} \label{f50} \addcontentsline{toc}{subsection}{\nameref{f50}}
 	Die graphische Benutzeroberfläche gliedert sich im wesentlichen in die folgenden Bereiche:
 	
-	\subsubsection*{/F51/ Graphgenerierung} \label{f51} \addcontentsline{toc}{subsubsection}{\nameref{f51}}
+	\subsubsection*{/F41/ Graphgenerierung} \label{f51} \addcontentsline{toc}{subsubsection}{\nameref{f51}}
 	In diesem Fenster können alle Einstellungen aus /F10/ für die zu generierenden Graphen vorgenommen werden. Nach Bestätigung durch den Nutzer werden die Graphen unter Berücksichtigung dieser Einstellungen generiert.
 	
-	\subsubsection*{/F52/ Preview} \label{f52} \addcontentsline{toc}{subsubsection}{\nameref{f52}}
+	\subsubsection*{/F42/ Preview} \label{f42} \addcontentsline{toc}{subsubsection}{\nameref{f42}}
+	Alle generierten Graphen werden in einer Übersicht dargestellt. Es ist ersichtlich, wie weit die Generierung fortgeschritten ist. Graphen, die durch Modifikation (siehe /F30/) auseinander hervorgegangen sind, werden als Gruppe angezeigt.
 	
-	\subsubsection*{/F53/ Detailansicht} \label{f53} \addcontentsline{toc}{subsubsection}{\nameref{f53}}
+	~\newline
+	\textbf{/F42.1/ Auswahl und Anwenden der Heuristiken}
 	
-	\subsubsection*{/F54/ Grapheditor} \label{f54} \addcontentsline{toc}{subsubsection}{\nameref{f54}}
+	Der Nutzer kann Algorithmen auswählen, Einstellungen an ihnen vornehmen und sie in der Liste der auf die Graphen anzuwendenden Heuristiken speichern. Heuristiken können auch wieder aus der Liste entfernt werden. 
+	
+	Wie in /F21/ angegeben führt eine Veränderung der List zu einer Berechnung der neu hinzugekommenen oder veränderten Heuristiken auf allen generierten Graphen. Ferner werden die Heuristiken der Liste automatisch auf jeden neu generierten Graph angewandt.
+	Es ist ersichtlich, ob auf einen Graphen noch nicht alle Heuristiken angewandt wurden bzw. ob im Moment eine Heuristik auf ihm berechnet wird.
+	
+	~\newline
+	\textbf{/F42.2/ Filtern der angezeigten Graphen}
+	
+	Die Reihenfolge der Graphen in der Preview können
+	\begin{enumerate}[i)]
+		\item{nach Reihenfolge der Generierung}
+		\item{nach Geschwindigkeit einer auszuwählenden Heuristik der Liste}
+		\item{nach der Gesamtgeschwindigkeit aller Heuristiken der Liste}
+	\end{enumerate}
+	jeweils aufsteigend oder absteigend sortiert werden.
+	TODO Sortierung der Gruppen?
+	
+	Es kann für jede Heuristik ausgewählt werden, ob
+	\begin{enumerate}[i)]
+		\item{alle Graphen}
+		\item{nur die Graphen, für die die Heuristik erfolgreich terminiert ist}
+		\item{nur die Graphen, für die die Heuristik nicht erfolgreich war}
+	\end{enumerate}
+	angezeigt werden sollen. Ferner kann die Anzahl der angezeigten Graphen durch den Nutzer beschränkt werden.
+	
+	Dieser Filterungsprozess hat rein visuelle Auswirkungen und bewirkt \textbf{nicht} den Verlust der aussortierten Graphen.
+	
+	~\newpage
+	\subsubsection*{/F43/ Detailansicht} \label{f43} \addcontentsline{toc}{subsubsection}{\nameref{f43}}
+	
+	Die Detailansicht bietet dem Nutzer die Möglichkeit, sich die Arbeitsweise und Ergebnisse der Heuristiken auf einem von ihm ausgewählten Graph genauer anzuschauen. Sowohl Graphen als auch Hypergraphen können in den folgenden Arten präsentiert werden:
+	\begin{enumerate}[i)]
+		\item{In der graphischen Repräsentation sind alle Knoten im Uhrzeigersinn gemäß ihrer Reihenfolge im Kreis angeordnet. Die Kanten sind einfache Liniensegmente von Knoten zu Knoten, während die Hyperkanten als konvexe Polygone mit den zugehörigen Knoten als Eckpunkten dargestellt werden.}
+		\item{In der tabellarischen Repräsentation ist TODO}
+	\end{enumerate}
+	
+	Der Nutzer kann aus der in /F42/ erstellten Liste eine beliebige Heuristik auswählen, deren Ergebnis dann in geeigneter Weise (z.B. durch Färben der Kanten) angezeigt wird. Ferner besteht die Möglichkeit die Heuristik neu auszuführen, um ihre Arbeitsweise wahlweise live oder schrittweise zu begutachten. TODO Ein Eingriff in die Arbeitsweise der Heuristik ist \textbf{nicht} möglich.
+	
+	\subsubsection*{/F44/ Grapheditor} \label{f44} \addcontentsline{toc}{subsubsection}{\nameref{f44}}
+	Der Grapheditor bietet dem Nutzer alle in /F30/ spezifierten Möglichkeiten um Graphen zu modifizieren oder zu erstellen.
 	
 	
-	\subsection*{/F60/ Heuristiken für das Total Coloring Conjecture} \label{f60} \addcontentsline{toc}{subsection}{\nameref{f60}}
-	\subsection*{/F70/ Heuristiken für das Erdös Faber Lovasz Conjecture} \label{f70} \addcontentsline{toc}{subsection}{\nameref{f70}}
+	~\newpage
+	\subsection*{/F50/ Heuristiken für das Total Coloring Conjecture} \label{f60} \addcontentsline{toc}{subsection}{\nameref{f60}}
+	Die folgenden Heuristiken sind implementiert:
+	\begin{enumerate}[i)]
+		\item{\textbf{Greedy}: }
+		\item{\textbf{Greedy + One}: }
+		\item{\textbf{Greedy + Few}: }
+		\item{\textbf{Greedy + Set}: }
+		\item{\textbf{Greedy + Connected}: }
+		\item[vi)*]{\textbf{Mixed Greedy}: }
+		\item[vii)*]{\textbf{Line Greedy}: Wie die Greedy Familie, nur Vertauschen der Rolle von Knoten und Kanten.}
+	\end{enumerate}
+	Die Heuristiken berechnen eine möglichst gleichmäßige Farbverteilung. Ferner ist die Gewichtung der freien Farben durch den Nutzer einstellbar.
+	
+	\subsection*{/F60/ Heuristiken für das Erdös Faber Lovasz Conjecture} \label{f70} \addcontentsline{toc}{subsection}{\nameref{f70}}
+	
+	TODO
+	
+	~\newpage
+	\subsection*{/F70/ Speichern und Laden} \label{f40} \addcontentsline{toc}{subsection}{\nameref{f40}}
+	
+	TODO
 	
 	
 	
