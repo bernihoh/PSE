@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -9,21 +10,26 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import multirange.MultiRange?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="588.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <tabs>
-        <Tab text="Start">
+        <Tab text="Start   X">
             <content>
                 <GridPane alignment="CENTER">
                     <columnConstraints>
@@ -74,7 +80,7 @@
                 </GridPane>
             </content>
         </Tab>
-        <Tab text="Graphen Generierung">
+        <Tab closable="false" text="Graphen Generierung">
             <content>
                 <VBox>
                     <children>
@@ -101,7 +107,7 @@
                                 <Label text="Bereich des Knotengrades:" GridPane.rowIndex="3" />
                                 <Spinner editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <!-- https://github.com/albertoqa/MultiRange -->
-                                <MultiRange highValue="20.0" lowValue="5.0" majorTickUnit="5.0" max="25.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <MultiRange highValue="20.0" lowValue="5.0" majorTickUnit="5.0" max="25.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                 <Label text="Anzahl der zu generierenden  Graphen:" GridPane.rowIndex="1" />
                                 <Spinner editable="true" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             </children>
@@ -115,6 +121,12 @@
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </VBox.margin>
                         </Button>
+                  <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="15.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Generierung Anhalten" />
+                        <Button mnemonicParsing="false" text="Generierung Fortsetzung" />
+                     </children>
+                  </HBox>
                         <MenuBar nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
                             <menus>
                                 <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
@@ -154,30 +166,79 @@
                 </VBox>
             </content>
         </Tab>
-        <Tab text="Heuristiken Anwenden">
+        <Tab closable="false" text="Heuristiken">
             <content>
-                <VBox>
-                    <children>
-                        <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                            <items>
-                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                    <children>
-                                        <Label text="Heuristiken:" />
-                                        <TableView>
-                                            <columns>
-                                                <TableColumn prefWidth="75.0" text="Heuristik" />
-                                                <TableColumn prefWidth="75.0" text="Auswertung" />
-                                            </columns>
-                                        </TableView>
-                                        <Label text="Sortierung:" />
-                                        <ComboBox maxWidth="1.7976931348623157E308" />
-                                    </children>
-                                    <padding>
-                                        <Insets right="5.0" />
-                                    </padding>
-                                </VBox>
-                                <VBox>
-                                    <children>
+            <TabPane>
+               <tabs>
+                  <Tab closable="false" text="Heuristiken Einstellen">
+                     <content>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                           <children>
+                                      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                                          <children>
+                                              <Label text="Heuristiken:" />
+                                              <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                                  <columns>
+                                                      <TableColumn prefWidth="75.0" text="Heuristik" />
+                                                      <TableColumn prefWidth="75.0" text="Auswertung" />
+                                          <TableColumn prefWidth="174.0" text="Weitere Einstellungen" />
+                                                  </columns>
+                                              </TableView>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+ Füge neue Heuristiken hinzu. (Lade Plugin)">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Starte Heuristiken Berechnung">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                          </children>
+                                      </VBox>
+                              <MenuBar maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT">
+                                 <menus>
+                                    <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Funktionalität" />
+                                          <MenuItem mnemonicParsing="false" text="Bedienung" />
+                                          <Menu mnemonicParsing="false" text="Sprachauswahl">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="English" />
+                                                <MenuItem mnemonicParsing="false" text="Deutsch" />
+                                             </items>
+                                          </Menu>
+                                          <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="Einstellungen">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Importieren" />
+                                          <MenuItem mnemonicParsing="false" text="Exportieren" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="Graphen">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Importieren" />
+                                          <MenuItem mnemonicParsing="false" text="Exportieren" />
+                                          <Menu mnemonicParsing="false" text="Generierung">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+                                                <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                 </menus>
+                              </MenuBar>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Heuristiken Anwenden">
+                     <content>
+                            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                <children>
                                         <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                             <VBox.margin>
                                                 <Insets />
@@ -196,56 +257,211 @@
                                                 </GridPane>
                                             </content>
                                         </ScrollPane>
-                                    </children>
-                                </VBox>
-                            </items>
-                            <padding>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                            </padding>
-                        </SplitPane>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Starte Heuristiken Berechnung">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                        <MenuBar maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-                            <menus>
-                                <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Funktionalität" />
-                                        <MenuItem mnemonicParsing="false" text="Bedienung" />
-                                        <Menu mnemonicParsing="false" text="Sprachauswahl">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="English" />
-                                                <MenuItem mnemonicParsing="false" text="Deutsch" />
-                                            </items>
-                                        </Menu>
-                                        <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Einstellungen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Graphen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                        <Menu mnemonicParsing="false" text="Generierung">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
-                                                <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
-                                            </items>
-                                        </Menu>
-                                    </items>
-                                </Menu>
-                            </menus>
-                        </MenuBar>
-                    </children>
-                </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label text="Filter:" />
+                                    <HBox maxWidth="1.7976931348623157E308" spacing="5.0">
+                                       <children>
+                                          <Label text="Heuristik X:" />
+                                          <ToggleButtonGroup maxHeight="-Infinity" selectionType="SINGLE">
+                                             <toggles>
+                                                <ToggleButton>
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/Check.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </ToggleButton>
+                                                <ToggleButton>
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/X.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </ToggleButton>
+                                             </toggles>
+                                          </ToggleButtonGroup>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" spacing="5.0">
+                                       <children>
+                                          <Label text="Heuristik Y:" />
+                                          <ToggleButtonGroup maxHeight="-Infinity" selectionType="SINGLE">
+                                             <toggles>
+                                                <ToggleButton>
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/Check.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </ToggleButton>
+                                                <ToggleButton>
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/X.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </ToggleButton>
+                                             </toggles>
+                                          </ToggleButtonGroup>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                              <Label text="Sortierung:" />
+                                              <ComboBox />
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="15.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Bearbeitung Anhalten" />
+                                    <Button mnemonicParsing="false" text="Bearbeitung Fortsetzung" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                                    <MenuBar maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+                                        <menus>
+                                            <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+                                                <items>
+                                                    <MenuItem mnemonicParsing="false" text="Funktionalität" />
+                                                    <MenuItem mnemonicParsing="false" text="Bedienung" />
+                                                    <Menu mnemonicParsing="false" text="Sprachauswahl">
+                                                        <items>
+                                                            <MenuItem mnemonicParsing="false" text="English" />
+                                                            <MenuItem mnemonicParsing="false" text="Deutsch" />
+                                                        </items>
+                                                    </Menu>
+                                                    <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+                                                </items>
+                                            </Menu>
+                                            <Menu mnemonicParsing="false" text="Einstellungen">
+                                                <items>
+                                                    <MenuItem mnemonicParsing="false" text="Importieren" />
+                                                    <MenuItem mnemonicParsing="false" text="Exportieren" />
+                                                </items>
+                                            </Menu>
+                                            <Menu mnemonicParsing="false" text="Graphen">
+                                                <items>
+                                                    <MenuItem mnemonicParsing="false" text="Importieren" />
+                                                    <MenuItem mnemonicParsing="false" text="Exportieren" />
+                                                    <Menu mnemonicParsing="false" text="Generierung">
+                                                        <items>
+                                                            <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+                                                            <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+                                                        </items>
+                                                    </Menu>
+                                                </items>
+                                            </Menu>
+                                        </menus>
+                                    </MenuBar>
+                                </children>
+                            </VBox>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
             </content>
         </Tab>
+      <Tab text="Detailansicht zu Graph_01   X">
+        <content>
+			<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+				<center>
+					<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+						<children>
+							<TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Graphische Ansicht">
+								<content>
+									<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+								</content>
+							</TitledPane>
+							<TitledPane expanded="false" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Tabellarische Ansicht">
+								<content>
+									<TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+								</content>
+							</TitledPane>
+						</children>
+					</VBox>
+				</center>
+				<right>
+					<TableView BorderPane.alignment="CENTER">
+						<columns>
+							<TableColumn prefWidth="102.0" text="Eigenschaft" />
+							<TableColumn prefWidth="62.0" text="Wert" />
+						</columns>
+					</TableView>
+				</right>
+				<bottom>
+				  <VBox>
+					 <children>
+                        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0">
+                           <children>
+      						<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Heuristiken neu anwenden" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Heuristiken im Step-By-Step-Mode" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0">
+                           <children>
+                              <Button mnemonicParsing="false" text="Änderungen als neue Variante speichern" />
+                              <Button mnemonicParsing="false" text="Änderungen verwerfen" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+						  <MenuBar nodeOrientation="RIGHT_TO_LEFT">
+							  <menus>
+								  <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+									  <items>
+										  <MenuItem mnemonicParsing="false" text="Funktionalität" />
+										  <MenuItem mnemonicParsing="false" text="Bedienung" />
+										  <Menu mnemonicParsing="false" text="Sprachauswahl">
+											  <items>
+												  <MenuItem mnemonicParsing="false" text="English" />
+												  <MenuItem mnemonicParsing="false" text="Deutsch" />
+											  </items>
+										  </Menu>
+										  <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+									  </items>
+								  </Menu>
+								  <Menu mnemonicParsing="false" text="Einstellungen">
+									  <items>
+										  <MenuItem mnemonicParsing="false" text="Importieren" />
+										  <MenuItem mnemonicParsing="false" text="Exportieren" />
+									  </items>
+								  </Menu>
+								  <Menu mnemonicParsing="false" text="Graphen">
+									  <items>
+										  <MenuItem mnemonicParsing="false" text="Importieren" />
+										  <MenuItem mnemonicParsing="false" text="Exportieren" />
+										  <Menu mnemonicParsing="false" text="Generierung">
+											  <items>
+												  <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+												  <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+											  </items>
+										  </Menu>
+									  </items>
+								  </Menu>
+							  </menus>
+						  </MenuBar>
+					 </children>
+				  </VBox>
+				</bottom>
+			</BorderPane>
+        </content>
+      </Tab>
     </tabs>
 </TabPane>
