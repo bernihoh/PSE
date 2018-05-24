@@ -174,7 +174,7 @@ bookmarks = true
 	\begin{enumerate}[i)]
 		\item{Die möglichen Heuristiken sind abhängig von dem generierten Graphentyp.}
 		\item{Dieselbe Heurisitk kann mit unterschiedlichen Einstellungen mehrfach in der Liste vorkommen, nicht jedoch zweimal mit derselben Einstellung.}
-		\item{Eine Änderung der Liste bewirkt eine Neuberechnung aller neuen oder veränderten Heuristiken auf allen generierten Graphen, nicht jedoch die Neuberechnung von bereits angewandten und unverändert gebliebenen Heuristiken.}
+		\item{Die Bestätigung der Änderungen an der Liste bewirkt eine Neuberechnung aller neuen oder veränderten Heuristiken auf allen generierten Graphen, nicht jedoch die Neuberechnung von bereits angewandten und unverändert gebliebenen Heuristiken.}
 	\end{enumerate}
 	
 	\subsubsection*{/F22/* Ergänzung neuer Heurisitiken} \label{f22} \addcontentsline{toc}{subsubsection}{\nameref{f22}}
@@ -268,7 +268,9 @@ bookmarks = true
 		\item{In der tabellarischen Repräsentation ist TODO}
 	\end{enumerate}
 	
-	Der Nutzer kann aus der in /F42/ erstellten Liste eine beliebige Heuristik auswählen, deren Ergebnis dann in geeigneter Weise (z.B. durch Färben der Kanten) angezeigt wird. Ferner besteht die Möglichkeit die Heuristik neu auszuführen, um ihre Arbeitsweise wahlweise live oder schrittweise zu begutachten. TODO Ein Eingriff in die Arbeitsweise der Heuristik ist \textbf{nicht} möglich.
+	Der Nutzer kann aus der in /F42/ erstellten Liste eine beliebige Heuristik auswählen, deren Ergebnis dann in geeigneter Weise (z.B. durch Färben der Kanten) angezeigt wird. Ferner besteht die Möglichkeit die Heuristik neu auszuführen, um ihre Arbeitsweise wahlweise live oder schrittweise zu begutachten. Ein Eingriff in die Arbeitsweise der Heuristik ist jedoch \textbf{nicht} möglich.
+	
+	Der Nutzer kann zudem lokal weitere Heuristiken auf den Graph anwenden, die nicht in der globalen Liste aus /F42/ sind. Das ermöglicht die genauere Untersuchung eines einzelnen Graphen.
 	
 	\subsubsection*{/F44/ Grapheditor} \label{f44} \addcontentsline{toc}{subsubsection}{\nameref{f44}}
 	Der Grapheditor bietet dem Nutzer alle in /F30/ spezifierten Möglichkeiten um Graphen zu modifizieren oder zu erstellen.
@@ -359,12 +361,93 @@ bookmarks = true
 	
 	~\newpage
 	\section{Graphische Benutzeroberfläche}
+	Es folgen frühe Vorschläge für die Benutzeroberfläche. Alle angegebenen Werte sind exemplarisch, insbesondere wurden die dargestellten Graphen nicht generiert.
+	
+	\subsection{Graphgenerierung}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/generate}
+		\caption{Das Fenster für die Graphgenerierung}
+	\end{figure}
+	
+	TODO Wie sollen unterschiedliche Generierungseinstellungen behandelt werden? Neue Datenmenge? Angehängt an alte Datenmenge?
+	
+	\begin{enumerate}[(1)]
+		\item{Auswahl des zu generierenden Graphentyps}
+		\item{Allgemeine Einstellungen}
+		\item{Weitere Einstellungen wie in /F12/iii)* oder /F13/iii)* erwähnt}
+	\end{enumerate}
+	
+	~\newpage
+	\subsection{Preview}
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/preview}
+		\caption{Das Preview-Fenster}
+	\end{figure}
+	
+	~\newpage
+	\subsection{Detailansicht}
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/detail}
+		\caption{Die Detailansicht für die Graphen}
+	\end{figure}
+	
+	~\newpage
+	\subsection{Grapheditor}
 	
 	
 	\section{Systemmodelle}
 	\subsection{Szenarien}
 	\subsection{Anwendungsfälle}
+	
+	~\newpage
 	\subsection{Durchführbarkeitsanalyse}
+	\subsubsection{Technische Durchführbarkeit}
+	\textbf{Hardware}
+	
+	Jedes Teammitglied besitzt einen modernen Rechner, der insbesondere den Kriterien der Produktumgebung entspricht.
+	\newline
+	
+	\textbf{Software}
+	
+	Die erwähnten Rechner haben hauptsächlich Windows 10 als Betriebssystem. Weitere Rechner mit MacOS und Linux sind vorhanden um Plattformunabhängigkeit zu gewährleisten.
+	
+	Die Entwicklung des Programms erfolgt in Java. Zu diesem Zweck werden geeignete IDEs (z.B. NetBeans, IntelliJ, Eclipse) verwendet. Die graphischen Benutzeroberflächen werden mit Screenbuilder2 erstellt. Das Programm wird mithilfe von JUnit getestet, Versionskontrolle erfolgt mithilfe von Git.
+	
+	Dieses und folgende Spezifikationsdokumente werden mit LaTeX erstellt, Folien für Präsentationen hingegen mit PowerPoint, Keynote oder LaTeX.
+	\newline
+	
+	\textbf{Orgware}
+	
+	Zur Organisation des Teams kommen GitHub, Trello und WhatsApp zum Einsatz.
+	
+	\subsubsection{Personelle Durchführbarkeit}
+	Das Team erfüllt alle Voraussetzungen des Moduls Praxis der Softwareentwicklung, das den Rahmen für die Entwicklung dieses Projektes bildet. Es wird von fünf Informatikstudenten im dritten oder höherem Semester entwickelt. Damit verbunden sind solide fachliche Kompetenzen im Bereich der Softwareentwicklung. Die oben genannte Entwicklungsumgebung ist allen Teammitgliedern vertraut.
+	
+	Die Entwicklung erfolgt nach dem Wasserfallmodell und umfasst einen zeitlichen Aufwand von etwa 270 Stunden pro Teammitglied. Diese Zeit ist ausreichend für die Fertigstellung des Programms innerhalb eines Semesters.
+	
+	
+	\subsubsection{Alternativen}
+	Es ist möglich eine ausreichend große Anzahl von Graphen per Hand zu generieren und auf ihnen verschiedene Heuristiken nachzurechnen. Diese Option ist jedoch aufgrund ihrer zeitlichen Aufwändigkeit und Fehleranfälligkeit nicht praktikabel.
+	
+	Eine weitere Option ist die selbstständige Erweiterung von bestehender Software zur Generierung und Kolorierung von Graphen. Die folgende Software ist frei im Internet verfügbar:
+	\begin{enumerate}[--]
+		\item{https://github.com/CSCsw/ColPack}
+		\item{http://graphstream-project.org/}
+	\end{enumerate}
+	
+	~\newpage
+	\subsubsection{Risiken}
+	Neben den üblichen Problemen
+	\begin{enumerate}[--]
+		\item{Fehlkalkulation des Zeitaufwands}
+		\item{Ausfall von Teammitgliedern (z.B. durch Krankheit)}
+		\item{Missverständnisse mit dem Auftraggeber}
+		\item{Technische Schwierigkeiten (z.B. Verlust von Daten)}
+	\end{enumerate}
+	die zu einer Verzögerung der Fertigstellung des Projektes führen können, gibt es keine nennenswerten Riskiken.
 	
 	\section{Glossar}
 	
