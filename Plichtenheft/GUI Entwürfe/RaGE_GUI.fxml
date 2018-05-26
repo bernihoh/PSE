@@ -41,6 +41,7 @@
                     </columnConstraints>
                     <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
                         <RowConstraints vgrow="NEVER" />
                         <RowConstraints />
                     </rowConstraints>
@@ -50,41 +51,47 @@
                         <Image url="@Logo/RAGE-Titelbild.png" />
                      </image>
                   </ImageView>
-                        <MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.rowIndex="1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-                            <menus>
-                                <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Funktionalität" />
-                                        <MenuItem mnemonicParsing="false" text="Bedienung" />
-                                        <Menu mnemonicParsing="false" text="Sprachauswahl">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="English" />
-                                                <MenuItem mnemonicParsing="false" text="Deutsch" />
-                                            </items>
-                                        </Menu>
-                                        <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Einstellungen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Graphen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                        <Menu mnemonicParsing="false" text="Generierung">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
-                                                <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
-                                            </items>
-                                        </Menu>
-                                    </items>
-                                </Menu>
-                            </menus>
-                        </MenuBar>
+						<MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.rowIndex="1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+							<menus>
+								<Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+									<items>
+										<MenuItem mnemonicParsing="false" text="Funktionalität" />
+										<MenuItem mnemonicParsing="false" text="Bedienung" />
+									<Menu mnemonicParsing="false" text="Heuristiken">
+									  <items>
+										<MenuItem mnemonicParsing="false" text="Import Help" />
+										  <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
+									  </items>
+									</Menu>
+										<Menu mnemonicParsing="false" text="Sprachauswahl">
+											<items>
+												<MenuItem mnemonicParsing="false" text="English" />
+												<MenuItem mnemonicParsing="false" text="Deutsch" />
+											</items>
+										</Menu>
+										<MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+									</items>
+								</Menu>
+								<Menu mnemonicParsing="false" text="Graphen">
+									<items>
+										<MenuItem mnemonicParsing="false" text="Importieren" />
+										<MenuItem mnemonicParsing="false" text="Exportieren" />
+										<Menu mnemonicParsing="false" text="Generierung">
+											<items>
+												<MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+												<MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+											</items>
+										</Menu>
+									<Menu mnemonicParsing="false" text="Graph Einstellungen">
+									   <items>
+										  <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
+										  <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
+									   </items>
+									</Menu>
+									</items>
+								</Menu>
+							</menus>
+						</MenuBar>
                     </children>
                 </GridPane>
             </content>
@@ -145,426 +152,501 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" text="Graph Importieren" />
-                        <Button mnemonicParsing="false" text="Eigene Graphen erstellen" GridPane.columnIndex="1" />
-                              <Button mnemonicParsing="false" text="Starte Graph-Generierung" GridPane.columnIndex="2" />
+                        <Button mnemonicParsing="false" text="Importieren" />
+                        <Button mnemonicParsing="false" text="Von Hand erstellen" GridPane.columnIndex="1" />
+                              <Button mnemonicParsing="false" text="Generieren" GridPane.columnIndex="2" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </GridPane>
-                        <MenuBar nodeOrientation="RIGHT_TO_LEFT">
-                            <menus>
-                                <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Funktionalität" />
-                                        <MenuItem mnemonicParsing="false" text="Bedienung" />
-                                        <Menu mnemonicParsing="false" text="Sprachauswahl">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="English" />
-                                                <MenuItem mnemonicParsing="false" text="Deutsch" />
-                                            </items>
-                                        </Menu>
-                                        <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Einstellungen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Graphen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                        <Menu mnemonicParsing="false" text="Generierung">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
-                                                <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
-                                            </items>
-                                        </Menu>
-                                    </items>
-                                </Menu>
-                            </menus>
-                        </MenuBar>
+					<MenuBar nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+						<menus>
+							<Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+								<items>
+									<MenuItem mnemonicParsing="false" text="Funktionalität" />
+									<MenuItem mnemonicParsing="false" text="Bedienung" />
+								<Menu mnemonicParsing="false" text="Heuristiken">
+								  <items>
+									<MenuItem mnemonicParsing="false" text="Import Help" />
+									  <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
+								  </items>
+								</Menu>
+									<Menu mnemonicParsing="false" text="Sprachauswahl">
+										<items>
+											<MenuItem mnemonicParsing="false" text="English" />
+											<MenuItem mnemonicParsing="false" text="Deutsch" />
+										</items>
+									</Menu>
+									<MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+								</items>
+							</Menu>
+							<Menu mnemonicParsing="false" text="Graphen">
+								<items>
+									<MenuItem mnemonicParsing="false" text="Importieren" />
+									<MenuItem mnemonicParsing="false" text="Exportieren" />
+									<Menu mnemonicParsing="false" text="Generierung">
+										<items>
+											<MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+											<MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+										</items>
+									</Menu>
+								<Menu mnemonicParsing="false" text="Graph Einstellungen">
+								   <items>
+									  <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
+									  <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
+								   </items>
+								</Menu>
+								</items>
+							</Menu>
+						</menus>
+					</MenuBar>
                     </children>
                 </VBox>
             </content>
         </Tab>
         <Tab closable="false" text="Preview 1">
             <content>
-            <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="-Infinity" valignment="BOTTOM" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <SplitPane dividerPositions="0.26002055498458376" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                     <items>
-                                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
-                                    <children>
-                                        <Label text="Heuristiken Auswählen / Einstellen:" wrapText="true" />
-                              <ScrollPane>
-                                 <content>
-                                              <TableView prefHeight="252.0" prefWidth="248.0">
-                                                  <columns>
-                                                      <TableColumn prefWidth="60.0" text="Heuristik" />
-                                                      <TableColumn prefWidth="75.0" text="Auswertung" />
-                                          <TableColumn prefWidth="110.0" text="Weitere Einstellungen" />
-                                                  </columns>
-                                              </TableView>
-                                 </content>
-                              </ScrollPane>
-                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+ Füge neue Heuristiken hinzu. (Lade Plugin)">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Starte Heuristiken Berechnung">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <TitledPane prefHeight="200.0" prefWidth="200.0" text="Filter">
-                                 <content>
-                                    <GridPane>
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
+            <TabPane>
+               <tabs>
+                  <Tab text="Preview 1">
+                     <content>
+                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="-Infinity" valignment="BOTTOM" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <SplitPane dividerPositions="0.26002055498458376" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                 <items>
+                                            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                                                <children>
+                                                    <Label text="Heuristiken Auswählen / Einstellen:" wrapText="true" />
+                                          <ScrollPane>
+                                             <content>
+                                                <VBox spacing="5.0">
+                                                   <children>
+                                                      <CheckBox mnemonicParsing="false" text="Heuristik X" />
+                                                      <CheckBox mnemonicParsing="false" text="Heuristik Y" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </content>
+                                          </ScrollPane>
+                                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+ Füge neue Heuristiken hinzu. (Lade Plugin)">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Starte Heuristiken Berechnung">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <ToggleButtonGroup selectionType="SINGLE">
+                                                   <toggles>
+                                                      <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/Start.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </ToggleButton>
+                                                      <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/Pause.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </ToggleButton>
+                                                   </toggles>
+                                                </ToggleButtonGroup>
+                                             </children>
+                                          </HBox>
+                                                </children>
+                                            </VBox>
+                                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                            <children>
+                                          <HBox spacing="10.0">
+                                             <children>
+                                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Generierungsvorgang in Bearbeitung:">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <ProgressBar progress="0.5">
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" top="5.0" />
+                                                   </HBox.margin>
+                                                </ProgressBar>
+                                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="135 / 1000" />
+                                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="230.0" />
+                                                <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Abbrechen">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Separator prefWidth="200.0" />
+                                          <HBox alignment="CENTER">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Label prefHeight="17.0" prefWidth="658.0" text="Graphen Vorschau:" />
+                                                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false">
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/Filter.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                                    <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                                                        <VBox.margin>
+                                                            <Insets />
+                                                        </VBox.margin>
+                                                        <content>
+                                                            <GridPane gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                                                <columnConstraints>
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                </columnConstraints>
+                                                                <rowConstraints>
+                                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                </rowConstraints>
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                            </GridPane>
+                                                        </content>
+                                                    </ScrollPane>
+                                            </children>
+                                        </VBox>
+                                 </items>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </SplitPane>
+								<MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.rowIndex="1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+									<menus>
+										<Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+											<items>
+												<MenuItem mnemonicParsing="false" text="Funktionalität" />
+												<MenuItem mnemonicParsing="false" text="Bedienung" />
+											<Menu mnemonicParsing="false" text="Heuristiken">
+											  <items>
+												<MenuItem mnemonicParsing="false" text="Import Help" />
+												  <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
+											  </items>
+											</Menu>
+												<Menu mnemonicParsing="false" text="Sprachauswahl">
+													<items>
+														<MenuItem mnemonicParsing="false" text="English" />
+														<MenuItem mnemonicParsing="false" text="Deutsch" />
+													</items>
+												</Menu>
+												<MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+											</items>
+										</Menu>
+										<Menu mnemonicParsing="false" text="Graphen">
+											<items>
+												<MenuItem mnemonicParsing="false" text="Importieren" />
+												<MenuItem mnemonicParsing="false" text="Exportieren" />
+												<Menu mnemonicParsing="false" text="Generierung">
+													<items>
+														<MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+														<MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+													</items>
+												</Menu>
+											<Menu mnemonicParsing="false" text="Graph Einstellungen">
+											   <items>
+												  <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
+												  <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
+											   </items>
+											</Menu>
+											</items>
+										</Menu>
+									</menus>
+								</MenuBar>
+                           </children>
+                        </GridPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Detailansicht zu Graph 1">
+                     <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints />
+                           </rowConstraints>
+                           <children>
+                              <SplitPane dividerPositions="0.16238437821171633">
+                                 <items>
+                                    <VBox>
                                        <children>
-                                          <Label text="Heuristik X:" />
-                                          <ToggleButtonGroup maxHeight="-Infinity" selectionType="SINGLE" GridPane.columnIndex="1">
-                                             <toggles>
-                                                <ToggleButton>
-                                                   <graphic>
-                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                         <image>
-                                                            <Image url="@Icons/Check.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </ToggleButton>
-                                                <ToggleButton>
-                                                   <graphic>
-                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                         <image>
-                                                            <Image url="@Icons/X.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </ToggleButton>
-                                             </toggles>
-                                             <GridPane.margin>
-                                                <Insets left="5.0" right="5.0" />
-                                             </GridPane.margin>
-                                          </ToggleButtonGroup>
-                                          <Label text="Heuristik Y:" GridPane.rowIndex="1" />
-                                          <ToggleButtonGroup maxHeight="-Infinity" selectionType="SINGLE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                             <toggles>
-                                                <ToggleButton>
-                                                   <graphic>
-                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                         <image>
-                                                            <Image url="@Icons/Check.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </ToggleButton>
-                                                <ToggleButton>
-                                                   <graphic>
-                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                         <image>
-                                                            <Image url="@Icons/X.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </ToggleButton>
-                                             </toggles>
-                                             <GridPane.margin>
-                                                <Insets left="5.0" right="5.0" />
-                                             </GridPane.margin>
-                                          </ToggleButtonGroup>
-                                                    <Label text="Sortierung:" GridPane.rowIndex="2" />
-                                                    <ComboBox maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" right="5.0" />
-                                             </GridPane.margin>
-                                          </ComboBox>
-                                          <Button alignment="CENTER" mnemonicParsing="false" text="OK" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                          <Button alignment="CENTER" layoutX="42.0" layoutY="130.0" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label text="Heuristik X" GridPane.rowIndex="1" />
+                                                <Label layoutX="10.0" layoutY="17.0" text="Heuristik Y" GridPane.rowIndex="2" />
+                                                <Label text="Heuristiken:" underline="true" wrapText="true" />
+                                                <Label text="Auswertung:" underline="true" GridPane.columnIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                          <Separator prefWidth="200.0" />
+                                          <Label text="Lokale Heuristiken:">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" text="Connected" />
+                                                <CheckBox layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="..." />
+                                                <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Überprüfung Starten">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
                                        </children>
-                                    </GridPane>
-                                 </content>
-                              </TitledPane>
-                                    </children>
-                                </VBox>
-                            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                                <children>
-                              <HBox spacing="10.0">
-                                 <children>
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Generierungsvorgang in Bearbeitung:">
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin></Label>
-                                    <ProgressBar progress="0.5">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin></ProgressBar>
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="135 / 1000" />
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="230.0" />
-                                    <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Abbrechen">
-                                       <HBox.margin>
-                                          <Insets bottom="2.0" top="2.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <Separator prefWidth="200.0" />
-                              <Label text="Graphen Vorschau:">
-                                 <VBox.margin>
-                                    <Insets left="5.0" />
-                                 </VBox.margin></Label>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-                                            <VBox.margin>
-                                                <Insets />
-                                            </VBox.margin>
-                                            <content>
-                                                <GridPane gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                                </GridPane>
-                                            </content>
-                                        </ScrollPane>
-                              <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="15.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Bearbeitung Anhalten" />
-                                    <Button mnemonicParsing="false" text="Bearbeitung Fortsetzung" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                                </children>
-                            </VBox>
-                     </items>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </SplitPane>
-                        <MenuBar maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" GridPane.rowIndex="1">
-                            <menus>
-                                <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Funktionalität" />
-                                        <MenuItem mnemonicParsing="false" text="Bedienung" />
-                                        <Menu mnemonicParsing="false" text="Sprachauswahl">
-                                            <items>
+                                    </VBox>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <Pane BorderPane.alignment="CENTER" />
+                                       </center>
+                                       <right>
+                        					<TableView prefHeight="437.0" prefWidth="171.0" BorderPane.alignment="CENTER">
+                        						<columns>
+                        							<TableColumn prefWidth="102.0" text="Eigenschaft" />
+                        							<TableColumn prefWidth="62.0" text="Wert" />
+                        						</columns>
+                        					</TableView>
+                                       </right>
+                                       <top>
+                                          <HBox spacing="25.0">
+                                             <children>
+                                                <ComboBox promptText="Ansicht" />
+                                                <ToggleButtonGroup selectionType="SINGLE">
+                                                    <toggles>
+                                                        <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/Start.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                        </ToggleButton>
+                                                        <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/Pause.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                        </ToggleButton>
+                                                    </toggles>
+                                                </ToggleButtonGroup>
+                                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Heuristiken im Step-By-Step-Mode" />
+                                                <ToggleButtonGroup layoutX="116.0" layoutY="10.0" selectionType="SINGLE">
+                                                   <toggles>
+                                                      <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/Undo.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </ToggleButton>
+                                                      <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/DoAgain.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </ToggleButton>
+                                                   </toggles>
+                                                </ToggleButtonGroup>
+                                                <Button alignment="CENTER" mnemonicParsing="false" text="Graph speichern">
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/Save.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button alignment="CENTER" layoutX="670.0" layoutY="10.0" mnemonicParsing="false" text="Graph bearbeiten">
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/Edit.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                             <BorderPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </BorderPane.margin>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </items>
+                              </SplitPane>
+								<MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.rowIndex="1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+									<menus>
+										<Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+											<items>
+												<MenuItem mnemonicParsing="false" text="Funktionalität" />
+												<MenuItem mnemonicParsing="false" text="Bedienung" />
+											<Menu mnemonicParsing="false" text="Heuristiken">
+											  <items>
+												<MenuItem mnemonicParsing="false" text="Import Help" />
+												  <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
+											  </items>
+											</Menu>
+												<Menu mnemonicParsing="false" text="Sprachauswahl">
+													<items>
+														<MenuItem mnemonicParsing="false" text="English" />
+														<MenuItem mnemonicParsing="false" text="Deutsch" />
+													</items>
+												</Menu>
+												<MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+											</items>
+										</Menu>
+										<Menu mnemonicParsing="false" text="Graphen">
+											<items>
+												<MenuItem mnemonicParsing="false" text="Importieren" />
+												<MenuItem mnemonicParsing="false" text="Exportieren" />
+												<Menu mnemonicParsing="false" text="Generierung">
+													<items>
+														<MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+														<MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+													</items>
+												</Menu>
+											<Menu mnemonicParsing="false" text="Graph Einstellungen">
+											   <items>
+												  <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
+												  <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
+											   </items>
+											</Menu>
+											</items>
+										</Menu>
+									</menus>
+								</MenuBar>
+                           </children>
+                        </GridPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Statistik">
+                     <content>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.rowIndex="1">
+                                 <menus>
+                                    <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Funktionalität" />
+                                          <MenuItem mnemonicParsing="false" text="Bedienung" />
+                                          <Menu mnemonicParsing="false" text="Heuristiken">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Import Help" />
+                                                <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
+                                             </items>
+                                          </Menu>
+                                          <Menu mnemonicParsing="false" text="Sprachauswahl">
+                                             <items>
                                                 <MenuItem mnemonicParsing="false" text="English" />
                                                 <MenuItem mnemonicParsing="false" text="Deutsch" />
-                                            </items>
-                                        </Menu>
-                                        <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Einstellungen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Graphen">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Importieren" />
-                                        <MenuItem mnemonicParsing="false" text="Exportieren" />
-                                        <Menu mnemonicParsing="false" text="Generierung">
-                                            <items>
+                                             </items>
+                                          </Menu>
+                                          <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+                                       </items>
+                                    </Menu>
+                                    <Menu mnemonicParsing="false" text="Graphen">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Importieren" />
+                                          <MenuItem mnemonicParsing="false" text="Exportieren" />
+                                          <Menu mnemonicParsing="false" text="Generierung">
+                                             <items>
                                                 <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
                                                 <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
-                                            </items>
-                                        </Menu>
-                                    </items>
-                                </Menu>
-                            </menus>
-                        </MenuBar>
-               </children>
-            </GridPane>
+                                             </items>
+                                          </Menu>
+                                          <Menu mnemonicParsing="false" text="Graph Einstellungen">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
+                                                <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
+                                             </items>
+                                          </Menu>
+                                       </items>
+                                    </Menu>
+                                 </menus>
+                              </MenuBar>
+                              <TableView>
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Eigenschaft" />
+                                  <TableColumn prefWidth="75.0" text="Wert" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </GridPane>
+                     </content></Tab>
+               </tabs>
+            </TabPane>
             </content>
         </Tab>
-      <Tab text="Detailansicht zu Graph 01   X">
-         <content>
-            <GridPane>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                  <ColumnConstraints />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints />
-               </rowConstraints>
-               <children>
-                  <SplitPane dividerPositions="0.16238437821171633">
-                     <items>
-                        <VBox>
-                           <children>
-                              <Label text="Heuristiken:" wrapText="true" />
-                              <ScrollPane>
-                                 <content>
-                                    <TableView prefHeight="400.0" prefWidth="156.0">
-                                       <columns>
-                                          <TableColumn prefWidth="60.0" text="Heuristik" />
-                                          <TableColumn prefWidth="75.0" text="Auswertung" />
-                                       </columns>
-                                    </TableView>
-                                 </content>
-                              </ScrollPane>
-                              <Label text="Lokale Heuristiken:" />
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="Connected" />
-                                    <CheckBox layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="..." />
-                                    <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0">
-                           <center>
-                              <Pane BorderPane.alignment="CENTER" />
-                           </center>
-                           <right>
-            					<TableView prefHeight="437.0" prefWidth="171.0" BorderPane.alignment="CENTER">
-            						<columns>
-            							<TableColumn prefWidth="102.0" text="Eigenschaft" />
-            							<TableColumn prefWidth="62.0" text="Wert" />
-            						</columns>
-            					</TableView>
-                           </right>
-                           <top>
-                              <HBox spacing="25.0">
-                                 <children>
-                                    <ComboBox promptText="Ansicht" />
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" />
-                                    <ToggleButtonGroup selectionType="SINGLE">
-                                        <toggles>
-                                            <ToggleButton>
-                                             <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                   <image>
-                                                      <Image url="@Icons/Start.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                            </ToggleButton>
-                                            <ToggleButton>
-                                             <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                   <image>
-                                                      <Image url="@Icons/Pause.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                            </ToggleButton>
-                                        </toggles>
-                                    </ToggleButtonGroup>
-                                    <Label layoutX="116.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="215.0">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Button alignment="CENTER" mnemonicParsing="false" text="Graph bearbeiten">
-                                       <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="20.0">
-                                             <image>
-                                                <Image url="@Icons/Edit.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic></Button>
-                                 </children>
-                                 <BorderPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </BorderPane.margin>
-                              </HBox>
-                           </top>
-                           <bottom>
-                              <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0">
-                                 <children>
-            						<Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Heuristiken neu anwenden" />
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Heuristiken im Step-By-Step-Mode" />
-                                 </children>
-                                 <BorderPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </BorderPane.margin>
-                              </HBox>
-                           </bottom>
-                        </BorderPane>
-                     </items>
-                  </SplitPane>
-						  <MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.columnSpan="2" GridPane.rowIndex="1">
-							  <menus>
-								  <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
-									  <items>
-										  <MenuItem mnemonicParsing="false" text="Funktionalität" />
-										  <MenuItem mnemonicParsing="false" text="Bedienung" />
-										  <Menu mnemonicParsing="false" text="Sprachauswahl">
-											  <items>
-												  <MenuItem mnemonicParsing="false" text="English" />
-												  <MenuItem mnemonicParsing="false" text="Deutsch" />
-											  </items>
-										  </Menu>
-										  <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
-									  </items>
-								  </Menu>
-								  <Menu mnemonicParsing="false" text="Einstellungen">
-									  <items>
-										  <MenuItem mnemonicParsing="false" text="Importieren" />
-										  <MenuItem mnemonicParsing="false" text="Exportieren" />
-									  </items>
-								  </Menu>
-								  <Menu mnemonicParsing="false" text="Graphen">
-									  <items>
-										  <MenuItem mnemonicParsing="false" text="Importieren" />
-										  <MenuItem mnemonicParsing="false" text="Exportieren" />
-										  <Menu mnemonicParsing="false" text="Generierung">
-											  <items>
-												  <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
-												  <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
-											  </items>
-										  </Menu>
-									  </items>
-								  </Menu>
-							  </menus>
-						  </MenuBar>
-               </children>
-            </GridPane>
-         </content>
-      </Tab>
     </tabs>
 </TabPane>
