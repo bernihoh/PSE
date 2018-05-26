@@ -344,6 +344,42 @@ bookmarks = true
 	\subsection*{/NF40/ Erweiterbarkeit} \label{nf40} \addcontentsline{toc}{subsection}{\nameref{nf40}}
 	Das Programm bietet mit der in /F22/ erwähnten Pluginarchitektur und insgesamt modularen Programmarchitektur die Erweiterung um neue Heuristiken.
 	
+	
+	~\newpage
+	\section{Testfälle}
+	\subsection*{/T10/ Generierung und Modifikation} \label{t10} \addcontentsline{toc}{subsection}{\nameref{t10}}
+	\begin{enumerate}[--]
+		\item{Die Einstellungen bei der Graphengenerierung (z.B. Graphentyp, minimaler + maximaler Knotengrad etc.) werden bei der Generierung berücksichtigt}
+		\item{Nach Bestätigung durch den User werden die Graphen generiert}
+		\item{Graphen werden vollständig importiert}
+		\item{Abbrechen der Generierung}
+		\item{Eingabe des Graphen per Hand}
+	\end{enumerate}
+	
+	\subsection*{/T20/ Heuristiken} \label{t20} \addcontentsline{toc}{subsection}{\nameref{t20}}
+	\begin{enumerate}[--]
+		\item{Heuristiken in der Liste entsprechen den durch den Nutzer ausgewählten Heuristiken}
+		\item{Anwendung der Heuristiken auf die Graphen gemäß Nutzerauswahl}
+		\item{Fehlverhalten der Heuristik}
+	\end{enumerate}
+	
+	\subsection*{/T30/ Darstellung von Graphen} \label{t30} \addcontentsline{toc}{subsection}{\nameref{t30}}
+	\begin{enumerate}[--]
+		\item{Filtern und Sortieren der Graphen nach durch den Nutzer gegebenen Kriterien}
+		\item{Ausgabe der Graphen in gewünschter Darstellungsform}
+		\item{Darstellung eines Graphen in jeweiliger Darstellungsform ist eindeutig}
+		\item{Modifikation von Graphen führt zu Gruppierung}
+	\end{enumerate}
+	
+	\subsection*{/T40/ Datenkonsistenzen} \label{t40} \addcontentsline{toc}{subsection}{\nameref{t40}}
+	\begin{enumerate}[--]
+		\item{Für einfache ungerichtete Graphen gilt: $$\#V(G) \cdot \delta_{min} \leq \#V(G) \cdot \delta(G) \leq \#E(G) \cdot 2 \leq \#V(G) \cdot \Delta(G) \leq \#V(G) \cdot \Delta_{max}$$}
+		\item{Falls $\delta_{min} = \Delta_{max} = n-1$, so wird nur genau ein Graph generiert}
+		\item{Generierte Graphen sind entweder einfache ungerichtete Graphen oder einfache Hypergraphen}
+		\item{Die erhobenen Statistiken sind korrekt}
+	\end{enumerate}
+	
+	
 	~\newpage
 	\section{Produktdaten}
 	\subsection*{/D10/ Graphen} \label{d10} \addcontentsline{toc}{subsection}{\nameref{d10}}
