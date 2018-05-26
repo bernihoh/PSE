@@ -17,6 +17,11 @@ bookmarks = true
 
 \usepackage[shortlabels]{enumitem}
 \usepackage{parskip}
+
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{placeins}
+
 %\renewcommand{\newline}{~\newline}
 
 
@@ -160,9 +165,11 @@ bookmarks = true
 	\begin{enumerate}[i)]
 		\item{Die Anzahl von Knoten $n$ der zu generierenden Graphen kann festgelegt werden. Es gilt $1 \leq n \leq 1000$.}
 		\item{Der minimale und maximale Knotengrad $\delta_{min}$ und $\Delta_{max}$ der zu generierenden Graphen kann festgelegt werden. Für einen beliebigen generierten Graphen $G$ gilt dann $$0 \leq \delta_{min} \leq \delta(G) \leq \Delta(G) \leq \Delta_{max} \leq n-1.$$}
-		%\item{Es kann (falls gewünscht) ein $r$ festgelegt werden, sodass die generierten SHs $r$-uniform sind. Dabei gilt $$2 \leq r \leq n.$$}
 		\item[iii)*]{Es kann (falls gewünscht) die minimale und maximale Kardinalität $k_{min}$ und $k_{max}$ der Hyperkanten festgelegt werden. Für einen beliebigen generierten Hypergraph $G$ und eine Hyperkante $e \in E(G)$ gilt dann $$2 \leq k_{min} \leq \# e \leq k_{max} \leq n.$$ Insbesondere lässt sich die Generierung über $k_{min} = k_{max} =: k$ auch auf $k$-uniforme Hypergraphen beschränken.}
 	\end{enumerate}
+	
+	\subsubsection*{/F14/ Generierung von Graphen mit unterschiedlichen Einstellungen} \label{f14} \addcontentsline{toc}{subsubsection}{\nameref{f14}}
+	Der Nutzer hat die Möglichkeit mehrere voneinander unabhängige Datenmengen zu generieren. Dies ermöglicht den direkten Vergleich zwischen Graphen, die mit unterschiedlichen Einstellungen generiert wurden. Zudem ist der Nutzer so in der Lage an mehreren offenen Problemen zeitgleich zu arbeiten.
 	
 	
 	\newpage
@@ -247,7 +254,7 @@ bookmarks = true
 		\item{nach der Gesamtgeschwindigkeit aller Heuristiken der Liste}
 	\end{enumerate}
 	jeweils aufsteigend oder absteigend sortiert werden.
-	TODO Sortierung der Gruppen?
+	Gruppierte Graphen, die z.B. durch Modifikation auseinander hervorgegangen sind, werden nach dem Durchschnitt des Sortierungsparameters einsortiert.
 	
 	Es kann für jede Heuristik ausgewählt werden, ob
 	\begin{enumerate}[i)]
@@ -265,7 +272,7 @@ bookmarks = true
 	Die Detailansicht bietet dem Nutzer die Möglichkeit, sich die Arbeitsweise und Ergebnisse der Heuristiken auf einem von ihm ausgewählten Graph genauer anzuschauen. Sowohl Graphen als auch Hypergraphen können in den folgenden Arten präsentiert werden:
 	\begin{enumerate}[i)]
 		\item{In der graphischen Repräsentation sind alle Knoten im Uhrzeigersinn gemäß ihrer Reihenfolge im Kreis angeordnet. Die Kanten sind einfache Liniensegmente von Knoten zu Knoten, während die Hyperkanten als konvexe Polygone mit den zugehörigen Knoten als Eckpunkten dargestellt werden.}
-		\item{In der tabellarischen Repräsentation ist TODO}
+		\item{In einer tabellarischen Repräsentation}
 	\end{enumerate}
 	
 	Der Nutzer kann aus der in /F42/ erstellten Liste eine beliebige Heuristik auswählen, deren Ergebnis dann in geeigneter Weise (z.B. durch Färben der Kanten) angezeigt wird. Ferner besteht die Möglichkeit die Heuristik neu auszuführen, um ihre Arbeitsweise wahlweise live oder schrittweise zu begutachten. Ein Eingriff in die Arbeitsweise der Heuristik ist jedoch \textbf{nicht} möglich.
@@ -283,23 +290,32 @@ bookmarks = true
 		\item{\textbf{Greedy}: Zunächst werden die Knoten möglichst gleichmäßig koloriert. Anschließend werden Knoten für Knoten alle Kanten koloriert.}
 		\item{\textbf{Greedy + One}: Wie Greedy, jedoch mit der folgenden Einschränkung: Gibt es eine unkolorierte Kante im Graph, die genau eine freie Farbe hat, so wird diese vorrangig koloriert.}
 		\item{\textbf{Greedy + Few}: Wie Greedy mit der Eigenschaft, dass statt Knoten für Knoten stets die Kanten mit der minimalen Anzahl von freien Farben koloriert werden.}
-		\item{\textbf{Greedy + Set}: Wie Greedy mit der folgenden Policy: Es wird unter allen Mengen von Kanten, bei denen alle Kanten inzident zu einem gemeinsamen Knoten sind, eine mit minimaler Flexibilität koloriert wird.}
+		\item{\textbf{Greedy + Set}: Wie Greedy mit der folgenden Policy: Es wird unter allen Mengen von Kanten, bei denen alle Kanten inzident zu einem gemeinsamen Knoten sind, eine mit minimaler Flexibilität koloriert.}
 		\item{\textbf{Greedy + Connected}: Wie Greedy + Set mit der Verallgemeinerung, dass die Menge von Kanten nicht inzident zu einem gemeinsamen Knoten, sondern lediglich zusammenhängend sein muss. Die maximale Kardinalität einer solchen Teilmenge ist durch den Nutzer einstellbar.}
 		\item[vi)*]{\textbf{Mixed Greedy}: Knoten und Kanten sind gleichwertig und werden nicht separat koloriert.}
 		\item[vii)*]{\textbf{Line Greedy}: Wie die Greedy Familie, nur Vertauschen der Rolle von Knoten und Kanten.}
 	\end{enumerate}
-	Die Heuristiken berechnen eine möglichst gleichmäßige Farbverteilung. Dabei ist die Gewichtung des Einflusses von Knoten und Kanten für die freien Farben durch den Nutzer einstellbar. Für die Auswahl eines minimalen Elements in den Heuristiken iii) bis v) sind die folgenden Policies eintellbar:
-	\begin{enumerate}[-]
-		\item{TODO}
-	\end{enumerate}
+	Die Heuristiken berechnen eine möglichst gleichmäßige Farbverteilung. Dabei ist die Gewichtung des Einflusses von Knoten und Kanten für die freien Farben durch den Nutzer einstellbar.
 	
 	Es wird abgebrochen, sobald die Bedingungen des Total Coloring Conjectures verletzt sind, oder wenn eine korrekte Totalfärbung berechnet wurde. 
 	
 	Die Heuristiken sind deterministisch. Das bedeutet, dass eine Heuristik mehrfach angewandt auf denselben Graph mit denselben Einstellungen das gleiche Ergebnis liefert.
 	
 	\subsection*{/F60/ Heuristiken für das Erdös Faber Lovasz Conjecture} \label{f60} \addcontentsline{toc}{subsection}{\nameref{f60}}
+	Die folgenden Heuristiken sind implementiert:
+	\begin{enumerate}[i)]
+		\item{\textbf{Greedy}: Es werden Knoten für Knoten alle Hyperkanten koloriert.}
+		\item{\textbf{Greedy + One}: Wie Greedy, jedoch mit der folgenden Einschränkung: Gibt es eine unkolorierte Hyperkante im Hypergraph, die genau eine freie Farbe hat, so wird diese vorrangig koloriert.}
+		\item{\textbf{Greedy + Few}: Wie Greedy mit der Eigenschaft, dass statt Knoten für Knoten stets die Hyperkanten mit der minimalen Anzahl von freien Farben koloriert werden.}
+		\item{\textbf{Greedy + Set}: Wie Greedy mit der folgenden Policy: Es wird unter allen Mengen von Hyperkanten, bei denen alle Kanten inzident zu einem gemeinsamen Knoten sind, eine mit minimaler Flexibilität koloriert.}
+		\item{\textbf{Greedy + Connected}: Wie Greedy + Set mit der Verallgemeinerung, dass die Menge von Hyperkanten nicht inzident zu einem gemeinsamen Knoten, sondern lediglich zusammenhängend sein muss. Die maximale Kardinalität einer solchen Teilmenge ist durch den Nutzer einstellbar.}
+	\end{enumerate}
 	
-	TODO
+	Die Heuristiken berechnen eine möglichst gleichmäßige Farbverteilung.	
+	Es wird abgebrochen, sobald die Bedingungen des Erdös Faber Lovasz Conjectures verletzt sind, oder wenn eine korrekte Färbung berechnet wurde. 
+	
+	Die Heuristiken sind deterministisch. Das bedeutet, dass eine Heuristik mehrfach angewandt auf denselben Graph mit denselben Einstellungen das gleiche Ergebnis liefert.
+	
 	
 	~\newpage
 	\subsection*{/F70/ Speichern und Laden} \label{f70} \addcontentsline{toc}{subsection}{\nameref{f70}}
@@ -307,13 +323,10 @@ bookmarks = true
 	\subsubsection*{/F71/ Graphen} \label{f71} \addcontentsline{toc}{subsubsection}{\nameref{f71}}
 	Der Nutzer kann eine Auswahl oder alle generierten Graphen speichern. Für jeden Graph werden die Ergebnisse aller darauf berechneten Heuristiken zusammen mit den Einstellungen der Heuristik gespeichert.
 	
-	Gespeicherte Graphen können wieder geladen werden, wenn ihr Typ mit dem in /F11/ eingestellten Typ übereinstimmt.
-	TODO Laden der Heuristik-Ergebnisse immer oder nur falls Heuristik in aktueller Liste?
-	
+	Gespeicherte Graphen können wieder geladen werden. Sie werden als von möglicherweise bereits generierten Graphen unabhängige Datenmenge in das Programm eingefügt. Ergebnisse von auf ihnen berechneten Heuristiken werden übernommen. Ist eine Heuristik eigentlich nicht auf den Graph anzuwenden, so wird ihr Ergebnis in der lokalen Liste von Heuristiken des Graphen gespeichert.
+		
 	\subsubsection*{/F72/ Heuristiken} \label{f72} \addcontentsline{toc}{subsubsection}{\nameref{f72}}
 	Die Liste der eingestellten Heuristiken kann gespeichert werden. Die Heuristiken können auch wieder geladen werden, wenn sie auf den in /F11/ eingestellten Graphentyp anwendbar sind.
-	
-	TODO sonst noch was?
 	
 	~\newpage
 	\section{Nichtfunktionale Anforderungen}
@@ -324,11 +337,8 @@ bookmarks = true
 	Die Benutzung des Programms erfolgt über die graphische Benutzeroberfläche. Sie ist intuitiv gestaltet, sodass für die Benutzung keine Schulung nötig ist. Die Eingabe von ungültigen Daten wird dem Nutzer mitgeteilt und führt insbesondere nicht zu einem Absturz.
 	
 	\subsection*{/NF30/ Effizienz} \label{nf30} \addcontentsline{toc}{subsection}{\nameref{nf30}}
-	Die Generierung der Graphen erfolgt abhängig von den gewählten Einstellungen in angemessener Zeit:
-	\begin{enumerate}[--]
-		\item{TODO Graphen}
-		\item{TODO Hypergraphen}
-	\end{enumerate}
+	Die Generierung der Graphen erfolgt abhängig von den gewählten Einstellungen in angemessener Zeit.
+	
 	Über die Effizienz der Heuristiken selbst wird \textbf{keine} Angabe gemacht. Die Laufzeit der Heuristiken wird jedoch durch andere Funktionen des Programms nicht übermäßig beeinflusst. Parallelisierung erlaubt Generierung und Anwendung von Heuristiken gleichzeitig.
 	
 	\subsection*{/NF40/ Erweiterbarkeit} \label{nf40} \addcontentsline{toc}{subsection}{\nameref{nf40}}
@@ -354,50 +364,135 @@ bookmarks = true
 	\end{enumerate}
 	
 	\subsection*{/D20/ Heuristiken} \label{d20} \addcontentsline{toc}{subsection}{\nameref{d20}}
-	TODO
-	
-	\subsection*{/D30/ Metadaten} \label{d30} \addcontentsline{toc}{subsection}{\nameref{d30}}
-	TODO
+	Für Heuristiken werden der Name sowie die Einstellungen gespeichert.
 	
 	~\newpage
 	\section{Graphische Benutzeroberfläche}
-	Es folgen frühe Vorschläge für die Benutzeroberfläche. Alle angegebenen Werte sind exemplarisch, insbesondere wurden die dargestellten Graphen nicht generiert.
+	Es folgen frühe Vorschläge für die Benutzeroberfläche. Alle angegebenen Werte sind exemplarisch, insbesondere wurden dargestellte Graphen nicht generiert.
+	
+	
 	
 	\subsection{Graphgenerierung}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.8\textwidth]{images/generate}
+		\includegraphics[width=\textwidth]{images/gui/generate}
 		\caption{Das Fenster für die Graphgenerierung}
 	\end{figure}
 	
-	TODO Wie sollen unterschiedliche Generierungseinstellungen behandelt werden? Neue Datenmenge? Angehängt an alte Datenmenge?
+	\FloatBarrier
 	
 	\begin{enumerate}[(1)]
 		\item{Auswahl des zu generierenden Graphentyps}
 		\item{Allgemeine Einstellungen}
 		\item{Weitere Einstellungen wie in /F12/iii)* oder /F13/iii)* erwähnt}
+		\item{Laden von bereits generierten Graphen}
+		\item{Öffnet den Grapheneditor um Graphen per Hand einzugeben}
+		\item{Generiert Graphen gemäß den getroffenen Einstellungen}
 	\end{enumerate}
+	
+	
+	
 	
 	~\newpage
 	\subsection{Preview}
 	~\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.8\textwidth]{images/preview}
+		\includegraphics[width=\textwidth]{images/gui/preview}
 		\caption{Das Preview-Fenster}
 	\end{figure}
+	
+	\FloatBarrier
+	
+	\begin{enumerate}[(1)]
+		\item{Liste der Heuristiken, die auf die generierten Graphen angewandt werden}
+		\item{Ermöglicht das Hinzufügen von Heuristiken zu der Liste}
+		\item{Bestätigt Liste und führt alle neu hinzugekommenen Heuristiken aus}
+		\item{Liste aller bereits generierten Graphen}
+		\item{Filter- und Darstellungsoptionen für die Liste der Graphen}
+	\end{enumerate}
+	
+	
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/gui/settings}
+		\caption{Hinzufügen neuer Heuristiken}
+	\end{figure}
+	
+	\FloatBarrier
+	
+	\begin{enumerate}[(1)]
+		\item{Mögliche Heuristiken, die zur Auswahl stehen}
+		\item{Heuristikspezifische Einstellungen}
+		\item{Fügt Heuristik mit getroffenen Einstellungen zur Liste hinzu}
+		\item{Verwirft die getroffenen Änderungen und kehrt zurück zur Preview}
+		\item{Sichert die getroffenen Änderungen und kehrt zurück zur Preview}
+	\end{enumerate}
+	
+	
+	~\newpage
+	
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics{images/gui/filter}
+		\caption{Filteroptionen}
+	\end{figure}
+	
+	\FloatBarrier
+	
+	\begin{enumerate}[(1)]
+		\item{Auswahlmöglichkeit pro Heuristik}
+		\item{Sortierungsoption}
+	\end{enumerate}
+	
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/gui/statistic}
+		\caption{Statistiken zur Laufzeit und Erfolgsrate der Statistiken}
+	\end{figure}
+	
+	
 	
 	~\newpage
 	\subsection{Detailansicht}
 	~\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.8\textwidth]{images/detail}
+		\includegraphics[width=\textwidth]{images/gui/detail}
 		\caption{Die Detailansicht für die Graphen}
 	\end{figure}
 	
+	\FloatBarrier
+	
+	\begin{enumerate}[(1)]
+		\item{Liste der Heuristiken, die auf alle Graphen der Preview angewendet wurden}
+		\item{Lokale Liste von Heuristiken, die nur auf den ausgewählten Graph angewandt werden}
+		\item{Auswahl der Darstellung (graphisch oder tabellarisch)}
+		\item{Ermöglicht Beobachtung der Arbeitsweise der ausgewählten Heuristik}
+		\item{Speichern des Graphen}
+		\item{Öffnet den Grapheditor zur Modifikation des Graphen}
+		\item{Informationen über den Graph (z.B. $\delta (G), \Delta (G), \# E(G)$)}
+		\item{Darstellung des Graphen mit Ergebnis der ausgewählten Heuristik}
+	\end{enumerate}
+	
+	
+	
+	
 	~\newpage
 	\subsection{Grapheditor}
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/gui/editor}
+		\caption{Die Detailansicht für die Graphen}
+	\end{figure}
 	
+	\FloatBarrier
 	
+	\begin{enumerate}[(1)]
+		\item{Optionen zur Modifikation des Graphen}
+		\item{Letzte Änderung rückgängig machen}
+		\item{Verwerfen / Bestätigen der Modifikation}
+	\end{enumerate}
+	
+	~\newpage
 	\section{Systemmodelle}
 	\subsection{Szenarien}
 	\subsection{Anwendungsfälle}
@@ -447,7 +542,7 @@ bookmarks = true
 		\item{Missverständnisse mit dem Auftraggeber}
 		\item{Technische Schwierigkeiten (z.B. Verlust von Daten)}
 	\end{enumerate}
-	die zu einer Verzögerung der Fertigstellung des Projektes führen können, gibt es keine nennenswerten Riskiken.
+	die zu einer Verzögerung der Fertigstellung des Projektes führen können, gibt es keine nennenswerten Risiken.
 	
 	\section{Glossar}
 	
