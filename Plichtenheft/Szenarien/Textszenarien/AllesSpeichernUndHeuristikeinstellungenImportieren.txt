@@ -1,0 +1,36 @@
+Graphen Speichern:
+Vorbedingung: Es müssen >=1 Graphen in Preview sein.
+Nachbedingung: Graphen werden korrekt in einer Datei kodiert und auf der Festplatte gespeichert.
+
+1.)  User drückt in der GUI unten rechts auf -->"Graphen" --> "Graphen Speichern".
+2.)  User wählt die zu speichernden Graphen aus und Bestätigt. //(Es muss noch im Entwurf spezifiziert werden, ich würde sagen sowie die Bilderauswahl in WIN10, indem man mit der Maus ein Kasten zieht.)
+3.)  Die Graphen werden in einer Datei kodiert und auf der Festplatte gespeichert.
+--> Hier gehört kein Workflowdiagramm dazu.
+
+Grapheneinstellunge Speichern:
+Vorbedingung: Es müssen Grapheingenschaften eingestellt sein.
+Nachbedingung: Grapheneinstellungen werden korrekt in einer Datei kodiert und auf der Festplatte gespeichert.
+
+1.)  User drückt in der GUI unten rechts auf -->"Graphen" --> "Grapheneisntellungen Speichern".
+2.)  Die Grapheneinstellungen werden in einer Datei kodiert und auf der Festplatte gespeichert.
+--> Hier gehört kein Workflowdiagramm dazu.
+
+Heuristikeinstellungen speichern:
+Vorbedingung: Es müssen Heuristiken eingestellt sein.
+Nachbedingung: Heuristiken werden korrekt in einer Datei kodiert und auf der Festplatte gespeichert.
+
+1.)  User drückt in der GUI unten rechts auf -->"Hilfe & Sonstiges" --> "Heuristikeinstellungen Speichern".
+2.)  Die Heuristikeinstellungen werden in einer Datei kodiert und auf der Festplatte gespeichert.
+--> Hier gehört kein Workflowdiagramm dazu.
+
+User importiert Heuristikeinstellungen:
+Vorbedingung: Codeirungsdatei ist korrekt geschrieben, es wurden >=1 Graphen erstellt.
+Nachbedingung (Erfolg): Heuristikeinstellungen werden aus Datei gelesen und in die Heuristikauswahl übernommen.
+Nachbedingung (Misserfolg): Aussagekräftige Fehlermeldung erscheint.
+
+1.)  User wählt -->"Hilfe & Sonstiges" --> "Heuristeinstellungen importieren" und gibt Pfad zu Datei an.
+2.1) Programm liest Datei aus in globale Heuristiken ein, falls User die Preview zuletzt offen hat.
+2.2) Programm liest Datei aus in lokale Heuristiken ein, falls User die Detailansicht zuletzt offen hat.
+3.1) Bei Erfolg werden die Heuristiken in die globale/lokale Heuristikauswahl übernommen.
+3.2) Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.
+--> Hier gehört kein Workflowdiagramm dazu.

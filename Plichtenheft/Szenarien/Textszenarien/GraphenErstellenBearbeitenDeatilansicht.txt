@@ -1,0 +1,36 @@
+Graphen von Hand erstellen:
+Vorbedingung: Keine
+Nachbedingung: Erstellter Graph wird in Preview geladen.
+
+1.)  User drückt auf "von Hand erstellen" oder "+".
+     Der Grapheditor wird geöffnet.
+2.)  User kann mithilfe von Tools einen Graphen erstellen oder bearbeiten.
+3.)  Sobald User auf "OK" drückt, wird der Graph hinten an die Graphenliste in der Preview geladen.
+--> Hier gehört das Worklflowdiagramm "Graphen von Hand erstellen" rein.
+
+Graphen von Hand bearbeiten:
+Vorbedingung: Ein fertig generierter Graph muss existieren.
+Nachbedingung: Falls Änderungen am Graphen vorgenommen wurden, wird die Änderung
+	       als Version direkt neben dem Ursprungsgraphen in der Previw gepeichert
+               und die Zusammengehörigkeit mit einer Schraffierung gekenzeichnet.
+1.)  User öffnet einen Graphen in der Deatilansicht.
+     User drückt auf "Bearbeiten.
+2.)  Graph wird im Editor geöffnet.
+3.)  User kann mithilfe von Tools den Graphen bearbeiten.
+4.)  Sobald User auf "OK" drückt, wird der modifizierte Graph in die Detailansicht geladen
+     und auch als Version in der Preview, wie in der Nachbedingung beschrieben, gespeichert.
+
+Beschreibung der Detailansicht:
+Vorbedingung: Ein fertig generierter Graph muss existieren. 
+Nachbedingung: Nachdem die Detailansicht beendet wurde, darf am ausgewählten Graphen nichts verändert sein, außer:
+               Lokale Heuristiken dürfen neu dazukommen.
+In der Detailansicht hat der User folgende Möglichkeiten:
+1.) Lokale Heuristiken hinzufügen.
+2.) Graphen auf der Festplatte speichern.
+3.) Ansicht ändern: Graphisch/Tabellarisch
+4.) Ein Heuristik im Step-by-Step-Modus ablaufen lassen.
+    Hier wird nach jedem Schritt gestoppt und der User darf mit dem Graphen interagieren.
+5.) Einen neuen Graphen aus dem alten erstellen indem der User den "Graphen von Hand bearbeitet". --> Es öffnet sich der Editor.
+6.) Zwischen den Graphen in der Preview wechseln, die in der Detailansicht angezeigt werden sollen.
+7.) Informationen über Eigenschaften des Graphen einlesen.
+--> Zu den 2 oberen Szenarien hier drüber gehört das Workflowdiagramm "Detailansicht und Modifikation".

@@ -1,0 +1,20 @@
+Auswählen und Verändern von Heuristikeinstellungen
+Vorbedingung: Es wurden >=1 Graphen generiert.
+Nachbedingung (In der Preview): Ausgewählte Algorithmen werden mit ihren Einstellungen in die globale Heuristikmenge eingefügt.
+Nachbedingung (In der Detailansicht): Ausgewählte Algorithmen werden mit ihren Einstellungen in die lokale Heuristikmenge eingefügt.
+
+1.1)  Es wurden >=1 Graphen generiert.
+      User klickt in der Preview  auf "+", also Heuristiken hinzufügen.
+1.2)  Fenster mit Heuristikauswahl und Einstellungen öffnet sich.
+1.3)  User wählt Algorithmus aus.
+1.4)  User wählt Einstellungen zum Algorithmus aus. --> Eine Heuristik entsteht.
+      Falls der Algorithmus mit den Einstellungen so nicht bereits exsitiert, wird er in die globale Heuristikmenge eingefügt.
+
+2.1)  Es wird ein bereits kolorierter Graph ausgewählt. --> Detailansicht öffnet sich zu diesem Graph.
+      User klickt in der Detailansicht  auf "+", also "Heuristiken hinzufügen".
+1.2)  Fenster mit Heuristikauswahl und Einstellungen öffnet sich.
+1.3)  User wählt Algorithmus aus.
+1.4)  User wählt Einstellungen zum Algorithmus aus. --> Eine Heuristik entsteht.
+      Falls der Algorithmus mit den Einstellungen so nicht bereits exsitiert, wird er in die lokale Heuristikmenge eingefügt.
+
+--> Hier kommt das Workflowdiagramm "Auswählen und Verändern von Heuristikeinstellungen".

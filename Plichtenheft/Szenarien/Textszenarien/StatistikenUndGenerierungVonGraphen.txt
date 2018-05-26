@@ -1,0 +1,18 @@
+Generierung von Graphen:
+Vorbedingung: Programm muss gestartet sein und das Interesse an Graphen muss geweckt werden.
+Nachbedingung: Graphen werden nach Eigenschaften generiert und in der Preview als Liste angezeigt.
+
+1.)  User wählt Eigenschaften aus und die Anzahl der zu generierenden Graphen.
+     User drückt auf "Generieren".
+2.)  Programm generiert anhand der Eigenschaften zufällige Graphen und gibt sie in der Preview als Liste graphisch aus.
+     Es können jederzeit neue Graphen generiert werden, diese werden dann in einer Preview 2 ausgegeben.
+--> Hier kommt der Workflow "Generierung von Graphen" rein.
+
+Statistiken anzeigen:
+Vorbedingung: Es müssen >=1 Graphen koloriert sein.
+Nachbedingung: Es werden verscheidene Statistiken angezeigt, die Informationen über die Heuristiken und Graphen beinhalten.
+
+1.)  Während der Kolorierung und Generierung sammelt das Programm Daten über die Graphen und deren Färbung,
+     sowie die Effizienz und Erfolg der Heuristiken.
+2.)  Nach der kolorierung der Graphen drückt der User auf "Statistiken".
+3.)  Das Programm liest die gesammelten Daten aus und stellt sie Graphisch in verscheidenen Statistiken dar.
