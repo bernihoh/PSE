@@ -75,83 +75,146 @@
       </VBox>
     </bottom>
    <top>
-      <HBox spacing="5.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" text="Knotenanzahl:" />
-            <Spinner maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-               <HBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </HBox.margin>
-            </Spinner>
-            <Separator orientation="VERTICAL" />
-            <ToggleButtonGroup selectionType="SINGLE">
-                <toggles>
-                  <ToggleButton layoutX="10.0" layoutY="10.0">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                           <image>
-                              <Image url="@Icons/Drag.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </ToggleButton>
-                    <ToggleButton>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                           <image>
-                              <Image url="@Icons/Edge.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                    </ToggleButton>
-                    <ToggleButton>
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                           <image>
-                              <Image url="@Icons/Eraser.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                    </ToggleButton>
-                </toggles>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </ToggleButtonGroup>
-            <Separator layoutX="244.0" layoutY="10.0" orientation="VERTICAL" />
-            <Button layoutX="384.0" layoutY="15.0" mnemonicParsing="false" text="Knoten Kontrahieren">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Knoten Duplizieren">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Pfad Einfügen">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button layoutX="658.0" layoutY="15.0" mnemonicParsing="false" text="Kreis Einfügen">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button layoutX="763.0" layoutY="15.0" mnemonicParsing="false" text="Clique Einfügen">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-         </children>
+      <VBox BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
-      </HBox>
+         <children>
+            <HBox spacing="5.0">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" text="Knotenanzahl:" />
+                  <Spinner maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Spinner>
+                  <Separator orientation="VERTICAL" />
+                  <ToggleButtonGroup selectionType="SINGLE">
+                      <toggles>
+                        <ToggleButton layoutX="10.0" layoutY="10.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@Icons/Drag.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </ToggleButton>
+                          <ToggleButton>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@Icons/Edge.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                          </ToggleButton>
+                          <ToggleButton>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@Icons/Eraser.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                          </ToggleButton>
+                      </toggles>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ToggleButtonGroup>
+                  <Separator layoutX="244.0" layoutY="10.0" orientation="VERTICAL" />
+                  <Button ellipsisString="Knoten Kontrahieren" layoutX="384.0" layoutY="15.0" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@Icons/Merge.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Knoten Duplizieren" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@Icons/Duplicate.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Alle Kanten zwischen ausgewählten Knoten löschen" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@Icons/KantenZwischenAusgewähltenKnotenLöschen.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Pfad Einfügen" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@Icons/Path.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Kreis Einfügen" layoutX="658.0" layoutY="15.0" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@Icons/Circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="763.0" layoutY="15.0" mnemonicParsing="false" text="Clique Einfügen">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Separator orientation="VERTICAL" />
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@Icons/Undo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@Icons/Save.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </top>
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />

@@ -303,11 +303,23 @@
                                              </VBox.margin>
                                           </HBox>
                                           <Separator prefWidth="200.0" />
-                                          <Label text="Graphen Vorschau:">
+                                          <HBox alignment="CENTER">
                                              <VBox.margin>
-                                                <Insets left="5.0" />
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </VBox.margin>
-                                          </Label>
+                                             <children>
+                                                <Label prefHeight="17.0" prefWidth="658.0" text="Graphen Vorschau:" />
+                                                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false">
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                         <image>
+                                                            <Image url="@Icons/Filter.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </HBox>
                                                     <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                                         <VBox.margin>
                                                             <Insets />
@@ -477,6 +489,28 @@
                                                     </toggles>
                                                 </ToggleButtonGroup>
                                                 <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Heuristiken im Step-By-Step-Mode" />
+                                                <ToggleButtonGroup layoutX="116.0" layoutY="10.0" selectionType="SINGLE">
+                                                   <toggles>
+                                                      <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/Undo.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </ToggleButton>
+                                                      <ToggleButton>
+                                                         <graphic>
+                                                            <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                               <image>
+                                                                  <Image url="@Icons/DoAgain.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </ToggleButton>
+                                                   </toggles>
+                                                </ToggleButtonGroup>
                                                 <Button alignment="CENTER" mnemonicParsing="false" text="Graph speichern">
                                                    <graphic>
                                                       <ImageView fitHeight="20.0" fitWidth="20.0">
