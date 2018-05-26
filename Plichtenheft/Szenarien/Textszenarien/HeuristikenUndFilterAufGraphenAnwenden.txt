@@ -1,0 +1,27 @@
+Heuristiken anwenden auf Graphen:
+Vorbedingung: Es wurden >=1 Graphen generiert.
+Nachbedingung (Erfolg): Heuristik hat Graph koloriert.
+Nachbedingung (Misserfolg): Heuristik hat Graph nicht vollständig koloriert.
+
+1.)  Software gibt fetig generierte Graphen direkt aus.
+     User wählt Heuristiken zur Kolorierung aus.
+2.)  Heuristiken färben einen Graphen nach dem anderen.
+3.1) Bei Erfolg wird der Graph koloriert ausgegeben und der nächste Graph wird gefärbt.
+3.2) Bei Misserfolg wird der Graph teilkoloriert ausgegeben und eine aussagekräftige Fehlermeldung wird dem Graphen beigefügt.
+4.)  Wenn das Programm fertig ist, oder der User abbricht, werden die bis dato betrachteten Graphen mit Kolorierung angezeigt.
+     Der Rest bleibt unverändert.
+
+Filter anwenden auf bereits kolorierte Graphen:
+Vorbedingung: Es wurden >=1 Graphen koloriert.
+Nachbedingung: Die Graphen werden nach den Anforderung des Filters und der Sortierung angezeigt.
+
+1.)  Software gibt fertig koloriert Graphen aus.
+     User wählt Filter und Sortierung.
+2.)  Programm filtert die kolorierten Graphen.
+3.)  Programm sortiert die kolorierten Graphen.
+4.)  Gefilterte/Sortierte Teilmenge der Graphen wird zuerst ausgegeben.
+     Der Rest wird drangehängt.
+--> Zu den 2 oberen Heuristiken gehören die Workflows: 1.)Preview: Heuristiken / Filter auswählen und auf Graphen anwenden
+						       Die in 1.) mit Sternchen markierten Zuständen werden in 2.) näher beschrieben.
+						       2.)Anwendung von Heuristiken
+

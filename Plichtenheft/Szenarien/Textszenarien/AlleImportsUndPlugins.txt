@@ -1,0 +1,32 @@
+User importiert Grapheneinstellungen:
+Vorbedingung: Codeirungsdatei ist korrekt geschrieben.
+Nachbedingung (Erfolg): Grapheneinstellungen werden aus Datei gelesen und in die Generierung übernommen.
+Nachbedingung (Misserfolg): Aussagekräftige Fehlermeldung erscheint.
+
+1.)  User wählt Pfad zur Datei aus.
+2.)  Programm liest Datei aus.
+3.1) Bei Erfolg werden die Grapheneinstellungen/Eigenschaften in die Generieung übernommen.
+3.2) Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.
+--> Hier gehört kein Workflowdiagramm dazu.
+
+User importiert Graphen:
+Vorbedingung: Codeirungsdatei ist korrekt geschrieben.
+Nachbedingung (Erfolg): Graphen werden aus Datei gelesen und in die Preview übernommen.
+Nachbedingung (Misserfolg): Aussagekräftige Fehlermeldung erscheint.
+
+1.)  User wählt Pfad zur Datei aus.
+2.)  Programm liest Datei aus.
+3.1) Bei Erfolg werden die Graphen in die Preview übernommen.
+3.2) Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.
+--> Hier gehört kein Workflowdiagramm dazu.
+
+User macht ein Heuristikplugin:
+Vorbedingung: Codierungsdatei (Java 8) ist korrekt geschreiben.
+Nachbedingung (Erfolg): Plugin wird in das Programm übernommen und Heuristik wird korrekt erkannt.
+Nachbedingung (Misserfolg): Aussagekräftige Fehlermeldung erscheint.
+
+1.)  User wählt in GUI "Hilfe & Sonstiges" --> "Heuristik-Plugin" aus.
+2.)  Es erscheint eine Anleitung, wie und wo ein Plugin eingefügt werden muss und welche API benötigt wird, zur korrekten Erkennung.
+3.1) Wenn der User die Anleitung befolgt und eine korrekte Datei einfügt, erhält der Programmcode das Plug-In mit dem Heuristikcode.
+3.2) Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.
+--> Hier gehört kein Workflowdiagramm dazu.
