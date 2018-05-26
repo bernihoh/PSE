@@ -531,6 +531,109 @@ bookmarks = true
 	~\newpage
 	\section{Systemmodelle}
 	\subsection{Szenarien}
+	
+	\subsubsection{Importieren von Graphen}
+	\textbf{Vorbedingung}: Es wird eine korrekt kodierte Datei ausgelesen
+	
+	\textbf{Nachbedingung} (Erfolg): Der Graph / die Graphen werden aus der Datei gelesen und in die Liste der Graphen aufgenommen.
+	
+	\textbf{Nachbedingung} (Misserfolg): Es erscheint eine aussagekräftige Fehlermeldung.
+	
+	\textbf{Ablauf}:
+	\begin{enumerate}[1)]
+		\item{Der Nutzer wählt den Pfad zu der Datei aus.}
+		\item{Das Programm liest die Datei aus.}
+		\item{
+			\begin{enumerate}[a)]
+				\item{Bei Erfolg werden die Graphen in die Liste der Graphen aufgenommen.}
+				\item{Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.}
+			\end{enumerate}
+		}
+	\end{enumerate}
+	
+	
+	\subsubsection{* Einfügen eines Heuristik-Plugins}
+	\textbf{Vorbedingung}: Das Plugin ist korrekt geschrieben und compiliert.
+	
+	\textbf{Nachbedingung} (Erfolg): Das Plugin wird in das Programm übernommen und seine Heuristiken werden korrekt erkannt.
+	
+	\textbf{Nachbedingung} (Misserfolg): Es erscheint eine aussagekräftige Fehlermeldung.
+	
+	\textbf{Ablauf}:
+	\begin{enumerate}[1)]
+		\item{Der Nutzer informiert sich unter >>Hilfe \& Sonstiges<< $\rightarrow$ >>Heuristik-Plugins<< über das Einfügen von Heuristik-Plugins.}
+		\item{Das Plugin wird in dem angegebenen Ordner abgelegt.}
+		\item{Beim nächsten Programmstart werden alle Plugins aus dem Ordner geladen.}
+		\item{
+			\begin{enumerate}[a)]
+				\item{Bei Erfolg erscheinen die Heuristiken des hinzugefügten Plugins in den auswählbaren Heuristiken.}
+				\item{Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.}
+			\end{enumerate}
+		}
+	\end{enumerate}
+	
+	~\newpage
+	\subsubsection{Allgemeiner Workflow}
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/workflow/heuristic_selection}
+	\end{figure}
+	
+	\FloatBarrier
+	
+	~\newpage
+	\subsubsection{Heuristiken auf Graphen anwenden}
+	\textbf{Vorbedingung}: Es gibt mindestens einen generierten oder geladenen Graph, auf den die Heuristik noch nicht angewandt wurde.
+	
+	\textbf{Nachbedingung} (Erfolg): Heuristik wurde auf den Graph angewandt. Das Resultat war positiv.
+	
+	\textbf{Nachbedingung} (Misserfolg): Heuristik wurde auf den Graph angewandt. Das Resultat war negativ.
+	
+	\textbf{Ablauf}:
+	\begin{enumerate}[1)]
+		\item{Der Nutzer wählt die anzuwendenden Heuristiken aus.}
+		\item{Das Programm färbt jeden Graph mit jeder Heuristik}
+		\item{
+			\begin{enumerate}[a)]
+				\item{Bei Erfolg speichert das Programm, dass die Heuristik auf diesem Graph erfolgreich war.}
+				\item{Bei Misserfolg speichert das Programm nicht nur, dass die Heuristik auf dem Graph nicht erfolgreich war, sondern auch die Fehlerdetails und den Zustand beim Abbruch.}
+			\end{enumerate}
+		}
+		\item{Das Programm sucht den nächsten Graph, der die Vorbedingung erfüllt oder der Nutzer bricht die Anwendung der Heuristiken ab.}
+	\end{enumerate}
+	
+	\textbf{Schema}:
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/workflow/heuristic_apply}
+	\end{figure}
+	
+	
+	~\newpage
+	\subsubsection{Filtern der Graphen}
+	\textbf{Vorbedingung}: Es gibt mindestens einen Graph, auf den mindestens eine Heuristik angewandt wurde.
+	
+	\textbf{Nachbedingung}: Die Graphen werden gemäß dem eingestellten Filter sortiert angezeigt.
+	
+	\textbf{Ablauf}:
+	\begin{enumerate}[1)]
+		\item{Der Nutzer wählt Filter und Sortierung.}
+		\item{Das Programm filtert die Graphen, auf denen die Heuristiken berechnet wurden.}
+		\item{Die Graphen werden sortiert.}
+		\item{Die bereits gefilterten und sortierten Graphen werden zuerst ausgegeben, die nicht filter-/sortierbaren Graphen werden anschließend angezeigt.}
+		\item{Hat eine Heuristik auf einem noch nicht gefilterten/sortierten Graph terminiert, wird dieser falls möglich in die sortierten Graphen eingefügt.}
+	\end{enumerate}
+	
+	\textbf{Schema}:
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/workflow/filter}
+	\end{figure}
+	TODO filter image
+	
+	TODO andere Workflows
+	
+	
 	\subsection{Anwendungsfälle}
 	
 	~\newpage
