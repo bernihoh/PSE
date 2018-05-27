@@ -22,25 +22,39 @@ bookmarks = true
 \floatplacement{figure}{H}
 \usepackage{placeins}
 
-%\renewcommand{\newline}{~\newline}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fix-cm}
+\newcommand{\titlesize}{\fontsize{35pt}{20pt}\selectfont}
+\newcommand{\themesize}{\fontsize{20pt}{20pt}\selectfont}
+\newcommand{\authorsize}{\fontsize{15pt}{20pt}\selectfont}
 
 
 \makeglossaries
 
 
 
+%\titlehead{\centering \includegraphics{images/title}}
 \title{RaGE Pflichtenheft}
 \author{Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen}
 
 \begin{document}
-	\maketitle
+	%\maketitle
 	
-	\newglossaryentry{Graph}{
-		name = ungerichteter einfacher Graph,
-		description = {Tupel $G = (V,E)$ mit Knotenmenge $V$ und Kantenmenge $E \subseteq \{X \subset V \mid \#X = 2\}$}
-	}
+	%\newpage
 	
-	\newpage
+	\begin{titlepage}
+		\centering \includegraphics[width=0.7\textwidth]{images/title}
+		
+		\titlesize \hspace*{.5cm} Random Graph Evaluation
+		~\newline~\newline
+		
+		\themesize \hspace*{3cm} Pflichtenheft
+		\newline~\newline
+		
+		\authorsize Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen
+	\end{titlepage}
 	
 	\tableofcontents
 	
@@ -145,7 +159,7 @@ bookmarks = true
 	\end{enumerate}
 	
 	\subsubsection*{/F12/ Einstellungen für Graphen} \label{f12} \addcontentsline{toc}{subsubsection}{\nameref{f12}}
-	Hat der Nutzer die Generierung von SGs gewählt, so kann er die folgenden Einstellungen vornehmen:
+	Hat der Nutzer die Generierung von einfachen ungerichteten Graphen gewählt, so kann er die folgenden Einstellungen vornehmen:
 	\begin{enumerate}[i)]
 		\item{Die Anzahl von Knoten $n$ der zu generierenden Graphen kann festgelegt werden. Es gilt $1 \leq n \leq 1000$.}
 		\item{Der minimale und maximale Knotengrad $\delta_{min}$ und $\Delta_{max}$ der zu generierenden Graphen kann festgelegt werden. Für einen beliebigen generierten Graphen $G$ gilt dann $$0 \leq \delta_{min} \leq \delta(G) \leq \Delta(G) \leq \Delta_{max} \leq n-1.$$}
@@ -155,13 +169,13 @@ bookmarks = true
 				\item{Baum}
 				\item{Bipartition}
 				\item{Planarität}
-				\item{Intervallgraph / Chordalität}
+				%\item{Intervallgraph / Chordalität}
 			\end{enumerate}
 		}
 	\end{enumerate}
 	
 	\subsubsection*{/F13/ Einstellungen für Hypergraphen} \label{f13} \addcontentsline{toc}{subsubsection}{\nameref{f13}}
-	Hat der Nutzer die Generierung von SHs gewählt, so kann er die folgenden Einstellungen vornehmen:
+	Hat der Nutzer die Generierung von einfachen Hypergraphen gewählt, so kann er die folgenden Einstellungen vornehmen:
 	\begin{enumerate}[i)]
 		\item{Die Anzahl von Knoten $n$ der zu generierenden Graphen kann festgelegt werden. Es gilt $1 \leq n \leq 1000$.}
 		\item{Der minimale und maximale Knotengrad $\delta_{min}$ und $\Delta_{max}$ der zu generierenden Graphen kann festgelegt werden. Für einen beliebigen generierten Graphen $G$ gilt dann $$0 \leq \delta_{min} \leq \delta(G) \leq \Delta(G) \leq \Delta_{max} \leq n-1.$$}
@@ -781,6 +795,13 @@ bookmarks = true
 	~\newpage
 	\subsection{Anwendungsfälle}
 	
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/usecase}
+	\end{figure}
+	
+	\FloatBarrier
+	
 	~\newpage
 	\subsection{Durchführbarkeitsanalyse}
 	\subsubsection{Technische Durchführbarkeit}
@@ -828,10 +849,101 @@ bookmarks = true
 	\end{enumerate}
 	die zu einer Verzögerung der Fertigstellung des Projektes führen können, gibt es keine nennenswerten Risiken.
 	
+	~\newpage
 	\section{Glossar}
 	
-	TODO
+	\subsection{Mathematische Definitionen}
 	
-	\glsaddall
-	\printglossaries
+	\textbf{Graph} \hspace*{.5em} Überbegriff für alle Graphentypen, insbesondere der hier aufgeführten
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{einfacher ungerichteter Graph} \newline
+	Tupel $G=(V,E)$ mit Knotenmenge $V$ und Kantenmenge $E \subseteq \{e \subseteq V \mid \#e = 2\}$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{einfacher Hypergraph} \newline
+	Tupel $G = (V,E)$ mit Knotenmenge $V$ und Hyperkantenmenge $E \subseteq \{e \subseteq V \mid \# e > 1\}$ mit der Eigenschaft, dass $\forall e,f \in E: \# e \cap f \leq 1$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{$r$-uniformer Hypergraph} \newline
+	Hypergraph $G = (V,E)$ mit der Eigenschaft, dass $\forall e \in E: \# e = r$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Adjazenz von Knoten} \newline
+	$x,y \in V$ mit $\exists e \in E: x,y \in E$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Adjazenz von Kanten} \newline
+	$e,f \in E$ mit $e \cap f \neq \emptyset$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Knotenkontraktion} \newline
+	Für einen einfachen ungerichteten Graph $G$ und $x \neq y \in V$ ist $G'=(V',E')$ definiert durch $V' = V \setminus \{x,y\} \cup \{v_{xy}\}$, wobei $v_{x,y} \notin V$, und $E' = E_1 \cup E_2$ mit $E_1 = \{e \in E \mid x,y \notin e\}$ und $E_2 = \{\{v, v_{x,y}\} \mid \{v,x\} \in E $ oder $ \{v,y\} \in E\}$
+	
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Heuristik} \newline
+	Algorithmus, der mit auf Vermutungen basierenden Methoden, versucht zu einer Lösung des Problems zu kommen. Falls eine Lösung gefunden wird, kann diese von der optimalen Lösung abweichen.
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Zusammenhängender Graph} \newline
+	$\forall x,y \in V \;\exists n \in \mathbb N \;\exists e_1, ..., e_n \in E$, sodass $x \in e_1$, $y \in e_n$ und $\forall i \in \{1, ..., n-1\}: e_i \cap e_{i+1} \neq \emptyset$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Baum} \newline
+	einfacher, ungerichteter, zusammenhängender Graph mit $\# E = \#V-1$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Bipartiter Graph} \newline
+	einfacher, ungerichteter Graph mit $\exists A,B \subseteq V$, sodass $A \cap B = \emptyset$, $A \cup B = V$ und $\forall e = \{x,y\} \in E:$ \OE $\; x \in A, y \in B$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Pfad} \newline
+	Für $n \in \mathbb N$ ist $P_n = (V,E)$ mit $V = \{v_1, ..., v_n\}$ und $E = \{\{v_i, v_i+1\} \mid i = 1, ..., n-1\}$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Kreis} \newline
+	Für $n \in \mathbb N$ ist $C_n = (V,E)$ mit $V = \{v_1, ..., v_n\}$ und $E = \{\{v_i, v_i+1\} \mid i = 1, ..., n-1\} \cup \{\{v_n, v_1\}\}$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Clique} \newline
+	Für $n \in \mathbb N$ ist $K_n = (V,E)$ mit $V = \{v_1, ..., v_n\}$ und $E = \{e \subseteq V \mid \#e = 2\}$
+	
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Knotenkolorierung} \newline
+	$c: V \to \mathbb N$ mit $\forall x,y \in V$ mit $\exists e \in E: x,y \in e$ gilt $c(x) \neq c(y)$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Kantenkolorierung} \newline
+	$c: E \to \mathbb N$ mit $\forall e,f \in E$ mit $e \cap f \neq \emptyset$ gilt $c(e) \neq c(f)$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Knotenkolorierung} \newline
+	$c: V \cup E \to \mathbb N$ mit $c \vert _V$ ist Knotenkolorierung, $c \vert_E$ ist Kantenkolorierung und $\forall v \in V, e \in E$ mit $v \in e$ gilt $c(v) \neq c(e)$
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Heuristik} \newline
+	Algorithmus, der mit auf Vermutungen basierenden Methoden, versucht zu einer Lösung des Problems zu kommen. Falls eine Lösung gefunden wird, kann diese von der optimalen Lösung abweichen.
+	
+	\subsection{Terminologie}
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Generieren} \newline
+	Erstellen von Datenmengen mit probabilistischen Methoden.
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Plugin} \newline
+	Optionale Softwarekomponente, die eine bestehende Software erweitert. Sie wird oft vom Benutzer installiert und von der Hauptanwendung zur Laufzeit eingebunden. Ein Plugin ist ohne Hauptanwendung nicht lauffähig.
+	
+	\hangindent=1.5cm \hangafter=1
+	\textbf{Speichern und Laden} \newline
+	Das Programm nutzt zunächst nur den flüchtigen Arbeitsspeicher. Sollen Daten über die Laufzeit des Programms hinaus gesichert werden, so müssen diese auf die Festplatte geschrieben werden. Dieser Prozess heißt speichern. Die Umkehrung des Prozesses, d.h. das Wiedereinfügen der Daten in den Arbeitsspeicher, heißt laden.
+	
+	\subsection{Akronyme}
+	
+	\textbf{KIT} Karlsruher Institut für Technologie
+	
+	\textbf{IPD} Institut für Programmstrukturen und Datenorganisation
+	
 \end{document}
