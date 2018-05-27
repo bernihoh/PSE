@@ -191,7 +191,7 @@ bookmarks = true
 	\subsection*{/F20/ Anwendung von Heuristiken} \label{f20} \addcontentsline{toc}{subsection}{\nameref{f20}}
 	
 	\subsubsection*{/F21/ Liste von Heuristiken} \label{f21} \addcontentsline{toc}{subsubsection}{\nameref{f21}}
-	Es kann eine Liste von Heuristiken bestimmt werden, die auf jeden der generierten Graphen angewandt werden. Diese obliegt den folgenden Einschränkungen:
+	Es kann eine Liste von Heuristiken bestimmt werden, die auf jeden der generierten Graphen angewandt werden. Die Liste obliegt den folgenden Einschränkungen:
 	\begin{enumerate}[i)]
 		\item{Die möglichen Heuristiken sind abhängig von dem generierten Graphentyp.}
 		\item{Dieselbe Heurisitk kann mit unterschiedlichen Einstellungen mehrfach in der Liste vorkommen, nicht jedoch zweimal mit derselben Einstellung.}
@@ -255,7 +255,7 @@ bookmarks = true
 	
 	Der Nutzer kann Algorithmen auswählen, Einstellungen an ihnen vornehmen und sie in der Liste der auf die Graphen anzuwendenden Heuristiken speichern. Heuristiken können auch wieder aus der Liste entfernt werden. 
 	
-	Wie in /F21/ angegeben führt eine Veränderung der List zu einer Berechnung der neu hinzugekommenen oder veränderten Heuristiken auf allen generierten Graphen. Ferner werden die Heuristiken der Liste automatisch auf jeden neu generierten Graph angewandt.
+	Wie in /F21/ angegeben führt eine Veränderung der Liste zu einer Berechnung der neu hinzugekommenen oder veränderten Heuristiken auf allen generierten Graphen. Ferner werden die Heuristiken der Liste automatisch auf jeden neu generierten Graph angewandt.
 	Es ist ersichtlich, ob auf einen Graphen noch nicht alle Heuristiken angewandt wurden bzw. ob im Moment eine Heuristik auf ihm berechnet wird.
 	
 	~\newline
@@ -291,7 +291,7 @@ bookmarks = true
 	
 	Der Nutzer kann aus der in /F42/ erstellten Liste eine beliebige Heuristik auswählen, deren Ergebnis dann in geeigneter Weise (z.B. durch Färben der Kanten) angezeigt wird. Ferner besteht die Möglichkeit die Heuristik neu auszuführen, um ihre Arbeitsweise wahlweise live oder schrittweise zu begutachten. Ein Eingriff in die Arbeitsweise der Heuristik ist jedoch \textbf{nicht} möglich.
 	
-	Der Nutzer kann zudem lokal weitere Heuristiken auf den Graph anwenden, die nicht in der globalen Liste aus /F42/ sind. Das ermöglicht die genauere Untersuchung eines einzelnen Graphen.
+	Der Nutzer kann zudem lokal weitere Heuristiken auf den Graphen anwenden, die nicht in der globalen Liste aus /F42/ sind. Das ermöglicht die genauere Untersuchung eines einzelnen Graphen.
 	
 	\subsubsection*{/F44/ Grapheditor} \label{f44} \addcontentsline{toc}{subsubsection}{\nameref{f44}}
 	Der Grapheditor bietet dem Nutzer alle in /F30/ spezifierten Möglichkeiten um Graphen zu modifizieren oder zu erstellen.
@@ -337,7 +337,7 @@ bookmarks = true
 	\subsubsection*{/F71/ Graphen} \label{f71} \addcontentsline{toc}{subsubsection}{\nameref{f71}}
 	Der Nutzer kann eine Auswahl oder alle generierten Graphen speichern. Für jeden Graph werden die Ergebnisse aller darauf berechneten Heuristiken zusammen mit den Einstellungen der Heuristik gespeichert.
 	
-	Gespeicherte Graphen können wieder geladen werden. Sie werden als von möglicherweise bereits generierten Graphen unabhängige Datenmenge in das Programm eingefügt. Ergebnisse von auf ihnen berechneten Heuristiken werden übernommen. Ist eine Heuristik eigentlich nicht auf den Graph anzuwenden, so wird ihr Ergebnis in der lokalen Liste von Heuristiken des Graphen gespeichert.
+	Gespeicherte Graphen können wieder geladen werden. Sie werden als von möglicherweise bereits generierten Graphen unabhängige Datenmenge in das Programm eingefügt. Ergebnisse von auf ihnen berechneten Heuristiken werden übernommen. Ist eine Heuristik eigentlich nicht auf den Graphen anzuwenden, so wird ihr Ergebnis in der lokalen Liste von Heuristiken des Graphen gespeichert.
 		
 	\subsubsection*{/F72/ Heuristiken} \label{f72} \addcontentsline{toc}{subsubsection}{\nameref{f72}}
 	Die Liste der eingestellten Heuristiken kann gespeichert werden. Die Heuristiken können auch wieder geladen werden, wenn sie auf den in /F11/ eingestellten Graphentyp anwendbar sind.
@@ -405,7 +405,7 @@ bookmarks = true
 		\item[--]{Die in /F12/* erkannten Grapheigenschaften}
 	\end{enumerate}
 	
-	Für jede auf den Graph angewandte Heuristik werden die folgenden Daten gespeichert:
+	Für jede auf den Graphen angewandte Heuristik werden die folgenden Daten gespeichert:
 	\begin{enumerate}[--]
 		\item{Name der Heuristik}
 		\item{Einstellungen der Heuristik}
@@ -519,7 +519,7 @@ bookmarks = true
 		\item{Ermöglicht Beobachtung der Arbeitsweise der ausgewählten Heuristik}
 		\item{Speichern des Graphen}
 		\item{Öffnet den Grapheditor zur Modifikation des Graphen}
-		\item{Informationen über den Graph (z.B. $\delta (G), \Delta (G), \# E(G)$)}
+		\item{Informationen über den Graphen (z.B. $\delta (G), \Delta (G), \# E(G)$)}
 		\item{Darstellung des Graphen mit Ergebnis der ausgewählten Heuristik}
 	\end{enumerate}
 	
@@ -662,9 +662,9 @@ bookmarks = true
 	\subsubsection{Heuristiken auf Graphen anwenden}
 	\textbf{Vorbedingung}: Es gibt mindestens einen generierten oder geladenen Graph, auf den die Heuristik noch nicht angewandt wurde.
 	
-	\textbf{Nachbedingung} (Erfolg): Heuristik wurde auf den Graph angewandt. Das Resultat war positiv.
+	\textbf{Nachbedingung} (Erfolg): Heuristik wurde auf den Graphen angewandt. Das Resultat war positiv.
 	
-	\textbf{Nachbedingung} (Misserfolg): Heuristik wurde auf den Graph angewandt. Das Resultat war negativ.
+	\textbf{Nachbedingung} (Misserfolg): Heuristik wurde auf den Graphen angewandt. Das Resultat war negativ.
 	
 	\textbf{Ablauf}:
 	\begin{enumerate}[1)]
