@@ -488,7 +488,7 @@ bookmarks = true
 	
 	
 	
-	~\newpage
+	%~\newpage
 	\subsection{Detailansicht}
 	~\begin{figure}[!h]
 		\centering
@@ -532,6 +532,47 @@ bookmarks = true
 	\section{Systemmodelle}
 	\subsection{Szenarien}
 	
+	\subsubsection{Generierung von Graphen}
+	\textbf{Vorbedingung}: keine
+	
+	\textbf{Nachbedingung} Es wurden Graphen mit durch den Nutzer spezifizierten Eigenschaften generiert
+	
+	\textbf{Ablauf}:
+	\begin{enumerate}[1)]
+		\item{Der Nutzer wählt den gewünschten Graphentyp und die gewünschten Grapheigenschaften aus und bestätigt seine Auswahl.}
+		\item{Das Programm generiert anhand der Eigenschaften zufällige Graphen und gibt sie in der Preview graphisch aus. Es können jederzeit neue Graphen generiert werden. Diese werden dann in einer seperaten Preview ausgegeben.}
+	\end{enumerate}
+	
+	\textbf{Schema}:
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/workflow/graph_generation}
+	\end{figure}
+	
+	
+	\FloatBarrier
+	~\newpage
+	\subsubsection{Graphen von Hand erstellen}
+	\textbf{Vorbedingung}: keine
+	
+	\textbf{Nachbedingung} Der erstellte Graph wird in Preview geladen.
+	
+	\textbf{Ablauf}:
+	\begin{enumerate}[1)]
+		\item{Der Nutzer wählt die >>Von Hand erstellen<< Option aus. Der Grapheditor wird geöffnet.}
+		\item{Es kann mithilfe von Tools ein Graph erstellt werden.}
+		\item{Sobald der Nutzer >>OK<< betätigt, wird der Graph hinten an die Graphenliste in der Preview geladen.}
+	\end{enumerate}
+	
+	\textbf{Schema}:
+	~\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{images/workflow/graph_drawing}
+	\end{figure}
+	
+	
+	\FloatBarrier
+	~\newpage
 	\subsubsection{Importieren von Graphen}
 	\textbf{Vorbedingung}: Es wird eine korrekt kodierte Datei ausgelesen
 	
@@ -552,32 +593,85 @@ bookmarks = true
 	\end{enumerate}
 	
 	
-	\subsubsection{* Einfügen eines Heuristik-Plugins}
-	\textbf{Vorbedingung}: Das Plugin ist korrekt geschrieben und compiliert.
+	\FloatBarrier
+	~\newpage
+	\subsubsection{Detailansicht}
+	\textbf{Vorbedingung}: Es muss einen generierten Graph geben.
 	
-	\textbf{Nachbedingung} (Erfolg): Das Plugin wird in das Programm übernommen und seine Heuristiken werden korrekt erkannt.
-	
-	\textbf{Nachbedingung} (Misserfolg): Es erscheint eine aussagekräftige Fehlermeldung.
+	\textbf{Nachbedingung} Keine
 	
 	\textbf{Ablauf}:
+	In der Detailansicht hat der Nutzer die folgenden Möglichkeiten:
 	\begin{enumerate}[1)]
-		\item{Der Nutzer informiert sich unter >>Hilfe \& Sonstiges<< $\rightarrow$ >>Heuristik-Plugins<< über das Einfügen von Heuristik-Plugins.}
-		\item{Das Plugin wird in dem angegebenen Ordner abgelegt.}
-		\item{Beim nächsten Programmstart werden alle Plugins aus dem Ordner geladen.}
-		\item{
-			\begin{enumerate}[a)]
-				\item{Bei Erfolg erscheinen die Heuristiken des hinzugefügten Plugins in den auswählbaren Heuristiken.}
-				\item{Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.}
-			\end{enumerate}
-		}
+		\item{Lokale Heuristiken hinzufügen}
+		\item{Graphen auf der Festplatte speichern}
+		\item{Ansicht ändern: Graphisch / Tabellarisch}
+		\item{Eine Heuristik im Step-by-Step-Modus ablaufen lassen}
+		\item{Einen neuen Graphen aus dem alten erstellen. Nach Auswahl von >>Graphen von Hand bearbeiten<< öffnet sich der Grapheditor.}
+		\item{Zwischen den Graphen in der Preview wechseln, die in der Detailansicht angezeigt werden sollen}
+		\item{Informationen über Eigenschaften des Graphen einlesen}
 	\end{enumerate}
 	
+	\textbf{Schema}: Siehe Schema zu >>Graphen von Hand bearbeiten<<
+	
+	
+	\subsubsection{Graphen von Hand bearbeiten}
+	\textbf{Vorbedingung}: Es gibt einen Graph.
+	
+	\textbf{Nachbedingung}: TODO
+	
+	\textbf{Ablauf}:
+	In der Detailansicht hat der Nutzer die folgenden Möglichkeiten:
+	\begin{enumerate}[1)]
+		\item{Lokale Heuristiken hinzufügen}
+		\item{Graphen auf der Festplatte speichern}
+		\item{Ansicht ändern: Graphisch / Tabellarisch}
+		\item{Eine Heuristik im Step-by-Step-Modus ablaufen lassen}
+		\item{Einen neuen Graphen aus dem alten erstellen. Nach Auswahl von >>Graphen von Hand bearbeiten<< öffnet sich der Grapheditor.}
+		\item{Zwischen den Graphen in der Preview wechseln, die in der Detailansicht angezeigt werden sollen}
+		\item{Informationen über Eigenschaften des Graphen einlesen}
+	\end{enumerate}
+	
+	\textbf{Schema}:
+	
+	~\begin{figure}[!h]
+		\centering
+		%\hspace*{-3cm}
+		\includegraphics[angle=90, width=0.8\textwidth]{images/workflow/detail2}
+	\end{figure}
+	
+%Graphen von Hand bearbeiten:
+%Vorbedingung: Ein fertig generierter Graph muss existieren.
+%Nachbedingung: Falls Änderungen am Graphen vorgenommen wurden, wird die Änderung
+%	       als Version direkt neben dem Ursprungsgraphen in der Previw gepeichert
+%               und die Zusammengehörigkeit mit einer Schraffierung gekenzeichnet.
+%1.)  User öffnet einen Graphen in der Deatilansicht.
+%     User drückt auf "Bearbeiten.
+%2.)  Graph wird im Editor geöffnet.
+%3.)  User kann mithilfe von Tools den Graphen bearbeiten.
+%4.)  Sobald User auf "OK" drückt, wird der modifizierte Graph in die Detailansicht geladen
+%     und auch als Version in der Preview, wie in der Nachbedingung beschrieben, gespeichert.
+
+	
+%Graphen Speichern:
+%Vorbedingung: Es müssen >=1 Graphen in Preview sein.
+%Nachbedingung: Graphen werden korrekt in einer Datei kodiert und auf der Festplatte gespeichert.
+
+%1.)  User drückt in der GUI unten rechts auf -->"Graphen" --> "Graphen Speichern".
+%2.)  User wählt die zu speichernden Graphen aus und Bestätigt. //(Es muss noch im Entwurf spezifiziert werden, ich würde sagen sowie die Bilderauswahl in WIN10, indem man mit der Maus ein Kasten zieht.)
+%3.)  Die Graphen werden in einer Datei kodiert und auf der Festplatte gespeichert.
+%--> Hier gehört kein Workflowdiagramm dazu.
+	
+	\FloatBarrier
 	~\newpage
 	\subsubsection{Allgemeiner Workflow}
 	~\begin{figure}[!h]
 		\centering
 		\includegraphics[width=\textwidth]{images/workflow/heuristic_selection}
 	\end{figure}
+	
+	
+	
 	
 	\FloatBarrier
 	
@@ -609,6 +703,8 @@ bookmarks = true
 	\end{figure}
 	
 	
+	
+	
 	~\newpage
 	\subsubsection{Filtern der Graphen}
 	\textbf{Vorbedingung}: Es gibt mindestens einen Graph, auf den mindestens eine Heuristik angewandt wurde.
@@ -629,11 +725,74 @@ bookmarks = true
 		\centering
 		\includegraphics[width=\textwidth]{images/workflow/filter}
 	\end{figure}
-	TODO filter image
 	
-	TODO andere Workflows
+	\FloatBarrier
 	
+
+%Statistiken anzeigen:
+%Vorbedingung: Es müssen >=1 Graphen koloriert sein.
+%Nachbedingung: Es werden verscheidene Statistiken angezeigt, die Informationen über die Heuristiken und Graphen beinhalten.
+
+%1.)  Während der Kolorierung und Generierung sammelt das Programm Daten über die Graphen und deren Färbung,
+%     sowie die Effizienz und Erfolg der Heuristiken.
+%2.)  Nach der kolorierung der Graphen drückt der User auf "Statistiken".
+%3.)  Das Programm liest die gesammelten Daten aus und stellt sie Graphisch in verscheidenen Statistiken dar.
+%--> Hier kommt kein Workflowdiagramm rein.
 	
+
+%Grapheneinstellunge Speichern:
+%Vorbedingung: Es müssen Grapheingenschaften eingestellt sein.
+%Nachbedingung: Grapheneinstellungen werden korrekt in einer Datei kodiert und auf der Festplatte gespeichert.
+
+%1.)  User drückt in der GUI unten rechts auf -->"Graphen" --> "Grapheneisntellungen Speichern".
+%2.)  Die Grapheneinstellungen werden in einer Datei kodiert und auf der Festplatte gespeichert.
+%--> Hier gehört kein Workflowdiagramm dazu.
+
+
+%Heuristikeinstellungen speichern:
+%Vorbedingung: Es müssen Heuristiken eingestellt sein.
+%Nachbedingung: Heuristiken werden korrekt in einer Datei kodiert und auf der Festplatte gespeichert.
+
+%1.)  User drückt in der GUI unten rechts auf -->"Hilfe & Sonstiges" --> "Heuristikeinstellungen Speichern".
+%2.)  Die Heuristikeinstellungen werden in einer Datei kodiert und auf der Festplatte gespeichert.
+%--> Hier gehört kein Workflowdiagramm dazu.
+
+
+%User importiert Heuristikeinstellungen:
+%Vorbedingung: Codeirungsdatei ist korrekt geschrieben, es wurden >=1 Graphen erstellt.
+%Nachbedingung (Erfolg): Heuristikeinstellungen werden aus Datei gelesen und in die Heuristikauswahl übernommen.
+%Nachbedingung (Misserfolg): Aussagekräftige Fehlermeldung erscheint.
+
+%1.)  User wählt -->"Hilfe & Sonstiges" --> "Heuristeinstellungen importieren" und gibt Pfad zu Datei an.
+%2.1) Programm liest Datei aus in globale Heuristiken ein, falls User die Preview zuletzt offen hat.
+%2.2) Programm liest Datei aus in lokale Heuristiken ein, falls User die Detailansicht zuletzt offen hat.
+%3.1) Bei Erfolg werden die Heuristiken in die globale/lokale Heuristikauswahl übernommen.
+%3.2) Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.
+%--> Hier gehört kein Workflowdiagramm dazu.
+
+
+
+	
+	\subsubsection{* Einfügen eines Heuristik-Plugins}
+	\textbf{Vorbedingung}: Das Plugin ist korrekt geschrieben und compiliert.
+	
+	\textbf{Nachbedingung} (Erfolg): Das Plugin wird in das Programm übernommen und seine Heuristiken werden korrekt erkannt.
+	
+	\textbf{Nachbedingung} (Misserfolg): Es erscheint eine aussagekräftige Fehlermeldung.
+	
+	\textbf{Ablauf}:
+	\begin{enumerate}[1)]
+		\item{Der Nutzer informiert sich unter >>Hilfe \& Sonstiges<< $\rightarrow$ >>Heuristik-Plugins<< über das Einfügen von Heuristik-Plugins.}
+		\item{Das Plugin wird in dem angegebenen Ordner abgelegt.}
+		\item{Beim nächsten Programmstart werden alle Plugins aus dem Ordner geladen.}
+		\item{
+			\begin{enumerate}[a)]
+				\item{Bei Erfolg erscheinen die Heuristiken des hinzugefügten Plugins in den auswählbaren Heuristiken.}
+				\item{Bei Misserfolg wird der Grund des Fehlers angezeigt, falls er ermittelt werden kann.}
+			\end{enumerate}
+		}
+	\end{enumerate}
+
 	\subsection{Anwendungsfälle}
 	
 	~\newpage
