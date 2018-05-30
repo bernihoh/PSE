@@ -1,0 +1,125 @@
+Heuristiken Pseudocode
+
+Definitionen
+	Knoten
+		V = {v_1, …, v_n}
+		Maximaler Knotengrad = m
+	Kanten
+		E = {e_1, …, e_k}
+	Farben
+		F = {1, …, m+2}
+		
+Aufbau
+	Entity
+		Variables
+			final int ID
+		Methods
+			Getter & Setter
+		
+	Entity_Coloured extends Entity
+		Variables
+			ArrayList<Integer> possibleColours
+				List of all possible ColourIDs for this Object
+		Methods
+			Getter & Setter
+				
+	Entity_Weight extends Entity
+		Variables
+			double weight
+		Methods
+			Getter & Setter
+____
+	Node extends Entity
+		??
+	
+	Node_Coloured extends Node, Entity_Coloured
+		??
+		
+	Node_Weight extends Node, Entity_Weight
+		??
+____
+	Edge extends Entity
+		Variables
+			Integer StartNodeID
+			Integer EndNodeID
+		Methods
+			Getter & Setter
+		
+	Edge_Coloured extends Edge, Entity_Coloured
+		??
+		
+	Edge_Weight extends Edge, Entity_Weight
+		??
+____	
+	Graph<N extends Node, E extends Edge> extends Entity
+		Variables
+			ArrayList<N>
+			ArrayList<E>
+		Methods
+			public ArrayList<N> getAllNeighboursOf(int id)
+			public int getMaxNodeRank()
+			Getter & Setter
+				public void addEndge(E e)
+					Check Foreghn-Key for existence.
+				public void addNode(N n)
+					Check Foreghn-Key for existence.
+____	
+	ColourManager
+		Variables
+			ArrayList<ArrayList<Integer>>
+				2D-Integer Array that contains the Table off All Colours and the amount of uses in Graph.
+					ColourIDs:		1 2 3 ...
+					Amount Uses:	0 3 2 ...
+		Methods
+			public void sortListByAmount()
+			public void assColourUse(int id, int amount)
+____		
+	Heuristik
+		Variables
+			Integer nodeWeight
+			Integer edgeWeight
+			... (Other Settings)
+		Methods
+			public Graph calculate(Graph g)
+
+____________
+
+(1) Greedy:
+
+	forall v € V
+		...
+	
+	forall e € E
+		...
+    
+    Die Kolorierung der Knoten darf zum einen die Vorgaben gemäß Total Coloring Conjecture nicht verletzen
+		d. h. zwei benachbarte Knoten dürfen nicht die gleiche Farbe haben
+		und die Farben sollen zum anderen möglichst gleich häufig als Knotenfarben vorkommen.
+    Zum Kolorieren der Kanten werden dann alle Knoten einer nach dem anderen durchgegangen
+		und alle Kanten adjazent zu diesem Knoten, die noch nicht koloriert sind, werden koloriert, eine Kante nach der anderen.
+		Beim Kolorieren der Kanten ist darauf zu achten, dass alle Farben möglichst gleich häufig vergeben werden.
+			Dabei kann die Vergabe einer Farbe an eine Kante das gleiche Gewicht haben wie die Vergabe einer Farbe an einen Knoten, oder wir können diese Fälle unterschiedlich gewichten.
+			Beispiel: Angenommen, ein Knoten und sieben Kanten haben die Farbe 1. Bei gleicher Gewichtung haben acht Objekte die Farbe 1. Wenn wir Knoten beispielsweise doppelt gewichten, haben Objekte mit Gesamtgewicht 9 die Farbe 1. (Diese Gewichtung soll ein exogener Parameter sein.)
+
+(2) Greedy+One:
+
+Wie (1), sobald eine Kante aber nur noch eine mögliche Farbe hat, wird sie mit dieser Farbe koloriert. (D. h. in jedem Schritt werden zu Beginn alle noch nicht kolorierten Kanten durchlaufen, und es wird geschaut, wieviele mögliche Farben jede dieser Kanten hat. Eventuell muss man nicht in jedem Schritt alle dieser Kanten inspizieren; es ist aber derzeit unklar, wieviel eine entsprechende Optimierung bringt. Möglicherweise ist das ein sinnvolles Kann-Kriterium.)
+
+(3) Greedy+Few:
+
+"Ähnlich" zu (1), wenn eine Kante e1 aber gerade mehr mögliche Farben hat als eine Kante e2, darf im nächsten Schritt nicht e1 koloriert werden. (D. h. Kanten mit vergleichsweise wenigen möglichen Farben sind bevorzugt als nächste zu kolorieren.)
+
+(4) Greedy+Set:
+
+    Es kann vorkommen, dass einzelne Kanten, für sich betrachtet, noch viele mögliche Farben haben, eine Menge von Kanten aber dennoch nicht mehr kolorierbar ist. Beispiel: Ein Knoten hat vier ausgehende unkolorierte Kanten, jede dieser Kanten hat die möglichen Farben {1, 2, 3}.
+    Heuristik deshalb "ähnlich" zu (3): Wir suchen in jedem Schritt, bevor wir Kanten kolorieren, den Knoten n und eine Teilmenge der Kanten adjazent zu n, K, für die flex(K) über alle Knoten hinweg minimal ist. (D. h. es gibt keine andere Menge von Kanten adjazent zu irgendeinem Knoten mit echt kleinerer Flexibilität.) Diese Kanten kolorieren wir dann als nächstes. Für den Fall, dass es mehrere derartige Mengen von Kanten geben sollte, sind Sie gehalten, sich eine oder mehrere Vorgehensweisen zu überlegen, in welcher Reihenfolge vorgegangen werden sollte.
+
+(5) Greedy+Connected:
+
+Wie (4), nur dass es sich bei K nicht um eine Menge von Kanten handeln muss, die zu einem Knoten adjazent sind, sondern um eine beliebige Menge zusammenhängender Kanten. (Diese Variante wird vermutlich bereits auf Graphen mittlerer Größe einen unerträglichen Rechenaufwand verursachen, das ist aber nicht schlimm. Eventuell können wir den Aufwand zumindest deckeln, indem wir uns auf Teilgraphen der Größe k beschränken, mit k, der Anzahl der Kanten, als exogenem Parameter.)
+
+(6+) Kolorierung der Kanten nicht mehr strikt nach der Kolorierung der Knoten:
+
+Mit den bisherigen Heuristiken haben wir erst die Knoten koloriert, dann die Kanten. Sie sollen sich Varianten dieser bisherigen Heuristiken überlegen, für die das nicht der Fall ist (d. h. 'enge' Verzahnung der Kolorierung von Knoten und Kanten ist jetzt gewünscht), sie im Spezifikationsdokument sauber beschreiben und umsetzen.
+
+Ein Kann-Kriterium ist schließlich, dass Sie sich weitere Heuristiken ausdenken und implementieren. (Über diese Heuristiken sollten wir aber sprechen, bevor Sie sich an den detaillierten Entwurf und an die Umsetzung machen, und kurz darüber nachdenken, ob sie sich wirklich aus inhaltlicher Sicht lohnen.)
