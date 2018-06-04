@@ -1,4 +1,4 @@
-abstract class Graph<G extends Graph, E extends Edge>:
+abstract class Graph<E extends Edge>:
 	int numVerts
 	HashSet<E> edges
 
@@ -81,12 +81,23 @@ abstract class HeuristicResult<G>:
 
 
 abstract class TCData:
+	SimpleUndirectedGraph graph
 	HashMap<int, int> colorWeights
 	HashMap<int, List<int>> freeVertexColors
 	HashMap<SimpleUndirectedEdge, List<int>> freeEdgeColors
 	HashMap<Int, OrderedList<int>> neighborhood
 
-	abstract void update()
+	abstract void init()
+	abstract void coloredVertex(int v)
+	abstract void coloredEdge(SimpleUndirectedEdge e)
+
+	int getFlex(List<SimpleUndirectedEdge> edges):
+		HashSet colors
+		for edge in edges:
+			colors.add(freeEdgeColors[edge])
+		return colors.size() - edges.size()
+
+		//TODO include weights or not?
 
 class TCHeuristic extends Heuristic<SimpleUndirectedGraph, TCResult>:
 	int numColors
@@ -107,9 +118,11 @@ class TCHeuristic extends Heuristic<SimpleUndirectedGraph, TCResult>:
 	protected TCData initData(SimpleUndirectedGraph graph):
 		TCData data
 
+		data.graph = graph
+
 		for c in [0..numColors-1]:
 			//init color colorWeights
-			colorWeights[c] = 0
+			data.colorWeights[c] = 0
 
 		for v in [0..graph.numVerts-1]:
 			//init free colors
@@ -122,7 +135,7 @@ class TCHeuristic extends Heuristic<SimpleUndirectedGraph, TCResult>:
 			//init free colors
 			data.freeEdgeColors[e] = [0..numColors-1]
 
-		update()
+		data.init()
 
 	protected void colorVertex(int v, int c, TCData data, TCResult result):
 		//color v with color c
@@ -140,7 +153,7 @@ class TCHeuristic extends Heuristic<SimpleUndirectedGraph, TCResult>:
 			freeEdgeColors[SimpleUndirectedEdge(v,w)].remove(c)
 
 		//update data
-		data.update()
+		data.coloredVertex(v)
 
 	protected void colorEdge(SimpleUndirectedEdge e, int c, TCData data, TCResult result):
 		//color e with color c
@@ -162,7 +175,7 @@ class TCHeuristic extends Heuristic<SimpleUndirectedGraph, TCResult>:
 			freeEdgeColors[SimpleUndirectedEdge(e.y,v)].remove(c)
 
 		//update data
-		data.update()
+		data.coloredEdge(e)
 
 class TCResult extends HeuristicResult<SimpleUndirectedGraph>:
 	//results of the heuristic
@@ -173,12 +186,15 @@ class TCResult extends HeuristicResult<SimpleUndirectedGraph>:
 
 
 class TCGreedyData extends TCData:
-	void update():
+	void init(): pass
+	void coloredVertex(int v): pass
+	void coloredEdge(SimpleUndirectedEdge e): pass
 
 class TCGreedy extends TCHeuristic:
 	TCResult applyTo(SimpleUndirectedGraph graph):
-		TCResult result
-		TCData data = initData(graph)
+		TCResult result = TCResult(graph, this)
+
+		TCGreedyData data = initData(graph)
 
 		//start BFS
 		int v = 0
@@ -233,7 +249,16 @@ class TCGreedy extends TCHeuristic:
 class TCGreedyOneData extends TCData:
 	OrderedList<SimpleUndirectedEdge> singularEdges
 
-	void update(SimpleUndirectedGraph graph):
+	void init():
+		calcSingularEdges()
+
+	void coloredVertex(int v): pass
+
+	void coloredEdge(SimpleUndirectedEdge e):
+		calcSingularEdges()
+
+
+	void calcSingularEdges():
 		List<SimpleUndirectedEdge> list
 		
 		for e in graph.edges where freeEdgeColors[e].size() == 1:
@@ -243,8 +268,8 @@ class TCGreedyOneData extends TCData:
 
 class TCGreedyOne extends TCHeuristic:
 	TCResult applyTo(SimpleUndirectedGraph graph):
-		TCResult result
-		TCData data = initData(graph)
+		TCResult result = TCResult(graph, this)
+		TCGreedyOneData data = initData(graph)
 
 		//start BFS
 		int v = 0
@@ -269,6 +294,9 @@ class TCGreedyOne extends TCHeuristic:
 		//restart BFS
 		int v = 0
 		bfs = BFS(graph, 0)
+
+		//init list of singular edges
+		data.init()
 
 		//color edges vertex for vertex
 		while bfs.hasNextVertex():
@@ -305,17 +333,21 @@ class TCGreedyOne extends TCHeuristic:
 class TCGreedyFewData extends TCData:
 	OrderedList<SimpleUndirectedEdge> sortedUncoloredEdges
 
-	void update(SimpleUndirectedGraph graph):
-		//remove all colored edges
-		for edge in graph.edges where not freeEdgeColors.contains(edge):
-			sortedUncoloredEdges.remove(edge)
+	void init():
+		//TODO create ordered list of uncolored edges
+
+	void coloredVertex(int v): pass
+
+	void coloredEdge(SimpleUndirectedEdge edge):
+		//remove just colored edge
+		sortedUncoloredEdges.remove(edge)
 
 		//TODO sort by #free colors + index
 
 class TCGreedyFew extends TCHeuristic:
 	TCResult applyTo(SimpleUndirectedGraph graph):
-		TCResult result
-		TCData data = initData(graph)
+		TCResult result = TCResult(graph, this)
+		TCGreedyFewData data = initData(graph)
 
 		//start BFS
 		int v = 0
@@ -339,6 +371,9 @@ class TCGreedyFew extends TCHeuristic:
 		//restart BFS
 		int v = 0
 		bfs = BFS(graph, 0)
+
+		//init sorted list of uncolored edges
+		data.init()
 
 		//color edges vertex for vertex
 		while bfs.hasNextVertex():
@@ -377,9 +412,108 @@ class TCGreedyFew extends TCHeuristic:
 		result.valid = true
 		return result
 
+class TCGreedySetData extends TCGreedyData:
+	HashSet<int, OrderedList<SimpleUndirectedEdge>> minFlexSets;
+	HashSet<int, int> minFlexValues;
+
+	void init():
+		for v in [0 .. graph.numVerts-1]:
+			calcMinFlexSet(v)
+
+	void coloredVertex(int v): pass
+
+	void coloredEdge(SimpleUndirectedEdge edge): pass
+
+	void calcMinFlexSet(int v):
+		OrderedList<SimpleUndirectedEdge> uncoloredEdges
+
+		if uncoloredEdges.isEmpty():
+			uncoloredEdges.remvoe(v)
+		else:
+			for w in neighbors[v] where freeEdgeColors.contains(SimpleUndirectedEdge(v,w)):
+				uncoloredEdges.append(SimpleUndirectedEdge(v,w))
+
+			minFlexSet = uncoloredEdges
+			minFlexValue = getFlex(uncoloredEdges)
+			for sublist in uncoloredEdges.subLists():
+				flexValue = getFlex(sublist)
+				if flexValue < minFlexValue:
+					minFlexSet = sublist
+					minFlexValue = flexValue
+
+			minFlexSets[v] = minFlexSet
+			minFlexValues[v] = minFlexValue
+
+
 class TCGreedySet extends TCHeuristic:
+
 	TCResult applyTo(SimpleUndirectedGraph graph):
-		//TODO implement greedy+set heuristic
+		TCResult result = TCResult(graph, this)
+		TCGreedyFewData data = initData(graph)
+
+		//start BFS
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//color vertex for vertex
+		while bfs.hasNextVertex()
+			if data.freeVertexColors[v].isEmpty():
+				result.valid = false
+				return result
+
+			//find minimally used free color of v
+			c = argmin(data.freeVertexColors[v], data.colorWeights)
+
+			//color v with color c
+			colorVertex(v, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//init minimal flexibility sets
+		data.init()
+
+		while not data.minFlexSets.isEmpty():
+			//find minimal flex set
+			OrderedList minFlexSet = data.minFlexSets[0]
+			minFlexValue = data.minFlexValues[0]
+			HashSet<int> endpoints
+
+			for v in data.minFlexSets.keys():
+				flexValue = minFlexValues[v]
+				if(flexValue < minFlexValue):
+					minFlexValue = flexValue
+					minFlexSet = data.minFlexSets[v]
+
+			//stop heuristic if flexibility < 0
+			if minFlexValue < 0:
+				result.valid = false
+				return result
+
+			//color all edges in the flex set
+			for e in minFlexSet:
+				//save endpoints for recalculation of flexsets
+				endpoints.add(e.x)
+				endpoints.add(e.y)
+
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					result.valid = false
+					return result
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors[e], data.colorWeights)
+
+				//color e with c
+				colorEdge(e, c, data, result)
+
+			//recalculate touched flex sets
+			for v in endpoints:
+				data.calcMinFlexSet(v)
+
+		//total coloring successfully created
+		result.valid = true
+		return result
 
 class TCGreedyCon extends TCHeuristic:
 	TCResult applyTo(SimpleUndirectedGraph graph):
