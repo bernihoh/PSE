@@ -426,13 +426,13 @@ class TCGreedySetData extends TCGreedyData:
 
 	void calcMinFlexSet(int v):
 		OrderedList<SimpleUndirectedEdge> uncoloredEdges
+		for w in neighbors[v] where freeEdgeColors.contains(SimpleUndirectedEdge(v,w)):
+			uncoloredEdges.append(SimpleUndirectedEdge(v,w))
 
 		if uncoloredEdges.isEmpty():
-			uncoloredEdges.remvoe(v)
+			minFlexSets.remvoe(v)
+			minFlexValues.remove(v)
 		else:
-			for w in neighbors[v] where freeEdgeColors.contains(SimpleUndirectedEdge(v,w)):
-				uncoloredEdges.append(SimpleUndirectedEdge(v,w))
-
 			minFlexSet = uncoloredEdges
 			minFlexValue = getFlex(uncoloredEdges)
 			for sublist in uncoloredEdges.subLists():
@@ -446,7 +446,6 @@ class TCGreedySetData extends TCGreedyData:
 
 
 class TCGreedySet extends TCHeuristic:
-
 	TCResult applyTo(SimpleUndirectedGraph graph):
 		TCResult result = TCResult(graph, this)
 		TCGreedyFewData data = initData(graph)
@@ -515,9 +514,101 @@ class TCGreedySet extends TCHeuristic:
 		result.valid = true
 		return result
 
+class TCGreedyConData extends TCData:
+	OrderedList<SimpleUndirectedEdge> uncoloredEdges
+
+	void init():
+		for edge in graph.edges where freeEdgeColors.contains(edge):
+			uncoloredEdges.append(edge)
+
+	void coloredVertex(int v): pass
+
+	void coloredEdge(SimpleUndirectedEdge edge):
+		uncoloredEdges.remove(edge)
+
+	OrderedList<SimpleUndirectedEdge> getMinFlexSet(maxSetSize):
+		HashSet<OrderedList> connectedSubsets
+		OrderedList<SimpleUndirectedEdge> minFlexSet
+
+		for sublist in uncoloredEdges.subLists(maxSetSize):
+			//find all connected sets of edges
+			SimpleUndirectedGraph temp = SimpleUndirectedGraph(graph.numVerts, sublist)
+			if temp.isConnected():
+				connectedSubsets.add(temp)
+
+			//find set of minimal flexibility
+			if connectedSubsets.isEmpty():
+				return minFlexSet
+			else:
+				minFlexSet = connectedSubsets[0]
+				minFlexValue = getFlex(minFlexSet)
+
+				for conSet in connectedSubsets:
+					flexValue = getFlex(list)
+					if flexValue < minFlexValue:
+						minFlexValue = flexValue
+						minFlexSet = conSet
+
+				return minFlexSet
+
+
+
 class TCGreedyCon extends TCHeuristic:
+	int maxSetSize
+
 	TCResult applyTo(SimpleUndirectedGraph graph):
-		//TODO implement greedy+few heuristic
+		TCResult result = TCResult(graph, this)
+		TCGreedyFewData data = initData(graph)
+
+		//start BFS
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//color vertex for vertex
+		while bfs.hasNextVertex()
+			if data.freeVertexColors[v].isEmpty():
+				result.valid = false
+				return result
+
+			//find minimally used free color of v
+			c = argmin(data.freeVertexColors[v], data.colorWeights)
+
+			//color v with color c
+			colorVertex(v, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//init list of uncoloredEdges
+		data.init()
+
+		OrderedList minFlexSet = data.getMinFlexSet(maxSetSize)
+		while not minFlexSet.isEmpty():
+			//stop heuristic if flexibility < 0
+			int minFlexValue = getFlex(minFlexSet)
+			if minFlexValue < 0:
+				result.valid = false
+				return result
+
+			//color all edges in the flex set
+			for e in minFlexSet:
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					result.valid = false
+					return result
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors[e], data.colorWeights)
+
+				//color e with c
+				colorEdge(e, c, data, result)
+
+			//get min flex set
+			minFlexSet = data.getMinFlexSet(maxSetSize)
+
+		//total coloring successfully created
+		result.valid = true
+		return result
 
 
 class TCMixedGreedy extends TCHeuristic:
