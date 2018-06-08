@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="975.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <bottom>
+      <VBox nodeOrientation="RIGHT_TO_LEFT">
+         <children>
+            <HBox spacing="15.0">
+               <children>
+                  <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="OK" />
+                  <Button mnemonicParsing="false" text="Abbrechen" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+				<MenuBar nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+					<menus>
+						<Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
+							<items>
+								<MenuItem mnemonicParsing="false" text="Funktionalität" />
+								<MenuItem mnemonicParsing="false" text="Bedienung" />
+							<Menu mnemonicParsing="false" text="Heuristiken">
+							  <items>
+								<MenuItem mnemonicParsing="false" text="Import Help" />
+								  <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
+							  </items>
+							</Menu>
+								<Menu mnemonicParsing="false" text="Sprachauswahl">
+									<items>
+										<MenuItem mnemonicParsing="false" text="English" />
+										<MenuItem mnemonicParsing="false" text="Deutsch" />
+									</items>
+								</Menu>
+								<MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+							</items>
+						</Menu>
+						<Menu mnemonicParsing="false" text="Graphen">
+							<items>
+								<MenuItem mnemonicParsing="false" text="Importieren" />
+								<MenuItem mnemonicParsing="false" text="Exportieren" />
+								<Menu mnemonicParsing="false" text="Generierung">
+									<items>
+										<MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
+										<MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+									</items>
+								</Menu>
+							<Menu mnemonicParsing="false" text="Graph Einstellungen">
+							   <items>
+								  <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
+								  <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
+							   </items>
+							</Menu>
+							</items>
+						</Menu>
+					</menus>
+				</MenuBar>
+         </children>
+      </VBox>
+    </bottom>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox spacing="5.0">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" text="Knotenanzahl:" />
+                  <Spinner maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Spinner>
+                  <Separator orientation="VERTICAL" />
+                  <ToggleButtonGroup selectionType="SINGLE">
+                      <toggles>
+                        <ToggleButton layoutX="10.0" layoutY="10.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@../Pictures/Icons/Drag.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </ToggleButton>
+                          <ToggleButton>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@../Pictures/Icons/Edge.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                          </ToggleButton>
+                          <ToggleButton>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@../Pictures/Icons/Eraser.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                          </ToggleButton>
+                      </toggles>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ToggleButtonGroup>
+                  <Separator layoutX="244.0" layoutY="10.0" orientation="VERTICAL" />
+                  <Button ellipsisString="Knoten Kontrahieren" layoutX="384.0" layoutY="15.0" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../Pictures/Icons/Merge.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Knoten Duplizieren" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../Pictures/Icons/Duplicate.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Alle Kanten zwischen ausgewählten Knoten löschen" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@../Pictures/Icons/KantenZwischenAusgewähltenKnotenLöschen.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Pfad Einfügen" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@../Pictures/Icons/Path.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="Kreis Einfügen" layoutX="658.0" layoutY="15.0" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../Pictures/Icons/Circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="763.0" layoutY="15.0" mnemonicParsing="false" text="Clique Einfügen">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Separator orientation="VERTICAL" />
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../Pictures/Icons/Undo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../Pictures/Icons/Save.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

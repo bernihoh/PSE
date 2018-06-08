@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<TabPane prefHeight="650.0" prefWidth="975.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <tabs>
+        <fx:include fx:id="tabStart" source="StartTab/RaGE_GUI_Start.fxml"/>
+        <fx:include fx:id="tabGraphGeneration" source="GraphGenerationTab/RaGE_GUI_GraphGeneration.fxml"/>
+        <fx:include fx:id="tabPreview" source="PreviewTab/RaGE_GUI_Preview.fxml"/>
+    </tabs>
+</TabPane>

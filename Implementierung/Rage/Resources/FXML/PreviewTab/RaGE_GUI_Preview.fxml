@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+
+<Tab closable="false" text="Preview 1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <TabPane>
+            <tabs>
+                <fx:include fx:id="tabPreviewPreview" source="RaGE_GUI_Preview_Preview.fxml"/>
+                <fx:include fx:id="tabDetailView" source="RaGE_GUI_Preview_DetailView.fxml"/>
+                <fx:include fx:id="tabStatistics" source="RaGE_GUI_Preview_Statistics.fxml"/>
+            </tabs>
+        </TabPane>
+    </content>
+</Tab>

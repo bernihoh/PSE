@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<Tab text="Preview 1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" valignment="BOTTOM" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <SplitPane dividerPositions="0.26002055498458376" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <items>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                            <children>
+                                <Label text="Heuristiken Auswählen / Einstellen:" wrapText="true" />
+                                <ScrollPane>
+                                    <content>
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="Heuristik X" />
+                                                <CheckBox mnemonicParsing="false" text="Heuristik Y" />
+                                            </children>
+                                            <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </ScrollPane>
+                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+ Füge neue Heuristiken hinzu. (Lade Plugin)">
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </Button>
+                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Starte Heuristiken Berechnung">
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </Button>
+                                <HBox alignment="CENTER">
+                                    <children>
+                                        <ToggleButtonGroup selectionType="SINGLE">
+                                            <toggles>
+                                                <ToggleButton>
+                                                    <graphic>
+                                                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                            <image>
+                                                                <Image url="@../../Pictures/Icons/Start.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </ToggleButton>
+                                                <ToggleButton>
+                                                    <graphic>
+                                                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                            <image>
+                                                                <Image url="@../../Pictures/Icons/Pause.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </ToggleButton>
+                                            </toggles>
+                                        </ToggleButtonGroup>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                            <children>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Generierungsvorgang in Bearbeitung:">
+                                            <HBox.margin>
+                                                <Insets left="5.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <ProgressBar progress="0.5">
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" top="5.0" />
+                                            </HBox.margin>
+                                        </ProgressBar>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="135 / 1000" />
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="230.0" />
+                                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Abbrechen">
+                                            <HBox.margin>
+                                                <Insets bottom="2.0" top="2.0" />
+                                            </HBox.margin>
+                                        </Button>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <Separator prefWidth="200.0" />
+                                <HBox alignment="CENTER">
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <Label prefHeight="17.0" prefWidth="658.0" text="Graphen Vorschau:" />
+                                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false">
+                                            <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                    <image>
+                                                        <Image url="@../../Pictures/Icons/Filter.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                    <content>
+                                        <GridPane gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </GridPane>
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </VBox>
+                    </items>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </SplitPane>
+                <!-- Import the MenuBar-->
+                <fx:include source="..\MenuBar\RaGE_GUI_MenuBar.fxml"/>
+            </children>
+        </GridPane>
+    </content>
+</Tab>
