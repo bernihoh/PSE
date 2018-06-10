@@ -1,0 +1,6 @@
+abstract class Heuristic<G,R>:
+	abstract R applyTo(G g)
+
+abstract class HeuristicResult<G>:
+	G graph
+	Heuristic heuristic
