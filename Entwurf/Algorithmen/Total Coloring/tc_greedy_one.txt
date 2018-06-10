@@ -51,7 +51,7 @@ class TCGreedyOne extends TCHeuristic:
 		//init list of singular edges
 		data.init()
 
-		//color edges vertex for vertex if no other edges has priority
+		//color edges vertex for vertex if no other edge has priority
 		while bfs.hasNextVertex():
 			//color all uncolored edges incident to v
 			for e in graph.getIncidentEdges(v) where data.freeEdgeColors.contains(e):
