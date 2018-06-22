@@ -1,0 +1,36 @@
+class EFLGreedyData extends EFLData:
+	void init(): pass
+	void justColoredEdge(SimpleHyperEdge e): pass
+
+class EFLGreedy extends EFLHeuristic:
+	EFLResult applyTo(SimpleHyperGraph graph):
+		//init result and data
+		result = EFLResult(graph, this)
+		data = EFLGreedyData(graph)
+
+		//start BFS
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//color edges vertex for vertex
+		while bfs.hasNextVertex():
+			//color all uncoloredEdges incident to v
+			for e in graph.getIncidentEdges(v) where data.freeEdgeColors.contains(e)
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					result.valid = false
+					//TODO error data
+					return result
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors, c -> data.colorWeights[c])
+
+				//color e with color c
+				colorEdge(e, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//efl coloring sucessfully calculated
+		result.valid = true
+		return result

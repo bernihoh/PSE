@@ -1,0 +1,58 @@
+class EFLGreedyConData extends EFLData:
+	OrderedList<SimpleHyperEdge> uncoloredEdges
+
+	void init():
+		for e in graph.edges where freeEdgeColors.contains(e):
+			uncoloredEdges.add(e)
+
+		void justColoredEdge(SimpleHyperEdge e):
+			uncoloredEdges.remove(e)
+
+		OrderedList<SimpleHyperEdge> getMinFlexSet(maxSetSize):
+			HashSet<OrderedList<SimpleHyperEdge>> connectedSubsets
+
+			//find all connected sets of edges
+			for sublist in uncoloredEdges.sublists(maxSetSize):
+				//TODO create grph on these edges and check if it is connected
+
+			//return connected set of uncolored edges with minimal flexibility
+			return argmin(connectedSubsets, edges -> getFlex(edges))
+
+class EFLGreedyCon extends EFLHeuristic:
+	int maxSetSize
+
+	EFLResult applyTo(SimpleHyperGraph graph):
+		//init result and data
+		result = EFLResult(graph, this)
+		data = EFLGreedyConData(graph)
+		data.init()
+
+		//color edges in connected sets of minimal flexibility
+		while not data.uncoloredEdges.isEmpty():
+			minFlexSet = data.getMinFlexSet()
+
+			//stop heuristic if flexibility < 0
+			minFlexValue = data.getFlex(minFlexSet)
+			if minFlexValue < 0:
+				data.valid = false
+				//TODO error data
+				return result
+
+			//color all edges in the flex set
+			for e in minFlexSet:
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					data.valid = false
+					//TODO error data
+					return result
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors[e], c -> data.colorWeights[c])
+
+				//color e with color c
+				colorEdge(e, c, data, result)
+
+		//coloring calculated
+		result.valid = true
+		return result
+
