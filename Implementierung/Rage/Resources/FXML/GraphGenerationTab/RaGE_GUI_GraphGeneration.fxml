@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<Tab closable="false" text="Graphen Generierung"  xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<Tab text="Graphen Generierung" closable="false" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <content>
         <VBox>
             <children>
@@ -69,7 +69,7 @@
                     </VBox.margin>
                 </GridPane>
                 <!-- Import the MenuBar-->
-                <fx:include source="..\MenuBar\RaGE_GUI_MenuBar.fxml"/>
+                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml"/>
             </children>
         </VBox>
     </content>

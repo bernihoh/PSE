@@ -2,12 +2,11 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<Tab text="Preview 1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<Tab text="Preview 1" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <content>
         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
             <columnConstraints>
@@ -48,28 +47,27 @@
                                 </Button>
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <ToggleButtonGroup selectionType="SINGLE">
-                                            <toggles>
-                                                <ToggleButton>
-                                                    <graphic>
-                                                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                            <image>
-                                                                <Image url="@../../Pictures/Icons/Start.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                    </graphic>
-                                                </ToggleButton>
-                                                <ToggleButton>
-                                                    <graphic>
-                                                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                                                            <image>
-                                                                <Image url="@../../Pictures/Icons/Pause.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                    </graphic>
-                                                </ToggleButton>
-                                            </toggles>
-                                        </ToggleButtonGroup>
+                                        <fx:define>
+                                            <ToggleGroup fx:id="ToggleGroupStartStop"/>
+                                        </fx:define>
+                                        <ToggleButton toggleGroup="$ToggleGroupStartStop">
+                                            <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                    <image>
+                                                        <Image url="@../../Pictures/Icons/Start.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </ToggleButton>
+                                        <ToggleButton toggleGroup="$ToggleGroupStartStop">
+                                            <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                                    <image>
+                                                        <Image url="@../../Pictures/Icons/Pause.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </ToggleButton>
                                     </children>
                                 </HBox>
                             </children>
@@ -147,7 +145,7 @@
                     </GridPane.margin>
                 </SplitPane>
                 <!-- Import the MenuBar-->
-                <fx:include source="..\MenuBar\RaGE_GUI_MenuBar.fxml"/>
+                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml"/>
             </children>
         </GridPane>
     </content>

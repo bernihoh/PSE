@@ -4,43 +4,43 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<MenuBar nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <menus>
         <Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
             <items>
-                <MenuItem mnemonicParsing="false" text="Funktionalität" />
-                <MenuItem mnemonicParsing="false" text="Bedienung" />
-            <Menu mnemonicParsing="false" text="Heuristiken">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Import Help" />
-                  <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
-              </items>
-            </Menu>
-                <Menu mnemonicParsing="false" text="Sprachauswahl">
+                <MenuItem fx:id="miFunctionalHelp" mnemonicParsing="false" text="Funktionalität" />
+                <MenuItem fx:id="miUsageHelp" mnemonicParsing="false" text="Bedienung" />
+                <Menu mnemonicParsing="false" text="Heuristiken">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="English" />
-                        <MenuItem mnemonicParsing="false" text="Deutsch" />
+                        <MenuItem fx:id="miImportHelp" mnemonicParsing="false" text="Import Help" />
+                        <MenuItem fx:id="miImportHeuristics" mnemonicParsing="false" text="Öffne Import-Ordner" />
                     </items>
                 </Menu>
-                <MenuItem mnemonicParsing="false" text="Über dieses Programm" />
+                <Menu mnemonicParsing="false" text="Sprachauswahl">
+                    <items>
+                        <MenuItem fx:id="miLanguageEnglish" mnemonicParsing="false" text="English" />
+                        <MenuItem fx:id="miLanguageGerman" mnemonicParsing="false" text="Deutsch" />
+                    </items>
+                </Menu>
+                <MenuItem fx:id="miAbout" mnemonicParsing="false" text="Über dieses Programm" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Graphen">
             <items>
-                <MenuItem mnemonicParsing="false" text="Importieren" />
-                <MenuItem mnemonicParsing="false" text="Exportieren" />
+                <MenuItem fx:id="miImportGraph" mnemonicParsing="false" text="Importieren" />
+                <MenuItem fx:id="miExportGraph" mnemonicParsing="false" text="Exportieren" />
                 <Menu mnemonicParsing="false" text="Generierung">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
-                        <MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
+                        <MenuItem fx:id="miGraphGeneration" mnemonicParsing="false" text="Automatische Generierung Starten" />
+                        <MenuItem fx:id="miGraphEditor" mnemonicParsing="false" text="Graphen zeichnen" />
                     </items>
                 </Menu>
-            <Menu mnemonicParsing="false" text="Graph Einstellungen">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
-                  <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
-               </items>
-            </Menu>
+                <Menu mnemonicParsing="false" text="Graph Einstellungen">
+                    <items>
+                        <MenuItem fx:id="miImportGraphGenerationSettings" mnemonicParsing="false" text="Einstellungen Importieren" />
+                        <MenuItem fx:id="miExportGraphGenerationSettings" mnemonicParsing="false" text="Einstellungen Exportieren" />
+                    </items>
+                </Menu>
             </items>
         </Menu>
     </menus>

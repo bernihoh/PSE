@@ -1,15 +1,7 @@
-Heuristiken Pseudocode
+﻿Aufbau
+____
+Entities
 
-Definitionen
-	Knoten
-		V = {v_1, …, v_n}
-		Maximaler Knotengrad = m
-	Kanten
-		E = {e_1, …, e_k}
-	Farben
-		F = {1, …, m+2}
-		
-Aufbau
 	Entity
 		Variables
 			final int ID
@@ -18,80 +10,107 @@ Aufbau
 		
 	Entity_Coloured extends Entity
 		Variables
-			ArrayList<Integer> possibleColours
-				List of all possible ColourIDs for this Object
+			Integer colourID
+				Colour this Entity has.
+			Optional
+				ArrayList<Integer> possibleColours
+					List of all possible ColourIDs for this Entity.
 		Methods
 			Getter & Setter
+			public void deletePossibleColour(Integer colourID)
+				Remove the Colour with the given ColourID out of the List of possible Colours.
 				
 	Entity_Weight extends Entity
 		Variables
-			double weight
+			double weightOffset
 		Methods
 			Getter & Setter
 ____
+Nodes
+
 	Node extends Entity
-		??
 	
 	Node_Coloured extends Node, Entity_Coloured
-		??
 		
 	Node_Weight extends Node, Entity_Weight
-		??
 ____
+Edges
+
 	Edge extends Entity
 		Variables
 			Integer StartNodeID
 			Integer EndNodeID
 		Methods
 			Getter & Setter
+			contains(Integer nodeID)
+				Checks if startNode or EndNode is the given Node
 		
 	Edge_Coloured extends Edge, Entity_Coloured
-		??
 		
 	Edge_Weight extends Edge, Entity_Weight
-		??
-____	
+____
+Graphs
+
 	Graph<N extends Node, E extends Edge> extends Entity
 		Variables
 			ArrayList<N>
 			ArrayList<E>
 		Methods
-			public ArrayList<N> getAllNeighboursOf(int id)
-			public int getMaxNodeRank()
 			Getter & Setter
+				public ArrayList<N> getAllNeighboursOf(int id)
+				public int getMaxNodeRank()
+				public ArrayList<Integer> getAllAdjacientEdges(Integer nodeID)
+			Adder
 				public void addEndge(E e)
 					Check Foreghn-Key for existence.
 				public void addNode(N n)
 					Check Foreghn-Key for existence.
-____	
+	
+	Spezifiactions of the Graphs (??)
+		=> These Objects check their data if the Definition is obeyed.
+			@ Adder/Setter/...
+		Graph_Simple extends Graph
+		Graph_Undirected extends Graph
+		Graph_SimpleUndirected extends Graph_Simple, Graph_Undirected
+____
+Colours
+
+	Colour (Optional)
+		final int colourID
+		int amount
+	
 	ColourManager
 		Variables
-			ArrayList<ArrayList<Integer>>
-				2D-Integer Array that contains the Table off All Colours and the amount of uses in Graph.
-					ColourIDs:		1 2 3 ...
-					Amount Uses:	0 3 2 ...
+			ArrayList<Colour> colours
 		Methods
 			public void sortListByAmount()
-			public void assColourUse(int id, int amount)
-____		
-	Heuristik
+			public void addColourUse(int id, int amount)
+			public ArrayList<Colour> getSuitedColours(Entity_Coloured entitiy)
+				Checks the List of possible Colours of the Entity with the sortedList of the Amounts.
+				returns a sorted ArrayList of all possible Colours for the given Entity.
+____
+Heuristics
+	
+	Heuristic
 		Variables
-			Integer nodeWeight
-			Integer edgeWeight
-			... (Other Settings)
+			Integer generalNodeWeight
+			Integer generalEdgeWeight
+			... (Other Heuristic-Settings)
+			Graph g
 		Methods
-			public Graph calculate(Graph g)
-
+			Getter & Setter
+				getWeightOf(Entity e)
+					Gets the Weight of the given Entity by adding the possible Offset to the generalWeight.
+			public Graph calculate([optional]Graph g)
 ____________
+
+Heuristiken Beschreibung / Pseudocode
+	Der Code befindet sich später im jeweiligen Heuristics-Klasse.
 
 (1) Greedy:
 
-	forall v € V
-		...
-	
-	forall e € E
-		...
-    
+	Textuelle Beschreibung:
+	Zuerst werden die Knoten koloriert; danach erfolgt die Kolorierung der Kanten.
     Die Kolorierung der Knoten darf zum einen die Vorgaben gemäß Total Coloring Conjecture nicht verletzen
 		d. h. zwei benachbarte Knoten dürfen nicht die gleiche Farbe haben
 		und die Farben sollen zum anderen möglichst gleich häufig als Knotenfarben vorkommen.
@@ -101,25 +120,110 @@ ____________
 			Dabei kann die Vergabe einer Farbe an eine Kante das gleiche Gewicht haben wie die Vergabe einer Farbe an einen Knoten, oder wir können diese Fälle unterschiedlich gewichten.
 			Beispiel: Angenommen, ein Knoten und sieben Kanten haben die Farbe 1. Bei gleicher Gewichtung haben acht Objekte die Farbe 1. Wenn wir Knoten beispielsweise doppelt gewichten, haben Objekte mit Gesamtgewicht 9 die Farbe 1. (Diese Gewichtung soll ein exogener Parameter sein.)
 
+	PseudoCode:
+	forall v € this.graph.getAllNodes()
+		if(!v.isColoured())
+			forall n € this.graph.getAllNeighboursOf(v)
+				v.deletePossibleColour(n.getColour())
+			v.setColour(v.getPossibleColours().getFirst())
+			colourManager.addColourUse(v.getColour().getID(), this.getWeightOf(v))
+	forall v € this.graph.getAllNodes()
+		forall e € this.graph.getAllAdjacientEdges(v.getID())
+			if(!e.isColoured)
+				e.setPossibleColours(colourManager.getSuitedColours())
+				e.setColour(e.getPossibleColours().getFirst())
+				colourManager.addColourUse(e.getColour().getID(), this.getWeightOf(e))
+    
 (2) Greedy+One:
 
-Wie (1), sobald eine Kante aber nur noch eine mögliche Farbe hat, wird sie mit dieser Farbe koloriert. (D. h. in jedem Schritt werden zu Beginn alle noch nicht kolorierten Kanten durchlaufen, und es wird geschaut, wieviele mögliche Farben jede dieser Kanten hat. Eventuell muss man nicht in jedem Schritt alle dieser Kanten inspizieren; es ist aber derzeit unklar, wieviel eine entsprechende Optimierung bringt. Möglicherweise ist das ein sinnvolles Kann-Kriterium.)
+	Textuelle Beschreibung:
+	Wie (1)
+	sobald eine Kante aber nur noch eine mögliche Farbe hat, wird sie mit dieser Farbe koloriert.
+		D. h. in jedem Schritt werden zu Beginn alle noch nicht kolorierten Kanten durchlaufen, und es wird geschaut, wieviele mögliche Farben jede dieser Kanten hat.
 
+	PseudoCode:
+	forall v € this.graph.getAllNodes()
+		if(!v.isColoured())
+			forall n € this.graph.getAllNeighboursOf(v)
+				v.deletePossibleColour(n.getColour())
+			v.setColour(v.getPossibleColours().getFirst())
+			colourManager.addColourUse(v.getColour().getID(), this.getWeightOf(v))
+		forall e € this.graph.getAllEdges()
+			if(e.getPossibleColours().size() == 1)
+				e.setColour(e.getPossibleColours().getFirst())
+				colourManager.addColourUse(e.getColour().getID(), this.getWeightOf(e))
+	forall v € this.graph.getAllNodes()
+		forall e € this.graph.getAllAdjacientEdges(v.getID())
+			if(!e.isColoured)
+				e.setPossibleColours(colourManager.getSuitedColours())
+				e.setColour(e.getPossibleColours().getFirst())
+				colourManager.addColourUse(e.getColour().getID(), this.getWeightOf(e))
+		
 (3) Greedy+Few:
 
-"Ähnlich" zu (1), wenn eine Kante e1 aber gerade mehr mögliche Farben hat als eine Kante e2, darf im nächsten Schritt nicht e1 koloriert werden. (D. h. Kanten mit vergleichsweise wenigen möglichen Farben sind bevorzugt als nächste zu kolorieren.)
+	Textuelle Beschreibung:
+	"Ähnlich" zu (1)
+	wenn eine Kante e1 aber gerade mehr mögliche Farben hat als eine Kante e2, darf im nächsten Schritt nicht e1 koloriert werden.
+		D. h. Kanten mit vergleichsweise wenigen möglichen Farben sind bevorzugt als nächste zu kolorieren.
 
+	PseudoCode:
+	forall v € this.graph.getAllNodes()
+		if(!v.isColoured())
+			forall n € this.graph.getAllNeighboursOf(v)
+				v.deletePossibleColour(n.getColour())
+			v.setColour(v.getPossibleColours().getFirst())
+			colourManager.addColourUse(v.getColour().getID(), this.getWeightOf(v))
+	forall v € this.graph.getAllNodes()
+		ArrayList<Integer> adjacientEdges = this.graph.getAllAdjacientEdges(v.getID())
+		forall e € adjacientEdges.sort() //Sort by amount of Items at possibleColours
+			if(!e.isColoured)
+				e.setPossibleColours(colourManager.getSuitedColours())
+				e.setColour(e.getPossibleColours().getFirst())
+				colourManager.addColourUse(e.getColour().getID(), this.getWeightOf(e))
+		
 (4) Greedy+Set:
 
-    Es kann vorkommen, dass einzelne Kanten, für sich betrachtet, noch viele mögliche Farben haben, eine Menge von Kanten aber dennoch nicht mehr kolorierbar ist. Beispiel: Ein Knoten hat vier ausgehende unkolorierte Kanten, jede dieser Kanten hat die möglichen Farben {1, 2, 3}.
-    Heuristik deshalb "ähnlich" zu (3): Wir suchen in jedem Schritt, bevor wir Kanten kolorieren, den Knoten n und eine Teilmenge der Kanten adjazent zu n, K, für die flex(K) über alle Knoten hinweg minimal ist. (D. h. es gibt keine andere Menge von Kanten adjazent zu irgendeinem Knoten mit echt kleinerer Flexibilität.) Diese Kanten kolorieren wir dann als nächstes. Für den Fall, dass es mehrere derartige Mengen von Kanten geben sollte, sind Sie gehalten, sich eine oder mehrere Vorgehensweisen zu überlegen, in welcher Reihenfolge vorgegangen werden sollte.
+	Textuelle Beschreibung:
+	"Ähnlich" zu (3)
+    Es kann vorkommen, dass einzelne Kanten, für sich betrachtet, noch viele mögliche Farben haben, eine Menge von Kanten aber dennoch nicht mehr kolorierbar ist.
+		Beispiel: Ein Knoten hat vier ausgehende unkolorierte Kanten, jede dieser Kanten hat die möglichen Farben {1, 2, 3}.
+    Wir suchen in jedem Schritt, bevor wir Kanten kolorieren, den Knoten n und eine Teilmenge der Kanten adjazent zu n, K, für die flex(K) über alle Knoten hinweg minimal ist.
+		D. h. es gibt keine andere Menge von Kanten adjazent zu irgendeinem Knoten mit echt kleinerer Flexibilität.
+		Diese Kanten kolorieren wir dann als nächstes.
+		Für den Fall, dass es mehrere derartige Mengen von Kanten geben sollte, sind Sie gehalten, sich eine oder mehrere Vorgehensweisen zu überlegen, in welcher Reihenfolge vorgegangen werden sollte.
+
+	PseudoCode:
+	...
 
 (5) Greedy+Connected:
 
-Wie (4), nur dass es sich bei K nicht um eine Menge von Kanten handeln muss, die zu einem Knoten adjazent sind, sondern um eine beliebige Menge zusammenhängender Kanten. (Diese Variante wird vermutlich bereits auf Graphen mittlerer Größe einen unerträglichen Rechenaufwand verursachen, das ist aber nicht schlimm. Eventuell können wir den Aufwand zumindest deckeln, indem wir uns auf Teilgraphen der Größe k beschränken, mit k, der Anzahl der Kanten, als exogenem Parameter.)
+	Textuelle Beschreibung:
+	Wie (4)
+	nur dass es sich bei K nicht um eine Menge von Kanten handeln muss, die zu einem Knoten adjazent sind, sondern um eine beliebige Menge zusammenhängender Kanten.
+		Diese Variante wird vermutlich bereits auf Graphen mittlerer Größe einen unerträglichen Rechenaufwand verursachen, das ist aber nicht schlimm.
+		Eventuell können wir den Aufwand zumindest deckeln, indem wir uns auf Teilgraphen der Größe k beschränken, mit k, der Anzahl der Kanten, als exogenem Parameter.
 
+	PseudoCode:
+	...
+		
 (6+) Kolorierung der Kanten nicht mehr strikt nach der Kolorierung der Knoten:
 
-Mit den bisherigen Heuristiken haben wir erst die Knoten koloriert, dann die Kanten. Sie sollen sich Varianten dieser bisherigen Heuristiken überlegen, für die das nicht der Fall ist (d. h. 'enge' Verzahnung der Kolorierung von Knoten und Kanten ist jetzt gewünscht), sie im Spezifikationsdokument sauber beschreiben und umsetzen.
+	Textuelle Beschreibung:
+	Mit den bisherigen Heuristiken haben wir erst die Knoten koloriert, dann die Kanten.
+	Sie sollen sich Varianten dieser bisherigen Heuristiken überlegen, für die das nicht der Fall ist
+		d. h. 'enge' Verzahnung der Kolorierung von Knoten und Kanten ist jetzt gewünscht
+		
+	PseudoCode:
+	...
+____________
+Entwurfs Dokument:
 
-Ein Kann-Kriterium ist schließlich, dass Sie sich weitere Heuristiken ausdenken und implementieren. (Über diese Heuristiken sollten wir aber sprechen, bevor Sie sich an den detaillierten Entwurf und an die Umsetzung machen, und kurz darüber nachdenken, ob sie sich wirklich aus inhaltlicher Sicht lohnen.)
+Allgemeiner Aufbau
+	Benutzen des Model-View-Controllers
+		Model
+			...
+		View
+			JafaFX
+				FXML
+		Controller
+			...

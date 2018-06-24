@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 
-<Tab text="Start   X" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<Tab text="Start   X" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
 	<content>
 		<GridPane alignment="CENTER">
 			<columnConstraints>
@@ -28,47 +23,8 @@
 				<Image url="@../../Bilder/Logo/RAGE-Titelbild.png" />
 			 </image>
 		  </ImageView>
-							<MenuBar nodeOrientation="RIGHT_TO_LEFT" GridPane.rowIndex="1" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-								<menus>
-									<Menu mnemonicParsing="false" text="Hilfe &amp; Sonstiges">
-										<items>
-											<MenuItem mnemonicParsing="false" text="Funktionalität" />
-											<MenuItem mnemonicParsing="false" text="Bedienung" />
-										<Menu mnemonicParsing="false" text="Heuristiken">
-										  <items>
-											<MenuItem mnemonicParsing="false" text="Import Help" />
-											  <MenuItem mnemonicParsing="false" text="Öffne Import-Ordner" />
-										  </items>
-										</Menu>
-											<Menu mnemonicParsing="false" text="Sprachauswahl">
-												<items>
-													<MenuItem mnemonicParsing="false" text="English" />
-													<MenuItem mnemonicParsing="false" text="Deutsch" />
-												</items>
-											</Menu>
-											<MenuItem mnemonicParsing="false" text="Über dieses Programm" />
-										</items>
-									</Menu>
-									<Menu mnemonicParsing="false" text="Graphen">
-										<items>
-											<MenuItem mnemonicParsing="false" text="Importieren" />
-											<MenuItem mnemonicParsing="false" text="Exportieren" />
-											<Menu mnemonicParsing="false" text="Generierung">
-												<items>
-													<MenuItem mnemonicParsing="false" text="Automatische Generierung Starten" />
-													<MenuItem mnemonicParsing="false" text="Graphen zeichnen" />
-												</items>
-											</Menu>
-										<Menu mnemonicParsing="false" text="Graph Einstellungen">
-										   <items>
-											  <MenuItem mnemonicParsing="false" text="Einstellungen Importieren" />
-											  <MenuItem mnemonicParsing="false" text="Einstellungen Exportieren" />
-										   </items>
-										</Menu>
-										</items>
-									</Menu>
-								</menus>
-							</MenuBar>
+			<!--<fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml"/>-->
+
 			</children>
 		</GridPane>
 	</content>
