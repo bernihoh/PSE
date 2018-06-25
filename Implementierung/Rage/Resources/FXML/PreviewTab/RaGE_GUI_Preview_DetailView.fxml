@@ -22,7 +22,7 @@
                     <items>
                         <VBox>
                             <children>
-                                <GridPane>
+                                <GridPane fx:id="gridPaneGlobalHeuristics">
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -45,7 +45,7 @@
                                         <Insets top="5.0" />
                                     </VBox.margin>
                                 </Label>
-                                <VBox spacing="5.0">
+                                <VBox fx:id="vBoxLocalHeuristics" spacing="5.0">
                                     <children>
                                         <CheckBox mnemonicParsing="false" text="Connected" />
                                         <CheckBox layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="..." />
@@ -65,10 +65,10 @@
                         </VBox>
                         <BorderPane prefHeight="200.0" prefWidth="200.0">
                             <center>
-                                <Pane BorderPane.alignment="CENTER" />
+                                <Pane fx:id="paneDrawBoard" BorderPane.alignment="CENTER" />
                             </center>
                             <right>
-                                <TableView prefHeight="437.0" prefWidth="171.0" BorderPane.alignment="CENTER">
+                                <TableView fx:id="tableViewGraphProperties" prefHeight="437.0" prefWidth="171.0" BorderPane.alignment="CENTER">
                                     <columns>
                                         <TableColumn prefWidth="102.0" text="Eigenschaft" />
                                         <TableColumn prefWidth="62.0" text="Wert" />

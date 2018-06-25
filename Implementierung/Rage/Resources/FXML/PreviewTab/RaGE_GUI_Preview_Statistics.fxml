@@ -19,7 +19,7 @@
             <children>
                 <!-- Import the MenuBar-->
                 <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml" />
-                <TableView>
+                <TableView fx:id="tableStatistics">
                     <columns>
                         <TableColumn prefWidth="75.0" text="Eigenschaft" />
                         <TableColumn prefWidth="75.0" text="Wert" />
