@@ -1,0 +1,642 @@
+\documentclass{article}
+
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Pflichtenheft},
+bookmarks = true
+}
+\usepackage[toc]{glossaries}
+
+\usepackage{graphicx}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{placeins}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fix-cm}
+\newcommand{\titlesize}{\fontsize{30pt}{20pt}\selectfont}
+\newcommand{\themesize}{\fontsize{20pt}{20pt}\selectfont}
+\newcommand{\authorsize}{\fontsize{15pt}{20pt}\selectfont}
+
+\newcommand{\mypackage}[1]{\subsection*{Paket #1} \label{#1} \addcontentsline{toc}{subsection}{\nameref{#1}}}
+\newcommand{\myclass}[1]{\subsubsection*{Klasse #1} \label{#1} \addcontentsline{toc}{subsubsection}{\nameref{#1}}}
+\newcommand{\myinterface}[1]{\subsubsection*{Interface #1} \label{#1} \addcontentsline{toc}{subsubsection}{\nameref{#1}}}
+
+%\makeglossaries
+
+
+
+%\titlehead{\centering \includegraphics{images/title}}
+%\title{RaGE Pflichtenheft}
+%\author{Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen}
+
+\begin{document}
+	%\maketitle
+	
+	%\newpage
+	
+	\begin{titlepage}
+		%\centering \includegraphics[width=0.7\textwidth]{images/title}
+		
+		\titlesize \hspace*{.5cm} Random Graph Coloring Evaluation
+		~\newline~\newline
+		
+		\themesize \hspace*{3cm} Entwurfsdokument
+		\newline~\newline
+		
+		\authorsize Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Anmerkungen zum Pflichtenheft}
+	\subsection{Klarstellungen}
+	\subsection{Änderungen}	
+	
+	\section{Übersicht}
+	
+	~\newpage
+	\section{Model}
+	
+	\mypackage{graph}
+	
+	Das Paket enthält die Schnittstellen für die Interaktion mit Graphen. In den Unterpaketen sind diese für konkrete Graphtypen implementiert.
+	
+	\myclass{Graph}
+	\textbf{Beschreibung}
+	
+	Diese Klasse beschreibt die abstrakte Struktur von Graphen. Jeder Graph hat (unabhängig von seinem konkreten Typ) eine endliche Anzahl von Knoten und Kanten, die diese Knoten in Relation setzen. Die Art \textbf{E} dieser Kanten definiert dann den konkreten Graphentyp. Die Klasse stellt Methoden zur Abfrage der durch die Kanten gegebenen Relationen. Knoten werden dabei mit einem eindeutigen Index identifiziert und werden daher nicht explizit gespeichert.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getNumVertices(): int} \newline
+			\textbf{@return} returns the number of vertices which the graph contains
+		}
+		\item{
+			\textbf{getVertices(): int} \newline
+			convenience method for retrieving the list of vertex indices \newline
+			\textbf{@return} returns the list [0 ... numVertices$-1$]
+		}
+		\item{
+			\textbf{getEdges(): List<E>} \newline
+			\textbf{@return} returns the edges giving the graph its structure
+		}
+		\item{
+			\textbf{areIncident(vertex: int, edge: E): bool} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$]\newline
+			\textbf{@param edge} an edge of the graph \newline 
+			\textbf{@return} returns \textbf{true} iff the vertex is incident to the given edge \newline
+			\textbf{@throws GraphInconstistencyException} if \textbf{vertex} is an invalid vertex index or \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{areAdjacent(vertex1: int, vertex2: int): bool} \newline
+			\textbf{@param vertex1} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@param vertex2} see \textbf{vertex1} \newline
+			\textbf{@return} returns \textbf{true} iff there is an edge which is incident to both vertices \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex1} or \textbf{vertex2} is not a valid vertex index
+		}
+		\item{
+			\textbf{areAdjacent(edge1: E, edge2: E): bool} \newline
+			\textbf{@param edge1} an edge of the graph \newline
+			\textbf{@param edge2} another edge of the graph \newline
+			\textbf{@return} returns \textbf{true} iff there is a vertex which is incident to both edges \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge1} or \textbf{edge2} is not an edge of the graph
+		}
+		\item{
+			\textbf{getAdjacentVertices(vertex: int): List<int>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all vertices which are adjacent to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is not a valid vertex index
+		}
+		\item{
+			\textbf{getAdjacentEdges(edge: E): bool} \newline
+			\textbf{@param edge} an edge of the graph \newline
+			\textbf{@return} returns the list of all edges which are adjacent to \textbf{edge} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{getIncidentEdges(vertex: int): List<E>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all edges incident to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is an invalid vertex index
+		}
+		\item{
+			\textbf{getIncidentVertices(edges: List<E>): List<int>} \newline
+			\textbf{@param edges} a list of edges of the graph \newline
+			\textbf{@return} returns the list of all vertices which are incident to any of the edges in the list \newline
+			\textbf{@throws GraphInconsistencyException} if there is an edge in \textbf{edges}, which is not an edge of the graph
+			
+		}
+		
+		\item{
+			\textbf{\textit{toRAGE(): List<String>}} \newline
+			\textbf{@return} returns the line-by-line representation of the graph as specified in the RAGE-data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{Edge}
+	\textbf{Beschreibung}
+	
+	Eine Kante definiert stets eine Adjazenzrelation der zu ihr inzidenten Knoten. Zudem stellt die Klasse sicher, dass Kanten miteinander verglichen werden können.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{\textit{getVertices(): List<int>}} \newline
+			\textbf{@return} returns the list of all indices of vertices incident to this edge
+		}
+		\item{
+			\textbf{\textit{equals(edge: E): bool}} \newline
+			\textbf{@return} returns \textbf{true} iff \textbf{edge} equals the edge this method is invoked upon. Note that the notion of equality depends on the concrete implementation.
+		}
+		\item{
+			\textbf{\textit{compareTo(edge: E): int}} \newline
+			\textbf{@return} returns \textbf{-1}/\textbf{0}/\textbf{1} if \textbf{edge} is greater/equal/smaller than the edge this method is invoked upon. Note that the notions of order and equality depend on the concrete implementation.
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{GraphProperties}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse dient als Datensammlung zum Austausch zwischen Controller und Model, speziell zum Übermitteln der bei der Graphgenerierung benötigten Einstellungen. Sie stellt sicher, dass die folgenden Graph-Eigenschaften stets abgefragt und gesetzt werden können:
+	\begin{enumerate}[--]
+		\item{''graphTypes'' -- eine unveränderbare Liste von Strings, initialisiert mit [''simpleUndirectedGraph'', ''simpleHyperGraph'']}
+		\item{''type'' -- ein String}
+		\item{''numVertices'' -- ein nichtnegativer int}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{GraphBuilder}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse bietet die Funktionalität zum zufälligen Generieren eines Graphen des Graphentyps \textbf{G} (nach gegebenen GraphProperties \textbf{P}) sowie zum Modifizieren von Graphen diesen Typs.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{\textit{generate(properties: P): G}} \newline
+			\textbf{@param properties} the properties which the generated graphs will have \newline
+			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
+		}
+		\item{
+			\textbf{\textit{deleteVertex(graph: G, vertex: int): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		\item{
+			\textbf{\textit{addVertex(graph: G): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
+		}
+		\item{
+			\textbf{\textit{swapVertices(graph: G, vertex1: int, vertex2: int): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} swap indices. Note this results in a different but isomorphic graph to \textbf{graph}  \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{\textit{deleteEdge(graph: G, edge: E): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
+		}
+		
+		~\newpage
+		
+		\item{
+			\textbf{\textit{addEdge(graph: G, edge: E): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be inserted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
+		}
+		\item{
+			\textbf{\textit{deleteIsolatedVertices(graph: G): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\mypackage{graph.simpleUndirectedGraph}
+	
+	In diesem Paket sind einfache ungerichtete Graphen implementiert. Es bietet die Funktionalität diese zu generieren, zu modifizieren und nach einigen für einfache ungerichtete Graphen wohldefinierten Kriterien zu unterscheiden.
+	
+	\myclass{SimpleUndirectedGraph}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse stellt eine Konkretisierung der Graph-Klasse im Sinne einfacher ungerichteter Graphen dar. Ein solcher Graph enthält weder Schleifen noch Multikanten. Die Klasse bietet Methoden zur Erkennung diverser Eigenschaften einfacher ungerichteter Graphen an.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getVerticesBFS(): List<int>} \newline
+			\textbf{@return} returns the list of vertices of the graph in the order of a breadth first search
+		}
+		\item{
+			\textbf{isConnected(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph is connected ie. iff for any two vertices there is a sequence of edges where any two consecutive edges are adjacent
+		}
+		\item{
+			\textbf{isForest(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph is a forest ie. acyclic
+		}
+		\item{
+			\textbf{isBipartite(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the vertex set can be partitioned into two parts such that no two vertices from the same partition are adjacent
+		}
+		\item{
+			\textbf{isPlanar(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph has an embedding into the plane such that no two edges intersect
+		}
+		\item{
+			\textbf{toRage(): List<String>} \newline
+			\textbf{@return} returns the line-by-line representation of the graph as specified in the RAGE-data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleUndirectedEdge}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse konkretisiert die Klasse Edge im Sinne einer einfachen ungerichteten Kante. Sie setzt stets zwei verschiedene Knoten in Beziehung, stellt also niemals eine Schleife dar.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getVertices(): List<int>} \newline
+			\textbf{@return} returns the list of all indices of vertices incident to this edge
+		}
+		\item{
+			\textbf{equals(edge: E): bool} \newline
+			\textbf{@return} returns \textbf{true} iff both edges are adjacent to the same two vertices
+		}
+		\item{
+			\textbf{compareTo(edge: E): int} \newline
+			The notion of order between edges $(x,y)$ and $(u,v)$ with $x\leq y$ and $u\leq v$ is defined by $(x,y)<(u,v)$ iff $x<u$ or ($x=u$ and $y < v$) \newline
+			\textbf{@return} returns \textbf{-1}/\textbf{0}/\textbf{1} if \textbf{edge} is greater/equal/smaller than the edge this method is invoked upon
+		}
+	\end{enumerate}
+	
+	\myclass{SimpleUndirectedGraphProperties}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse ist eine Erweiterung der GraphProperties Klasse und dient ebenso als Datensammlung zum Austausch zwischen Controller und Model, speziell zum Übermitteln der bei der Graphgenerierung benötigten Einstellungen. Sie stellt sicher, dass die folgenden Graph-Eigenschaften stets abgefragt und gesetzt werden können:
+	\begin{enumerate}[--]
+		\item{''minDegree'' -- ein nichtnegativer int}
+		\item{''maxDegree'' -- ein nichtnegativer int}
+		\item{''connected'' -- ein bool}
+		\item{''forest'' -- ein bool}
+		\item{''bipartite'' -- ein bool}
+		\item{''planar'' -- ein bool}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleUndirectedGraphBuilder}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse bietet die Funktionalität zum zufälligen Generieren (nach gegebenen SimpleUndirectedGraphProperties) sowie zum Modifizieren einfacher ungerichteter Graphen.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{generate(properties: SimpleUndirectedGraphProperties): SimpleUndirectedGraph} \newline
+			\textbf{@param properties} the properties which the generated graphs will have \newline
+			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
+		}
+		\item{
+			\textbf{deleteVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		\item{
+			\textbf{addVertex(graph: SimpleUndirectedGraph): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
+		}
+		\item{
+			\textbf{copyVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be copied \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} is duplicated i.e. there is a new vertex which has precisely the same neighborhood \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		
+		~\newpage
+		
+		\item{
+			\textbf{swapVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} swap indices. Note this results in a different but isomorphic graph to \textbf{graph}  \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{contractVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} are contracted to a single vertex. Resulting loops will be deleted and multiedges will be reduced to one edge \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{deleteEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
+		}
+		
+		\item{
+			\textbf{addEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be inserted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge being added may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
+		}
+		\item{
+			\textbf{deleteIsolatedVertices(graph: SimpleUndirectedGraph): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\mypackage{graph.simpleHyperGraph}
+	
+	In diesem Paket sind einfache Hypergraphen implementiert. Es bietet die Funktionalität diese zu generieren, zu modifizieren und nach einigen für einfache Hypergraphen wohldefinierten Kriterien zu unterscheiden.
+	
+	\myclass{SimpleHyperGraph}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse stellt eine Konkretisierung der Graph-Klasse im Sinne einfacher Hypergraphen dar. Ein solcher Graph enthält keine Hyperkanten der Kardinalität eins und keine zwei verschiedenen Hyperkanten, die mehr als einen Knoten gemein haben. Die Klasse bietet Methoden zur Erkennung diverser Eigenschaften einfacher Hypergraphen an.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getVerticesBFS(): List<int>} \newline
+			\textbf{@return} returns the list of vertices of the graph in the order of a breadth first search
+		}
+		\item{
+			\textbf{isConnected(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph is connected ie. iff for any two vertices there is a sequence of edges where any two consecutive edges are adjacent
+		}
+		\item{
+			\textbf{toRage(): List<String>} \newline
+			\textbf{@return} returns the line-by-line representation of the graph as specified in the RAGE-data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleHyperEdge}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse konkretisiert die Klasse Edge im Sinne einer einfachen Hyperkante. Sie setzt stets mindestens zwei verschiedene Knoten in Beziehung.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getVertices(): List<int>} \newline
+			\textbf{@return} returns the list of all indices of vertices incident to this edge
+		}
+		\item{
+			\textbf{equals(edge: E): bool} \newline
+			\textbf{@return} returns \textbf{true} both edges are adjacent to the same vertices
+		}
+		\item{
+			\textbf{compareTo(edge: E): int} \newline
+			The notion of order between edges $(x_1, ..., x_n)$ and $(y_1, ..., y_m)$ with $x_1 < ... < x_n$, $y_1 < ... < y_m$ and $n \leq m$ is defined by $(x1, ..., x_n)<(y_1,...,y_n)$ iff $x_1 < y_1$ or ($x_1=y_1$ and $x_2 < y_2$) or ... or ($x_1 = y_1$ and ... and $x_n = y_n$ and $n < m$) \newline
+			\textbf{@return} returns \textbf{-1}/\textbf{0}/\textbf{1} if \textbf{edge} is greater/equal/smaller than the edge this method is invoked upon
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{SimpleHyperGraphProperties}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse ist eine Erweiterung der GraphProperties Klasse und dient ebenso als Datensammlung zum Austausch zwischen Controller und Model, speziell zum Übermitteln der bei der Graphgenerierung benötigten Einstellungen. Sie stellt sicher, dass die folgenden Graph-Eigenschaften stets abgefragt und gesetzt werden können:
+	\begin{enumerate}[--]
+		\item{''uniform'' -- ein nichtnegativer int}
+		\item{''minDegree'' -- ein nichtnegativer int}
+		\item{''maxDegree'' -- ein nichtnegativer int}
+		\item{''connected'' -- ein bool}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleHyperGraphBuilder}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse bietet die Funktionalität zum zufälligen Generieren (nach gegebenen SimpleUndirectedGraphProperties) sowie zum Modifizieren einfacher ungerichteter Graphen.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{generate(properties: SimpleHyperGraphProperties): SimpleHyperGraph} \newline
+			\textbf{@param properties} the properties which the generated graphs will have \newline
+			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
+		}
+		\item{
+			\textbf{deleteVertex(graph: SimpleHyperGraph, vertex: int): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		\item{
+			\textbf{addVertex(graph: SimpleHyperGraph): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
+		}
+		\item{
+			\textbf{swapVertices(graph: SimpleHyperGraph, vertex1: int, vertex2: int): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} swap indices. Note this results in a different but isomorphic graph to \textbf{graph}  \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{deleteEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
+		}
+		
+		\item{
+			\textbf{addEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be inserted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge being added may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
+		}
+		\item{
+			\textbf{deleteIsolatedVertices(graph: SimpleHyperGraph): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\mypackage{heuristic}
+	Das Paket beinhaltet das Interface für die Implementierung von Heuristiken. In den Unterpaketen sind einige Heuristiken für das Total-Coloring-Conjecture sowie für das Erdös-Faber-Lovasz-Conjecture implementiert.
+	
+	\myclass{Heuristic}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse stellt die abstrakte Schnittstelle einer Heuristik zur Anwendung auf Graphen des Typs \textbf{G} mit Ergebnis vom Typ \textbf{R} dar.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getProperties(): HeuristicProperties} \newline
+			\textbf{@return} returns the properties of this heuristic
+		}
+		\item{
+			\textbf{\textit{applyTo(graph: G): R}} \newline
+			\textbf{@param graph} the graph of type \textbf{G} on which the heuristic will be applied \newline
+			\textbf{@return} returns the result of the heuristic application
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	
+	\myclass{HeuristicResult}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse ist die abstrakte Schnittstelle für das Ergebnis der Berechnung einer Heuristik \textbf{H} auf einem Graphen des Typs \textbf{G}.
+	
+	\textbf{Dokumentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getGraph(): G} \newline
+			\textbf{@return} returns the graph this result was calculated upon
+		}
+		\item{
+			\textbf{getHeuristic(): H} \newline
+			\textbf{@return} returns the heuristic by which this result was calculated
+		}
+		\item{
+			\textbf{\textit{toRAGE(): List<String>}} \newline
+			\textbf{@return} returns the line-by-line representation of this heuristic result as specified in the RAGE data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	
+	\myclass{HeuristicProperties}
+	
+	\textbf{Beschreibung}
+	
+	Die Klasse dient als Datensammlung zum Austausch zwischen Controller und Model, speziell zum Übermitteln der Einstellungen für Heuristiken. Sie stellt sicher, dass die Eigenschaften stets abgefragt und gesetzt werden können:
+	\begin{enumerate}[--]
+		\item{''name'' -- ein String}
+	\end{enumerate}
+	
+	\myclass{DataPool}
+	
+	\mypackage{heuristic.totalColoring}
+	\myclass{TCHeuristic}
+	\myclass{TCResult}
+	
+	\mypackage{heuristic.totalColoring.greedy}
+	\myclass{TCGreedyData}
+	\myclass{TCGreedy}
+	\myclass{TCGreedyOneData}
+	\myclass{TCGreedyOne}
+	\myclass{TCGreedyFewData}
+	\myclass{TCGreedyFew}
+	\myclass{TCGreedySetData}
+	\myclass{TCGreedySet}
+	\myclass{TCGreedyConData}
+	\myclass{TCGreedyCon}
+	
+	\mypackage{heuristic.totalColoring.mixedGreedy}
+	\myclass{TCMixedGreedyData}
+	\myclass{TCMixedGreedy}
+	\myclass{TCMixedGreedyOneData}
+	\myclass{TCMixedGreedyOne}
+	\myclass{TCMixedGreedyFewData}
+	\myclass{TCMixedGreedyFew}
+	\myclass{TCMixedGreedySetData}
+	\myclass{TCMixedGreedySet}
+	\myclass{TCMixedGreedyConData}
+	\myclass{TCMixedGreedyCon}
+	
+	\mypackage{heuristic.erdosFaberLovasz}
+	\myclass{EFLHeuristic}
+	\myclass{EFLResult}
+	
+	\mypackage{heuristic.erdosFaberLovasz.greedy}
+	\myclass{EFLGreedyData}
+	\myclass{EFLGreedy}
+	\myclass{EFLGreedyOneData}
+	\myclass{EFLGreedyOne}
+	\myclass{EFLGreedyFewData}
+	\myclass{EFLGreedyFew}
+	\myclass{EFLGreedySetData}
+	\myclass{EFLGreedySet}
+	\myclass{EFLGreedyConData}
+	\myclass{EFLGreedyCon}
+	
+	
+	\section{View}
+	\section{Controller}
+	\section{Input-Output}
+	\section{Utils}
+	\section{Addendum: Heuristiken}
+	\section{Addendum: RAGE-Datenformate}
+	
+\end{document}
