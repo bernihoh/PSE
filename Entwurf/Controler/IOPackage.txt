@@ -1,0 +1,54 @@
+\mypackage{IOPackage}
+
+This package contains classes for input, output and plugin loading.
+
+\myclass{PluginController}
+
+\textbf{Beschreibung}
+
+Loads all heuristics using the service loader class. It uses the singelton design pattern.
+
+\textbf{Dokumentation}
+\begin{enumerate}[+]
+	\item{
+		\textbf{getInstance():PluginController} \newline
+		This method is the only way to access the PluginController. Creates a new PluginController if it does not exist. \newline
+		\textbf{@return} returns the PluginController itself. \newline
+	}
+	\item{
+		\textbf{getPlugins():List<Heuristic>} \newline
+		Loads all plugins if they are not already loaded. \newline
+		\textbf{@return} returns a list with all plugins. \newline
+	}
+	\item{
+		\textbf{reloadPlugins()} \newline
+		Clears the pluginlist and then loads all plugins. \newline
+	}
+\end{enumerate}
+
+\myclass{IOController}
+
+\textbf{Beschreibung}
+
+Saves and loads the data of a single view tab. The file has the extension ".RAGE". It uses the singelton design pattern.
+
+\textbf{Dokumentation}
+\begin{enumerate}[+]
+	\item{
+		\textbf{getInstance():IOController} \newline
+		This method is the only way to access the IOController. Creates a new IOController if it does not exist. \newline
+		\textbf{@return} returns the IOController itself. \newline
+	}
+	\item{
+		\textbf{writeFile(File file)} \newline
+		Writes a RAGE file to the disk. \newline
+		\textbf{@param file} Information about the file. \newline
+		\textbf{@throws IOException} if saving fails print: "Error while saving the file."
+	}
+	\item{
+		\textbf{readFile(File file)} \newline
+		Reads a RAGE file from the disk and sends the content to the model. \newline
+		\textbf{@param file} Information about the file. \newline
+		\textbf{@throws IOException} if loading fails print: "Error while loading the file."
+	}
+\end{enumerate}
