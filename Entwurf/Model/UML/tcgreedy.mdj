@@ -1937,7 +1937,7 @@
 											"top": 982,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "-minFlexSets: HashMap<int, FlexSet>",
+											"text": "-minFlexSets: HashMap<int, TCFlexSet>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2039,7 +2039,7 @@
 											"top": 1065,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2304,7 +2304,7 @@
 											"top": 1066,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],
@@ -22808,7 +22808,7 @@
 							},
 							"name": "minFlexSets",
 							"visibility": "private",
-							"type": "HashMap<int, FlexSet>"
+							"type": "HashMap<int, TCFlexSet>"
 						}
 					],
 					"operations": [
@@ -22899,7 +22899,7 @@
 										"$ref": "AAAAAAFkB+EFIUL38o0="
 									},
 									"type": {
-										"$ref": "AAAAAAFkAqP+60J1+a0="
+										"$ref": "AAAAAAFkOQGna4vB79I="
 									},
 									"direction": "return"
 								}
@@ -23074,7 +23074,7 @@
 										"$ref": "AAAAAAFkB+Q7xkM8rbw="
 									},
 									"type": {
-										"$ref": "AAAAAAFkAqP+60J1+a0="
+										"$ref": "AAAAAAFkOQGna4vB79I="
 									},
 									"direction": "return"
 								}
