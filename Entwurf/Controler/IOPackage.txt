@@ -16,12 +16,12 @@ Loads all Heuristic and HeuristicResult classes using the ServiceLoader class. I
 		\textbf{@return} returns the PluginController itself. \newline
 	}
 	\item{
-		\textbf{getPlugins():List<Heuristic>} \newline
+		\textbf{getHeuristics():ArrayList<Heuristic> } \newline
 		Loads all Heuristic classes if they are not already loaded. \newline
 		\textbf{@return} returns a list with all Heuristics. \newline
 	}
 	\item{
-		\textbf{getPlugins():List<Heuristic>} \newline
+		\textbf{getHeuristicResults():ArrayList<HeuristicResult>} \newline
 		Loads all HeuristicResult classes if they are not already loaded. \newline
 		\textbf{@return} returns a list with all HeuristicResult classes. \newline
 	}
