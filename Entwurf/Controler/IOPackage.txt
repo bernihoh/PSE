@@ -1,4 +1,4 @@
-\mypackage{IOPackage}
+\mypackage{IO}
 
 This package contains classes for input, output and plugin loading.
 
