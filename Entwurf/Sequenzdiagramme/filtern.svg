@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="597" version="1.1" width="1050" xmlns="http://www.w3.org/2000/svg">
+<svg height="595" version="1.1" width="1050" xmlns="http://www.w3.org/2000/svg">
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="83" y2="88"/>
@@ -60,7 +60,7 @@
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="342" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="150" x="342" y="14"/>
 <text font-family="Dialog" font-size="12" x="360" y="28">
-:FXControllerPreview</text>
+:FXPreviewController</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="83" y2="88"/>
@@ -177,8 +177,8 @@
 <rect fill="none" height="30" stroke="#000000" stroke-width="1" width="20" x="759" y="312"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="694" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="150" x="694" y="14"/>
-<text font-family="Dialog" font-size="12" x="727" y="28">
-:FilterController</text>
+<text font-family="Dialog" font-size="12" x="723" y="28">
+:FilterControllers</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="961" x2="961" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="961" x2="961" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="961" x2="961" y1="83" y2="88"/>
@@ -296,8 +296,8 @@ create</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="553" y2="558"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="563" y2="568"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="573" y2="578"/>
-<rect fill="#ffffff" height="519" stroke="#ffffff" stroke-width="1" width="20" x="79" y="63"/>
-<rect fill="none" height="519" stroke="#000000" stroke-width="1" width="20" x="79" y="63"/>
+<rect fill="#ffffff" height="517" stroke="#ffffff" stroke-width="1" width="20" x="79" y="63"/>
+<rect fill="none" height="517" stroke="#000000" stroke-width="1" width="20" x="79" y="63"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="14" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="150" x="14" y="14"/>
 <text font-family="Dialog" font-size="12" x="74" y="28">
@@ -325,7 +325,7 @@ filter( )</text>
 <polyline fill="none" points="427,428 951,428" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="951,428 939,435 939,421" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="951,428 939,435 939,421" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="644" y="423">
+<text font-family="Dialog" font-size="12" x="645" y="423">
 create( visualGraph)</text>
 <rect fill="none" height="184" stroke="#000000" stroke-width="1" width="664" x="366" y="374"/>
 <polygon fill="#ffffff" points="366,374 461,374 471,384 471,413 366,413 366,374" stroke="#ffffff" stroke-width="1"/>
@@ -476,6 +476,8 @@ filterController</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="429" x2="427" y1="342" y2="342"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="439" x2="427" y1="335" y2="342"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="439" x2="427" y1="349" y2="342"/>
+<text font-family="Dialog" font-size="12" x="548" y="337">
+List&lt;VisualGraph&gt;</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="951" x2="946" y1="462" y2="462"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="941" x2="936" y1="462" y2="462"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="931" x2="926" y1="462" y2="462"/>
