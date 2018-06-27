@@ -1,0 +1,47 @@
+class EFLResult extends HeuristicResult<SimpleHyperGraph>
+	//results of the heuristic
+	HashMap<SimpleHyperEdge, int> edgeColors
+
+abstract class EFLData:
+	SimpleHyperGraph graph
+	int numColors
+	HashMap<SimpleHyperEdge, List<int>> freeEdgeColors
+	HashMap<int, OrderedList<int>> neighborhood
+
+	EFLData(SimpleHyperGraph graph):
+		this.graph = graph
+
+		numColors = graph.numVertices + 1
+
+		//init color weights
+		...
+
+
+	abstract void init()
+	abstract void justColoredEdge(SimpleHyperEdge e)
+
+	void removeFreeColor(SimpleHyperEdge e, int c):
+		if freeEdgeColors.contains(e):
+			freeEdgeColors[e].remove(c)
+
+	void getFlex(List<SimpleHyperEdge> edges):
+		HashSet<int> freeColors
+		for e in edges:
+			freeColors.add(freeEdgeColors[e])
+		return freeColors.size() - edges.size()
+
+class EFLHeuristic extends Heuristic<SimpleHyperGraph, EFLResult>:
+	
+	void colorEdge(SimpleHyperEdge e, int c, EFLData data, EFLResult result):
+		//color e with color c
+		result.edgeColors[e] = c
+
+		//remove e from freeEdgeColors mapping
+		data.freeEdgeColors.remove(e)
+
+		//remove c fromm al edges adjacent to e
+		for f in graph.getAdjacentEdges(e):
+			data.removeFreeColor(f, c)
+
+		//update data
+		data.justColoredEdge(e)

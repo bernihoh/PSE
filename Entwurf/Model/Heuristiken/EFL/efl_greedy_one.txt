@@ -1,0 +1,65 @@
+class EFLGreedyOneData extends EFLData:
+	OrderedList<SimpleHyperEdge> singularEdges
+
+	void init():
+		calcSingularEdges()
+
+	void justColoredEdge(SimpleHyperEdge e):
+		calcSingularEdges()
+
+	void calcSingularEdges():
+		singularEdges.clear()
+		for e in graph.edges where freeEdgeColors.contains(e) and freeEdgeColors[e].size() == 1:
+			singularEdges.add(e)
+		singularEdges.sort()
+
+class EFLGreedyOne extends EFLHeuristic:
+	EFLResult applyTo(SimpleHyperGraph graph):
+		//init result and data
+		reslt = EFLResult(graph, this)
+		data = EFLGreedyOneData(graph)
+		data.init()
+
+		//start bfs
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//color edges vertex for vertex if no other edge has priority
+		while bfs.hasNextVertex():
+			//color all uncolored edges incident to v
+			for e in graph.getIncidentEdges(v) where data.freeEdgeColors.contains(e):
+				//priorize edges with exactly one free color
+				while not data.singularEdges.isEmpty():
+					//get sinfular edge with lowest index
+					f = data.singularEdges[0]
+
+					//get the free color of f
+					c = data.freeEdgeColors[f][0]
+
+					//color f with color c
+					colorEdge(f,c,data,result)
+
+				//continue normal greedy coloring
+
+				//check whether current edge still needs to be colored
+				if not data.freeEdgeColors.contains(e):
+					continue
+
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					result.valid = false
+					//TODO error data
+					return false
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors[e], c -> data.colorWeights[c])
+
+				//color e with color c
+				colorEdge(e, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//efl coloring successfully calculated
+		result.valid = true
+		return result
