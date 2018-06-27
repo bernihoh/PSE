@@ -1,0 +1,49 @@
+class TCMixedGreedyData extends TCData:
+	void init(): pass
+	void justColoredVertex(int v): pass
+	void justColoredEdge(SimpleUndirectedEdge e): pass
+
+class TCMixedGreedy extends TCHeuristic:
+	TCResult applyTo(SimpleUndirectedGraph graph):
+		//init result and data
+		result = TCResult(graph, this)
+		data = TCMixedGreedyData(graph)
+
+		//start BFS
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//color graph vertex for vertex
+		while bfs.hasNextVertex():
+			//stop heuristic if vertex cannot be colored
+			if data.freeVertexColors[v].isEmpty():
+				result.valid = false
+				//TODO error data
+				return result
+
+			//find minimally used free color of v
+			c = argmin(data.freeVertexColors[v], c -> data.colorWeights[c])
+
+			//color v with color c
+			colorVertex(v, c, data, result)
+
+			//color all uncolored incident edges
+			for e in graph.getIncidentEdges(v) where data.freeEdgeColors.contains(e):
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					result.valid = false
+					//TODO error data
+					return result
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors[e], c -> data.colorWeights[c])
+
+				//color e with color c
+				colorEdge(e, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//total coloring successfully calculated
+		result.valid = true
+		return result

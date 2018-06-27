@@ -1,0 +1,114 @@
+class TCResult extends HeuristicResult<SimpleUndirectedGraph>
+	//results of the Heuristic
+	HashMap<int, int> vertexColors
+	HashMap<SimpleUndirectedEdge, int> edgeColors
+
+	//TODO error data?
+
+abstract class TCData:
+	SimpleUndirectedGraph graph
+	int numColors
+	HashMap<int, int> colorWeights
+	HashMap<int, List<int>> freeVertexColors
+	HashMap<SimpleUndirectedEdge, List<int>> freeEdgeColors
+	HashMap<int, OrderedList<int>> neighborhood
+
+	TCData(SimpleUndirectedGraph graph):
+		this.graph = graph
+
+		numColors = graph.numVertices+2
+
+		//init color weights
+		for c in [0..numColors-1]:
+			colorWeights[c] = 0
+
+		for v in [0..graph.numVertices-1]:
+			//init free vertex colors
+			freeVertexColors[v] = [0..numColors-1]
+
+			//get vertex neighbors
+			neighborhood[v] = graph.getAdjacentVertices(v)
+
+		for e in graph.edges:
+			//init free edge colors
+			freeEdgeColors[e] = [0..numColors-1]
+
+	abstract void init()
+	abstract void justColoredVertex(int v)
+	abstract void justColoredEdge(SimpleUndirectedEdge e)
+
+	void removeFreeColor(int v, int c):
+		if freeVertexColors.contains(v):
+			freeVertexColors[v].remove(c)
+
+	void removeFreeColor(SimpleUndirectedEdge e, int c):
+		if freeEdgeColors.contains(e):
+			freeEdgeColors[e].remove(c)
+
+	int getFlex(List<int> vertices):
+		HashSet<int> freeColors
+		for v in vertices:
+			freeColors.add(freeVertexColors[v])
+		return freeColors.size() - vertices.size()
+
+	int getFlex(List<SimpleUndirectedEdge> edges)
+		HashSet<int> freeColors
+		for e in edges:
+			freeColors.add(freeEdgeColors[e])
+		return freeColors.size() - edges.size()
+
+	int getFlex(List<int> vertices, List<SimpleUndirectedEdge> edges)
+		HashSet<int> freeColors
+		for v in vertices:
+			freeColors.add(freeVertexColors[v])
+		for e in edges:
+			freeColors.add(freeEdgeColors[e])
+		return freeColors.size() - vertices.size() - edges.size()
+
+class TCHeuristic extends Heuristic<SimpleUndirectedGraph, TCResult>:
+	int vertexWeight
+	int edgeWeight
+
+	void colorVertex(int v, int c, TCData data, TCResult result):
+		//color v with color c
+		result.vertexColors[v] = c
+
+		//update color weight of c
+		data.colorWeights[c] += vertexWeight
+
+		//remove v from the freeVertexColors mapping
+		data.freeVertexColors.remove(v)
+
+		//remove c from all free colors of neighbors of v and edges incident to v
+		for w in data.neighborhood[v]:
+			data.removeFreeColor(w)
+			data.removeFreeColor(SimpleUndirectedEdge(v,w))
+
+		//update data
+		data.justColoredVertex(v)
+
+	void colorEdge(SimpleUndirectedEdge e, int c, TCData data, TCResult result):
+		//color e with color c
+		result.edgeColors[e] = c
+
+		//update color weight of c
+		data.colorWeights[c] += edgeWeight
+
+		//remove e from the freeEdgeColors mapping
+		data.freeEdgeColors.remove(e)
+
+		//remove c from all vertices incident to e and edges adjacent to e
+		data.removeFreeColor(e.x, c)
+		data.removeFreeColor(e.y, c)
+
+		for f in graph.getIncidentEdges(e.x):
+			data.removeFreeColor(f, c)
+		for f in graph.getIncidentEdges(e.y):
+			data.removeFreeColor(f,c)
+
+		//updata data
+		data.justColoredEdge(e)
+
+
+
+

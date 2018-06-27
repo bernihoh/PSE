@@ -1,0 +1,89 @@
+class GreedyFewData extends TCData:
+	OrderedList<SimpleUndirectedEdge> uncoloredEdges
+
+	void init():
+		uncoloredEdges = graph.edges.sort()
+
+	void justColoredVertex(int v): pass
+
+	void justColoredEdge(SimpleUndirectedEdge e):
+		//remove e from list of uncolored edges
+		uncoloredEdges.remove(e)
+
+		//TODO sort by numFreeColors + index
+
+class TCGreedyFew extends TCHeuristic:
+	TCResult applyTo(SimpleUndirectedEdge graph):
+		//init result and data
+		result = TCResult(graph, this)
+		data = TCGreedyFewData(graph)
+
+		//start BFS
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//color vertex for vertex
+		while bfs.hasNextVertex():
+			//stop heuristic if vertex cannot be colored
+			if data.freeVertexColors[v].isEmpty():
+				result.valid = false
+				//TODO error data
+				return result
+
+			//find minimally used free color of v
+			c = argmin(data.freeVertexColors[v], c -> data.colorWeights[c])
+
+			//color v with color c
+			colorVertex(v, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//restart BFS
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//init list of uncolored edges
+		data.init()
+
+		//color edges vertex for vertex if no other edges has priority
+		while bfs.hasNextVertex():
+			//color all uncolored edges incident to v
+			for e in graph.getIncidentEdges(v) where data.freeEdgeColors.contains(e):
+				//priorize edges with less free colors than e
+				while not data.uncoloredEdges.isEmpty() and not data.uncoloredEdges[0].equals(e):
+					//get minimal uncolored edge
+					f = data.uncoloredEdges[0]
+
+					//stop heuristic if edge cannot be colored
+					if data.freeEdgeColors[f].isEmpty():
+						result.valid = false
+						//TODO error data
+						return result
+
+					//get minimally used free color of f
+					c = argmin(data.freeEdgeColors[f], c -> data.colorWeights[c])
+
+					//color f with color c
+					colorEdge(f, c, data, result)
+
+				//continue normal greedy coloring
+				
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					result.valid = false
+					//TODO error data
+					return result
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors[e], c -> data.colorWeights[c])
+
+				//color e with color c
+				colorEdge(e, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//total coloring successfully calculated
+		result.valid = true
+		return result
