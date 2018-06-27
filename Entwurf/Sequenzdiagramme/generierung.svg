@@ -40,8 +40,8 @@
 <rect fill="none" height="347" stroke="#000000" stroke-width="1" width="20" x="84" y="63"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="160" x="14" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="160" x="14" y="14"/>
-<text font-family="Dialog" font-size="12" x="54" y="28">
-/FXFramework</text>
+<text font-family="Dialog" font-size="12" x="40" y="28">
+/FXFramework:Main</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="83" y2="88"/>
@@ -157,6 +157,8 @@ Graph generieren</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="110" x2="105" y1="411" y2="411"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="116" x2="104" y1="404" y2="411"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="116" x2="104" y1="418" y2="411"/>
+<text font-family="Dialog" font-size="12" x="188" y="406">
+FXTabController</text>
 <polyline fill="none" points="380,174 569,174" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="569,174 557,181 557,167" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="569,174 557,181 557,167" stroke="#000000" stroke-width="1"/>
@@ -470,4 +472,6 @@ create( tabController)</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="390" x2="385" y1="396" y2="396"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="392" x2="380" y1="389" y2="396"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="392" x2="380" y1="403" y2="396"/>
+<text font-family="Dialog" font-size="12" x="641" y="391">
+FXTabController</text>
 </svg>
