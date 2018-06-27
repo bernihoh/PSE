@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="427" version="1.1" width="1266" xmlns="http://www.w3.org/2000/svg">
+<svg height="425" version="1.1" width="1266" xmlns="http://www.w3.org/2000/svg">
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="94" x2="94" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="94" x2="94" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="94" x2="94" y1="83" y2="88"/>
@@ -36,12 +36,12 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="94" x2="94" y1="383" y2="388"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="94" x2="94" y1="393" y2="398"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="94" x2="94" y1="403" y2="408"/>
-<rect fill="#ffffff" height="349" stroke="#ffffff" stroke-width="1" width="20" x="84" y="63"/>
-<rect fill="none" height="349" stroke="#000000" stroke-width="1" width="20" x="84" y="63"/>
+<rect fill="#ffffff" height="347" stroke="#ffffff" stroke-width="1" width="20" x="84" y="63"/>
+<rect fill="none" height="347" stroke="#000000" stroke-width="1" width="20" x="84" y="63"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="160" x="14" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="160" x="14" y="14"/>
-<text font-family="Dialog" font-size="12" x="40" y="28">
-/FXFramework:Main</text>
+<text font-family="Dialog" font-size="12" x="54" y="28">
+/FXFramework</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="83" y2="88"/>
@@ -77,8 +77,8 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="383" y2="388"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="393" y2="398"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="370" x2="370" y1="403" y2="408"/>
-<rect fill="#ffffff" height="311" stroke="#ffffff" stroke-width="1" width="20" x="360" y="102"/>
-<rect fill="none" height="311" stroke="#000000" stroke-width="1" width="20" x="360" y="102"/>
+<rect fill="#ffffff" height="309" stroke="#ffffff" stroke-width="1" width="20" x="360" y="102"/>
+<rect fill="none" height="309" stroke="#000000" stroke-width="1" width="20" x="360" y="102"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="168" x="286" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="168" x="286" y="14"/>
 <text font-family="Dialog" font-size="12" x="290" y="28">
@@ -129,38 +129,38 @@ Graph generieren</text>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="154" x="502" y="14"/>
 <text font-family="Dialog" font-size="12" x="506" y="28">
 :GeneratorGraphController</text>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="360" x2="355" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="350" x2="345" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="340" x2="335" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="330" x2="325" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="320" x2="315" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="310" x2="305" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="300" x2="295" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="290" x2="285" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="280" x2="275" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="270" x2="265" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="260" x2="255" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="250" x2="245" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="240" x2="235" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="230" x2="225" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="220" x2="215" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="210" x2="205" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="200" x2="195" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="190" x2="185" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="180" x2="175" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="170" x2="165" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="160" x2="155" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="150" x2="145" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="140" x2="135" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="130" x2="125" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="120" x2="115" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="110" x2="105" y1="413" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="116" x2="104" y1="406" y2="413"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="116" x2="104" y1="420" y2="413"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="360" x2="355" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="350" x2="345" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="340" x2="335" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="330" x2="325" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="320" x2="315" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="310" x2="305" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="300" x2="295" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="290" x2="285" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="280" x2="275" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="270" x2="265" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="260" x2="255" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="250" x2="245" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="240" x2="235" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="230" x2="225" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="220" x2="215" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="210" x2="205" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="200" x2="195" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="190" x2="185" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="180" x2="175" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="170" x2="165" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="160" x2="155" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="150" x2="145" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="140" x2="135" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="130" x2="125" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="120" x2="115" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="110" x2="105" y1="411" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="116" x2="104" y1="404" y2="411"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="116" x2="104" y1="418" y2="411"/>
 <polyline fill="none" points="380,174 569,174" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="569,174 557,181 557,167" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="569,174 557,181 557,167" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="429" y="169">
+<text font-family="Dialog" font-size="12" x="430" y="169">
 generate()</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="793" x2="793" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="793" x2="793" y1="73" y2="78"/>

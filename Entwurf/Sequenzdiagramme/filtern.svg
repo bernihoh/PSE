@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="611" version="1.1" width="1052" xmlns="http://www.w3.org/2000/svg">
+<svg height="609" version="1.1" width="1052" xmlns="http://www.w3.org/2000/svg">
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="83" y2="88"/>
@@ -54,7 +54,7 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="563" y2="568"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="573" y2="578"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="583" y2="588"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="593" y2="596"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="593" y2="594"/>
 <rect fill="#ffffff" height="464" stroke="#ffffff" stroke-width="1" width="20" x="407" y="94"/>
 <rect fill="none" height="464" stroke="#000000" stroke-width="1" width="20" x="407" y="94"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="342" y="14"/>
@@ -113,7 +113,7 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="553" y2="558"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="563" y2="568"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="573" y2="578"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="583" y2="586"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="593" x2="593" y1="583" y2="584"/>
 <rect fill="#ffffff" height="48" stroke="#ffffff" stroke-width="1" width="20" x="583" y="126"/>
 <rect fill="none" height="48" stroke="#000000" stroke-width="1" width="20" x="583" y="126"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="518" y="14"/>
@@ -172,7 +172,7 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="769" x2="769" y1="553" y2="558"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="769" x2="769" y1="563" y2="568"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="769" x2="769" y1="573" y2="578"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="769" x2="769" y1="583" y2="586"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="769" x2="769" y1="583" y2="584"/>
 <rect fill="#ffffff" height="80" stroke="#ffffff" stroke-width="1" width="20" x="759" y="254"/>
 <rect fill="none" height="80" stroke="#000000" stroke-width="1" width="20" x="759" y="254"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="694" y="14"/>
@@ -231,7 +231,6 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="961" x2="961" y1="553" y2="558"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="961" x2="961" y1="563" y2="568"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="961" x2="961" y1="573" y2="578"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="961" x2="961" y1="583" y2="584"/>
 <rect fill="#ffffff" height="48" stroke="#ffffff" stroke-width="1" width="20" x="951" y="398"/>
 <rect fill="none" height="48" stroke="#000000" stroke-width="1" width="20" x="951" y="398"/>
 <rect fill="#ffffff" height="48" stroke="#ffffff" stroke-width="1" width="20" x="951" y="486"/>
@@ -292,9 +291,9 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="553" y2="558"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="563" y2="568"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="573" y2="578"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="583" y2="586"/>
-<rect fill="#ffffff" height="523" stroke="#ffffff" stroke-width="1" width="20" x="79" y="63"/>
-<rect fill="none" height="523" stroke="#000000" stroke-width="1" width="20" x="79" y="63"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="583" y2="584"/>
+<rect fill="#ffffff" height="521" stroke="#ffffff" stroke-width="1" width="20" x="79" y="63"/>
+<rect fill="none" height="521" stroke="#000000" stroke-width="1" width="20" x="79" y="63"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="14" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="150" x="14" y="14"/>
 <text font-family="Dialog" font-size="12" x="49" y="28">
@@ -454,7 +453,7 @@ List&lt;VisualGraph&gt;</text>
 <polyline fill="none" points="427,126 583,126" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="583,126 571,133 571,119" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="583,126 571,133 571,119" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="460" y="121">
+<text font-family="Dialog" font-size="12" x="461" y="121">
 getFilterController()</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="583" x2="578" y1="174" y2="174"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="573" x2="568" y1="174" y2="174"/>
@@ -474,7 +473,7 @@ getFilterController()</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="433" x2="428" y1="174" y2="174"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="439" x2="427" y1="167" y2="174"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="439" x2="427" y1="181" y2="174"/>
-<text font-family="Dialog" font-size="12" x="460" y="169">
+<text font-family="Dialog" font-size="12" x="461" y="169">
 FilterController</text>
 <polyline fill="none" points="427,486 951,486" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="951,486 939,493 939,479" stroke="#000000" stroke-width="1"/>

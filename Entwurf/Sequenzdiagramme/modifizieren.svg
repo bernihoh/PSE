@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="575" version="1.1" width="1122" xmlns="http://www.w3.org/2000/svg">
+<svg height="573" version="1.1" width="1122" xmlns="http://www.w3.org/2000/svg">
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="273" x2="273" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="273" x2="273" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="273" x2="273" y1="83" y2="88"/>
@@ -50,9 +50,8 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="273" x2="273" y1="523" y2="528"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="273" x2="273" y1="533" y2="538"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="273" x2="273" y1="543" y2="548"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="273" x2="273" y1="553" y2="555"/>
-<rect fill="#ffffff" height="492" stroke="#ffffff" stroke-width="1" width="20" x="263" y="63"/>
-<rect fill="none" height="492" stroke="#000000" stroke-width="1" width="20" x="263" y="63"/>
+<rect fill="#ffffff" height="490" stroke="#ffffff" stroke-width="1" width="20" x="263" y="63"/>
+<rect fill="none" height="490" stroke="#000000" stroke-width="1" width="20" x="263" y="63"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="198" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="150" x="198" y="14"/>
 <text font-family="Dialog" font-size="12" x="227" y="28">
@@ -164,7 +163,7 @@
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="465" x2="465" y1="513" y2="518"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="465" x2="465" y1="523" y2="528"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="465" x2="465" y1="533" y2="538"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="465" x2="465" y1="543" y2="548"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="465" x2="465" y1="543" y2="547"/>
 <rect fill="#ffffff" height="24" stroke="#ffffff" stroke-width="1" width="20" x="455" y="166"/>
 <rect fill="none" height="24" stroke="#000000" stroke-width="1" width="20" x="455" y="166"/>
 <rect fill="#ffffff" height="126" stroke="#ffffff" stroke-width="1" width="20" x="455" y="214"/>
@@ -186,7 +185,7 @@ editGraph</text>
 <polyline fill="none" points="475,304 631,304" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="631,304 619,311 619,297" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="631,304 619,311 619,297" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="508" y="299">
+<text font-family="Dialog" font-size="12" x="509" y="299">
 create (editorController)</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="631" x2="626" y1="324" y2="324"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="621" x2="616" y1="324" y2="324"/>
@@ -275,15 +274,16 @@ create (editorController)</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="523" y2="528"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="533" y2="538"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="543" y2="548"/>
-<line fill="#000000" stroke="#000000" stroke-width="1" x1="89" x2="89" y1="553" y2="555"/>
-<rect fill="#ffffff" height="492" stroke="#ffffff" stroke-width="1" width="20" x="79" y="63"/>
-<rect fill="none" height="492" stroke="#000000" stroke-width="1" width="20" x="79" y="63"/>
+<rect fill="#ffffff" height="490" stroke="#ffffff" stroke-width="1" width="20" x="79" y="63"/>
+<rect fill="none" height="490" stroke="#000000" stroke-width="1" width="20" x="79" y="63"/>
 <rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="150" x="14" y="14"/>
 <rect fill="none" height="50" stroke="#000000" stroke-width="1" width="150" x="14" y="14"/>
+<text font-family="Dialog" font-size="12" x="49" y="28">
+/FXFramework</text>
 <polyline fill="none" points="99,372 631,372" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="631,372 619,379 619,365" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="631,372 619,379 619,365" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="320" y="367">
+<text font-family="Dialog" font-size="12" x="321" y="367">
 Editieren</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="631" x2="626" y1="404" y2="404"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="621" x2="616" y1="404" y2="404"/>
@@ -344,7 +344,7 @@ Editieren</text>
 <polyline fill="none" points="99,436 631,436" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="631,436 619,443 619,429" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="631,436 619,443 619,429" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="318" y="431">
+<text font-family="Dialog" font-size="12" x="321" y="431">
 Editieren abgeschlossen</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="631" x2="626" y1="516" y2="516"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="621" x2="616" y1="516" y2="516"/>
@@ -481,7 +481,7 @@ Editieren abgeschlossen</text>
 <polyline fill="none" points="651,456 823,456" stroke="#000000" stroke-width="1"/>
 <polygon fill="#000000" points="823,456 811,463 811,449" stroke="#000000" stroke-width="1"/>
 <polygon fill="none" points="823,456 811,463 811,449" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="692" y="451">
+<text font-family="Dialog" font-size="12" x="693" y="451">
 addGraph()</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="1033" x2="1033" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="1033" x2="1033" y1="73" y2="78"/>
@@ -620,6 +620,6 @@ getGEC( )</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="483" x2="478" y1="262" y2="262"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="487" x2="475" y1="255" y2="262"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="487" x2="475" y1="269" y2="262"/>
-<text font-family="Dialog" font-size="12" x="702" y="257">
+<text font-family="Dialog" font-size="12" x="705" y="257">
 editorController: GraphEditorController</text>
 </svg>
