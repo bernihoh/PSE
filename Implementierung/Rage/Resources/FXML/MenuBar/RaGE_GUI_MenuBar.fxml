@@ -16,7 +16,11 @@
                         <MenuItem fx:id="miImportHeuristics" mnemonicParsing="false" text="Öffne Import-Ordner" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Sprachauswahl">
+                <Menu fx:id="menuLanguages" mnemonicParsing="false" text="Sprachauswahl">
+					<!-- Benutze eine ToggelButtonGroup für die Sprachauswahl. -->
+					<fx:define>
+                            <ToggleGroup fx:id="ToggleGroupLanguage"/>
+                    </fx:define>
                     <items>
                         <MenuItem fx:id="miLanguageEnglish" mnemonicParsing="false" text="English" />
                         <MenuItem fx:id="miLanguageGerman" mnemonicParsing="false" text="Deutsch" />
