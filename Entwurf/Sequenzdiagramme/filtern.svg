@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="609" version="1.1" width="1052" xmlns="http://www.w3.org/2000/svg">
+<svg height="609" version="1.1" width="1050" xmlns="http://www.w3.org/2000/svg">
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="63" y2="68"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="73" y2="78"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="417" x2="417" y1="83" y2="88"/>
@@ -313,7 +313,7 @@ filter( )</text>
 <polygon fill="none" points="951,398 939,405 939,391" stroke="#000000" stroke-width="1"/>
 <text font-family="Dialog" font-size="12" x="645" y="393">
 create( visualGraph)</text>
-<rect fill="none" height="176" stroke="#000000" stroke-width="1" width="688" x="350" y="190"/>
+<rect fill="none" height="360" stroke="#000000" stroke-width="1" width="680" x="350" y="190"/>
 <polygon fill="#ffffff" points="366,198 461,198 471,208 471,237 366,237 366,198" stroke="#ffffff" stroke-width="1"/>
 <polyline fill="none" points="366,198 461,198 471,208 471,237 366,237 366,198" stroke="#000000" stroke-width="1"/>
 <polygon fill="#ffffff" points="461,198 471,208 461,208 461,198" stroke="#ffffff" stroke-width="1"/>
