@@ -1,0 +1,102 @@
+class TCMixedGreedyFewData extends TCData:
+	OrderedList<int> uncoloredVertices
+	OrderedList<int> uncoloredEdges
+
+	void init():
+		uncoloredVertices = graph.getVertices()
+		uncoloredEdges = graph.edges.sort()
+
+	void justColoredVertex(int v):
+		//remove v from list of uncolored vertices
+		uncoloredVertices.remove(v)
+
+		//TODO sort by numFreeColors + index
+
+	void justColoredEdge(SimpleUndirectedEdge e):
+		//remove e from list of uncolored edges
+		uncoloredEdges.remove(e)
+
+		//TODO sort by numFreeColors + index
+
+class TCMixedGreedyFew extends TCHeuristic:
+	TCResult applyTo(SimpleUndirectedGraph graph):
+		//init result and data
+		result = TCResult(graph, this)
+		data = TCMixedGreedyFewData(graph)
+
+		//start BFS
+		int v = 0
+		bfs = BFS(graph, 0)
+
+		//color graph vertex for vertex
+		while bfs.hasNextVertex():
+			//priorize vertices with less free colors than v
+			while not data.uncoloredVertices.isEmpty() and not data.uncoloredVertices[0].equals(v):
+				//get singular vertex with lowest index
+				w = data.singularVertices[0]
+
+				//stop heuristic if w cannot be colored
+				if data.freeVertexColors[w].isEmpty():
+					result.valid = false
+					//TODO error data
+					return result
+
+				//get free color of w
+				c = argmin(data.freeVertexColors[w], c -> data.colorWeights[c])
+
+				//color w with color c
+				colorVertex(w, c, data, result)
+
+			//continue normal mixed greedy coloring
+
+			//stop heuristic if vertex cannot be colored
+			if data.freeVertexColors[v].isEmpty():
+				result.valid = false
+				//TODO error data
+				return result
+
+			//find minimally used free color of v
+			c = argmin(data.freeVertexColors[v], c -> data.colorWeights[c])
+
+			//color v with color c
+			colorVertex(v, c, data, result)
+
+			//color all uncolored incident edges
+			for e in graph.getIncidentEdges(v) where data.freeEdgeColors.contains(e):
+				//priorize edges with less free colors than e
+				while not data.uncoloredEdges.isEmpty() and data.uncoloredEdges[0].equals(e):
+					//get singular edge with lowest index
+					f = data.singularEdges[0]
+
+					//stop heuristic if edge cannot be colored
+					if data.freeEdgeColors[f].isEmpty():
+						result.valid = false
+						//TODO error data
+						return result
+
+					//get free color of f
+					c = argmin(data.freeEdgeColors[f], c -> data.colorWeights[c])
+
+					//color f with color c
+					colorEdge(f, c, data, result)
+
+				//continue normal mixed greedy coloring
+
+				//stop heuristic if edge cannot be colored
+				if data.freeEdgeColors[e].isEmpty():
+					result.valid = false
+					//TODO error data
+					return result
+
+				//find minimally used free color of e
+				c = argmin(data.freeEdgeColors[e], c -> data.colorWeights[c])
+
+				//color e with color c
+				colorEdge(e, c, data, result)
+
+			//goto next vertex
+			v = bfs.getNextVertex()
+
+		//total coloring successfully calculated
+		result.valid = true
+		return result
