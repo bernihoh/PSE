@@ -494,7 +494,7 @@ h : Heuristic</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="343" x2="339" y1="543" y2="543"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="351" x2="339" y1="536" y2="543"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="351" x2="339" y1="550" y2="543"/>
-<rect fill="none" height="336" stroke="#000000" stroke-width="1" width="1048" x="190" y="182"/>
+<rect fill="none" height="248" stroke="#000000" stroke-width="1" width="1048" x="190" y="182"/>
 <polygon fill="#ffffff" points="190,182 245,182 255,192 255,235 190,235 190,182" stroke="#ffffff" stroke-width="1"/>
 <polyline fill="none" points="190,182 245,182 255,192 255,235 190,235 190,182" stroke="#000000" stroke-width="1"/>
 <polygon fill="#ffffff" points="245,182 255,192 245,192 245,182" stroke="#ffffff" stroke-width="1"/>
