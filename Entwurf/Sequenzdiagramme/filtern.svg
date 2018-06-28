@@ -182,15 +182,6 @@ filter</text>
 <polygon fill="none" points="773,254 761,261 761,247" stroke="#000000" stroke-width="1"/>
 <text font-family="Dialog" font-size="12" x="554" y="249">
 filter( )</text>
-<rect fill="none" height="184" stroke="#000000" stroke-width="1" width="456" x="350" y="190"/>
-<polygon fill="#ffffff" points="366,198 461,198 471,208 471,237 366,237 366,198" stroke="#ffffff" stroke-width="1"/>
-<polyline fill="none" points="366,198 461,198 471,208 471,237 366,237 366,198" stroke="#000000" stroke-width="1"/>
-<polygon fill="#ffffff" points="461,198 471,208 461,208 461,198" stroke="#ffffff" stroke-width="1"/>
-<polyline fill="none" points="461,198 471,208 461,208 461,198" stroke="#000000" stroke-width="1"/>
-<text font-family="Dialog" font-size="12" x="369" y="214">
-loop</text>
-<text font-family="Dialog" font-size="12" x="369" y="230">
-[all VisualGraph]</text>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="773" x2="768" y1="334" y2="334"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="763" x2="758" y1="334" y2="334"/>
 <line fill="#000000" stroke="#000000" stroke-width="1" x1="753" x2="748" y1="334" y2="334"/>
