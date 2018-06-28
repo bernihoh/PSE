@@ -6,7 +6,7 @@ This package contains classes for input, output and plugin loading.
 
 \textbf{Beschreibung}
 
-Loads all Heuristic and HeuristicResult classes using the ServiceLoader class. It uses the singelton design pattern.
+Loads all Heuristic, HeuristicResult and HeuristicProperties classes using the ServiceLoader class. It uses the singelton design pattern.
 
 \textbf{Dokumentation}
 \begin{enumerate}[+]
@@ -24,6 +24,11 @@ Loads all Heuristic and HeuristicResult classes using the ServiceLoader class. I
 		\textbf{getHeuristicResults():ArrayList<HeuristicResult>} \newline
 		Loads all HeuristicResult classes if they are not already loaded. \newline
 		\textbf{@return} returns a list with all HeuristicResult classes. \newline
+	}
+	\item{
+		\textbf{getHeuristicProperties():ArrayList<HeuristicProperties>} \newline
+		Loads all HeuristicProperties classes if they are not already loaded. \newline
+		\textbf{@return} returns a list with all HeuristicProperties classes. \newline
 	}
 	\item{
 		\textbf{reloadPlugins()} \newline
