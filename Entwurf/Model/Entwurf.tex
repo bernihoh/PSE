@@ -1,0 +1,1426 @@
+\documentclass{article}
+
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Pflichtenheft},
+bookmarks = true
+}
+\usepackage[toc]{glossaries}
+
+\usepackage{graphicx}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{placeins}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fix-cm}
+\newcommand{\titlesize}{\fontsize{30pt}{20pt}\selectfont}
+\newcommand{\themesize}{\fontsize{20pt}{20pt}\selectfont}
+\newcommand{\authorsize}{\fontsize{15pt}{20pt}\selectfont}
+
+\newcommand{\mypackage}[1]{\subsection*{Package #1} \label{#1} \addcontentsline{toc}{subsection}{\nameref{#1}}}
+\newcommand{\myclass}[1]{\subsubsection*{Class #1} \label{#1} \addcontentsline{toc}{subsubsection}{\nameref{#1}}}
+\newcommand{\myinterface}[1]{\subsubsection*{Interface #1} \label{#1} \addcontentsline{toc}{subsubsection}{\nameref{#1}}}
+
+%\makeglossaries
+
+
+
+%\titlehead{\centering \includegraphics{images/title}}
+%\title{RaGE Pflichtenheft}
+%\author{Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen}
+
+\begin{document}
+	%\maketitle
+	
+	%\newpage
+	
+	\begin{titlepage}
+		%\centering \includegraphics[width=0.7\textwidth]{images/title}
+		
+		\titlesize \hspace*{.5cm} Random Graph Coloring Evaluation
+		~\newline~\newline
+		
+		\themesize \hspace*{3cm} Entwurfsdokument
+		\newline~\newline
+		
+		\authorsize Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Anmerkungen zum Pflichtenheft}
+	\subsection{Klarstellungen}
+	\subsection{Änderungen}	
+	
+	\section{Übersicht}
+	
+	~\newpage
+	\section{Model}
+	
+	\mypackage{graph}
+	This package contains the interfaces for the interaction with graphs. In the subpackages concrete graph-types are implemented.
+	
+	
+	TODO graph.png UML einfügen
+	
+	
+	\myclass{Graph}
+	\textbf{Description}
+	
+	This class describes the abstract structure of a graph. Each graph has (independent of its concrete type) a finite amount of vertices and edges, which define a relation of vertices. The type \textbf{E} of this edges defines the concrete graph type. The class has methods for retrieving the relations given by the edges. Vertices are identified with their unique index and thus are not saved explicitly.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{Graph(edges: List<E>, numVertices: int)} \newline
+			the constructor of this class \newline
+			\textbf{@param edges} the edges belonging to this graph
+			\textbf{@numVertices} the number of vertices this graph has
+		}
+		\item{
+			\textbf{getNumVertices(): int} \newline
+			\textbf{@return} returns the number of vertices which the graph contains
+		}
+		\item{
+			\textbf{getVertices(): int} \newline
+			convenience method for retrieving the list of vertex indices \newline
+			\textbf{@return} returns the list [0 ... numVertices$-1$]
+		}
+		\item{
+			\textbf{getEdges(): List<E>} \newline
+			\textbf{@return} returns the edges giving the graph its structure
+		}
+		\item{
+			\textbf{areIncident(vertex: int, edge: E): bool} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$]\newline
+			\textbf{@param edge} an edge of the graph \newline 
+			\textbf{@return} returns \textbf{true} iff the vertex is incident to the given edge \newline
+			\textbf{@throws GraphInconstistencyException} if \textbf{vertex} is an invalid vertex index or \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{areAdjacent(vertex1: int, vertex2: int): bool} \newline
+			\textbf{@param vertex1} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@param vertex2} see \textbf{vertex1} \newline
+			\textbf{@return} returns \textbf{true} iff there is an edge which is incident to both vertices \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex1} or \textbf{vertex2} is not a valid vertex index
+		}
+		\item{
+			\textbf{areAdjacent(edge1: E, edge2: E): bool} \newline
+			\textbf{@param edge1} an edge of the graph \newline
+			\textbf{@param edge2} another edge of the graph \newline
+			\textbf{@return} returns \textbf{true} iff there is a vertex which is incident to both edges \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge1} or \textbf{edge2} is not an edge of the graph
+		}
+		\item{
+			\textbf{getAdjacentVertices(vertex: int): List<int>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all vertices which are adjacent to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is not a valid vertex index
+		}
+		\item{
+			\textbf{getAdjacentEdges(edge: E): bool} \newline
+			\textbf{@param edge} an edge of the graph \newline
+			\textbf{@return} returns the list of all edges which are adjacent to \textbf{edge} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{getIncidentEdges(vertex: int): List<E>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all edges incident to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is an invalid vertex index
+		}
+		\item{
+			\textbf{getIncidentVertices(edges: List<E>): List<int>} \newline
+			\textbf{@param edges} a list of edges of the graph \newline
+			\textbf{@return} returns the list of all vertices which are incident to any of the edges in the list \newline
+			\textbf{@throws GraphInconsistencyException} if there is an edge in \textbf{edges}, which is not an edge of the graph
+			
+		}
+		\item{
+			\textbf{\textit{toRAGE(): List<String>}} \newline
+			\textbf{@return} returns the line-by-line representation of the graph as specified in the RAGE-data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{Edge}
+	\textbf{Description}
+	
+	An edge always defines an adjacency-relation of the vertices incident to it. Moreover this class provides methods to compare edges.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{\textit{getVertices(): List<int>}} \newline
+			\textbf{@return} returns the list of all indices of vertices incident to this edge
+		}
+		\item{
+			\textbf{\textit{equals(edge: E): bool}} \newline
+			\textbf{@return} returns \textbf{true} iff \textbf{edge} equals the edge this method is invoked upon. Note that the notion of equality depends on the concrete implementation.
+		}
+		\item{
+			\textbf{\textit{compareTo(edge: E): int}} \newline
+			\textbf{@return} returns \textbf{-1}/\textbf{0}/\textbf{1} if \textbf{edge} is greater/equal/smaller than the edge this method is invoked upon. Note that the notions of order and equality depend on the concrete implementation.
+		}
+	\end{enumerate}
+	
+	\newpage
+	
+	\myclass{GraphProperties}
+	
+	\textbf{Description}
+	
+	This class is required for exchanging data between controller and model, especially to signal the settings required to generate graphs. It assures that the following graph-properties can be retrieved and set at all times:
+	
+	\begin{enumerate}[--]
+		\item{''graphTypes'' -- a const list of strings, initialised with [''simpleUndirectedGraph'', ''simpleHyperGraph'']}
+		\item{''type'' -- a string}
+		\item{''numVertices'' -- a nonnegative integer}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{GraphBuilder}
+	
+	\textbf{Description}
+	This class is a factory class to generate graphs of type \textbf{G} by given GraphProperties \textbf{G} as well as to modify graphs of this type.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{\textit{generateGraph(properties: P): G}} \newline
+			\textbf{@param properties} the properties which the generated graphs will have \newline
+			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
+		}
+		\item{
+			\textbf{\textit{deleteVertex(graph: G, vertex: int): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		\item{
+			\textbf{\textit{addVertex(graph: G): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
+		}
+		\item{
+			\textbf{\textit{swapVertices(graph: G, vertex1: int, vertex2: int): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} swap indices. Note this results in a different but isomorphic graph to \textbf{graph}  \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{\textit{deleteEdge(graph: G, edge: E): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
+		}
+		
+		~\newpage
+		
+		\item{
+			\textbf{\textit{addEdge(graph: G, edge: E): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be inserted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
+		}
+		\item{
+			\textbf{\textit{deleteIsolatedVertices(graph: G): G}} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{GraphInconsistencyException}
+	\textbf{Description}
+	
+	This class extends the usual Java Exception to an exception specifically thrown when graphs are treated wrong.
+		
+	~\newpage
+	
+	\mypackage{graph.simpleUndirectedGraph}
+	
+	In this package \textbf{simple undirected graphs} (ie. graphs where edges always connect two distinct vertices $x$ and $y$, where there is no distinction between edges $xy$ and $yx$ and where there is at most one edge $xy$) are implemented. It offers methods to generate, modify and distinct them by some (for simple undirected graphs well defined) criterions.
+		
+	\myclass{SimpleUndirectedGraph}
+	
+	\textbf{Description}
+	
+	This class concretizes the abstract Graph class in the sense of simple undirected graphs. As mentioned such a graph does not contain any loops or multiedges. Besides incidence relations, this class offers methods to identify properties of simple undirected graphs.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{SimpleUndirectedGraph(edges: List<SimpleUndirectedEdge>, numVertices: int)} \newline
+			a constructor for this class \newline
+			\textbf{@param edges} the edges contained in this graph \newline
+			\textbf{@param numVertices} the amount of vertices this graph being strictly greater than zero \newline
+			\textbf{@throws GraphInconsistencyException} if numVertices $\leq 0$ or if there is an edge with a vertex $\geq$ \textbf{numVertices} or of there exists an edge more than once
+		}
+		\item{
+			\textbf{SimpleUndirectedGraph(rageFormat: List<String>)} \newline
+			another constructor for this class \newline
+			\textbf{@param rageFormat} the lines of the line by line representation as specified in the RAGE data-format. \newline
+			\textbf{@throws GraphInconsistencyException} if rageFormat is not a valid representation of SimpleUndirectedGraph
+		}
+		\item{
+			\textbf{getVerticesBFS(): List<int>} \newline
+			\textbf{@return} returns the list of vertices of the graph in the order of a breadth first search
+		}
+		\item{
+			\textbf{areIncident(vertex: int, edge: SimpleUndirectedEdge): bool} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$]\newline
+			\textbf{@param edge} an edge of the graph \newline 
+			\textbf{@return} returns \textbf{true} iff the vertex is incident to the given edge \newline
+			\textbf{@throws GraphInconstistencyException} if \textbf{vertex} is an invalid vertex index or \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{areAdjacent(vertex1: int, vertex2: int): bool} \newline
+			\textbf{@param vertex1} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@param vertex2} see \textbf{vertex1} \newline
+			\textbf{@return} returns \textbf{true} iff there is an edge which is incident to both vertices \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex1} or \textbf{vertex2} is not a valid vertex index
+		}
+		\item{
+			\textbf{areAdjacent(edge1: SimpleUndirectedEdge, edge2: SimpleUndirectedEdge): bool} \newline
+			\textbf{@param edge1} an edge of the graph \newline
+			\textbf{@param edge2} another edge of the graph \newline
+			\textbf{@return} returns \textbf{true} iff there is a vertex which is incident to both edges \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge1} or \textbf{edge2} is not an edge of the graph
+		}
+		\item{
+			\textbf{getAdjacentVertices(vertex: int): List<int>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all vertices which are adjacent to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is not a valid vertex index
+		}
+		\item{
+			\textbf{getAdjacentEdges(edge: SimpleUndirectedEdge): bool} \newline
+			\textbf{@param edge} an edge of the graph \newline
+			\textbf{@return} returns the list of all edges which are adjacent to \textbf{edge} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{getIncidentEdges(vertex: int): List<SimpleUndirectedEdge>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all edges incident to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is an invalid vertex index
+		}
+		\item{
+			\textbf{getIncidentVertices(edges: List<SimpleUndirectedEdge>): List<int>} \newline
+			\textbf{@param edges} a list of edges of the graph \newline
+			\textbf{@return} returns the list of all vertices which are incident to any of the edges in the list \newline
+			\textbf{@throws GraphInconsistencyException} if there is an edge in \textbf{edges}, which is not an edge of the graph
+			
+		}
+		\item{
+			\textbf{isConnected(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph is connected ie. iff for any two vertices there is a sequence of edges where any two consecutive edges are adjacent
+		}
+		\item{
+			\textbf{isForest(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph is a forest ie. acyclic
+		}
+		\item{
+			\textbf{isBipartite(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the vertex set can be partitioned into two parts such that no two vertices from the same partition are adjacent
+		}
+		\item{
+			\textbf{isPlanar(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph has an embedding into the plane such that no two edges intersect
+		}
+		\item{
+			\textbf{toRage(): List<String>} \newline
+			\textbf{@return} returns the line-by-line representation of the graph as specified in the RAGE-data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleUndirectedEdge}
+	
+	\textbf{Description}
+	
+	This class concretizes the class Edge in the sense of a simple undirected edge. It always relates two distinct vertices.
+		
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{SimpleUndirectedEdge(vertex1: int, vertex2: int)} \newline
+			a constructor for this class \newline
+			\textbf{@param vertex1} the index of the index of the first vertex this edge is incident to \newline
+			\textbf{@param vertex2} the index of the index of the second this edge is incident to \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex1} equals \textbf{vertex2}
+		}
+		\item{
+			\textbf{getVertices(): List<int>} \newline
+			\textbf{@return} returns the list of all indices of vertices incident to this edge
+		}
+		\item{
+			\textbf{equals(edge: E): bool} \newline
+			\textbf{@return} returns \textbf{true} iff both edges are adjacent to the same two vertices
+		}
+		\item{
+			\textbf{compareTo(edge: E): int} \newline
+			The notion of order between edges $(x,y)$ and $(u,v)$ with $x\leq y$ and $u\leq v$ is defined by $(x,y)<(u,v)$ iff $x<u$ or ($x=u$ and $y < v$) \newline
+			\textbf{@return} returns \textbf{-1}/\textbf{0}/\textbf{1} if \textbf{edge} is greater/equal/smaller than the edge this method is invoked upon
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleUndirectedGraphProperties}
+	
+	\textbf{Description}
+	
+	This class is an extension of the GraphProperties class and serves as collection of data for exchange between controller and model, especially to signal the settings required for generating simple undirected graphs. It assures that the following properties can be retrieved and set at all times:
+	
+	\begin{enumerate}[--]
+		\item{''minDegree'' -- a nonnegative integer}
+		\item{''maxDegree'' -- a nonnegative integer}
+		\item{''connected'' -- a boolean}
+		\item{''forest'' -- a boolean}
+		\item{''bipartite'' -- a boolean}
+		\item{''planar'' -- a boolean}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleUndirectedGraphBuilder}
+	
+	\textbf{Description}
+	
+	This class concretizes the GraphBuilder class by offering methods for randomly generating simple undirected graphs after given SimpleUndirectedGraphProperties as well as modifying them.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{generate(properties: SimpleUndirectedGraphProperties): SimpleUndirectedGraph} \newline
+			\textbf{@param properties} the properties which the generated graphs will have \newline
+			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
+		}
+		\item{
+			\textbf{deleteVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		\item{
+			\textbf{addVertex(graph: SimpleUndirectedGraph): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
+		}
+		\item{
+			\textbf{copyVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be copied \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} is duplicated i.e. there is a new vertex which has precisely the same neighborhood \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		\item{
+			\textbf{swapVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} swap indices. Note this results in a different but isomorphic graph to \textbf{graph}  \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{contractVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} are contracted to a single vertex. Resulting loops will be deleted and multiedges will be reduced to one edge \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{deleteEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
+		}
+		
+		\item{
+			\textbf{addEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be inserted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge being added may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
+		}
+		\item{
+			\textbf{deleteIsolatedVertices(graph: SimpleUndirectedGraph): SimpleUndirectedGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\mypackage{graph.simpleHyperGraph}
+	
+	In this package simple hypergraphs (i.e. graphs whose edges are sets of at least two distinct vertices and whose edges dont overlap in more than one vertex) are implemented. It offers the functionality to generate, modify and distinct them by some for simple hypergraph welldefined criterions.
+	
+	\myclass{SimpleHyperGraph}
+	
+	\textbf{Description}
+	
+	This class concretizes the graph class in the sense of a simple hypergraphs. Besides incidence relations this class offers methods to identify some of their properties.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{SimpleHyperGraph(edges: List<SimpleHyperEdge>, numVertices: int)} \newline
+			A constructor for this class \newline
+			\textbf{@param edges} the edges this graph contains \newline
+			\textbf{@param numVertices} the amount of vertices this graph has \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{numVertices} $\leq 0$, if there is a hyperedge with a vertex $\geq$ \textbf{numVertices} or if the resulting hypergraph is not simple
+		}
+		\item{
+			\textbf{SimpleHyperGraph(rageFormat: List<String>)} \newline
+			A constructor of this class, assuring that this graph type can be loaded from harddrive \newline
+			\textbf{@param rageFormat} the line by line representation of the graph as specified in the RAGE data format
+		}
+		\item{
+			\textbf{getVerticesBFS(): List<int>} \newline
+			\textbf{@return} returns the list of vertices of the graph in the order of a breadth first search
+		}
+		\item{
+			\textbf{areIncident(vertex: int, edge: SimpleHyperEdge): bool} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$]\newline
+			\textbf{@param edge} an edge of the graph \newline 
+			\textbf{@return} returns \textbf{true} iff the vertex is incident to the given edge \newline
+			\textbf{@throws GraphInconstistencyException} if \textbf{vertex} is an invalid vertex index or \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{areAdjacent(vertex1: int, vertex2: int): bool} \newline
+			\textbf{@param vertex1} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@param vertex2} see \textbf{vertex1} \newline
+			\textbf{@return} returns \textbf{true} iff there is an edge which is incident to both vertices \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex1} or \textbf{vertex2} is not a valid vertex index
+		}
+		\item{
+			\textbf{areAdjacent(edge1: SimpleHyperEdge, edge2: SimpleHyperEdge): bool} \newline
+			\textbf{@param edge1} an edge of the graph \newline
+			\textbf{@param edge2} another edge of the graph \newline
+			\textbf{@return} returns \textbf{true} iff there is a vertex which is incident to both edges \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge1} or \textbf{edge2} is not an edge of the graph
+		}
+		\item{
+			\textbf{getAdjacentVertices(vertex: int): List<int>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all vertices which are adjacent to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is not a valid vertex index
+		}
+		\item{
+			\textbf{getAdjacentEdges(edge: SimpleHyperEdge): bool} \newline
+			\textbf{@param edge} an edge of the graph \newline
+			\textbf{@return} returns the list of all edges which are adjacent to \textbf{edge} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{edge} is not an edge of the graph
+		}
+		\item{
+			\textbf{getIncidentEdges(vertex: int): List<SimpleHyperEdge>} \newline
+			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
+			\textbf{@return} returns the list of all edges incident to \textbf{vertex} \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is an invalid vertex index
+		}
+		\item{
+			\textbf{getIncidentVertices(edges: List<SimpleHyperEdge>): List<int>} \newline
+			\textbf{@param edges} a list of edges of the graph \newline
+			\textbf{@return} returns the list of all vertices which are incident to any of the edges in the list \newline
+			\textbf{@throws GraphInconsistencyException} if there is an edge in \textbf{edges}, which is not an edge of the graph
+			
+		}
+		\item{
+			\textbf{isConnected(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff the graph is connected ie. iff for any two vertices there is a sequence of edges where any two consecutive edges are adjacent
+		}
+		\item{
+			\textbf{toRage(): List<String>} \newline
+			\textbf{@return} returns the line-by-line representation of the graph as specified in the RAGE-data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleHyperEdge}
+	
+	\textbf{Description}
+	
+	This class concretizes the class edge in the sense of a hyperedge. It always relates at least two distinct vertices.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{SimpleHyperEdge(vertices: List<int>)} \newline
+			A constructor for this class \newline
+			\textbf{@param vertices} the vertices this edge sets in relation \newline
+			\textbf{@throws GraphInconsistencyException} if the list is empty, contains just one vertex or any vertex twice			
+		}
+		\item{
+			\textbf{getVertices(): List<int>} \newline
+			\textbf{@return} returns the list of all indices of vertices incident to this edge
+		}
+		\item{
+			\textbf{equals(edge: E): bool} \newline
+			\textbf{@return} returns \textbf{true} both edges are adjacent to the same vertices
+		}
+		\item{
+			\textbf{compareTo(edge: E): int} \newline
+			The notion of order between edges $(x_1, ..., x_n)$ and $(y_1, ..., y_m)$ with $x_1 < ... < x_n$, $y_1 < ... < y_m$ and $n \leq m$ is defined by $(x1, ..., x_n)<(y_1,...,y_n)$ iff $x_1 < y_1$ or ($x_1=y_1$ and $x_2 < y_2$) or ... or ($x_1 = y_1$ and ... and $x_n = y_n$ and $n < m$) \newline
+			\textbf{@return} returns \textbf{-1}/\textbf{0}/\textbf{1} if \textbf{edge} is greater/equal/smaller than the edge this method is invoked upon
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{SimpleHyperGraphProperties}
+	
+	\textbf{Description}
+	
+	This class is an extension of the GraphProperties class and is likely meant for the exchange of data between controller and model, especially for transferring the settings required for generating simple hyper graphs. It assures that the following graph properties can be retrieved and set at all times:
+	
+	\begin{enumerate}[--]
+		\item{''uniform'' -- a nonnegative integer}
+		\item{''minDegree'' -- a nonnegative integer}
+		\item{''maxDegree'' -- a nonnegative integer}
+		\item{''connected'' -- a boolean}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{SimpleHyperGraphBuilder}
+	
+	\textbf{Description}
+	
+	This class concretizes the GraphBuilder class by offering methods for randomly generating simple hypergraphs after given SimpleHyperGraphProperties as well as modifying them.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{generate(properties: SimpleHyperGraphProperties): SimpleHyperGraph} \newline
+			\textbf{@param properties} the properties which the generated graphs will have \newline
+			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
+		}
+		\item{
+			\textbf{deleteVertex(graph: SimpleHyperGraph, vertex: int): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
+		}
+		\item{
+			\textbf{addVertex(graph: SimpleHyperGraph): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
+		}
+		\item{
+			\textbf{swapVertices(graph: SimpleHyperGraph, vertex1: int, vertex2: int): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
+			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertices having index \textbf{vertex1} and \textbf{vertex2} swap indices. Note this results in a different but isomorphic graph to \textbf{graph}  \newline
+			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
+		}
+		\item{
+			\textbf{deleteEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be deleted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
+		}
+		
+		\item{
+			\textbf{addEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@param edge} the edge which is going to be inserted \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge being added may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
+		}
+		\item{
+			\textbf{deleteIsolatedVertices(graph: SimpleHyperGraph): SimpleHyperGraph} \newline
+			\textbf{@param graph} the graph which is going to be modified \newline
+			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	
+	
+	
+	\mypackage{heuristic}
+	The package contains the interface for implementing heuristics. In the subpackages some heuristics for the total coloring conjecture as well as for the Erdös-Faber-Lovasz conjecture are implemented.
+	
+	TODO heuristic.png UML
+	
+	\myclass{Heuristic}
+	
+	\textbf{Description}
+	
+	The class is the abstract interface of a heuristic which is applied to a graph of typ \textbf{G} which has a result of type \textbf{R}.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{Heuristic(properties: HeuristicProperties)} \newline
+			A constructor for this class \newline
+			\textbf{@param properties} the properties defining this heuristic
+		}
+		\item{
+			\textbf{getProperties(): HeuristicProperties} \newline
+			\textbf{@return} returns the properties of this heuristic
+		}
+		\item{
+			\textbf{\textit{applyTo(graph: G): R}} \newline
+			\textbf{@param graph} the graph of type \textbf{G} on which the heuristic will be applied \newline
+			\textbf{@return} returns the result of the heuristic application
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{HeuristicResult}
+	
+	\textbf{Description}
+	
+	This class is the abstract interface of the result of a specific calculation of an heuristic \textbf{H} on a specific graph of type \textbf{G}. 
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{HeuristicResult(graph: G, heuristic: H)} \newline
+			The constructor of this class \newline
+			\textbf{@param graph} the graph this heuristic was calculated upon \newline
+			\textbf{@param heuristic} the heuristic by which the result was calculated
+		}
+		\item{
+			\textbf{getGraph(): G} \newline
+			\textbf{@return} returns the graph this result was calculated upon
+		}
+		\item{
+			\textbf{getHeuristic(): H} \newline
+			\textbf{@return} returns the heuristic by which this result was calculated
+		}
+		\item{
+			\textbf{\textit{toRAGE(): List<String>}} \newline
+			\textbf{@return} returns the line-by-line representation of this heuristic result as specified in the RAGE data format
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{HeuristicProperties}
+	
+	\textbf{Description}
+	
+	This class serves as collection of data for exchange between controller and model, especially to transfer properties of heuristics. It assures that the following properties may be retrieved and set at any time:
+	
+	\begin{enumerate}[--]
+		\item{''name'' -- ein String}
+		\item{"valid" -- ein Boolean}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{DataPool}
+	\textbf{Description}
+	
+	The class manages the application of heuristics of type \textbf{H} on graphs of type \textbf{G} which results have type \textbf{R}. It assures that every heuristic stored in the pool is applied to every graph stored in the pool. Moreover it gathers statistics over this applications.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{DataPool(rageFormat: List<String>)} \newline
+			A constructor for this class, assuring that the datapool can be loaded from harddrive \newline
+			\textbf{@param rageFormat} the line by line representation of a datapool as specified in the RAGE data format.
+		}
+		\item{
+			\textbf{getHeuristics(): List<H>} \newline
+			\textbf{@return} returns the list of heuristics currently in this data pool
+		}
+		\item{
+			\textbf{addHeuristic(heuristic: H)} \newline
+			\textbf{@param heuristic} the heuristic to be added to data pool, which then will be applied to every graph in the data pool \newline
+			\textbf{@throws DataInconsistencyException} if heuristic may not be applied on graphs of type \textbf{G} or does not has results of type \textbf{R}
+		}
+		\item{
+			\textbf{getGraphs(): List<G>} \newline
+			\textbf{@return} returns the list of graphs currently in this data pool
+		}
+		\item{
+			\textbf{addGraph(graph: G)} \newline
+			\textbf{@param graph} the graph to be added to the data pool, on which then all heuristics in the data pool will be applied \newline
+			\textbf{@throws DataInconsistencyException} if heuristics of type \textbf{H} may not be applied on this graph
+		}
+		\item{
+			\textbf{getResults(): List<R>} \newline
+			\textbf{@return} returns the list of all results calculated on graphs by heuristics in this data pool
+		}
+		\item{
+			\textbf{getResults(heuristic: H): List<R>} \newline
+			\textbf{@param heuristic} the heuristic the results were calculated by \newline
+			\textbf{@return} returns all results calculated by \textbf{heuristic} on graphs in this data pool 
+		}
+		\item{
+			\textbf{getResults(graph: G)} \newline
+			\textbf{@param graph} the graph the results were calculated upon \newline
+			\textbf{@return} returns all results calculated on \textbf{graph} by heuristics in this data pool
+		}
+		~\newpage
+		\item{
+			\textbf{getStatistics(heuristic: H): HeuristicStatistic} \newline
+			\textbf{@param heuristic} the heuristic whose statistics are requested \newline
+			\textbf{@return} returns the statistic gathered for \textbf{heuristic} \newline
+			\textbf{@throws DataInconsistencyException} if \textbf{heuristic} is not a heuristic of this data pool
+		}
+		\item{
+			\textbf{toRAGE(): List<String>} \newline
+			\textbf{@return} returns the line by line representation of this data pool as specified in the RAGE data format
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{HeuristicStatistic}
+	
+	This class collects some statistics overt the applications of a specific heuristic within a data pool. It assures that the following properties may be retrieved at any time:
+	
+	\begin{enumerate}[--]
+		\item{''minRuntime'' -- a floating point number}
+		\item{''avgRuntime'' -- a floating point number}
+		\item{"maxRuntime" -- a floating point number}
+		\item{"numApplications" -- a nonnegative integer}
+		\item{"numSuccesses" -- a nonnegative integer}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{DataInconsistencyException}
+	
+	\textbf{Description}
+	
+	This class extends the usual Java Exception to an exception specifically thrown when data pools are treated wrong.
+	
+	~\newpage
+	
+	
+	
+	
+	
+	\mypackage{heuristic.totalColoring}
+	In this package and its subpackages some heuristics for the \textbf{total coloring conjecture} (ie. any simple undirected graph with maximal degree $\Delta$ has a total coloring with $\Delta + 2$ colors) are implemented.
+	
+	TODO tc.png UML
+	
+	\myclass{TCHeuristic}
+	
+	\textbf{Description}
+	
+	This abstract class is the abstract interface for a total coloring heuristic. It assures that any total coloring heuristic is calculated on SimpleUndirectedGraphs and returns a TCResult as result. It provides some methods, which any total coloring heuristic needs, such as coloring vertices and edges.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item[\#]{
+			\textbf{colorVertex(vertex: int, color: int, data: TCData, result: TCResult)} \newline
+			\textbf{@param vertex} the vertex to be colored \newline
+			\textbf{@param color} the color which will be assigned to the vertex \newline
+			\textbf{@param data} the data required for the calculation of a total coloring \newline
+			\textbf{@param result} the resulting total coloring
+		}
+		\item[\#]{
+			\textbf{colorEdge(edge: SimpleUndirectedEdge, color: int, data: TCData, result: TCResult)} \newline
+			\textbf{@param edge} the edge to be colored \newline
+			\textbf{@param color} the color which will be assigned to the edge \newline
+			\textbf{@param data} the data required for the calculation of a total coloring \newline
+			\textbf{@param result} the resulting total coloring
+		}
+		\item{
+			\textbf{equals(heuristic: TCHeuristic): bool} \newline
+			\textbf{@param heuristic} another TCHeuristic this will be compared to \newline
+			\textbf{@return} returns \textbf{true} iff the other TCHeuristic of of the same type and has exactly the same properties
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCResult}
+	
+	\textbf{Description}
+	
+	This class represents a total coloring of a simple undirected graph ie. a coloring of vertices and edges, such that no two adjacent or incident objects share the same color. Colors are represented as integers.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{TCResult(graph: SimpleUndirectedGraph, heuristic: TCHeuristic)} \newline
+			A constructor for this class
+			\textbf{@param graph} the graph this result was calculated upon \newline
+			\textbf{@param heuristic} the heuristic this result was calculated by
+		}
+		\item{
+			\textbf{getVertexColor(vertex: int): int} \newline
+			\textbf{@param vertex} the vertex whose color is requested \newline
+			\textbf{@return} returns the color of \textbf{vertex} \newline
+			\textbf{@throws DataInconsistencyException} if vertex has no color
+		}
+		\item{
+			\textbf{setVertexColor(vertex: int, color: int)} \newline
+			\textbf{@param vertex} the vertex to be colored \newline
+			\textbf{@param color} the color to color \textbf{vertex} with
+		}
+		\item{
+			\textbf{getEdgeColor(edge: SimpleUndirectedEdge): int} \newline
+			\textbf{@param edge} the edge whose color is requested \newline
+			\textbf{@return} returns the color of \textbf{edge} \newline
+			\textbf{@throws DataInconsistencyException} if edge has no color
+		}
+		\item{
+			\textbf{setEdgeColor(edge: SimpleUndirectedEdge, color: int)} \newline
+			\textbf{@param edge} the edge to be colored \newline
+			\textbf{@param color} the color to color \textbf{edge} with
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCData}
+	
+	\textbf{Description}
+	
+	This abstract class encapsulates the data required temporarly to calculate a total coloring, such as the lists of \textbf{free colors} of uncolored vertices and edges (ie. the colors which are not used by other objects adjacent / incident to them). Moreover it stores the weighted (vertex vs. edges) sum of how often colors are used.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{TCData(graph: SimpleUndirectedGraph)} \newline
+			A constructor of this class \newline
+			\textbf{@param graph} the graph the heuristic is running at
+		}
+		\item{
+			\textbf{\textit{init()}} \newline
+			May be implemented to (re-)initialize the data at any time within the running heuristic
+		}
+		\item{
+			\textbf{\textit{justColoredVertex(vertex: int)}} \newline
+			May be implemented to update data anytime when a vertex was colored \newline
+			\textbf{@param vertex} the vertex which was just colored
+		}
+		\item{
+			\textbf{\textit{justColoredEdge(edge: SimpleUndirectedEdge)}} \newline
+			May be implemented to update data anytime when an edge was colored \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item{
+			\textbf{removeFreeColor(vertex: int, color: int)} \newline
+			\textbf{@param vertex} the vertex which will have one free color less \newline
+			\textbf{@param color} the color which \textbf{vertex} mustnt use
+		}
+		\item{
+			\textbf{removeFreeColor(edge: SimpleUndirectedEdge, color: int)} \newline
+			\textbf{@param edge} the edge which will have one free color less \newline
+			\textbf{@param color} the color which \textbf{edge} mustnt use
+		}
+		\item{
+			\textbf{getFlex(vertices: List<int>): int} \newline
+			\textbf{@param vertices} the set of vertices whose flexibility should be calculated \newline
+			\textbf{@return} returns the flexibility of these vertices ie. \# of colors free for all vertices -- \# of \textbf{vertices}
+		}
+		\item{
+			\textbf{getFlex(edges: List<SimpleUndirectedEdge>): int} \newline
+			\textbf{@param vertices} the set of vertices whose flexibility should be calculated \newline
+			\textbf{@return} returns the flexibility of these vertices ie. \# of colors which are free for all edges -- \# of \textbf{edges}
+		}
+		\item{
+			\textbf{getFlex(vertices: List<int>, edges: List<SimpleUndirectedEdge>): int} \newline
+			\textbf{@param vertices} a set of vertices \newline
+			\textbf{@param edges} a set of edges \newline
+			\textbf{@return} returns the flexibility of these objects ie. \# of colors which are free for all objects -- \# of \textbf{objects}
+		}
+		\item{
+			\textbf{getColorWeight(color: int): int} \newline
+			\textbf{@param color} the color whose weight is requested \newline
+			\textbf{@return} returns the weight of this color ie. how often it was used weighted differently by vertices and edges
+		}
+		\item{
+			\textbf{setColorWeight(color: int, weight: int)} \newline
+			\textbf{@param color} the color whose weight will be updated \newline
+			\textbf{@param weight} the new weight of \textbf{color}
+		}
+		\item{
+			\textbf{getFreeVertexColors(vertex: int): List<int>} \newline
+			\textbf{@param vertex} the vertex whose free colors are requested \newline
+			\textbf{@return} returns the list of free colors of \textbf{vertex}
+		}
+		\item{
+			\textbf{getFreeVertexColors(edge: SimpleUndirectedEdge): List<int>} \newline
+			\textbf{@param edge} the edge whose free colors are requested \newline
+			\textbf{@return} returns the list of free colors of \textbf{edge}
+		}
+	\end{enumerate}
+	
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCFlexSet}
+	
+	\textbf{Description}
+	
+	This class represents a subset of vertices and edges of a graph with a given \textbf{flexibility value} (ie. \# colors free for all objects -- \# objects) used heavily in some TCHeuristics.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{TCFlexSet(vertices: List<int>, value: int)} \newline
+			A constructor of this class \newline
+			\textbf{@param vertices} some vertices \newline
+			\textbf{@param value} the flexibility value of \textbf{vertices}
+		}
+		\item{
+			\textbf{TCFlexSet(edges: List<SimpleUndirectedEdge>, value: int)} \newline
+			A constructor of this class \newline
+			\textbf{@param edges} some edges \newline
+			\textbf{@param value} the flexibility value of \textbf{edges}
+		}
+		\item{
+			\textbf{TCFlexSet(vertices: List<int>, edges: List<SimpleUndirectedEdge>, value: int)} \newline
+			A constructor of this class \newline
+			\textbf{@param vertices} some vertices \newline
+			\textbf{@param edges} some edges \newline
+			\textbf{@param value} the flexibility value of the set of objects in \textbf{vertices} and \textbf{edges}
+		}
+		\item{
+			\textbf{getVertices(): List<int>} \newline
+			\textbf{@return} returns the vertices in this flex set
+		}
+		\item{
+			\textbf{getEdges(): List<SimpleUndirectedEdge>} \newline
+			\textbf{@return} returns the edges in this flex set
+		}
+		\item{
+			\textbf{getValue(): int} \newline
+			\textbf{@return} returns the flexibility value of this set of objects
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	
+	
+	
+	\mypackage{heuristic.totalColoring.greedy}
+	In this package some greedy heuristics for the total coloring conjecture are implemented. They all have in common, that the vertices are colored first and the edges are colored afterwards. The heuristics differ in the way the edges are colored.
+	
+	\myclass{TCGreedyData}
+	
+	\textbf{Description}
+	
+	Since TCData is abstract this class is required such that the TCGreedy heuristic has its own data class, even if with respect to TCData no additional attributes or methods are added.
+	
+	\myclass{TCGreedy}
+	
+	\textbf{Description}
+	
+	This class implements the TCGreedy heuristic which tries to calculate a total coloring.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			implements the following heuristic
+			
+			\begin{verbatim}
+				for every vertex v in order of a breadth first search
+				    if v cannot be colored
+				        return incomplete coloring
+				    get minimally used free color c of v with respect to the color weights
+				    color v with color c
+				    
+				for every vertex v in order of a breadth first search
+				    for every uncolored edge e incident to v in the order defined on edges
+				        if e cannot be colored
+				            return incomplete coloring
+				        get minimally used free color c of e with respect to the color weights
+				        color e with color c
+				        
+				return complete coloring
+			\end{verbatim}
+			
+			\textbf{@param graph} the graph this heuristic will be applied on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{TCGreedyOneData}
+	
+	\textbf{Description}
+	
+	This class stores all uncolored edges with exactly one free color temporarily.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of all uncolored edges with exactly one free color
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the list of edges with exactly one free color \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item[-]{
+			\textbf{calcSingularEdges()} \newline
+			updates the list of edges with exactly one free color
+		}
+		\item{
+			\textbf{getMinimalSingularEdge(): SimpleUndirectedEdge} \newline
+			\textbf{@return} returns the minimal edge with exactly one free color with respect to the order defined on edges
+		}
+	\end{enumerate}
+	
+	\myclass{TCGreedyOne}
+	
+	\textbf{Description}
+	
+	This class implements the TCGreedyOne heuristic which tries to calculate a total coloring.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			implements the following heuristic
+			
+			\begin{verbatim}
+				for every vertex v in the order of a breadth first search
+				    if v cannot be colored
+				        return incomplete coloring
+				    get minimally used free color c of v with respect to the color weights
+				    color v with color c
+				    
+				for every vertex v in the order of a breadth first search
+				    for every uncolored edge e incident to v in the order defined on edges
+				        while there are uncolored edges with exactly one free color
+				            get minimal uncolored edge with exactly one free color f
+				            get minimally used free color c of f with respect to the color weights
+				            color f with color c
+				        if e is colored already
+				            continue
+				        if e cannot be colored
+				            return incomplete coloring
+				        get minimally used free color c of e with respect to the color weights
+				        color e with color c
+				        
+				return complete coloring
+			\end{verbatim}
+			
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{TCGreedyFewData}
+	
+	\textbf{Description}
+	
+	This class stores all uncolored edges sorted first by their amount of free colors and then by the order defined on edges.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of uncolored edges
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the list of uncolored edges
+		}
+		\item{
+			\textbf{getMinimalUncoloredEdge(): SimpleUndirectedEdge} \newline
+			\textbf{@return} returns the minimal uncolored edge with respect to the number of free colors and the order defined on edges
+		}
+	\end{enumerate}
+	
+	\myclass{TCGreedyFew}
+	
+	\textbf{Description}
+	
+	This class implements the TCGreedyFew heuristic, which tries to calculate a total coloring.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			implements the following heuristic
+			
+			\begin{verbatim}
+				for every vertex v in the order of a breadth first search
+				    if v cannot be colored
+				        return incomplete coloring
+				    get minimally used free color c of v with respect to the color weights
+				    color v with color c
+				    
+				for every vertex v in the order of a breadth first search
+				    for every uncolored edge e incident to v in the order defined on edges
+				        while there are uncolored edges with less free colors than e and lower order than e
+				            get minimal uncolored edge f
+				            if f cannot be colored
+				                return incomplete coloring
+				            get minimally used free color c of f with respect to the color weights
+				            color f with color c
+				        if e is colored already
+				            continue
+				        if e cannot be colored
+				            return incomplete coloring
+				        get minimally used free color c of e with respect to the color weights
+				        color e with color c
+				        
+				return complete coloring
+			\end{verbatim}
+			
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{TCGreedySetData}
+	
+	\textbf{Description}
+	
+	This class stores for any vertex v the subset of all uncolored edges incident to v which has the lowest flexibility value (ie. \# of colors which are free for every edge in this set -- \# of edges in the set) and is the lowest with respect to lexicographic ordering using the order defined on edges. These sets are from now on referred to as minimal flex sets
+		
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the minimal flex sets
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the minimal flex sets of the vertices incident to edge
+		}
+		\item[-]{
+			\textbf{calcMinimalFlexSet(vertex: int)} \newline
+			calculates the minimal flex set of \textbf{vertex} \newline
+			\textbf{@param vertex} the vertex whose minimal flex set is calculated
+		}
+		\item{
+			\textbf{getMinimalFlexSet(): TCFlexSet} \newline
+			\textbf{@return} returns the minimal flex set belonging to the vertex with minimal index
+		}
+	\end{enumerate}
+	
+	\myclass{TCGreedySet}
+	
+	\textbf{Description}
+	
+	This class implements the TCGreedySet heuristic, which tries to calculate a total coloring.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			implements the following heuristic
+			
+			\begin{verbatim}
+				for every vertex v in the order of a breadth first search
+				    if v cannot be colored
+				        return incomplete coloring
+				    get minimally used free color c of v with respect to the color weights
+				    color v with color c
+				    
+				while there is a set with minimal flexibility
+				    find the set X of minimal flexibility belonging to the vertex v with lowest index
+				        if X has negative flexibility
+				            return incomplete coloring
+				        for every edge e of X in the order defined on edges
+				            if e cannot be colored
+				                return incomplete coloring
+				            get minimally used free color c of e with respect to the color weights
+				            color e with color c
+				        
+				return complete coloring
+			\end{verbatim}
+			
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{TCGreedyConData}
+	
+	\textbf{Description}
+	
+	This class stores the list of uncolored edges temporarily to compute connected subsets of uncolored edges up to a specific size.
+		
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of uncolored edges
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the list of uncolored edges
+		}
+		\item{
+			\textbf{getMinimalFlexSet(): TCFlexSet} \newline
+			\textbf{@return} returns the connected set of uncolored edges with minimal flexibility value (\# of colors which are free for all edges -- \# of edges) and minimal lexicographic order using the order defined on edges.
+		}
+	\end{enumerate}
+	
+	\myclass{TCGreedyCon}
+	
+	This class implements the TCGreedyCon heuristic, which tries to calculate a total coloring.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			implements the following heuristic
+			
+			\begin{verbatim}
+				for every vertex v in the order of a breadth first search
+				    if v cannot be colored
+				        return incomplete coloring
+				    get minimally used free color c of v with respect to the color weights
+				    color v with color c
+				    
+				while there is a set with minimal flexibility
+				    find the set X of minimal flexibility which has the lowest lexicographic order
+				        if X has negative flexibility
+				            return incomplete coloring
+				        for every edge e of X in the order defined on edges
+				            if e cannot be colored
+				                return incomplete coloring
+				            get minimally used free color c of e with respect to the color weights
+				            color e with color c
+				        
+				return complete coloring
+			\end{verbatim}
+			
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	
+	
+	
+	
+	\mypackage{heuristic.totalColoring.mixedGreedy}
+	In this package some heuristics for the total coloring conjecture are implemented. In comparison to the greedy heuristics, these heuristics do not seperate the coloring of vertices and edges strictly but rather alternate between them.
+	
+	
+	\myclass{TCMixedGreedyData}
+	\myclass{TCMixedGreedy}
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedyOneData}
+	\myclass{TCMixedGreedyOne}
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedyFewData}
+	\myclass{TCMixedGreedyFew}
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedySetData}
+	\myclass{TCMixedGreedySet}
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedyConData}
+	\myclass{TCMixedGreedyCon}
+	
+	
+	
+	
+	
+	\mypackage{heuristic.erdosFaberLovasz}
+	\myclass{EFLHeuristic}
+	\myclass{EFLResult}
+	
+	\mypackage{heuristic.erdosFaberLovasz.greedy}
+	\myclass{EFLGreedyData}
+	\myclass{EFLGreedy}
+	\myclass{EFLGreedyOneData}
+	\myclass{EFLGreedyOne}
+	\myclass{EFLGreedyFewData}
+	\myclass{EFLGreedyFew}
+	\myclass{EFLGreedySetData}
+	\myclass{EFLGreedySet}
+	\myclass{EFLGreedyConData}
+	\myclass{EFLGreedyCon}
+	
+	
+	\section{View}
+	\section{Controller}
+	\section{Input-Output}
+	\section{Utils}
+	\section{Addendum: Heuristiken}
+	\section{Addendum: RAGE-Datenformate}
+	
+\end{document}
