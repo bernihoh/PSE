@@ -1056,47 +1056,36 @@ bookmarks = true
 	\mypackage{heuristic.totalColoring.greedy}
 	In this package some greedy heuristics for the total coloring conjecture are implemented. They all have in common, that the vertices are colored first and the edges are colored afterwards. The heuristics differ in the way the edges are colored.
 	
+	TODO tcgreedy.png UML
+	
 	\myclass{TCGreedyData}
 	
 	\textbf{Description}
 	
 	Since TCData is abstract this class is required such that the TCGreedy heuristic has its own data class, even if with respect to TCData no additional attributes or methods are added.
 	
+	~\newline
+	~\newline
+	~\newline
+	
 	\myclass{TCGreedy}
 	
 	\textbf{Description}
 	
-	This class implements the TCGreedy heuristic which tries to calculate a total coloring.
+	This class implements the TCGreedy heuristic which tries to calculate a total coloring as specified in the addendum.
 	
 	\textbf{Documentation}
 	\begin{enumerate}[+]
 		\item{
 			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
-			implements the following heuristic
-			
-			\begin{verbatim}
-				for every vertex v in order of a breadth first search
-				    if v cannot be colored
-				        return incomplete coloring
-				    get minimally used free color c of v with respect to the color weights
-				    color v with color c
-				    
-				for every vertex v in order of a breadth first search
-				    for every uncolored edge e incident to v in the order defined on edges
-				        if e cannot be colored
-				            return incomplete coloring
-				        get minimally used free color c of e with respect to the color weights
-				        color e with color c
-				        
-				return complete coloring
-			\end{verbatim}
-			
 			\textbf{@param graph} the graph this heuristic will be applied on \newline
 			\textbf{@return} returns the calculated coloring
 		}
 	\end{enumerate}
 	
-	~\newpage
+	~\newline
+	~\newline
+	~\newline
 	
 	\myclass{TCGreedyOneData}
 	
@@ -1126,48 +1115,27 @@ bookmarks = true
 		}
 	\end{enumerate}
 	
+	
+	
 	\myclass{TCGreedyOne}
 	
 	\textbf{Description}
 	
-	This class implements the TCGreedyOne heuristic which tries to calculate a total coloring.
+	This class implements the TCGreedyOne heuristic which tries to calculate a total coloring as specified in the addendum.
 	
 	\textbf{Documentation}
 	
 	\begin{enumerate}[+]
 		\item{
 			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
-			implements the following heuristic
-			
-			\begin{verbatim}
-				for every vertex v in the order of a breadth first search
-				    if v cannot be colored
-				        return incomplete coloring
-				    get minimally used free color c of v with respect to the color weights
-				    color v with color c
-				    
-				for every vertex v in the order of a breadth first search
-				    for every uncolored edge e incident to v in the order defined on edges
-				        while there are uncolored edges with exactly one free color
-				            get minimal uncolored edge with exactly one free color f
-				            get minimally used free color c of f with respect to the color weights
-				            color f with color c
-				        if e is colored already
-				            continue
-				        if e cannot be colored
-				            return incomplete coloring
-				        get minimally used free color c of e with respect to the color weights
-				        color e with color c
-				        
-				return complete coloring
-			\end{verbatim}
-			
 			\textbf{@param graph} the graph this heuristic will be calculated on \newline
 			\textbf{@return} returns the calculated coloring
 		}
 	\end{enumerate}
 	
-	~\newpage
+	~\newline
+	~\newline
+	~\newline
 	
 	\myclass{TCGreedyFewData}
 	
@@ -1192,44 +1160,21 @@ bookmarks = true
 		}
 	\end{enumerate}
 	
+	~\newline
+	~\newline
+	~\newline
+	
 	\myclass{TCGreedyFew}
 	
 	\textbf{Description}
 	
-	This class implements the TCGreedyFew heuristic, which tries to calculate a total coloring.
+	This class implements the TCGreedyFew heuristic, which tries to calculate a total coloring as specified in the addendum.
 	
 	\textbf{Documentation}
 	
 	\begin{enumerate}[+]
 		\item{
 			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
-			implements the following heuristic
-			
-			\begin{verbatim}
-				for every vertex v in the order of a breadth first search
-				    if v cannot be colored
-				        return incomplete coloring
-				    get minimally used free color c of v with respect to the color weights
-				    color v with color c
-				    
-				for every vertex v in the order of a breadth first search
-				    for every uncolored edge e incident to v in the order defined on edges
-				        while there are uncolored edges with less free colors than e and lower order than e
-				            get minimal uncolored edge f
-				            if f cannot be colored
-				                return incomplete coloring
-				            get minimally used free color c of f with respect to the color weights
-				            color f with color c
-				        if e is colored already
-				            continue
-				        if e cannot be colored
-				            return incomplete coloring
-				        get minimally used free color c of e with respect to the color weights
-				        color e with color c
-				        
-				return complete coloring
-			\end{verbatim}
-			
 			\textbf{@param graph} the graph this heuristic will be calculated on \newline
 			\textbf{@return} returns the calculated coloring
 		}
@@ -1265,39 +1210,21 @@ bookmarks = true
 		}
 	\end{enumerate}
 	
+	~\newline
+	~\newline
+	~\newline
+	
 	\myclass{TCGreedySet}
 	
 	\textbf{Description}
 	
-	This class implements the TCGreedySet heuristic, which tries to calculate a total coloring.
+	This class implements the TCGreedySet heuristic, which tries to calculate a total coloring as specified in the addendum.
 	
 	\textbf{Documentation}
 	
 	\begin{enumerate}[+]
 		\item{
 			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
-			implements the following heuristic
-			
-			\begin{verbatim}
-				for every vertex v in the order of a breadth first search
-				    if v cannot be colored
-				        return incomplete coloring
-				    get minimally used free color c of v with respect to the color weights
-				    color v with color c
-				    
-				while there is a set with minimal flexibility
-				    find the set X of minimal flexibility belonging to the vertex v with lowest index
-				        if X has negative flexibility
-				            return incomplete coloring
-				        for every edge e of X in the order defined on edges
-				            if e cannot be colored
-				                return incomplete coloring
-				            get minimally used free color c of e with respect to the color weights
-				            color e with color c
-				        
-				return complete coloring
-			\end{verbatim}
-			
 			\textbf{@param graph} the graph this heuristic will be calculated on \newline
 			\textbf{@return} returns the calculated coloring
 		}
@@ -1328,37 +1255,640 @@ bookmarks = true
 		}
 	\end{enumerate}
 	
+	~\newline
+	~\newline
+	~\newline
+	
 	\myclass{TCGreedyCon}
 	
-	This class implements the TCGreedyCon heuristic, which tries to calculate a total coloring.
+	This class implements the TCGreedyCon heuristic, which tries to calculate a total coloring as specified in the addendum.
 	
 	\textbf{Documentation}
 	
 	\begin{enumerate}[+]
 		\item{
 			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
-			implements the following heuristic
-			
-			\begin{verbatim}
-				for every vertex v in the order of a breadth first search
-				    if v cannot be colored
-				        return incomplete coloring
-				    get minimally used free color c of v with respect to the color weights
-				    color v with color c
-				    
-				while there is a set with minimal flexibility
-				    find the set X of minimal flexibility which has the lowest lexicographic order
-				        if X has negative flexibility
-				            return incomplete coloring
-				        for every edge e of X in the order defined on edges
-				            if e cannot be colored
-				                return incomplete coloring
-				            get minimally used free color c of e with respect to the color weights
-				            color e with color c
-				        
-				return complete coloring
-			\end{verbatim}
-			
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	
+	
+	~\newpage
+	
+	\mypackage{heuristic.totalColoring.mixedGreedy}
+	In this package some heuristics for the total coloring conjecture are implemented. In comparison to the greedy heuristics, these heuristics do not seperate the coloring of vertices and edges strictly but rather alternate between them. Nethertheless they work in a similiarly greedy fashion.
+	
+	TODO tcmixedgreedy.png UML
+	
+	
+	\myclass{TCMixedGreedyData}
+	
+	\textbf{Description}
+	
+	Since TCData is abstract this class is required such that the TCGreedy heuristic has its own data class, even if with respect to TCData no additional attributes or methods are added.
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCMixedGreedy}
+	
+	\textbf{Description}
+	
+	This class implements the TCMixedGreedy heuristic which tries to calculate a total coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			\textbf{@param graph} the graph this heuristic will be applied on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedyOneData}
+	
+	\textbf{Description}
+	
+	This class stores all uncolored vertices and all uncolored edges with exactly one free color temporarily.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of all uncolored edges with exactly one free color
+		}
+		\item{
+			\textbf{justColoredVertex(vertex: int)} \newline
+			updates the lists of objects with exactly one free color \newline
+			\textbf{@param vertex} the vertex which was just colored
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the lists of objects with exactly one free color \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item[-]{
+			\textbf{calcSingularObjects()} \newline
+			updates the lists of objects with exactly one free color
+		}
+		\item{
+			\textbf{getMinimalSingularVertex(): int} \newline
+			\textbf{@return} returns the vertex with minimal index and exactly one free color		
+		}
+		\item{
+			\textbf{getMinimalSingularEdge(): SimpleUndirectedEdge} \newline
+			\textbf{@return} returns the minimal edge with exactly one free color with respect to the order defined on edges
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCMixedGreedyOne}
+	
+	\textbf{Description}
+	
+	This class implements the TCMixedGreedyOne heuristic which tries to calculate a total coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			\textbf{@param graph} the graph this heuristic will be applied on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedyFewData}
+	
+	\textbf{Description}
+	
+	This class stores all uncolored vertices and all uncolored edges, both sorted by their number of free colors and inherent order.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of all uncolored objects
+		}
+		\item{
+			\textbf{justColoredVertex(vertex: int)} \newline
+			updates the lists of uncolored objects \newline
+			\textbf{@param vertex} the vertex which was just colored
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the lists of uncolored objects \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item{
+			\textbf{getMinimalUncoloredVertex(): int} \newline
+			\textbf{@return} returns the vertex with minimal amount of free colors and minimal index		
+		}
+		\item{
+			\textbf{getMinimalUncoloredEdge(): SimpleUndirectedEdge} \newline
+			\textbf{@return} returns the edge with the minimal amount of free colors and minimal order
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCMixedGreedyFew}
+	
+	\textbf{Description}
+	
+	This class implements the TCMixedGreedyFew heuristic which tries to calculate a total coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			\textbf{@param graph} the graph this heuristic will be applied on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedySetData}
+	
+	\textbf{Description}
+	
+	This class stores for every vertex the subset of edges incident to this vertex which has minimal flexibility and minimal lexicographic order using the order defined on the edges. If the vertex is uncolored, versions with the vertex added to the set and without it are considered. These sets will from now on be reffered to as flexibility sets.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of flexibility sets
+		}
+		\item{
+			\textbf{justColoredVertex(vertex: int)} \newline
+			updates the minimal flexibility set of \textbf{vertex} \newline
+			\textbf{@param vertex} the vertex which was just colored
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the minimal flexibility sets of both vertices incident to \textbf{edge} \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item[-]{
+			\textbf{calcMinimalFlexSet(vertex: int)} \newline
+			\textbf{@param vertex} the vertex whose minimal flexibility set will be updated
+		}
+		\item{
+			\textbf{getMinimalFlexSet(): int} \newline
+			\textbf{@return} returns the vertex with minimal amount of free colors and minimal index		
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCMixedGreedySet}
+	
+	\textbf{Description}
+	
+	This class implements the TCMixedGreedySet heuristic which tries to calculate a total coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			\textbf{@param graph} the graph this heuristic will be applied on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{TCMixedGreedyConData}
+	
+	\textbf{Description}
+	
+	This class stores uncolored vertices and edges to compute connected subsets of uncolored vertices and edges up to a specific size.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of flexibility sets
+		}
+		\item{
+			\textbf{justColoredVertex(vertex: int)} \newline
+			updates the list of uncolored vertices \newline
+			\textbf{@param vertex} the vertex which was just colored
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleUndirectedEdge)} \newline
+			updates the list of uncolored edges \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item{
+			\textbf{getMinimalFlexSet(): int} \newline
+			\textbf{@return} returns the connected set of uncolored vertices and edges with minimal flexibility value (\# of colors which are free for all objects -- \# of objects) and minimal lexicographic order using the indices of vertices and the order defined on edges	
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{TCMixedGreedyCon}
+	
+	\textbf{Description}
+	
+	This class implements the TCMixedGreedyCon heuristic which tries to calculate a total coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleUndirectedGraph): TCResult} \newline
+			\textbf{@param graph} the graph this heuristic will be applied on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	
+	
+	
+	~\newpage
+	
+	\mypackage{heuristic.erdosFaberLovasz}
+	
+	In this package and its subpackages some heuristics for the Erdös-Faber-Lovasz conjecture (ie. any simple hypergraph on $n$ vertices has a proper edge coloring with $n$ colors) are implemented.
+	
+	TODO efl.png UML
+	
+	\myclass{EFLHeuristic}
+	
+	\textbf{Description}
+	
+	This abstract class is the abstrac interface for an Erdös-Faber-Lovasz heuristic. It assures that every EFL-heuristic is calculated on SimpleHyperGraphs and returns an EFLResult as result. It provides some methods which any EFL-heuristic needs, such as coloring edges.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{colorEdge(edge: SimpleHyperEdge, color: int, data: EFLData, result: EFLResult)} \newline
+			\textbf{@param edge} the hyperedge to be colored \newline
+			\textbf{@param color} the color which will be assigned to the edge \newline
+			\textbf{@param data} the data required for the calculation of a proper coloring \newline
+			\textbf{@param result} the resulting edge coloring
+		}
+		\item[+]{
+			\textbf{equals(heuristic: EFLHeuristic): bool} \newline
+			\textbf{@param heuristic} another EFLHeuristic this will be compared to \newline
+			\textbf{@return} returns \textbf{true} iff the other EFLHeuristic is of the same type and has exactly the same properties
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{EFLResult}
+	
+	\textbf{Description}
+	
+	This class represents an edge coloring of a simple hypergraph ie. a coloring of the hyperedges of a simple hypergraph, such that no two adjacent hyperedges share the same color. Colors are as always represented as integers.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{EFLResult(graph: SimpleHyperGraph, heuristic: EFLHeuristic)} \newline
+			A constructor for this class \newline
+			\textbf{@param graph} the graph this result was calculated upon \newline
+			\textbf{@param heuristic} the heuristic this result was calculated by
+		}
+		\item{
+			\textbf{getEdgeColor(edge: SimpleHyperEdge): int} \newline
+			\textbf{@param edge} the edge whose color is requested \newline
+			\textbf{@return} returns the color of \textbf{edge} \newline
+			\textbf{@throws DataInconsistencyException} if edge has no color
+		}
+		\item{
+			\textbf{setEdgeColor(edge: SimpleHyperEdge, color: int)} \newline
+			\textbf{@param edge} the edge to be colored \newline
+			\textbf{@param color} the color to color \textbf{edge} with
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{EFLData}
+	
+	\textbf{Description}
+	
+	This abstract class encapsulates the data required temporarly to calculate a EFL-coloring, such as the lists of \textbf{free colors} of uncolored edges (ie. the colors which are not used by other objects adjacent / incident to them). Moreover it stores how often colors are used.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{EFLData(graph: SimpleHyperGraph)} \newline
+			A constructor of this class \newline
+			\textbf{@param graph} the graph the heuristic is running at
+		}
+		\item{
+			\textbf{\textit{init()}} \newline
+			May be implemented to (re-)initialize the data at any time within the running heuristic
+		}
+		\item{
+			\textbf{\textit{justColoredEdge(edge: SimpleHyperEdge)}} \newline
+			May be implemented to update data anytime when an edge was colored \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item{
+			\textbf{removeFreeColor(edge: SimpleUndirectedEdge, color: int)} \newline
+			\textbf{@param edge} the edge which will have one free color less \newline
+			\textbf{@param color} the color which \textbf{edge} mustnt use
+		}
+		\item{
+			\textbf{getFlex(edges: List<SimpleUndirectedEdge>): int} \newline
+			\textbf{@param vertices} the set of vertices whose flexibility should be calculated \newline
+			\textbf{@return} returns the flexibility of these vertices ie. \# of colors which are free for all edges -- \# of \textbf{edges}
+		}
+		\item{
+			\textbf{getColorWeight(color: int): int} \newline
+			\textbf{@param color} the color whose weight is requested \newline
+			\textbf{@return} returns the weight of this color ie. how often it was used weighted differently by vertices and edges
+		}
+		\item{
+			\textbf{setColorWeight(color: int, weight: int)} \newline
+			\textbf{@param color} the color whose weight will be updated \newline
+			\textbf{@param weight} the new weight of \textbf{color}
+		}
+		\item{
+			\textbf{getFreeVertexColors(edge: SimpleUndirectedEdge): List<int>} \newline
+			\textbf{@param edge} the edge whose free colors are requested \newline
+			\textbf{@return} returns the list of free colors of \textbf{edge}
+		}
+	\end{enumerate}
+	
+	
+	~\newpage
+	
+	\myclass{EFLFlexSet}
+	
+	\textbf{Description}
+	
+	This class represents a subset of edges of a graph with a given \textbf{flexibility value} (ie. \# colors free for all edges -- \# edges) used heavily in some EFLHeuristics.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{EFLFlexSet(edges: List<SimpleHyperEdge>, value: int)} \newline
+			A constructor of this class \newline
+			\textbf{@param edges} some edges \newline
+			\textbf{@param value} the flexibility value of \textbf{edges}
+		}
+		\item{
+			\textbf{getEdges(): List<SimpleHyperEdge>} \newline
+			\textbf{@return} returns the edges in this flex set
+		}
+		\item{
+			\textbf{getValue(): int} \newline
+			\textbf{@return} returns the flexibility value of this set of objects
+		}
+	\end{enumerate}
+	
+	
+	
+	
+	~\newpage
+	
+	\mypackage{heuristic.erdosFaberLovasz.greedy}
+	In this package some heuristics for the Erdös Faber Lovasz conjecture are implemented. They behave  like the edge coloring part of the TCGreedy- heuristics.
+	
+	TODO eflgreedy.png UML
+	
+	\myclass{EFLGreedyData}
+	
+	\textbf{Description}
+	
+	Since EFLData is abstract this class is required such that the EFLGreedy heuristic has its own data class, even if with respect to EFLData no additional attributes or methods are added.
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{EFLGreedy}
+	
+	\textbf{Description}
+	
+	This class implements the EFLGreedy heuristic which tries to calculate a proper hyperedge coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleHyperGraph): EFLResult} \newline
+			\textbf{@param graph} the graph this heuristic will be applied on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{EFLGreedyOneData}
+	
+	\textbf{Description}
+	
+	This class stores all uncolored edges with exactly one free color temporarily.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of all uncolored edges with exactly one free color
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleHyperEdge)} \newline
+			updates the list of edges with exactly one free color \newline
+			\textbf{@param edge} the edge which was just colored
+		}
+		\item[-]{
+			\textbf{calcSingularEdges()} \newline
+			updates the list of edges with exactly one free color
+		}
+		\item{
+			\textbf{getMinimalSingularEdge(): SimpleUndirectedEdge} \newline
+			\textbf{@return} returns the minimal edge with exactly one free color with respect to the order defined on edges
+		}
+	\end{enumerate}
+	
+	
+	
+	\myclass{EFLGreedyOne}
+	
+	\textbf{Description}
+	
+	This class implements the EFLGreedyOne heuristic which tries to calculate a hyperedge coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleHyperGraph): EFLResult} \newline
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{EFLGreedyFewData}
+	
+	\textbf{Description}
+	
+	This class stores all uncolored edges sorted first by their amount of free colors and then by the order defined on edges.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of uncolored edges
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleHyperEdge)} \newline
+			updates the list of uncolored edges
+		}
+		\item{
+			\textbf{getMinimalUncoloredEdge(): SimpleUndirectedEdge} \newline
+			\textbf{@return} returns the minimal uncolored edge with respect to the number of free colors and the order defined on edges
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{EFLGreedyFew}
+	
+	\textbf{Description}
+	
+	This class implements the EFLGreedyFew heuristic, which tries to calculate a hyperedge coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleHyperGraph): EFLResult} \newline
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{EFLGreedySetData}
+	
+	\textbf{Description}
+	
+	This class stores for any vertex v the subset of all uncolored hyperedges incident to v which has the lowest flexibility value (ie. \# of colors which are free for every edge in this set -- \# of edges in the set) and is the lowest with respect to lexicographic ordering using the order defined on edges. These sets are from now on referred to as minimal flex sets
+		
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the minimal flex sets
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleHyperEdge)} \newline
+			updates the minimal flex sets of the vertices incident to edge
+		}
+		\item[-]{
+			\textbf{calcMinimalFlexSet(vertex: int)} \newline
+			calculates the minimal flex set of \textbf{vertex} \newline
+			\textbf{@param vertex} the vertex whose minimal flex set is calculated
+		}
+		\item{
+			\textbf{getMinimalFlexSet(): EFLFlexSet} \newline
+			\textbf{@return} returns the minimal flex set belonging to the vertex with minimal index
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{EFLGreedySet}
+	
+	\textbf{Description}
+	
+	This class implements the EFLGreedySet heuristic, which tries to calculate a hyperedge coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleHyperGraph): EFLResult} \newline
+			\textbf{@param graph} the graph this heuristic will be calculated on \newline
+			\textbf{@return} returns the calculated coloring
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{EFLGreedyConData}
+	
+	\textbf{Description}
+	
+	This class stores the list of uncolored edges temporarily to compute connected subsets of uncolored edges up to a specific size.
+		
+	\textbf{Documentation}
+	
+	\begin{enumerate}[\#]
+		\item{
+			\textbf{init()} \newline
+			initializes the list of uncolored edges
+		}
+		\item{
+			\textbf{justColoredEdge(edge: SimpleHyperEdge)} \newline
+			updates the list of uncolored edges
+		}
+		\item{
+			\textbf{getMinimalFlexSet(): EFLFlexSet} \newline
+			\textbf{@return} returns the connected set of uncolored edges with minimal flexibility value (\# of colors which are free for all edges -- \# of edges) and minimal lexicographic order using the order defined on edges.
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{EFLGreedyCon}
+	
+	This class implements the EFLGreedyCon heuristic, which tries to calculate a hyperedge coloring as specified in the addendum.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{applyTo(graph: SimpleHyperGraph): EFLResult} \newline
 			\textbf{@param graph} the graph this heuristic will be calculated on \newline
 			\textbf{@return} returns the calculated coloring
 		}
@@ -1367,60 +1897,203 @@ bookmarks = true
 	
 	
 	
-	
-	\mypackage{heuristic.totalColoring.mixedGreedy}
-	In this package some heuristics for the total coloring conjecture are implemented. In comparison to the greedy heuristics, these heuristics do not seperate the coloring of vertices and edges strictly but rather alternate between them.
-	
-	
-	\myclass{TCMixedGreedyData}
-	\myclass{TCMixedGreedy}
-	
 	~\newpage
-	
-	\myclass{TCMixedGreedyOneData}
-	\myclass{TCMixedGreedyOne}
-	
-	~\newpage
-	
-	\myclass{TCMixedGreedyFewData}
-	\myclass{TCMixedGreedyFew}
-	
-	~\newpage
-	
-	\myclass{TCMixedGreedySetData}
-	\myclass{TCMixedGreedySet}
-	
-	~\newpage
-	
-	\myclass{TCMixedGreedyConData}
-	\myclass{TCMixedGreedyCon}
-	
-	
-	
-	
-	
-	\mypackage{heuristic.erdosFaberLovasz}
-	\myclass{EFLHeuristic}
-	\myclass{EFLResult}
-	
-	\mypackage{heuristic.erdosFaberLovasz.greedy}
-	\myclass{EFLGreedyData}
-	\myclass{EFLGreedy}
-	\myclass{EFLGreedyOneData}
-	\myclass{EFLGreedyOne}
-	\myclass{EFLGreedyFewData}
-	\myclass{EFLGreedyFew}
-	\myclass{EFLGreedySetData}
-	\myclass{EFLGreedySet}
-	\myclass{EFLGreedyConData}
-	\myclass{EFLGreedyCon}
-	
 	
 	\section{View}
 	\section{Controller}
 	\section{Input-Output}
 	\section{Utils}
+	
+	~\newpage
+	
 	\section{Addendum: Heuristiken}
+	\subsection{TCGreedy}
+	\begin{verbatim}
+		for every vertex v in order of a breadth first search
+		    if v cannot be colored
+		        return incomplete coloring
+		    get minimally used free color c of v with respect to the color weights
+		    color v with color c
+				    
+		for every vertex v in order of a breadth first search
+		    for every uncolored edge e incident to v in the order defined on edges
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
+	
+	\subsection{TCGreedyOne}
+	\begin{verbatim}
+		for every vertex v in the order of a breadth first search
+		    if v cannot be colored
+		        return incomplete coloring
+		    get minimally used free color c of v with respect to the color weights
+		    color v with color c
+				    
+		for every vertex v in the order of a breadth first search
+		    for every uncolored edge e incident to v in the order defined on edges
+		        while there are uncolored edges with exactly one free color
+		            get minimal uncolored edge with exactly one free color f
+		            color f with its unique free color
+		        if e is colored already
+		            continue
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
+			
+	\subsection{TCGreedyFew}
+	\begin{verbatim}
+		for every vertex v in the order of a breadth first search
+		    if v cannot be colored
+		        return incomplete coloring
+		    get minimally used free color c of v with respect to the color weights
+		    color v with color c
+				    
+		for every vertex v in the order of a breadth first search
+		    for every uncolored edge e incident to v in the order defined on edges
+		        while there are uncolored edges with less free colors than e and lower order than e
+		            get minimal uncolored edge f
+		            if f cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of f with respect to the color weights
+		            color f with color c
+		        if e is colored already
+		            continue
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
+	
+	\subsection{TCGreedySet}
+	\begin{verbatim}
+		for every vertex v in the order of a breadth first search
+		    if v cannot be colored
+		        return incomplete coloring
+		    get minimally used free color c of v with respect to the color weights
+		    color v with color c
+				    
+		while there is a set with minimal flexibility
+		    find the set X of minimal flexibility belonging to the vertex v with lowest index
+		        if X has negative flexibility
+		            return incomplete coloring
+		        for every edge e of X in the order defined on edges
+		            if e cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of e with respect to the color weights
+		            color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
+	
+	\subsection{TCGreedyCon}
+	\begin{verbatim}
+		for every vertex v in the order of a breadth first search
+		    if v cannot be colored
+		        return incomplete coloring
+		    get minimally used free color c of v with respect to the color weights
+		    color v with color c
+				    
+		while there is a set with minimal flexibility
+		    find the set X of minimal flexibility which has the lowest lexicographic order
+		        if X has negative flexibility
+		            return incomplete coloring
+		        for every edge e of X in the order defined on edges
+		            if e cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of e with respect to the color weights
+		            color e with color c
+				        
+		return complete coloring
+	\end{verbatim}	
+	
+	
+	~\newpage
+	
+	\subsection{TCMixedGreedy}
+	\begin{verbatim}
+		for every vertex v in order of a breadth first search
+		    if v cannot be colored
+		        return incomplete coloring
+		    get minimally used free color c of v with respect to the color weights
+		    color v with color c
+				    
+		    for every uncolored edge e incident to v in the order defined on edges
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+			
+	~\newpage
+	
+	\subsection{TCMixedGreedyOne}
+	\begin{verbatim}
+		for every vertex v in order of a breadth first search
+		    while there are objects with exactly one free color
+		        if there are vertices with exactly one free color
+		            get the vertex w with exactly one free color and minimal index
+		            color w with its unique free color
+			        else
+		            get the minimal edge f with exactly one free color with respect to the order
+		            defined on edges
+		            color f with its unique free color
+		
+		    if v is not colored yet
+		        if v cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of v with respect to the color weights
+		        color v with color c
+			    
+		    for every uncolored edge e incident to v in the order defined on edges
+		        while there are objects with exactly one free color
+		            if there are vertices with exactly one free color
+		                get the vertex w with exactly one free color and minimal index
+		                color w with its unique free color
+		            else
+		                get the minimal edge f with exactly one free color with respect to the order 
+		                defined on edges
+		                color f with its unique free color
+				    
+		        if e is not colored yet
+		            if e cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of e with respect to the color weights
+		            color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
+	
+	\subsection{TCMixedGreedyFew}
+	\subsection{TCMixedGreedySet}
+	\subsection{TCMixedGreedyCon}
+	\subsection{EFLGreedy}
+	\subsection{EFLGreedyOne}
+	\subsection{EFLGreedyFew}
+	\subsection{EFLGreedySet}
+	\subsection{EFLGreedyCon}
+	
 	\section{Addendum: RAGE-Datenformate}
 	
 \end{document}
