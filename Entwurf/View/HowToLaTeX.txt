@@ -1,0 +1,24 @@
+\mypackage{PAKETNAME}
+PAKETBESCHREIBUNG
+	\myclass{KLASSENNAME}
+		\textbf{Beschreibung}
+		KLASSENBESCHREIBUNG
+		\textbf{Dokumentation}
+		\begin{enumerate}[+]
+			\item{
+				\textbf{METHODE} \newline
+				BESCHREIBUNG
+				\newline
+				\textbf{@param NAME}
+					BESCHREIBUNG
+					\newline
+				\textbf{@return} returns
+					BESCHREIBUNG
+					\newline
+				\textbf{@throws EXCEPTION}
+					if BEDINGUNG
+			}
+			\item[-]{
+				\textbf{PRIVATEMETHODE} etc
+			}
+		\end{enumerate}

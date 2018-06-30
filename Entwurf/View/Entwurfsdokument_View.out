@@ -1,0 +1,32 @@
+\BOOKMARK [1][-]{section.1}{Anmerkungen zum Pflichtenheft}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Klarstellungen}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{\304nderungen}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{GUI}{subsection.1.2}% 4
+\BOOKMARK [1][-]{section.2}{\334bersicht}{}% 5
+\BOOKMARK [1][-]{section.3}{Model}{}% 6
+\BOOKMARK [1][-]{section.4}{View}{}% 7
+\BOOKMARK [2][-]{section*.1}{Paket Graphic}{section.4}% 8
+\BOOKMARK [2][-]{section*.2}{Paket Graphic.UIElements}{section.4}% 9
+\BOOKMARK [3][-]{section*.3}{Klasse ZoomableScrollPane}{section*.2}% 10
+\BOOKMARK [2][-]{section*.4}{Paket Drawer}{section.4}% 11
+\BOOKMARK [2][-]{section*.5}{Paket Drawer.GraphDrawer}{section.4}% 12
+\BOOKMARK [3][-]{section*.6}{Klasse GraphDrawer}{section*.5}% 13
+\BOOKMARK [2][-]{section*.7}{Paket Drawer.ColourManager}{section.4}% 14
+\BOOKMARK [3][-]{section*.8}{Klasse ColourManager}{section*.7}% 15
+\BOOKMARK [2][-]{section*.9}{Paket Drawer.Layouts}{section.4}% 16
+\BOOKMARK [3][-]{section*.10}{Klasse GraphLayoutEnum}{section*.9}% 17
+\BOOKMARK [3][-]{section*.11}{Klasse GraphLayout}{section*.9}% 18
+\BOOKMARK [3][-]{section*.12}{Klasse GraphLayoutCircle}{section*.9}% 19
+\BOOKMARK [2][-]{section*.13}{Paket Drawer.Visualization.VisualizationGraph}{section.4}% 20
+\BOOKMARK [3][-]{section*.14}{Klasse VisualVertex}{section*.13}% 21
+\BOOKMARK [3][-]{section*.15}{Klasse VisualVertexColoured}{section*.13}% 22
+\BOOKMARK [3][-]{section*.16}{Klasse VisualEdge}{section*.13}% 23
+\BOOKMARK [3][-]{section*.17}{Klasse VisualEdgeColour}{section*.13}% 24
+\BOOKMARK [3][-]{section*.18}{Klasse VisualGraph}{section*.13}% 25
+\BOOKMARK [2][-]{section*.19}{Paket Sound}{section.4}% 26
+\BOOKMARK [3][-]{section*.20}{Klasse SoundHandler}{section*.19}% 27
+\BOOKMARK [1][-]{section.5}{Controller}{}% 28
+\BOOKMARK [2][-]{subsection.5.1}{Super-Controller}{section.5}% 29
+\BOOKMARK [2][-]{subsection.5.2}{View-Controller}{section.5}% 30
+\BOOKMARK [1][-]{section.6}{Resources}{}% 31
+\BOOKMARK [2][-]{section*.21}{Paket Resources}{section.6}% 32
