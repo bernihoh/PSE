@@ -69,7 +69,7 @@ bookmarks = true
 	\section{Übersicht}
 	
 	~\newpage
-	\section{Model}
+	\section{Model} 
 	
 	\mypackage{graph}
 	This package contains the interfaces for the interaction with graphs. In the subpackages concrete graph-types are implemented.
@@ -105,46 +105,46 @@ bookmarks = true
 			\textbf{@return} returns the edges giving the graph its structure
 		}
 		\item{
-			\textbf{areIncident(vertex: int, edge: E): bool} \newline
+			\textbf{\textit{areIncident(vertex: int, edge: E): bool}} \newline
 			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$]\newline
 			\textbf{@param edge} an edge of the graph \newline 
 			\textbf{@return} returns \textbf{true} iff the vertex is incident to the given edge \newline
 			\textbf{@throws GraphInconstistencyException} if \textbf{vertex} is an invalid vertex index or \textbf{edge} is not an edge of the graph
 		}
 		\item{
-			\textbf{areAdjacent(vertex1: int, vertex2: int): bool} \newline
+			\textbf{\textit{areAdjacent(vertex1: int, vertex2: int): bool}} \newline
 			\textbf{@param vertex1} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
 			\textbf{@param vertex2} see \textbf{vertex1} \newline
 			\textbf{@return} returns \textbf{true} iff there is an edge which is incident to both vertices \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{vertex1} or \textbf{vertex2} is not a valid vertex index
 		}
 		\item{
-			\textbf{areAdjacent(edge1: E, edge2: E): bool} \newline
+			\textbf\textit{{areAdjacent(edge1: E, edge2: E): bool}} \newline
 			\textbf{@param edge1} an edge of the graph \newline
 			\textbf{@param edge2} another edge of the graph \newline
 			\textbf{@return} returns \textbf{true} iff there is a vertex which is incident to both edges \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{edge1} or \textbf{edge2} is not an edge of the graph
 		}
 		\item{
-			\textbf{getAdjacentVertices(vertex: int): List<int>} \newline
+			\textbf{\textit{getAdjacentVertices(vertex: int): List<int>}} \newline
 			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
 			\textbf{@return} returns the list of all vertices which are adjacent to \textbf{vertex} \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is not a valid vertex index
 		}
 		\item{
-			\textbf{getAdjacentEdges(edge: E): bool} \newline
+			\textbf{\textit{getAdjacentEdges(edge: E): bool}} \newline
 			\textbf{@param edge} an edge of the graph \newline
 			\textbf{@return} returns the list of all edges which are adjacent to \textbf{edge} \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{edge} is not an edge of the graph
 		}
 		\item{
-			\textbf{getIncidentEdges(vertex: int): List<E>} \newline
+			\textbf{\textit{getIncidentEdges(vertex: int): List<E>}} \newline
 			\textbf{@param vertex} the index of a vertex of the graph ie. in [0 ... numVertices$-1$] \newline
 			\textbf{@return} returns the list of all edges incident to \textbf{vertex} \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{vertex} is an invalid vertex index
 		}
 		\item{
-			\textbf{getIncidentVertices(edges: List<E>): List<int>} \newline
+			\textbf{\textit{getIncidentVertices(edges: List<E>): List<int>}} \newline
 			\textbf{@param edges} a list of edges of the graph \newline
 			\textbf{@return} returns the list of all vertices which are incident to any of the edges in the list \newline
 			\textbf{@throws GraphInconsistencyException} if there is an edge in \textbf{edges}, which is not an edge of the graph
@@ -207,24 +207,24 @@ bookmarks = true
 	\textbf{Documentation}
 	\begin{enumerate}[+]
 		\item{
-			\textbf{\textit{generateGraph(properties: P): G}} \newline
+			\textbf{\textit{\underline{generateGraph(properties: P): G}}} \newline
 			\textbf{@param properties} the properties which the generated graphs will have \newline
 			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
 		}
 		\item{
-			\textbf{\textit{deleteVertex(graph: G, vertex: int): G}} \newline
+			\textbf{\textit{\underline{deleteVertex(graph: G, vertex: int): G}}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
 		}
 		\item{
-			\textbf{\textit{addVertex(graph: G): G}} \newline
+			\textbf{\textit{\underline{addVertex(graph: G): G}}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
 		}
 		\item{
-			\textbf{\textit{swapVertices(graph: G, vertex1: int, vertex2: int): G}} \newline
+			\textbf{\textit{\underline{swapVertices(graph: G, vertex1: int, vertex2: int): G}}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
 			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
@@ -232,7 +232,7 @@ bookmarks = true
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
 		}
 		\item{
-			\textbf{\textit{deleteEdge(graph: G, edge: E): G}} \newline
+			\textbf{\textit{\underline{deleteEdge(graph: G, edge: E): G}}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param edge} the edge which is going to be deleted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
@@ -241,13 +241,13 @@ bookmarks = true
 		~\newpage
 		
 		\item{
-			\textbf{\textit{addEdge(graph: G, edge: E): G}} \newline
+			\textbf{\textit{\underline{addEdge(graph: G, edge: E): G}}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param edge} the edge which is going to be inserted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
 		}
 		\item{
-			\textbf{\textit{deleteIsolatedVertices(graph: G): G}} \newline
+			\textbf{\textit{\underline{deleteIsolatedVertices(graph: G): G}}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
 	\end{enumerate}
@@ -426,31 +426,31 @@ bookmarks = true
 	\textbf{Documentation}
 	\begin{enumerate}[+]
 		\item{
-			\textbf{generate(properties: SimpleUndirectedGraphProperties): SimpleUndirectedGraph} \newline
+			\textbf{\underline{generate(properties: SimpleUndirectedGraphProperties): SimpleUndirectedGraph}} \newline
 			\textbf{@param properties} the properties which the generated graphs will have \newline
 			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
 		}
 		\item{
-			\textbf{deleteVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph} \newline
+			\textbf{\underline{deleteVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
 		}
 		\item{
-			\textbf{addVertex(graph: SimpleUndirectedGraph): SimpleUndirectedGraph} \newline
+			\textbf{\underline{addVertex(graph: SimpleUndirectedGraph): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
 		}
 		\item{
-			\textbf{copyVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph} \newline
+			\textbf{\underline{copyVertex(graph: SimpleUndirectedGraph, vertex: int): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be copied \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} is duplicated i.e. there is a new vertex which has precisely the same neighborhood \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
 		}
 		\item{
-			\textbf{swapVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph} \newline
+			\textbf{\underline{swapVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
 			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
@@ -458,7 +458,7 @@ bookmarks = true
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
 		}
 		\item{
-			\textbf{contractVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph} \newline
+			\textbf{\underline{contractVertices(graph: SimpleUndirectedGraph, vertex1: int, vertex2: int): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
 			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
@@ -466,20 +466,20 @@ bookmarks = true
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
 		}
 		\item{
-			\textbf{deleteEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph} \newline
+			\textbf{\underline{deleteEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param edge} the edge which is going to be deleted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
 		}
 		
 		\item{
-			\textbf{addEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph} \newline
+			\textbf{\underline{addEdge(graph: SimpleUndirectedGraph, edge: SimpleUndirectedEdge): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param edge} the edge which is going to be inserted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge being added may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
 		}
 		\item{
-			\textbf{deleteIsolatedVertices(graph: SimpleUndirectedGraph): SimpleUndirectedGraph} \newline
+			\textbf{\underline{deleteIsolatedVertices(graph: SimpleUndirectedGraph): SimpleUndirectedGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
 	\end{enumerate}
@@ -631,24 +631,24 @@ bookmarks = true
 	\textbf{Documentation}
 	\begin{enumerate}[+]
 		\item{
-			\textbf{generate(properties: SimpleHyperGraphProperties): SimpleHyperGraph} \newline
+			\textbf{\underline{generate(properties: SimpleHyperGraphProperties): SimpleHyperGraph}} \newline
 			\textbf{@param properties} the properties which the generated graphs will have \newline
 			\textbf{@return} returns a randomly generated graph satisfying the specified \textbf{properties}
 		}
 		\item{
-			\textbf{deleteVertex(graph: SimpleHyperGraph, vertex: int): SimpleHyperGraph} \newline
+			\textbf{\underline{deleteVertex(graph: SimpleHyperGraph, vertex: int): SimpleHyperGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex} the index of a vertex of \textbf{graph}, which will be deleted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which the vertex with index \textbf{vertex} and all edges incident to it are deleted \newline
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex} 
 		}
 		\item{
-			\textbf{addVertex(graph: SimpleHyperGraph): SimpleHyperGraph} \newline
+			\textbf{\underline{addVertex(graph: SimpleHyperGraph): SimpleHyperGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} which has precisely one isolated vertex more
 		}
 		\item{
-			\textbf{swapVertices(graph: SimpleHyperGraph, vertex1: int, vertex2: int): SimpleHyperGraph} \newline
+			\textbf{\underline{swapVertices(graph: SimpleHyperGraph, vertex1: int, vertex2: int): SimpleHyperGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param vertex1} the index of a vertex of \textbf{graph} \newline
 			\textbf{@param vertex2} the index of another vertex of \textbf{graph} \newline
@@ -656,20 +656,20 @@ bookmarks = true
 			\textbf{@throws GraphInconsistencyException} if \textbf{graph} has no vertex with index \textbf{vertex1} or \textbf{vertex2} 
 		}
 		\item{
-			\textbf{deleteEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph} \newline
+			\textbf{\underline{deleteEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param edge} the edge which is going to be deleted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is deleted, if it was an edge in \textbf{graph}. Otherwise it just returns \textbf{graph}
 		}
 		
 		\item{
-			\textbf{addEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph} \newline
+			\textbf{\underline{addEdge(graph: SimpleHyperGraph, edge: SimpleHyperEdge): SimpleHyperGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@param edge} the edge which is going to be inserted \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which \textbf{edge} is inserted if it wasnt already an edge in \textbf{graph} otherwise it returns just \textbf{graph}. Note that the edge being added may contain vertices which are not in \textbf{graph}, since missing vertices will automatically be added
 		}
 		\item{
-			\textbf{deleteIsolatedVertices(graph: SimpleHyperGraph): SimpleHyperGraph} \newline
+			\textbf{\underline{deleteIsolatedVertices(graph: SimpleHyperGraph): SimpleHyperGraph}} \newline
 			\textbf{@param graph} the graph which is going to be modified \newline
 			\textbf{@return} returns a modified copy of \textbf{graph} in which all isolated vertices are deleted		}
 	\end{enumerate}
@@ -2581,5 +2581,15 @@ bookmarks = true
 	
 	~\newpage
 	\section{Addendum: RAGE-Datenformate}
+	\subsection{Graphen}
+	Graphen werden wie folgt im Textformat gespeichert: \newline
+	Die erste Zeile enthält den Typ des Graphen und die zweite Zeile lediglich eine Ganzzahl, die die Anzahl der Knoten speichert. Es folgen Zeile für Zeile die Kanten, dargestellt als aufeinanderfolgende, aufsteigend sortierte Ganzzahlen.
+	
+	\subsection{Properties}
+	Properties werden wie folgt im Textformat gespeichert: \newline
+	Die erste Zeile enthält den konkreten Typ der Properties-Klasse. Ab der zweiten Zeile werden zeilenweise die einzelnen Properties im Format \texttt{property value:type} gespeichert.
+	
+	\subsection{Heuristiken}
+	Die Heuristiken speichern neben ihren Properties nur ihren Namen.
 	
 \end{document}
