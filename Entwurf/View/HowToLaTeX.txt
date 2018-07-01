@@ -4,6 +4,14 @@ PAKETBESCHREIBUNG
 		\textbf{Beschreibung}
 		KLASSENBESCHREIBUNG
 		\textbf{Dokumentation}
+		%Parameters
+		\begin{enumerate}[-]
+			\item{
+				\textbf{NAME : DATATYPE} \newline
+				BESCHREIBUNG
+			}
+		\end{enumerate}
+		%Methods
 		\begin{enumerate}[+]
 			\item{
 				\textbf{METHODE} \newline

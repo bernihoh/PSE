@@ -5,28 +5,56 @@
 \BOOKMARK [1][-]{section.2}{\334bersicht}{}% 5
 \BOOKMARK [1][-]{section.3}{Model}{}% 6
 \BOOKMARK [1][-]{section.4}{View}{}% 7
-\BOOKMARK [2][-]{section*.1}{Paket Graphic}{section.4}% 8
-\BOOKMARK [2][-]{section*.2}{Paket Graphic.UIElements}{section.4}% 9
-\BOOKMARK [3][-]{section*.3}{Klasse ZoomableScrollPane}{section*.2}% 10
-\BOOKMARK [2][-]{section*.4}{Paket Drawer}{section.4}% 11
-\BOOKMARK [2][-]{section*.5}{Paket Drawer.GraphDrawer}{section.4}% 12
-\BOOKMARK [3][-]{section*.6}{Klasse GraphDrawer}{section*.5}% 13
-\BOOKMARK [2][-]{section*.7}{Paket Drawer.ColourManager}{section.4}% 14
-\BOOKMARK [3][-]{section*.8}{Klasse ColourManager}{section*.7}% 15
-\BOOKMARK [2][-]{section*.9}{Paket Drawer.Layouts}{section.4}% 16
-\BOOKMARK [3][-]{section*.10}{Klasse GraphLayoutEnum}{section*.9}% 17
-\BOOKMARK [3][-]{section*.11}{Klasse GraphLayout}{section*.9}% 18
-\BOOKMARK [3][-]{section*.12}{Klasse GraphLayoutCircle}{section*.9}% 19
-\BOOKMARK [2][-]{section*.13}{Paket Drawer.Visualization.VisualizationGraph}{section.4}% 20
-\BOOKMARK [3][-]{section*.14}{Klasse VisualVertex}{section*.13}% 21
-\BOOKMARK [3][-]{section*.15}{Klasse VisualVertexColoured}{section*.13}% 22
-\BOOKMARK [3][-]{section*.16}{Klasse VisualEdge}{section*.13}% 23
-\BOOKMARK [3][-]{section*.17}{Klasse VisualEdgeColour}{section*.13}% 24
-\BOOKMARK [3][-]{section*.18}{Klasse VisualGraph}{section*.13}% 25
-\BOOKMARK [2][-]{section*.19}{Paket Sound}{section.4}% 26
-\BOOKMARK [3][-]{section*.20}{Klasse SoundHandler}{section*.19}% 27
-\BOOKMARK [1][-]{section.5}{Controller}{}% 28
-\BOOKMARK [2][-]{subsection.5.1}{Super-Controller}{section.5}% 29
-\BOOKMARK [2][-]{subsection.5.2}{View-Controller}{section.5}% 30
-\BOOKMARK [1][-]{section.6}{Resources}{}% 31
-\BOOKMARK [2][-]{section*.21}{Paket Resources}{section.6}% 32
+\BOOKMARK [2][-]{subsection.4.1}{Allgemein}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.1}{JavaFX}{subsection.4.1}% 9
+\BOOKMARK [3][-]{subsubsection.4.1.2}{FXML}{subsection.4.1}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Entwurf}{section.4}% 11
+\BOOKMARK [2][-]{section*.4}{Paket Graphic}{section.4}% 12
+\BOOKMARK [2][-]{section*.5}{Paket Graphic.UIElements}{section.4}% 13
+\BOOKMARK [3][-]{section*.6}{Klasse ZoomableScrollPane}{section*.5}% 14
+\BOOKMARK [2][-]{section*.7}{Paket Drawer}{section.4}% 15
+\BOOKMARK [2][-]{section*.8}{Paket Drawer.GraphDrawer}{section.4}% 16
+\BOOKMARK [3][-]{section*.9}{Klasse GraphDrawer}{section*.8}% 17
+\BOOKMARK [2][-]{section*.10}{Paket Drawer.ColourManager}{section.4}% 18
+\BOOKMARK [3][-]{section*.11}{Klasse ColourManager}{section*.10}% 19
+\BOOKMARK [2][-]{section*.12}{Paket Drawer.Layouts}{section.4}% 20
+\BOOKMARK [3][-]{section*.13}{Klasse GraphLayoutEnum}{section*.12}% 21
+\BOOKMARK [3][-]{section*.14}{Klasse GraphLayout}{section*.12}% 22
+\BOOKMARK [3][-]{section*.15}{Klasse GraphLayoutCircle}{section*.12}% 23
+\BOOKMARK [2][-]{section*.16}{Paket Drawer.Visualization.VisualizationGraph}{section.4}% 24
+\BOOKMARK [3][-]{section*.17}{Klasse VisualVertex}{section*.16}% 25
+\BOOKMARK [3][-]{section*.18}{Klasse VisualVertexColoured}{section*.16}% 26
+\BOOKMARK [3][-]{section*.19}{Klasse VisualEdge}{section*.16}% 27
+\BOOKMARK [3][-]{section*.20}{Klasse VisualEdgeColour}{section*.16}% 28
+\BOOKMARK [3][-]{section*.21}{Klasse VisualGraph}{section*.16}% 29
+\BOOKMARK [2][-]{section*.22}{Paket Sound}{section.4}% 30
+\BOOKMARK [3][-]{section*.23}{Klasse SoundHandler}{section*.22}% 31
+\BOOKMARK [1][-]{section.5}{Controller}{}% 32
+\BOOKMARK [2][-]{subsection.5.1}{Super-Controller}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.2}{View-Controller}{section.5}% 34
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Allgemein}{subsection.5.2}% 35
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Entwurf}{subsection.5.2}% 36
+\BOOKMARK [2][-]{section*.24}{Paket ViewController}{section.5}% 37
+\BOOKMARK [2][-]{section*.25}{Paket ViewController.UIController}{section.5}% 38
+\BOOKMARK [2][-]{section*.26}{Paket ViewController.UIController.MouseController}{section.5}% 39
+\BOOKMARK [3][-]{section*.27}{Klasse MouseController}{section*.26}% 40
+\BOOKMARK [3][-]{section*.28}{Klasse MouseControllerGraphDrawer}{section*.26}% 41
+\BOOKMARK [2][-]{section*.29}{Paket ViewController.UIController.KeyController}{section.5}% 42
+\BOOKMARK [3][-]{section*.30}{Klasse KeyController}{section*.29}% 43
+\BOOKMARK [2][-]{section*.31}{Paket ViewController.FxController}{section.5}% 44
+\BOOKMARK [3][-]{section*.32}{Klasse FxController}{section*.31}% 45
+\BOOKMARK [3][-]{section*.33}{Klasse FxRageController}{section*.31}% 46
+\BOOKMARK [3][-]{section*.34}{Klasse FxFilterController}{section*.31}% 47
+\BOOKMARK [3][-]{section*.35}{Klasse FxHeuristicSettingsController}{section*.31}% 48
+\BOOKMARK [3][-]{section*.36}{Klasse FxGraphEditorController}{section*.31}% 49
+\BOOKMARK [2][-]{section*.37}{Paket ViewController.FxController.FxPreviewTabController}{section.5}% 50
+\BOOKMARK [3][-]{section*.38}{Klasse FxTabController}{section*.37}% 51
+\BOOKMARK [3][-]{section*.39}{Klasse FxPreviewController}{section*.37}% 52
+\BOOKMARK [3][-]{section*.40}{Klasse FxDetailViewController}{section*.37}% 53
+\BOOKMARK [3][-]{section*.41}{Klasse FxStatisticController}{section*.37}% 54
+\BOOKMARK [2][-]{section*.42}{Paket ViewController.FxController.FxGraphGenerationController}{section.5}% 55
+\BOOKMARK [3][-]{section*.43}{Klasse FxGraphGenerationController}{section*.42}% 56
+\BOOKMARK [2][-]{section*.44}{Paket ViewController.FxController.FxMenuBarController}{section.5}% 57
+\BOOKMARK [3][-]{section*.45}{Klasse FxMenuBarController}{section*.44}% 58
+\BOOKMARK [1][-]{section.6}{Resources}{}% 59
+\BOOKMARK [2][-]{section*.46}{Paket Resources}{section.6}% 60

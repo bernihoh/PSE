@@ -39,8 +39,7 @@
 		
 		\subsection{Änderungen}
 			\subsubsection{GUI}
-			\begin{enumerate}
-			\item[Graph-Vorschau]{
+			\paragraph{Graphen-Vorschau}
 				%Worum geht es?
 				In der Graph-Preview Ansicht in der GUI werden die einzelnen Graphen, seien sie generiert oder importiert, unter einem neuen Tab angezeigt.
 				
@@ -56,18 +55,17 @@
 				Darüber hinaus ist diese Art der Ansicht nicht besonders gut skalierbar, wenn der User die Fenstergröße anpassen möchte, besteht die Gefahr, dass die Graphen-Bilder zu klein werden, um anschaulich zu sein.
 				
 				%Was ist die Änderung?
-				Aus diesem Grund haben wir die Ansicht zu einer Tab-View geändert.
-				Dies bedeutet, dass man nun eine Liste an ausklappbaren Tabs mit den jeweiligen Graphen-Namen vor sich sieht.
-				Demzufolge kann man bei Interesse die Graphen-Tabs ausklappen.
+				Aus diesem Grund haben wir die Ansicht zu einer DropDownBox-Ansicht geändert.
+				Dies bedeutet, dass man nun eine Liste an ausklappbaren DropDownBox-Elementen mit den jeweiligen Graphen-Namen vor sich sieht.
+				Demzufolge kann man bei Interesse die einzelnen DropDownBoxen der jeweiligen Graphen ausklappen.
 					Beim Ausklappen wird dann genau dieser zu betrachtende Graph gezeichnet.
 					Daraus folgt, dass man nicht mehr mit Graphen-Zeichnungen überschüttet wird.
 				
 				%Folgen für das weitere Programm
 				Durch diese Änderung entsteht ein weiterer Vorteil.
 				Die Performance des Programms wird verbessert, da das Programm nicht sofort alle Graphen zeichnen muss, sondern diesen Task erst bei Bedarf starten muss.
-			}
 		
-		\item[Graph-Generierung]{
+		\paragraph{Graphen-Generierung}
 			%Worum geht es?
 			Möchte man die Heuristiken anwenden, benötigt man selbstverständlich hierfür erst einmal Graphen.
 			Unser Programm stellt zu diesem Zweck mehrere Beschaffungsmöglichkeiten zur Verfügung:
@@ -84,9 +82,8 @@
 			%Was ist die Änderung?
 			Aus diesem Grund befinden sich nun die Buttons, welche die einzelnen möglichen Aktionen (Starten der Generierung, des Zeichnens oder Imports) ausführen, an oberster Stelle.
 			Außerdem werden die Einstellungsmöglichkeiten zur zufälligen Generierung so lange vor dem User verborgen, bis er/sie aktiv auswählt diese Funktionalität wirklich zu benutzen.
-		}
 	
-		\item[Graph-Editor]{
+		\paragraph{Graphen-Editor}
 			%Worum geht es?
 			Beim Graph-Editor kann man standardmäßig sowohl einen „Siple-Undirected-Graph“, als auch „Simple-Hyper-Graph“ editieren oder auch erstellen.
 			Dabei gibt es unterschiedliche Funktionen, die dem User geboten werden um dies zu tun.
@@ -99,8 +96,6 @@
 			
 			%Was ist die Änderung?
 			Die daraus von uns getroffene Anpassung war es die Funktionen auf den Graphen-Typ einzuschränken und den Graph-Editor den Typ des editierten Graphen überprüfen zu lassen.
-		}
-		\end{enumerate}
 	
 	\section{Übersicht}
 	\begin{enumerate}
@@ -127,8 +122,7 @@
 	%... Jonas' Linßen's Part
 	
 	\section{View}
-	\begin{enumerate}
-	\item[Allgemein]{
+	\subsection{Allgemein}
 		%Einleitung
 		Kommen wir nun zum nächsten Großen Abschnitt des Programm-Entwurfs.
 		Nachdem wir im letzten Abschnitt über das Model gesprochen haben folgt nun der View-Teil des "Model-View-Controller"-Entwurfsmusters.
@@ -149,21 +143,23 @@
 		Dies lag nicht zuletzt an FXML und der bisherigen Entwicklungs-Erfahrung.
 		Dazu gleich mehr.
 		
-			\subitem[JavaFx]{
+			\subsubsection{JavaFX}
 			%Allgemeine Beschreibung:
-			JavaFx ist eine Abkürzung für Java Graphics.
-			JavaFx ist eine Möglichkeit unter Java eine graphische Oberfläche zu erstellen.
-			JavaFx ist eine komplette Neuentwicklung von Oracle.
-			Es ist unabhängig von den bisherigen Methoden AWT und Swing.
-			JavaFx wurde 2014 veröffentlicht.
-			Es ist seit Version 7.6 in x86 Java Standard Edition (JavaSE) Runtime Installation enthalten.
-			Da wir mit Java 8 arbeiten werden ist dies somit kein Problem.
+			\begin{itemize}
+			\item JavaFX ist eine Abkürzung für Java Graphics.
+			\item JavaFX ist eine Möglichkeit unter Java eine graphische Oberfläche zu erstellen.
+			\item JavaFX ist eine komplette Neuentwicklung von Oracle.
+			\item Es ist unabhängig von den bisherigen Methoden AWT und Swing.
+			\item JavaFX wurde 2014 veröffentlicht.
+			\item Es ist seit Version 7.6 in x86 Java Standard Edition (JavaSE) Runtime Installation enthalten.
+			\item Da wir mit Java 8 arbeiten werden ist dies somit kein Problem.
+			\end{itemize}
 			
 			%Aufbau
 			JavaFX arbeitet mit einem Szenengraphen (engl. scene graph), der die einzelnen Bestandteile einer GUI verwaltet.
 			Auf diesen werden dann alle weiteren Bestandteile gesetzt.
 			
-			\subsubitem [FXML] {
+			\subsubsection{FXML}
 				%Einleitung:
 				Wie auch bei den alternativen kann man natürlich auch mit JavaFx über zu schreibenden Code GUI-Objekte erstellen und diese auf den Scenen-Graphen aufbringen.
 				Allerdings besteht mit JavaFx erstmals die Möglichkeit eine neue Form der GUI Entwicklung zu beschreiten.
@@ -184,10 +180,7 @@
 				Dieser ist ein grafisches Tool, das die Erstellung von FXML-Dateien vereinfacht.
 				Der daraus generierte Code wird bei Bedarf dann nochmals per Hand nachbearbeitet.
 				Zur Nachbereitung zählen unter anderem auch das Einfügen der „include-Tags“ (wie oben beschrieben).
-			}
-		}
-	}
-	\item[Entwurf]{
+	\subsection{Entwurf}
 		%Einführung
 		Der Entwurf der View gliedert sich prinzipiell in folgende Pakete auf:
 			\begin{enumerate}
@@ -204,7 +197,7 @@
 		The UI-Elements-Package contains new created UI-Elements that expand the JavaFx-UI.
 		
 		\myclass{ZoomableScrollPane}
-			\textbf{Beschreibung}
+			\textbf{Beschreibung} \newline
 			This is an expansion to the JavaFx-ScrollPane.
 			This adds the ScrollPane that it can be zoomed.
 			
@@ -214,7 +207,7 @@
 			@author
 			https://www.pixelduke.com/2012/09/16/zooming-inside-a-scrollpane/
 			
-			\textbf{Dokumentation}
+			\textbf{Dokumentation}\newline
 			Because this Class is already fully implemented by the creator, there will be no Documentation from our side.
 
 	\mypackage{Drawer}
@@ -227,10 +220,10 @@
 		\mypackage{Drawer.GraphDrawer}
 		The GraphDrawer-Package contains like the Name suggested the GraphDrawer that visualizes the Graph and "draws" it to a JavaFx-Node for the User.
 		
-			\myclass{GraphDrawer}
-				\textbf{Beschreibung}
-				The Drawer that draws the given Graph to the given JavaFx-Node.
-				\textbf{Dokumentation}
+			\myclass{GraphDrawer}			
+				\textbf{Beschreibung}\newline
+				The Drawer that draws the given Graph to the given JavaFx-Node.				
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{graph : VisualGraph} \newline
@@ -360,9 +353,9 @@
 		This Class is separately because it provides a relatively general task, that easily can be (re)used elsewhere.
 		
 			\myclass{ColourManager}
-				\textbf{Beschreibung}
+				\textbf{Beschreibung}\newline
 				The ColourManager manages the different Colours by Mapping the ColourID's to an actual Colour-Value, so that the Drawer can draw the coloured Graph by these ColourID's.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{colourMap : Hashmap<IntegerString>} \newline
@@ -422,16 +415,13 @@
 		This Package contains the implemented Layouts for the GraphDrawer and the Enum that Lists all of them.
 		
 			\myclass{GraphLayoutEnum}
-				\textbf{Beschreibung}
-				This Enum Contains all implemented GraphLayout's that can be used by the graphDrawer to position the VisualVertices.
-				
-				This Enum is needed because the Drawer needs to know whitch Layout to use for the drawing of the Graph and this is done via this Enumeration.
-				
-				In our case there is only one Layout, because we well always draw the Graphs in a Circle.
-				
+				\textbf{Beschreibung}\newline
+				This Enum Contains all implemented GraphLayout's that can be used by the graphDrawer to position the VisualVertices.				
+				This Enum is needed because the Drawer needs to know whitch Layout to use for the drawing of the Graph and this is done via this Enumeration.				
+				In our case there is only one Layout, because we well always draw the Graphs in a Circle.				
 				If someone wants to Expand this Drawer by adding a new Layout he/she/it has to update this Enum as well.
 				This is not against ObjectOrienting Programming because the Programmer that would add this new Layout already needs to recompile the Program and therefore can expand the Enum as well.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[+]
 					\item{
 						\textbf{circleLayout} \newline
@@ -443,11 +433,10 @@
 				\end{enumerate}
 				
 			\myclass{GraphLayout}
-				\textbf{Beschreibung}
-				This is the Layout of the Drawing of the Graph.
-				
+				\textbf{Beschreibung}\newline
+				This is the Layout of the Drawing of the Graph.				
 				It is an abstract class so that there could be multiple Layouts for the Representation that implements this.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[+]
 					\item{
 						\textbf{GraphLayout()} \newline
@@ -473,11 +462,12 @@
 				\end{enumerate}
 			
 			\myclass{GraphLayoutCircle}
-				\textbf{Beschreibung}
+				\textbf{Beschreibung}\newline
 				This is the Circle Layout of the Graph.
 				Therefore this Layout orders the Graph-Nodes into a Circle.
 				
 				It is an Child-Class of the abstract GraphLayout-Class.
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{radius : Double} \newline
@@ -513,10 +503,10 @@
 		\mypackage{Drawer.Visualization.VisualizationGraph}
 			
 			\myclass{VisualVertex}
-				\textbf{Beschreibung}
+				\textbf{Beschreibung}\newline
 				The Vertex of an Visual-Graph.
 				It is the Child of the JavaFx-Circle Object so this Vertex can be drawn.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{ID : Integer} \newline
@@ -556,11 +546,11 @@
 				\end{enumerate}			
 				
 			\myclass{VisualVertexColoured}
-				\textbf{Beschreibung}
+				\textbf{Beschreibung}\newline
 				Extends the VisualVertex Class.
 				
 				This Vertex also contains a Colour-ID so that the Vertex can be coloured.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{colourID : Integer} \newline
@@ -627,10 +617,10 @@
 				\end{enumerate}	
 			
 			\myclass{VisualEdge}
-				\textbf{Beschreibung}
+				\textbf{Beschreibung}\newline
 				The Edge of an Visual-Graph.
 				It is the Child of the JavaFx-Polygon Object so this Edge can be drawn.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{connectedVerticesID : List<Integer>} \newline
@@ -680,10 +670,10 @@
 				\end{enumerate}
 			
 			\myclass{VisualEdgeColour}
-				\textbf{Beschreibung}
+				\textbf{Beschreibung}\newline
 				Extends the VisualEdge Class.
 				This Edge also contains a Colour-ID so that the Edge can be coloured.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{colourID : Integer} \newline
@@ -749,7 +739,7 @@
 				\end{enumerate}
 			
 			\myclass{VisualGraph}
-				\textbf{Beschreibung}
+				\textbf{Beschreibung}\newline
 				This is the VisualGraph.
 				It is the Graph-Construct that is used for the Drawing.
 				
@@ -760,7 +750,7 @@
 				
 				This separate Graph-Representation for the View is necessary because the Model and the View of the Rage-Program should be strictly separated and therefore the View could not use the same Graph-Object.
 				As well this Graph-Representation uses special Nodes and Edges as Elements that could be drawn.
-				\textbf{Dokumentation}
+				\textbf{Dokumentation}\newline
 				\begin{enumerate}[-]
 					\item{
 						\textbf{vertices : List<VisualVertex>} \newline
@@ -949,11 +939,11 @@
 	It separates the SoundHandler from the other parts.
 	
 		\myclass{SoundHandler}
-			\textbf{Beschreibung}
+			\textbf{Beschreibung}\newline
 			The Sound Handler that manages the different Sounds the Program can make.
 			Including the Error and finish Sound.
 			
-			\textbf{Dokumentation}
+			\textbf{Dokumentation}\newline
 			\begin{enumerate}[-]
 				\item{
 					\textbf{soundList : List<String>} \newline
@@ -1016,8 +1006,6 @@
 					\newline
 				}
 			\end{enumerate}
-	}
-	\end{enumerate}	
 	
 	
 	\section{Controller}
@@ -1032,23 +1020,1090 @@
 	%Siehe Berard.
 	
 	\subsection{View-Controller}
-	\begin{enumerate}
-	\item[Allgemein]{
+	\subsubsection{Allgemein}
 		%Einleitung
 		Der Graphic-Controller oder unter JavaFx üblicherweise auch FxController ist der Teil eines JavaFx-Programms der direkt mit dem von der FXML-Datei bereitgestellten GUI verknüpft ist.
-		Der FxController ist somit ein Separater Teil des Controllers, der sich lediglich mit der GUI beschäftigt und die getätigten Eingaben an die richtigen Stellen im allgemeinen Controller weitergibt.
+		Der FxController ist somit ein separater Teil des Controllers, der sich lediglich mit der GUI beschäftigt und die getätigten Eingaben an die richtigen Stellen im allgemeinen Controller weitergibt.
 			Dies bringt den Vorteil, dass der allgemeine Controller keine Kenntnisse über die GUI benötigt und losgelöst von dieser funktionieren kann.
 			Dadurch ist auch die Modularität in diesem Teil des Entwurfs gewährleistet.
-	}
-	\item[Entwurf]{
+
+	\subsubsection{Entwurf}
 		%Hier das ClassDiagram_ViewController UML einfügen.
 		
 		%TODO View-Controller
-	}
-	\end{enumerate}
-	
-
-	%Entwurf
+		\mypackage{ViewController}
+		This Package contains the View Controller.
+		It contains the FxController and the User-Input-Controller for the different GUIs.
+		It works like a Fassade (Interface-like) between the actual Controller of the Program and the GUI.
+		
+		\mypackage{ViewController.UIController}
+		The UI-Controller-Package contains the Input-Controller/Handlers.
+		They catches the Mouse or Key Events and managing the things to perform the correct actions.
+		
+		\mypackage{ViewController.UIController.MouseController}
+		The MouseController is the Part where the different Mouse-Events are catched, so that the Program can react to them.
+		
+			\myclass{MouseController}
+				\textbf{Beschreibung}
+				The MouseController so that the Program could detect Mouse Clicks, Drag and Drop.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{xPos : Double} \newline
+						The X-Position of the Mouse at the time of the Event.
+					}
+					\item{
+						\textbf{yPos : Double} \newline
+						The Y-Position of the Mouse at the time of the Event.
+					}
+					\item{
+						\textbf{onMousePressedEventHandler : javafx.event.EventHandler<MouseHandler>} \newline
+						This is the MouseHandler for the onPressed-Action.
+						This is an Implementation of the EventHandler<MouseHandler>, that overwrites the handle-Method.
+					}
+					\item{
+						\textbf{onMouseDraggedEventHandler : javafx.event.EventHandler<MouseHandler>} \newline
+						This is the MouseHandler for the onDragged-Action.
+						This is an Implementation of the EventHandler<MouseHandler>, that overwrites the handle-Method.
+					}
+					\item{
+						\textbf{onMouseReleasedEventHandler : javafx.event.EventHandler<MouseHandler>} \newline
+						This is the MouseHandler for the onRelease-Action.
+						This is an Implementation of the EventHandler<MouseHandler>, that overwrites the handle-Method.
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{MouseController()} \newline
+						The Empty-Constructor of this Class.
+						The MouseHandler of this Class had to be set at a later time.
+						\newline
+					}
+					\item{
+						\textbf{MouseController(onMousePressedEventHandler : javafx.event.EventHandler<MouseHandler>, onMouseDraggedEventHandler : javafx.event.EventHandler<MouseHandler>, onMouseReleasedEventHandler : javafx.event.EventHandler<MouseHandler>)} \newline
+						The Constructor of this Class.
+						It gets the differentEventHandlers as Parameters and sets them.
+						\newline
+						\textbf{@param onMousePressedEventHandler}
+							The MouseHandler for the onPressed-Action that should be set.
+							\newline
+						\textbf{@param onMouseDraggedEventHandler}
+							The MouseHandler for the onDragged-Action that should be set.
+							\newline
+						\textbf{@param onMouseReleasedEventHandler}
+							The MouseHandler for the onReleased-Action that should be set.
+							\newline
+					}
+					\item{
+						\textbf{setOnMousePressedEventHandler(onMousePressedEventHandler : javafx.event.EventHandler<MouseHandler>)} \newline
+						Set's the onMousePressedEventHandler of the Class.
+						\newline
+						\textbf{@param onMousePressedEventHandler}
+							The EventHandler for the onMousePressed-Event to set.
+							\newline
+					}
+					\item{
+						\textbf{setOnMouseDraggedEventHandler(onMouseDraggedEventHandler : javafx.event.EventHandler<MouseHandler>)} \newline
+						Set's the onMouseDraggedEventHandler of the Class.
+						\newline
+						\textbf{@param onMouseDraggedEventHandler}
+							The EventHandler for the onMouseDragged-Event to set.
+							\newline
+					}
+					\item{
+						\textbf{setOnMouseReleasedEventHandler(onMouseReleasedEventHandler : javafx.event.EventHandler<MouseHandler>)} \newline
+						Set's the onMouseReleasedEventHandler of the Class.
+						\newline
+						\textbf{@param onMouseReleasedEventHandler}
+							The EventHandler for the onMouseReleased-Event to set.
+							\newline
+					}
+				\end{enumerate}
+			
+			\myclass{MouseControllerGraphDrawer}
+				\textbf{Beschreibung}
+				This is a Child-Class of the MouseController.
+				It is used for the Mouse-Controlling at the Graph-Drawer, to notify the modifying.
+				
+				For Example:
+				It registers when a Vertex is pressed so that it can be added to the selected Vertices.
+				Or if the Vertex-Order should be changed so the User draggs the Vertex to the new Position.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{graph : VisualGraph} \newline
+						The Graph the User wants to modify by using the Mouse.
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{MouseControllerGraphDrawer(graph : VisualGraph)} \newline
+						This is the Constructor of this Class.
+						It uses the Empty-SuperConstructor.
+						It get's an Graph as a Parameter and sets them.
+						\newline
+						\textbf{@param graph}
+							The VisualGraph that should be set to modified with the Mouse.
+							\newline
+					}
+					\item{
+						\textbf{MouseControllerGraphDrawer(onMousePressedEventHandler : javafx.event.EventHandler<MouseHandler>, onMouseDraggedEventHandler : javafx.event.EventHandler<MouseHandler>, onMouseReleasedEventHandler : javafx.event.EventHandler<MouseHandler>, graph : VisualGraph)} \newline
+						The Constructor of this Class.
+						It gets the different EventHandlers as Parameters and sets them.
+						Also it sets the given Graph.
+						\newline
+						\textbf{@param onMousePressedEventHandler}
+							The MouseHandler for the onPressed-Action that should be set.
+							\newline
+						\textbf{@param onMouseDraggedEventHandler}
+							The MouseHandler for the onDragged-Action that should be set.
+							\newline
+						\textbf{@param onMouseReleasedEventHandler}
+							The MouseHandler for the onReleased-Action that should be set.
+							\newline
+						\textbf{@param graph}
+							The VisualGraph that should be set to modified with the Mouse.
+							\newline
+					}
+					\item{
+						\textbf{setGraph(graph : VisualGraph)} \newline
+						Set the VisualGraph of this MouseControllerGraphDrawer.
+						\newline
+						\textbf{@param graph}
+							The VisualGraph that should be set.
+							\newline
+					}
+				\end{enumerate}
+		
+		\mypackage{ViewController.UIController.KeyController}
+		The KeyController is the Part where the different Keyboard-Events are catched, so that the Program can react to them.
+		
+			\myclass{KeyController}
+				\textbf{Beschreibung}
+				The Abstract KeyController that should be implemented at it's childs.
+				
+				Because for our purpose it is not important if the KeyEvent was a KeyPress or a KeyRelease this Class does not contain other Handler that Handle these different Events. (unlike at the MouseController)
+				Instead this Class is the only KeyEventHandler.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{pressed : List<String>} \newline
+						The List of pressed Keys.
+						This is used if multiple Keys are pressed. Then the Program puffers them in here.
+						
+						This List will be managed by this Class completely and does not need to be seen by outer Classes.
+						Therefore there is not getter/setter-Method.
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{handle(keyEvent : KeyEvent)} \newline
+						This is the actual Handler of the Key-Event wich is overwritten at the Child's to react to the different Events.
+						\newline
+							\textbf{@param keyEvent}
+							The actual Event that was triggered by the KeyBoard
+					}
+				\end{enumerate}
+		
+		%TODO FxController
+		\mypackage{ViewController.FxController}
+		This Package Fontains all the FxController for the Program.
+		This is the Interface Between the actual FXML-Scene GUI and the Controller where the work will be passed on to the Model-Part.
+		
+			\myclass{FxController}
+				\textbf{Beschreibung}
+				This is the FxController.
+				It is the abstract Class from which every other FxController of this Program gets passed on.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{bundle : ResourceBundle} \newline
+						This is the Resource-Bundle of the Object.
+						This is a kind of Key-Value storage-Unit.
+						
+						It contains the Text, ToolTip, ... of a specific Language for every GUI-Element that is identified by its fx-id.
+						
+						The ResourceBundle will be changed to the correct Language if needed.
+					}
+					\item{
+						\textbf{languages : list<String>} \newline
+						A List of all possible Languages.
+						This list will be dynamically filled with the correct String-ID's of the implemented Languages.
+						
+						This is needed for every controller-Class because of the ResourceBundle switching for different Languages.
+						Every time the GUI-Language is switched a new ReourceBundle has to be loaded.
+						Therefore the Program loads a new File from the Disk where the Language-ID will be the Ending-String of the Filename by which the program identifies the correct ResourceBundle for the wished Language.
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{init()} \newline
+						Initializes the whole Controller by calling all necessary Methods.
+						
+						Remember:
+						The Constructor is called first.
+						Then all Fields annotated with @FXML will be loaded.
+						After that the init-Method will run.
+						That means that the Constructor does not have access to the FXML-GUI-Elements but the init-method does.
+						
+						This is an abstract Method so this will be Overwriten by the Childs.
+						Then the Child can also overload this Method with different Parameters to give, and so on.
+						\newline
+					}
+					\item{
+						\textbf{changeLanguageTo(language : String)} \newline
+						Set the currently active Language of the GUI of this Controller to the given Language.
+						Sets the correct ResourceBundle.
+						\newline
+						\textbf{@param language}
+							The Language that should be set.
+							\newline
+					}
+				\end{enumerate}
+			
+			%Überleitung:
+			%TODO @Thomas: Formatierung
+			Da es zu jedem FXML-Dokument und somit zu jeder GUI einen eingenen FxController gibt, benötigt man eine zentrale Einheit für das Programm, das als Manager für die einzelnen FxController fungiert.
+			Diese Aufgabe übernimmt die Folgende Klasse "FxRageController".
+			
+			\myclass{FxRageController}
+				\textbf{Beschreibung}
+				This is the FxController for the general Program-Window.
+				It functions as the Manager of the calls of the other FxController.
+				It is the only FxController that communicates with any SuperController and passes on the needed Values to the other FxController.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{tpRage : javafx.scene.control.TabPane} \newline
+						The Main-TabPane of the Program.
+					}
+					\item{
+						\textbf{fxGraphEditorController : FxGraphEditorController} \newline
+						The FxGraphEditorController of this Class.
+						There should be only one active Editor at a time.
+					}
+					\item{
+						\textbf{fxGraphGenerationController : FxGraphGenerationController} \newline
+						The GraphGenerationController of this Class.
+						It is no list because there can only be one Generation-Tab per Rage-Program.
+					}
+					\item{
+						\textbf{fxTabControllerList : List<FxTabController>} \newline
+						The List of all FxTabController that are needed.
+						Remember:
+						Every Super-Preview-Tab needs it's own FxTabController.
+						Therefore there are multiple FxTabController possible.
+					}
+					\item{
+						\textbf{fxMenuBarController : FxMenuBarController} \newline
+						The FxController for the MenuBar.
+						This Attribute will be set at this Main-Controller and passed on to the other Tab-Controller where the MenuBar is needed as well.
+					}
+					\item{
+						\textbf{superController : SuperController} \newline
+						This is the SuperController of the Program.
+						It contains all other Controller.
+						These other Controllers will be read out by this Class (the FxRageController) and then passed on to the Sup-FxController so that the whole Program can operate like it should.
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{showMessage(messageText : String, messageType : EnumMessageBoxType)} \newline
+						Show a MessageBox at the Screen.
+						This Method is Used at the ExceptionHandler to show the Error Log.
+						\newline
+						\textbf{@param messageText}
+							The text that should be shown at the MessageBox.
+							\newline
+						\textbf{@param messageType}
+							The Type of Message you want to Show.
+							(Information, Warning, Error, ...)
+							\newline
+					}
+					\item{
+						\textbf{initFxGraphEditor()} \newline
+						This Method starts the GraphEditor by calling the FXMLLoader and passing the correct FxGraphEditorController.
+						\newline
+					}
+					\item{
+						\textbf{initNewTab()} \newline
+						This Method adds a new FxTabController to the List and by calling the FXMLLoader and then passing it to the FXML.
+						This Tab will be added to the GUI.
+						
+						Also it calls the SuperController so that it can a new Tab for its own.
+						\newline
+					}
+					\item{
+						\textbf{initLanguages()} \newline
+						Is called at the init-Method.
+						
+						Calls the IOHandler to search for ResourceBundles.
+						Adds all found Languages to the List so that the user can select them.
+						\newline
+					}
+				\end{enumerate}
+			
+			%Überleitung:
+			%TODO @Thomas: Formatierung
+			Nach dieser Betrachtung der oberen Struktur des View-Controllers benötigt man natürlich noch die einzelnen dort aufgeführten FxController.
+			Diese werden im Anschluss beschrieben.
+			
+			\myclass{FxFilterController}
+				\textbf{Beschreibung}
+				This is the FxController for the Filter-Window.
+				This is a separate Window that will pop up if the User wants to Filter the shown Graphs at the Preview-Tab.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{filterController : FilterController} \newline
+						The FilterController for the passing of the User-Filter to the Model.
+					}
+				\end{enumerate}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{init()} \newline
+						Create the Needed GUI-Components.
+						Therefore the FilterController is called to get the List of all Heuristics.
+						Then for every Heuristic the ToggleButtonGroup to let the User select if the Heuristic should be correctly or not or if it does not matter will be added.
+						\newline
+					}
+					\item{
+						\textbf{filter()} \newline
+						Parse the selected Filter into the correct form and give them to the FilterController by calling the corresponding Method.
+						Everything further will be done by the FilterController.
+						\newline
+					}
+					\item{
+						\textbf{cancel()} \newline
+						Cancel the Filtration and close the Filter-Window.
+						\newline
+					}
+					\item[+] {
+						\textbf{setFilterController(filterController : FilterController)} \newline
+						Set the FilterController of this Class.
+						\newline
+						\textbf{@param filterController}
+							The FilterController to set the attribute of this Class to.
+							\newline
+					}
+				\end{enumerate}
+			
+			\myclass{FxHeuristicSettingsController}
+				\textbf{Beschreibung}
+				The FxController for the HeurisitcSetting-Screen.
+				This is a separate Window that will pop up if the User wants to start a Heuristic that needs some Settings.
+				The GUI-Elements are dynamically added using the HeuristicController to get the HeuristicProperties to read the possible settings the user can/have to take.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{heuristicController : HeuristicController} \newline
+						This is the HeuristicController of this Class.
+						It will be passed on from the FxTabController via the TabController that has the HeuristicController instance.
+					}
+				\end{enumerate}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{init()} \newline
+						Create the Needed GUI-Components.
+						The Elements are created from the HeuristicProperties-List that it gets from the HeuristicController of this Class.
+						These Elements are used so that the User can set his/her Properties of the Heuristic.
+						These Values will be passed on the the HeuristicController so that the DataPool can be updated and the Model calculates the correct stuff.
+						\newline
+					}
+					\item{
+						\textbf{updateSettings()} \newline
+						This Method calls the HeuristicController and calls the addToHeuristicsMethod with the set Properties, that are given by the dynamically added TextBoxes.
+						\newline
+					}
+					\item{
+						\textbf{cancel()} \newline
+						Cancel the HeuristicSetting and close the Settings-Window.
+						\newline
+					}
+					\item[+] {
+						\textbf{setHeuristicController(heuristicController : HeuristicController)} \newline
+						Set the HeuristiCController to the given.
+						\newline
+						\textbf{@param heuristicController}
+							The HeuristicController to set.
+							\newline
+					}
+				\end{enumerate}
+			
+			\myclass{FxGraphEditorController}
+				\textbf{Beschreibung}
+				The FxController of the GraphEditor Window.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{graphController : GraphController} \newline
+						This is the GraphEditorController of this Class.
+					}
+					\item{
+						\textbf{graphDrawer : GraphDrawer} \newline
+						The GraphDrawer of this Editor.
+						This contains the Graph that will be modified and drawn.
+					}
+					\item{
+						\textbf{mouseController : MouseControllerGraphDrawer} \newline
+						This is the MouseController for this Editor.
+						It will be created dynamically whenever the graph is changed and it was not jet created, so that an simple update of the graph via the Setter would be enough.
+						So there is no need for a Setter-Method.
+						
+						The Graph of the Drawer of this Class will be passed on as the Graph of this MouseController.
+						Then the MouseEvent's can be managed as needed and the Vertices can be dragged.
+						
+						The MouseHandler does not need to be accessed by any other Object so there is no need of Getter Methods.
+					}
+					\item{
+						\textbf{cbGraphType : javafx.scene.control.ComboBox} \newline
+						This is the ComboBox where the GraphType will be set.
+						
+						The Value of this Box will be read-out and then the function of the Editor will be adapted to the Graph-Type.
+						
+						If the Editor is opened for an already existing Graph the ComboBox will be set to the type of the given Graph.
+						If the Editor is opened for creating a new Graph the User has to set this ComboBox to the wished Type.
+					}
+					\item{
+						\textbf{cmdCirlce : javafx.scene.control.Button} \newline
+						The Button for the AddCircle-Operation.
+						This Buttons is needed because this Function has to be hidden if the Editor works on an VisualGraph of an SimpleHyperGraph.
+					}
+					\item{
+						\textbf{cmdCirlce : javafx.scene.control.Button} \newline
+						The Button for the AddCircle-Operation.
+						This Buttons is needed because this Function has to be hidden if the Editor works on an VisualGraph of an SimpleHyperGraph.
+					}
+					\item{
+						\textbf{cmdClique : javafx.scene.control.Button} \newline
+						The Button for the addClique-Operation.
+						This Buttons is needed because this Function has to be hidden if the Editor works on an VisualGraph of an SimpleHyperGraph.
+					}
+					\item{
+						\textbf{cmdMergeVertices : javafx.scene.control.Button} \newline
+						The Button for the Merge-Vertices-Operation.
+						This Buttons is needed because this Function has to be hidden if the Editor works on an VisualGraph of an SimpleHyperGraph.
+					}
+					\item{
+						\textbf{cmdDuplicateVertices : javafx.scene.control.Button} \newline
+						The Button for the Duplicate-Vertices-Operation.
+						This Buttons is needed because this Function has to be hidden if the Editor works on an VisualGraph of an SimpleHyperGraph.
+					}
+				\end{enumerate}
+				\begin{enumerate}[-]
+					\item[+]{
+						\textbf{FxGraphEditorController()} \newline
+						This is the Empty-Constructor of this Class.
+						\newline
+					}
+					\item{
+						\textbf{checkGraphType()} \newline
+						This Method is called at the init-Method and whenever a new GraphDrawer is set.
+						
+						Checks the Properties of the currently edited Graph and checks the Type.
+						
+						Then the corresponding ComboBox for the Graph-Type will be set to the correct Value.
+						
+						If the Editor works on an SimpleHyperGraph some Buttons will be hidden.
+						\newline
+					}
+					\item{
+						\textbf{drag()} \newline
+						This Method is accessed if the cmdDrag-Button is pressed.
+						
+						Therefore the user wants to relocate an selected Node.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{addEdge()} \newline
+						This Method is accessed if the cmdAddEdge-Button is pressed.
+						
+						Therefore the user wants to add an Edge between the selected Vertices.
+						It checks the graph Type of the given Graph and if the Edge is between only two Vertices for an SimpleGraph.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{vertriceAmountChange()} \newline
+						This Method is accessed if the VerticesAmount-Spinner changes it's Value.
+						
+						If this happens this can mean one of two different things the User wants to Delete or Add Vertices from the Graph.
+						Therefore check if the Amount was changed to a smaller or bigger Value and then call the corresponding Method at the Graph from the GraphDrawer.
+						In case the User wants to delete Vertices this is only possible while there are unconnected Nodes at the End of the List. If there are none left, the User has to delete the Vertices manually.
+						\newline
+					}
+					\item{
+						\textbf{removeVertex()} \newline
+						This Method is accessed if the cmdEraser-Button is pressed.
+						
+						Therefore the user wants to delete the selected Vertex.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{mergeVertices()} \newline
+						This Method is accessed if the cmdMergeVertices-Button is pressed.
+						
+						Therefore the user wants to merge the selected Vertices.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{duplicateVertices()} \newline
+						This Method is accessed if the cmdDuplicateVertices-Button is pressed.
+						
+						Therefore the user wants to duplicate the selected Vertices.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{deleteEdgesBetweenSelectedVertrices()} \newline
+						This Method is accessed if the cmdDeleteEdgesBetweenSelectedVertrices-Button is pressed.
+						
+						Therefore the user wants to delete the Edge between the selected Vertices.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{addPath()} \newline
+						This Method is accessed if the cmdAddPath-Button is pressed.
+						
+						Therefore the user wants to add an Path between the selected Vertices.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{addCircle()} \newline
+						This Method is accessed if the cmdAddCircle-Button is pressed.
+						
+						Therefore the user wants to add an Circle between the selected Vertices.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{addClique()} \newline
+						This Method is accessed if the cmdAddClique-Button is pressed.
+						
+						Therefore the user wants to add an Clique.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{undo()} \newline
+						This Method is accessed if the cmdUndo-Button is pressed.
+						
+						Therefore the user wants to revert the last done Change.
+						Then this Method calls the corresponding Method at the GraphDrawer.
+						\newline
+					}
+					\item{
+						\textbf{save()} \newline
+						This Method is accessed if the cmdSave-Button is pressed.
+						
+						Therefore the user wants to save the modified Graph.
+						Then this Method calls the corresponding Method so that the VisualGraph of the Drawer can be converted to an Graph of the Model-Structure by the Adapter Class and be passed on to the Model by the general Controller.
+						\newline
+					}
+					\item{
+						\textbf{cancel()} \newline
+						This Method is accessed if the cmdCancel-Button is pressed.
+						
+						Therefore the user wants to cancel the Modification of the Graph.
+						So the Editor closes and the Modifications are deleted.
+						\newline
+					}
+					\item{
+						\textbf{ok()} \newline
+						This Method is accessed if the cmdOk-Button is pressed.
+						
+						Therefore the user wants to save the modified Graph and go on.
+						\newline
+					}
+					\item[+]{
+						\textbf{setGraphEditorController(graphEditorController : GraphEditorController)} \newline
+						Set the GraphEditorController.
+						\newline
+						\textbf{@param graphEditorController}
+							The GraphEditorController so set.
+							\newline
+					}
+					\item[+]{
+						\textbf{setGraphDrawer(graphDrawer : GraphDrawer)} \newline
+						Set the GraphDrawer of this Class.
+						Also calls the checkGraphType-Method.
+						\newline
+						\textbf{@param graphDrawer}
+						The GraphDrawer to set.
+						\newline
+					}
+				\end{enumerate}
+		
+		\mypackage{ViewController.FxController.FxPreviewTabController}
+		This Package orders the FxController a little bit so that the FxController for the Preview Tab are inside this Package.
+		
+			\myclass{FxTabController}
+				\textbf{Beschreibung}
+				This is the FxControler for the upper Preview-Tab.
+				It manages the whole thing including the Sub Tabs like:
+				Preview, DetailView and Statistics
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{tabController : TabController} \newline
+						This is the TabController which Contains the DataPool of this Tab as well as the other sub-Controller like Statistic, Heuristic and DetailView.
+					}
+					\item{
+						\textbf{fxPreviewController : FxPreviewController} \newline
+						The FxController for this Preview-Tab.
+					}
+					\item{
+						\textbf{detailViewList : List<FxDetailViewController>} \newline
+						A List of all FxDetailViews that are currently needed because these DetailViews are opened.
+					}
+					\item{
+						\textbf{fxStatisticController : FxStatisticController} \newline
+						The FxStatisticController for this whole Preview-Tab.
+					}
+					\item{
+						\textbf{fxRageController : FxRageController} \newline
+						This is the Upper-Controller.
+						It is needed in this Class so that this Controller can access the needed Super-Controller parts.
+						(Because the FxRageController is the only direct connection between the ViewController and the SuperController)
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{FxTabController()} \newline
+						The Empty-Constructor of this Class.
+						\newline
+					}
+					\item{
+						\textbf{setTabController(tabController : TabController)} \newline
+						This Method sets the TabController of this Class.
+						It is called from FxRageController that gets the needed TabController from the SuperController.
+						\newline
+						\textbf{@param tabController}
+							The given TabController to set the Attribute to.
+							\newline
+					}
+					\item[\#]{
+						\textbf{getFxRageController() : FxRageController} \newline
+						Get the FxRageController.
+						This Method is protected.
+						This is used so that the startEditor-Method can do what it should and starts the Editor.
+						\newline
+						\textbf{@return} returns
+						The FxRageController of this Class.
+						\newline
+					}
+				\end{enumerate}
+			
+			\myclass{FxPreviewController}
+				\textbf{Beschreibung}
+				This is the FxController for the lower Preview-Tab, where all Graphs are shown as a List of Tabs.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{graphDrawer : GraphDrawer} \newline
+						The GraphDrawer of this Tab.
+						The Graph of this Tab will be passed on to the Drawer whenever the User opens the DropDown-Box of an Graph, so it can be drawn.
+					}
+					\item{
+						\textbf{filterController : FilterController} \newline
+						The FilterController for the passing of the Filter, selected by the User at the GUI via the FxFilterController, to the Model.
+					}
+					\item{
+						\textbf{scrollPaneGraphList : javafx.scene.control.ScrollPane} \newline
+						The ScrollPane where all the DropDowns of the Graphs are in.
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{FxPreviewController()} \newline
+						The Empty-Constructor of this Class.
+						It creates a new GraphDrawer, where the needed Graph will be put in if the User opens the Tab of a Graph.
+						\newline
+					}
+					\item{
+						\textbf{startGlobalHeuristics()} \newline
+						This Method will start the calculation of the GlobalHeuristics.
+						This will be done by calling the given TabController with the Method "heuristicApplyToDatapool()".
+						\newline
+					}
+					\item{
+						\textbf{stopGlobalHeuristics()} \newline
+						This Method will start the calculation of the GlobalHeuristics.
+						This will be done by calling the given DetailViewController.
+						\newline
+					}
+					\item{
+						\textbf{searchForPlugins()} \newline
+						Try to add new Plugins to the List.
+						This Method opens an FileChooser which will return a Folder that will be passed on to the IOController to perform the PlugIn-Loading.
+						\newline
+					}
+					\item{
+						\textbf{filter()} \newline
+						This Method will show the Filter-Window, so that the User can select the Filters.
+						This is done by Loading the Filter-FXML-File which creates the new Window.
+						This already creates the needed FxFilterController which is read out, so that the FilterController at this Class can be set.
+						Then the User-Input will be registers by this passes FxFilterController and will be passed on the given FilterController via the FxFilterController directly.
+						\newline
+					}
+					\item{
+						\textbf{setGraphDrawer(graphDrawer : graphDrawer)} \newline
+						Set the Graph Drawer of this Class.
+						\newline
+						\textbf{@param graphDrawer}
+							Set the Graph Drawer of this Class.
+							\newline
+					}
+					\item{
+						\textbf{setFilterController(filterController : FxFilterController)} \newline
+						Set the FilterController of this Class.
+						\newline
+						\textbf{@param graphDrawer}
+						The FilterController to set the attribute of this Class to.
+						\newline
+					}
+				\end{enumerate}
+			
+			\myclass{FxDetailViewController}
+				\textbf{Beschreibung}
+				The FxController for the DetailView.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{detailViewController : DetailViewController} \newline
+						The DetailVewController of this Class.
+						It Contains the Lists of all Local and Global Heuristics and the Graph of this DetailView.
+					}
+					\item{
+						\textbf{fxTabController : FxTabController} \newline
+						The FxTabController that contains this DetailView in the List of DetailViews.
+						This is passed on by the FxTabController itself.
+					}
+				\end{enumerate}
+				%Methods
+				\begin{enumerate}[+]
+					\item{
+						\textbf{FxDetailViewController()} \newline
+						The Empty-Constructor of this Class.
+						\newline
+					}
+					\item{
+						\textbf{init(fxTabController : FxTabController)} \newline
+						This method overrides the init-Method from the abstract-Class FxController.
+						It sets the FxRageController by the given Parameter.
+						This is possible because the FxRageController calls this Method and gives itselv as parameter with it.
+						\newline
+						\textbf{@param fxTabController}
+						The FxTabController that will be set.
+						\newline
+					}
+					\item{
+						\textbf{searchForPlugins()} \newline
+						Try to add new Plugins to the List.
+						This Method opens an FileCooser which will return a Folder that will be passed on to the IOController to perform the PlugIn-Loading.
+						\newline
+					}
+					\item{
+						\textbf{startGlobalHeuristics()} \newline
+						This Method will start the calculation of the GlobalHeuristics.
+						This will be done by calling the given DetailViewController.
+						\newline
+					}
+					\item{
+						\textbf{stopGlobalHeuristics()} \newline
+						This Method will stop the calculation of the GlobalHeuristics.
+						This will be done by calling the given DetailViewController.
+						\newline
+					}
+					\item{
+						\textbf{startLocalHeuristics()} \newline
+						This Method will start the calculation of the Local Heuristics for the Graph of this Detail View.
+						This will be done by calling the given DetailViewController.
+						\newline
+					}
+					\item{
+						\textbf{stopLocalHeuristics()} \newline
+						This Method will stop the calculation of the Local Heuristics for the Graph of this Detail View.
+						This will be done by calling the given DetailViewController.
+						\newline
+					}
+					\item{
+						\textbf{stertStepByStepMode()} \newline
+						This Method will start the Step-By-Step-Mode of the Heuristic.
+						This will be done by calling the given SuperDetailViewController.
+						\newline
+					}
+					\item{
+						\textbf{startGraphEditor()} \newline
+						Beschreibung
+						\newline
+					}
+					\item{
+						\textbf{setDetailViewController(detailViewController : DetailViewController)} \newline
+						Set the DetailViewController of this Class.
+						\newline
+						\textbf{@param detailViewController}
+							The DetailViewController to set.
+							\newline
+					}
+					\item{
+						\textbf{setGraphDrawer(graphDrawer : GraphDrawer)} \newline
+						Set the Graph Drawer of this Class.
+						\newline
+						\textbf{@param graphDrawer}
+						The GraphDrawer to set.
+						\newline
+					}
+				\end{enumerate}
+			
+			\myclass{FxStatisticController}
+				\textbf{Beschreibung}
+				The FxConntroller for the Statistic-Tab.
+				
+				Only fills in the Table with the Collected Data from the DataPool provided from the Model via the given HeristicController.
+				\textbf{Dokumentation}
+				%Parameters
+				\begin{enumerate}[-]
+					\item{
+						\textbf{statisticController : StatisticController} \newline
+						This is the Controller that manages the DataPool which contains all the Statistics.
+					}
+					\item{
+						\textbf{tableStatistics : javafx.scene.control.TableView} \newline
+						This is the Table view where the Statistics will be showed in.
+					}
+				\end{enumerate}
+				%Methods
+				\begin{enumerate}[+]
+					\item{
+						\textbf{FxStatisticController()} \newline
+						The Empty-Constructor of this Class.
+						\newline
+					}
+					\item{
+						\textbf{updateStatistics()} \newline
+						This Method updates the Table-View with new Statistics, that should be shown to the User.
+						It gets the Statistics from the HeuristicController.
+						\newline
+					}
+					\item{
+						\textbf{setStatisticController(statisticController : StatisticController)} \newline
+						This is the setter-Method for the StatisticController.
+						It only sets the StatisticCotroller of this Class to the given Controller.
+						
+						This Method is called form the FxTabController which gets  the StatisticController via the TabController.
+						\newline
+						\textbf{@param statisticController}
+							The StatisticController to set.
+							\newline
+					}
+				\end{enumerate}
+		
+		\mypackage{ViewController.FxController.FxGraphGenerationController}
+		This Package orders the FxController a little bit so that the FxController for the Graph-Generation Tab is inside this Package.
+		
+			\myclass{FxGraphGenerationController}
+				\textbf{Beschreibung}
+				The FxController for the Graph-Generation-Tab.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{fxRageController : FxRageController} \newline
+						This is the FxRageController.
+						This is needed so that the GraphGenerationTab can start an Editor by calling this Super-Class.
+						It is passed on by the init-Method.
+					}
+					\item{
+						\textbf{graphGeneratorController : GraphGeneratorController} \newline
+						The GraphGeneratorController for this Class.
+					}
+					\item{
+						\textbf{graphProperties : GraphProperties} \newline
+						The GraphProperties of this Class.
+						It among other things contains the differentGraphTypes that are implemented in this Program and the User can choose.
+						
+						This is only a copy that is get via the GeneratorController, so that the access to this Object is easier for the FxGraphGeneratorController and the GraphGenerationController is not flooded with requests.
+						Therefore there is no need for a getter-Method.
+					}
+					\item{
+						\textbf{cbGraphType : javafx.scene.control.ComboBox} \newline
+						The Combobox where the User can choose the Type of the generated Graph.
+						
+						The Possible Choices are given via ...??
+						
+						The other Settings will be based on this Choice, to provide the user with the correct Settings for the different Graph-Types.
+					}
+				\end{enumerate}
+				\begin{enumerate}[+]
+					\item{
+						\textbf{init(fxRageController : FxRageController)} \newline
+						This method overrides the init-Method from the abstract-Class FxController.
+						It sets the FxRageController by the given Parameter.
+						This is possible because the FxRageController calls this Method and gives itself as parameter with it.
+						\newline
+						\textbf{@param fxRageController}
+							The FxRageController that will be set.
+							\newline
+					}
+					\item[-]{
+						\textbf{updateGUIElementFromProperties()} \newline
+						This Method is called by the GraphProperties-Setter.
+						It changes the GUI-Elements to the needed ones.
+						They will be dynamically created.
+						\newline
+					}
+					\item[-]{
+						\textbf{startGeneration()} \newline
+						This Method starts the generation by calling the correct Method at the GraphGenerationController.
+						\newline
+					}
+					\item[-]{
+						\textbf{startImport()} \newline
+						This Method starts the import of an previously saved Tab by calling the correct Method at the GraphGenerationController.
+						\newline
+					}
+					\item[-]{
+						\textbf{startEditor()} \newline
+						This Method starts the GraphEditor by calling the correct Method at the GraphGenerationController.
+						Also it init's the GraphEditor by calling the FxRageController.
+						\newline
+					}
+					\item{
+						\textbf{setGraphGeneratorController(graphGeneratorController : GraphGeneratorController)} \newline
+						Set the GraphGeneratorController of this Class.
+						Then set the graphProperties of this Class from the Value out of the GraphGenerationController.
+						Then call the updateGUIElementFromProperties-Method to update the GUI to the given Properties.
+						\newline
+						\textbf{@param graphGeneratorController}
+							The GraphGeneratorController to set.
+							\newline
+					}
+					\item{
+						\textbf{setGraphGeneratorController(graphProperties : GraphProperties)} \newline
+						The Setter for the GraphProperties of this Class.
+						It also calls the updateGUIElement-Method.
+						\newline
+						\textbf{@param graphProperties}
+							The GraphProperties to set.
+							\newline
+					}
+				\end{enumerate}
+		
+		\mypackage{ViewController.FxController.FxMenuBarController}
+		This Package orders the FxController a little bit, so that the FxController for the MenuBar is inside this Package.
+				
+			\myclass{FxMenuBarController}
+				\textbf{Beschreibung}
+				This is the FxController for the MenuBar.
+				\textbf{Dokumentation}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{fxRageController : FxRageController} \newline
+						This is the FxRageController of this Class.
+						
+						This is needed for several Reasons:
+						- So that the MenuBar can change some Properties of all Tabs,Windows,... (like the Language).
+						- For the Tab-Switching.
+						For example: at the showGraphGeneration-Method.
+					}
+					\item{
+						\textbf{menuLanguages : javafx.scene.control.Menu} \newline
+						The Menu for the Language-Choosing.
+						
+						This is the Menu where where the MenuItems for the available Languages will be put into.
+						By these added MenuItems the User can change the Language of the GUI.
+						
+						The MenuItems for the different Languages will be added dynamically.
+						That's why this JavaFx-Element is an Object at this Controller. (unlike the others of this Scene).
+					}
+					\item{
+						\textbf{toggleGroupLanguage : javafx.scene.control.ToggleGroup} \newline
+						The ToggleGroup for the different MenuItems for the Language-Choosing.
+						
+						The MenuItems for the different Languages will be added dynamically to the Menu.
+						Therefore the dynamically generated Objects will be set into this ToggleGroup.
+						So that the User only can select one of the available Languages to set the GUI to.
+					}
+				\end{enumerate}
+				\begin{enumerate}[-]
+					\item{
+						\textbf{importHeuristics()} \newline
+						This Method calls the corresponding Controller to perform the Plugin-Import.
+						
+						Therefore a new FileChooser will be opened so that the User can choose the Folder where the Plugin is stored in.
+						\newline
+					}
+					\item{
+						\textbf{importTab()} \newline
+						This Method calls the corresponding Controller to perform the Tab-Import.
+						
+						Therefore a new FileChooser will be opened so that the User can choose the Folder where the Graph is stored in.
+						\newline
+					}
+					\item{
+						\textbf{exportTab()} \newline
+						This Method calls the corresponding Controller to perform the Tab-Export.
+						Therefore a new FileChooser will be opened so that the User can choose the Folder where the Tab ahould be exported to.
+						\newline
+					}
+					\item{
+						\textbf{showFunctionalHelp()} \newline
+						This Method opens the Help Dialogue for the Functional-Things of this Program.
+						
+						This Dialogue is shown as a new Window over the current Screen.
+						\newline
+					}
+					\item{
+						\textbf{showUsageHelp()} \newline
+						This Method opens the Help Dialogue for the Usage-Things of this Program.
+						It explains the GUI and the steps the User has to do to accomplish the different functional things the Program provides him/her with.
+						This Dialogue is shown as a new Window over the current Screen.
+						\newline
+					}
+					\item{
+						\textbf{showImportHelp()} \newline
+						This Method opens the Help Dialogue for the Import.
+						It explains what can be Imported and how the user has to do it.
+						This Dialogue is shown as a new Window over the current Screen.
+						\newline
+					}
+					\item{
+						\textbf{setLanguage()} \newline
+						This Method sets the Language of the GUI.
+						Therefore this class calls the changeLanguageMethod of the FxRageController so that all GUI-Elements that contain Text will be shown correct Language.
+						\newline
+					}
+					\item{
+						\textbf{showAbout()} \newline
+						This Method opens the About Dialogue from this Program.
+						This Dialogue is shown as a new Window over the current Screen.
+						\newline
+					}
+					\item{
+						\textbf{showGraphGeneration()} \newline
+						This Method will switch the GUI to the GraphGeneration-Tab, so that the User can start set the properties and so on.
+						Therefore uses the FxRageController.
+						\newline
+					}
+					\item{
+						\textbf{showGraphEditor()} \newline
+						This Method will open the Graph-Editor, so that the User can start working on his/her own Graph.
+						Therefore uses the FxGraphEditorController.
+						\newline
+					}
+					\item[+]{
+						\textbf{setFxRageController(fxRageController : FxRageController)} \newline
+						Set the FxRageController.
+						\textbf{@param fxRageController}
+							The FxRageController to set.
+							\newline
+					}
+				\end{enumerate}
 	
 	\section{Resources}
 	\begin{enumerate}
