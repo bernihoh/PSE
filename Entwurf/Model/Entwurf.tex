@@ -2118,7 +2118,30 @@ bookmarks = true
 	~\newpage
 	
 	\section{Addendum: Heuristiken}
+	\subsection{Einleitung}
+	Im folgenden werden die implementierten Heuristiken erklärt. Im Wesentlichen gibt es zwei Familien von Heuristiken: die TCHeuristiken und die EFLHeuristiken.
+	
+	Erstere behandeln das \textbf{Total Coloring Conjecture}. Dieses besagt, dass jeder einfache ungerichtete Graph mit Maximalgrad $\Delta$ eine valide Totalfärbung mit $\Delta+2$ Farben besitzt. Dabei ist ein \textbf{einfacher ungerichteter Graph} ein Graph, in dem Kanten immer genau zwei verschiedene Knoten verbinden, die Reihenfolge dieser Knoten nicht relevant ist und es nicht mehrere Kanten zwischen zwei Knoten gibt. Der \textbf{Grad} eines Knoten eines solchen Graphen ist die Anzahl der zu ihm inzidenten Kanten. Eine valide \textbf{Totalfärbung} ist eine Färbung der Knoten und Kanten eines solchen Graphen, sodass keine zwei zueinander adjazente Knoten, adjazente Kanten oder inzidente Knoten und Kanten dieselbe Farbe besitzen. 
+	
+	Zweitere behandeln das \textbf{Erdös Faber Lovasz Conjecture}. Es besagt, dass jeder einfache Hypergraph auf $n$ Knoten eine valide Kantenfärbung mit $n$ Farben besitzt. Dabei ist ein \textbf{Hypergraph} ein Graph, dessen (Hyper-)Kanten beliebige Teilmengen der Knotenmenge darstellen. Ein solcher Graph heißt \textbf{einfach}, wenn alle Kanten mindestens zwei Knoten umfassen und es keine zwei Kanten gibt, die mehr als einen Knoten gemeinsam haben. Eine \textbf{Kantenfärbung} ist eine Färbung der Hyperkanten dergestalt, dass keine zwei adjazente Hyperkanten dieselbe Farbe zugewiesen haben.
+	
+	Die \textbf{freien Farben} $\mathcal F(v)$ eines Knotens bzw. $\mathcal F(e)$ einer Kante sind all die Farben, die nicht von einem dazu adjazenten oder inzidenten Objekt belegt sind. Die \textbf{Flexibilität} einer Menge $X$ von Knoten und Kanten ist die Anzahl der Farben, die für jedes Objekt frei sind, minus der Anzahl der Objekte, d.h. $\# \bigcap \limits_{x \in X} \mathcal F(x) - \# X$. Negative Flexibilität bedeutet insbesondere, dass die Menge $X$ nicht gefärbt werden kann.
+	
+	Grundlegend für die Arbeitsweise der Heuristiken ist die inhärente Ordnung der Knoten gegeben über ihre Indizes. Auf einfachen ungerichteten Kanten und Hyperkanten wird dadurch eine \textbf{lexikographische Ordnung} induziert, indem man sie als geordnete Tupel von Knotenindizes auffasst. Es gilt dann z.B. $(1,2) < (1,4) < (2, 3) < (2,3,4)$.
+	
+	Um eine möglichst gleichmäßige Färbung zu erzeugen zählen die Heuristiken mit, wie oft einzelne Farben benutzt worden sind, gewichtet nach der Anzahl der gefärbten Knoten und der gefärbten Kanten. Konkret bedeutet das, dass die Anzahl der mit einer bestimmten Farbe $c$ gefärbten Knoten $V(c)$ eine andere Gewichtung $\omega_v$ haben kann als die Gewichtung $\omega_e$ der mit dieser Farbe gefärbten Kanten $E(c)$. Das Gewicht einer Farbe wird demnach durch $\# V(c) \cdot \omega_v + \# E(c) \cdot \omega_e$ bestimmt. Da Farben ebenso wie Knoten mit einer natürlichen Zahl identifiziert werden, gibt es stets eine eindeutige Farbe minimaler Gewichtung und minimalem Index. Diese wird im Folgenden nur mit \textbf{minimal benutzter Farbe} bezeichnet.
+	
+	Die in den folgenden Heuristiken auftretende \textbf{Breitensuche} startet stets im Knoten mit minimalem Index. Für jeden Knoten werden wie bei einer Breitensuche üblich alle noch unberührten Nachbarn nach ihren Indizes sortiert inspiziert. Sollte der Graph nicht zusammenhängend sein, wird immer der kleinste unberührte Knoten als neuer Startpunkt genommen.
+	
+	
+	~\newpage
 	\subsection{TCGreedy}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie (ebenfalls in der Reihenfolge einer Breitensuche) der Reihe nach alle Kanten inzident zu einem gemeinsamen Knoten.
+	
+	\textbf{Pseudocode}
 	\begin{verbatim}
 		for every vertex v in order of a breadth first search
 		    if v cannot be colored
@@ -2136,9 +2159,15 @@ bookmarks = true
 		return complete coloring
 	\end{verbatim}
 	
-	~\newpage
+	~\newline
 	
 	\subsection{TCGreedyOne}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie (ebenfalls in der Reihenfolge einer Breitensuche) der Reihe nach alle Kanten inzident zu einem gemeinsamen Knoten, wenn es grad keine Kanten gibt, die genau eine freie Farbe haben. Letztere werden bevorzugt koloriert.
+	
+	\textbf{Pseudocode}
 	\begin{verbatim}
 		for every vertex v in the order of a breadth first search
 		    if v cannot be colored
@@ -2151,6 +2180,7 @@ bookmarks = true
 		        while there are uncolored edges with exactly one free color
 		            get minimal uncolored edge with exactly one free color f
 		            color f with its unique free color
+		            
 		        if e is colored already
 		            continue
 		        if e cannot be colored
@@ -2160,10 +2190,14 @@ bookmarks = true
 				        
 		return complete coloring
 	\end{verbatim}
-	
-	~\newpage
-			
+		
 	\subsection{TCGreedyFew}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie (ebenfalls in der Reihenfolge einer Breitensuche) der Reihe nach alle Kanten inzident zu einem gemeinsamen Knoten, wenn es grad keine Kanten gibt, die weniger freie Farben haben. Letztere werden bevorzugt koloriert.
+	
+	\textbf{Pseudocode}
 	\begin{verbatim}
 		for every vertex v in the order of a breadth first search
 		    if v cannot be colored
@@ -2179,6 +2213,7 @@ bookmarks = true
 		                return incomplete coloring
 		            get minimally used free color c of f with respect to the color weights
 		            color f with color c
+		            
 		        if e is colored already
 		            continue
 		        if e cannot be colored
@@ -2192,6 +2227,12 @@ bookmarks = true
 	~\newpage
 	
 	\subsection{TCGreedySet}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie die Kanten durch auffinden derjenigen Teilmenge von Kanten inzident zu einem gemeinsamen Knoten, die minimale Flexibilität besitzt und bezüglich lexikographischer Ordnung minimal ist.
+	
+	\textbf{Pseudocode}
 	\begin{verbatim}
 		for every vertex v in the order of a breadth first search
 		    if v cannot be colored
@@ -2200,14 +2241,16 @@ bookmarks = true
 		    color v with color c
 				    
 		while there is a set with minimal flexibility
-		    find the set X of minimal flexibility belonging to the vertex v with lowest index
-		        if X has negative flexibility
+		    find the set X of minimal flexibility belonging to one vertex and with lowest lexicographic 
+		    order
+		    if X has negative flexibility
+		        return incomplete coloring
+		        
+		    for every edge e of X in the order defined on edges
+		        if e cannot be colored
 		            return incomplete coloring
-		        for every edge e of X in the order defined on edges
-		            if e cannot be colored
-		                return incomplete coloring
-		            get minimally used free color c of e with respect to the color weights
-		            color e with color c
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
 				        
 		return complete coloring
 	\end{verbatim}
@@ -2215,6 +2258,12 @@ bookmarks = true
 	~\newpage
 	
 	\subsection{TCGreedyCon}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie die Kanten durch auffinden derjenigen Teilmenge von zusammenhängenden Kanten, die minimale Flexibilität besitzt und bezüglich lexikographischer Ordnung minimal ist. Die Größe dieser zusammenhängenden Teilmengen kann dabei nach oben beschränkt sein.
+	
+	\textbf{Pseudocode}
 	\begin{verbatim}
 		for every vertex v in the order of a breadth first search
 		    if v cannot be colored
@@ -2226,6 +2275,7 @@ bookmarks = true
 		    find the set X of minimal flexibility which has the lowest lexicographic order
 		        if X has negative flexibility
 		            return incomplete coloring
+		            
 		        for every edge e of X in the order defined on edges
 		            if e cannot be colored
 		                return incomplete coloring
@@ -2239,6 +2289,12 @@ bookmarks = true
 	~\newpage
 	
 	\subsection{TCMixedGreedy}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik nutzt eine Breitensuche, um von Knoten zu Knoten zu kommen. Sie färbt stets zunächst den Knoten und anschließend alle dazu inzidenten Kanten, bevor sie sich dem nächsten Knoten annimmt.
+	
+	\textbf{Pseudocode}
 	\begin{verbatim}
 		for every vertex v in order of a breadth first search
 		    if v cannot be colored
@@ -2258,6 +2314,12 @@ bookmarks = true
 	~\newpage
 	
 	\subsection{TCMixedGreedyOne}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik nutzt eine Breitensuche, um von Knoten zu Knoten zu kommen. Sie färbt stets den Knoten und anschließend alle dazu inzidententen Kanten, es sei denn es gibt unkolorierte Knoten oder Kanten, die genau eine freie Farbe haben. Diese werden stets bevorzugt koloriert, wobei Knoten den Kanten vorgezogen werden.
+	
+	\textbf{Pseudocode}
 	\begin{verbatim}
 		for every vertex v in order of a breadth first search
 		    while there are objects with exactly one free color
@@ -2297,14 +2359,227 @@ bookmarks = true
 	~\newpage
 	
 	\subsection{TCMixedGreedyFew}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik nutzt eine Breitensuche, um von Knoten zu Knoten zu kommen. Sie färbt stets zunächst den Knoten, falls es keine anderen unkolorierten Knoten mit weniger freien Farben und geringerem Index gibt, die bevorzugt zu behandeln sind. Anschließend färbt sie alle Kanten inzident zu dem Knoten, falls es keine unkolorierten Kanten mit weniger freien Farben und geringerer Ordnung gibt, die zu bevorzugen sind.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}
+		for every vertex v in order of a breath first search
+		    while there is a vertex w with less free colors than v and lower index
+		        if w cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of w with respect to the color weights
+		        color w with color c
+		    
+		    if v is not colored yet
+		        if v cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of v with respect to the color weights
+		        color v with color c
+		    
+		    for every uncolored edge e incident to v in the order defined on edges
+		        while there is an edge f with less free colors than e and lower order
+		            if f cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of f with respect to the color weights
+		            color f with color c
+		           
+		        if e is not colored yet    
+		            if e cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of e with respect to the color weights
+		            color e with color c
+		    
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
 	\subsection{TCMixedGreedySet}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik sucht Teilmengen von Kanten inzident zu einem gemeinsamen Knoten, die minimale Flexibilität hat und bezüglich lexikographischer Ordnung minimal ist. Sollte der gemeinsame Knoten unkoloriert sein, werden Varianten mit dem Knoten und ohne den Knoten betrachtet, wobei letztere bevorzugt wird. Besagte Teilmenge minimaler Flexibilität wird dann koloriert.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}
+		while there are uncolored vertices or edges
+		    find set X of minimal flexibility with lowest lexicographic order incident to a vertex v
+		        if X has negative flexibility
+		            return incomplete coloring
+		            
+		        if v is uncolored and contained in X
+		            if v cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of v with respect to the color weights
+		            color v with color c
+		        
+		        for every edge e in X
+		            if e cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of v with respect to the color weights
+		            color e with color c
+		
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
 	\subsection{TCMixedGreedyCon}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik sucht unter denjenigen Menge zusammenhängender Kanten, und zu ihnen inzidenten Knoten, die minimale Flexibilität und minimale lexikographische Ordnung hat. Dabei werden zunächst die Kanten verglichen und erst am Ende die Knotenmengen, aufgefasst als Hyperkanten. Die Anzahl der Kanten in einer solchen Menge kann dabei nach oben beschränkt sein.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}
+		while there are uncolored vertices or edges
+		    find connected set X of minimal flexibility and minimal lexicographic order
+		    if X has negative flexibility
+		        return incomplete coloring
+		    
+		    for every vertex v in X
+		        if v cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of v with respect to the color weights
+		        color v with color c
+		        
+		    for every edge e in X
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+		       
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
 	\subsection{EFLGreedy}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt (in der Reihenfolge einer Breitensuche) der Reihe nach alle Hyperkanten inzident zu einem gemeinsamen Knoten.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}    
+		for every vertex v in order of a breadth first search
+		    for every uncolored edge e incident to v in the order defined on edges
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newline
+	~\newline
+	
 	\subsection{EFLGreedyOne}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt (in der Reihenfolge einer Breitensuche) der Reihe nach alle Hyperkanten inzident zu einem gemeinsamen Knoten, wenn es grad keine Hyperkanten gibt, die genau eine freie Farbe haben. Letztere werden bevorzugt koloriert.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}    
+		for every vertex v in the order of a breadth first search
+		    for every uncolored edge e incident to v in the order defined on edges
+		        while there are uncolored edges with exactly one free color
+		            get minimal uncolored edge with exactly one free color f
+		            color f with its unique free color
+		            
+		        if e is colored already
+		            continue
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
 	\subsection{EFLGreedyFew}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt (in der Reihenfolge einer Breitensuche) der Reihe nach alle Hyperkanten inzident zu einem gemeinsamen Knoten, wenn es grad keine Hyperkanten gibt, die weniger freie Farben haben. Letztere werden bevorzugt koloriert.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}  
+		for every vertex v in the order of a breadth first search
+		    for every uncolored edge e incident to v in the order defined on edges
+		        while there are uncolored edges with less free colors than e and lower order than e
+		            get minimal uncolored edge f
+		            if f cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of f with respect to the color weights
+		            color f with color c
+		            
+		        if e is colored already
+		            continue
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newline
+	~\newline
+	
 	\subsection{EFLGreedySet}
+	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt die Hyperkanten durch auffinden derjenigen Teilmenge von Hyperkanten inzident zu einem gemeinsamen Knoten, die minimale Flexibilität besitzt und bezüglich lexikographischer Ordnung minimal ist.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}  
+		while there is a set with minimal flexibility
+		    find the set X of minimal flexibility belonging to one vertex and with lowest lexicographic 
+		    order
+		    if X has negative flexibility
+		        return incomplete coloring
+		        
+		    for every edge e of X in the order defined on edges
+		        if e cannot be colored
+		            return incomplete coloring
+		        get minimally used free color c of e with respect to the color weights
+		        color e with color c
+				        
+		return complete coloring
+	\end{verbatim}
+	
+	~\newpage
+	
 	\subsection{EFLGreedyCon}
 	
+	\textbf{Beschreibung}
+	
+	Diese Heuristik färbt die Hyperkanten durch auffinden derjenigen Teilmenge von zusammenhängenden Hyperkanten, die minimale Flexibilität besitzt und bezüglich lexikographischer Ordnung minimal ist. Die Größe dieser zusammenhängenden Teilmengen kann dabei nach oben beschränkt sein.
+	
+	\textbf{Pseudocode}
+	\begin{verbatim}    
+		while there is a set with minimal flexibility
+		    find the set X of minimal flexibility which has the lowest lexicographic order
+		        if X has negative flexibility
+		            return incomplete coloring
+		            
+		        for every edge e of X in the order defined on edges
+		            if e cannot be colored
+		                return incomplete coloring
+		            get minimally used free color c of e with respect to the color weights
+		            color e with color c
+				        
+		return complete coloring
+	\end{verbatim}	
+	
+	
+	
+	~\newpage
 	\section{Addendum: RAGE-Datenformate}
 	
 \end{document}
