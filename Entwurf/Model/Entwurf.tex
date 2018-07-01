@@ -1902,7 +1902,218 @@ bookmarks = true
 	\section{View}
 	\section{Controller}
 	\section{Input-Output}
+	
+	~\newpage
 	\section{Utils}
+	
+	In this package some helpful classes are implemented.
+	TODO utils.png UML
+	
+	\myclass{Properties}
+	
+	\textbf{Description}
+	
+	This abstract class implements a key value storage used for exchanging data between the different layers of the application. It is used to adapt the user interface to varying settings of heuristics. The keys may be used to translate the GUI to different languages as well. New key-value pairs can only be added by subclasses, thus guaranteeing their presence at any time.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getProperties(): List<String>} \newline
+			\textbf{@return} returns the list of all keys ie. properties
+		}
+		\item[\#]{
+			\textbf{addProperty(property: String, value: PropertyValue)} \newline
+			\textbf{@param property} the property to be added \newline
+			\textbf{@param value} the value(-type) the property will have \newline
+			\textbf{@throws DataInconsistencyException} if the property is already set
+		}
+		\item{
+			\textbf{getProperty(property: String): PropertyValue} \newline
+			\textbf{@param property} the property whose value is requested \newline
+			\textbf{@return} returns the value of the property \newline
+			\textbf{@throws DataInconsistencyException} if there is no key \textbf{property}
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{PropertyValue}
+	
+	\textbf{Description}
+	
+	This class stores data of the type \textbf{T}, which might be constant.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{PropertyValue(value: T, const: bool)} \newline
+			A constructor of this class \newline
+			\textbf{@param value} the value of this PropertyValue \newline
+			\textbf{@param const} whether the value is constant ie. might not be altered after its initialization
+		}
+		\item{
+			\textbf{getValue(): T} \newline
+			\textbf{@return} returns the value stored in this PropertyValue
+		}
+		\item{
+			\textbf{setValue(value: T)} \newline
+			\textbf{@param value} the value which will be stored in this PropertyValue \newline
+			\textbf{@throws DataInconsistencyException} if the const flag is set
+		}
+		\item{
+			\textbf{isConstant(): bool} \newline
+			\textbf{@return} returns \textbf{true} iff this PropertyValue is constant ie. the const flag is set
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{Language}
+	
+	\textbf{Description}
+	
+	This class stores language data ie. maps tokens to translations.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{Language(rageFormat: List<String>)} \newline
+			\textbf{@param rageFormat} the line by line representation of a language / translation as specified in the RAGE data format
+		}
+		\item{
+			\textbf{getText(identifier: String): String} \newline
+			\textbf{@param identifier} the identifier of the translation \newline
+			\textbf{@return} returns the translation corresponding to \textbf{identifier} or ''MISSING:\textbf{identifier}'' if there is no translation
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{Profiler}
+	
+	\textbf{Description}
+	
+	This class is used to gather statistics about timing.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{startMeasurement()} \newline
+			starts measuring the time
+		}
+		\item{
+			\textbf{endMeasurement()} \newline
+			ends the running measurement and adds it to the collected data
+		}
+		\item{
+			\textbf{getMinTime(): double} \newline
+			\textbf{@return} returns the minimal time measured by this Profiler
+		}
+		\item{
+			\textbf{getMaxTime(): double} \newline
+			\textbf{@return returns the maximal time measured by this Profiler}
+		}
+		\item{
+			\textbf{getAvgTime(): double} \newline
+			\textbf{@return} returns the average time measured by this Profiler
+		}
+		\item{
+			\textbf{getNumMeasurements(): int} \newline
+			\textbf{@return} returns the number of measurements taken by this Profiler
+		}
+	\end{enumerate}
+	
+	~\newpage
+	
+	\myclass{Tuple}
+	
+	\textbf{Description}
+	
+	This class represents a tuple of two variables x and y of types \textbf{X} and \textbf{Y} respectively.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{Tuple(x: X, y: Y)} \newline
+			A constructor of this class \newline
+			\textbf{@param x} the first entry of this tuple \newline
+			\textbf{@param y} the second entry of this tuple
+		}
+		\item{
+			\textbf{getX():X} \newline
+			\textbf{@return} returns the first component of this tuple
+		}
+		\item{
+			\textbf{setX(x: X)} \newline
+			\textbf{@param x} the value to be assigned to the first component of this tuple
+		}
+		\item{
+			\textbf{getY():Y} \newline
+			\textbf{@return} returns the second component of this tuple
+		}
+		\item{
+			\textbf{setY(y: Y)} \newline
+			\textbf{@param y} the value to be assigned to the second component of this tuple
+		}
+	\end{enumerate}
+	
+	~\newline
+	~\newline
+	~\newline
+	
+	\myclass{CollectionUtil}
+	
+	\textbf{Description}
+	
+	This class provides some helper methods for collections of elements of type \textbf{T} as finding minimal elements (of a cost function returning values of type \textbf{R}) or subsets.
+	
+	\textbf{Documentation}
+	
+	\begin{enumerate}[+]
+		\item{
+			\textbf{getMinimalValue(collection: Collection<T>, evaluation: Function<T,R>): R} \newline
+			\textbf{@param collection} the collection on which \textbf{evaluation} will be minimized \newline
+			\textbf{@param evaluation} the evaluation / cost function which will be minimized \newline
+			\textbf{@return} returns the minimal value of \textbf{evaluation}
+		}
+		\item{
+			\textbf{getMinimalArgument(collection: Collection<T>, evaluation: Function<T,R>, leq: bool): T} \newline
+			\textbf{@param collection} the collection on which \textbf{evaluation} will be minimized \newline
+			\textbf{@param evaluation} the evaluation / cost function which will be minimized \newline
+			\textbf{@param leq} if \textbf{false} the first entry in the collection minimizing \textbf{evaluation} will be returned, otherwise the last one will be returned \newline
+			\textbf{@return} returns the argument minimalizing \textbf{evaluation}
+		}
+		\item{
+			\textbf{getMinimalArgumentValue(collection: Collection<T>, evaluation: Function<T,R>, leq: bool): Tuple<T,R>} \newline
+			\textbf{@param collection} the collection on which \textbf{evaluation} will be minimized \newline
+			\textbf{@param evaluation} the evaluation / cost function which will be minimized \newline
+			\textbf{@param leq} if \textbf{false} the first entry in the collection minimizing \textbf{evaluation} will be returned, otherwise the last one will be returned \newline
+			\textbf{@return} returns the tuple (argument, value) minimalizing \textbf{evaluation}
+		}
+		\item{
+			\textbf{getSubCollections(collection: Collection<T>): List<Collection<T>>} \newline
+			\textbf{@param collection} the collection whose subcollections shall be retrieved \newline
+			\textbf{@return} returns the list of subcollections of \textbf{collection} (in lexicographic order, if \textbf{collection} is sorted)
+		}
+		\item{
+			\textbf{getSubCollections(collection: Collection<T>, minSize: int, maxSize: int): List<Collection<T>>} \newline
+			\textbf{@param collection} the collection whose subcollections shall be retrieved \newline
+			\textbf{@param minSize} the minimal size of the subcollections returned \newline
+			\textbf{@param maxSize} the maximal size of the subcollections returned \newline
+			\textbf{@return} returns the list of subcollections of \textbf{collection} (in lexicographic order, if \textbf{collection} is sorted) of size between \textbf{minSize} and \textbf{maxSize}
+		}
+	\end{enumerate}
+	
+	
 	
 	~\newpage
 	
