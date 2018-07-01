@@ -2022,7 +2022,7 @@
 											"top": 1050,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#calcMinimalFlexSet(vertex: int)",
+											"text": "-calcMinimalFlexSet(vertex: int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3861,7 +3861,7 @@
 											"top": 1050,
 											"width": 296.98779296875,
 											"height": 13,
-											"text": "#calcSingularEdges()",
+											"text": "-calcSingularEdges()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -17846,7 +17846,7 @@
 											"top": 958,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "-minFlexSets: HashMap<int, FlexSet>",
+											"text": "-minFlexSets: HashMap<int, TCFlexSet>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -17948,7 +17948,7 @@
 											"top": 1041,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],
@@ -18213,7 +18213,7 @@
 											"top": 1026,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],
@@ -22870,7 +22870,7 @@
 								"$ref": "AAAAAAFkAlV5QDzbu90="
 							},
 							"name": "calcMinimalFlexSet",
-							"visibility": "protected",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -23487,7 +23487,7 @@
 												"$ref": "AAAAAAFkAmnis0ASjYc="
 											},
 											"name": "calcSingularEdges",
-											"visibility": "protected"
+											"visibility": "private"
 										},
 										{
 											"_type": "UMLOperation",
@@ -26089,7 +26089,7 @@
 											"top": 958,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "-minFlexSets: HashMap<int, FlexSet>",
+											"text": "-minFlexSets: HashMap<int, TCFlexSet>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -26191,7 +26191,7 @@
 											"top": 1041,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],
@@ -26456,7 +26456,7 @@
 											"top": 1026,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],
@@ -32629,7 +32629,7 @@
 											"top": 960,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "-minFlexSets: HashMap<int, FlexSet>",
+											"text": "-minFlexSets: HashMap<int, TCFlexSet>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -32731,7 +32731,7 @@
 											"top": 1043,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],
@@ -32996,7 +32996,7 @@
 											"top": 1028,
 											"width": 281.1123046875,
 											"height": 13,
-											"text": "#getMinimalFlexSet(): FlexSet",
+											"text": "#getMinimalFlexSet(): TCFlexSet",
 											"horizontalAlignment": 0
 										}
 									],

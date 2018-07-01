@@ -540,7 +540,7 @@
 											"top": 540,
 											"width": 269.42626953125,
 											"height": 13,
-											"text": "+Graph(edges: List<E>)",
+											"text": "+Graph(edges: List<E>, numVertices: int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7842,6 +7842,15 @@
 											},
 											"name": "edges",
 											"type": "List<E>"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFkUEPA/Fd0vdE=",
+											"_parent": {
+												"$ref": "AAAAAAFkOAOWf94UVkU="
+											},
+											"name": "numVertices",
+											"type": "int"
 										}
 									]
 								},

@@ -380,7 +380,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFkCcYulONJXoA="
 											},
-											"font": "Arial;13;3",
+											"font": "Arial;13;1",
 											"left": 109,
 											"top": 335,
 											"width": 380.38330078125,
@@ -578,64 +578,13 @@
 											"height": 13,
 											"text": "+setEdgeColor(edge: SimpleUndirectedEdge, color: int)",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCcYulONZZsw=",
-											"_parent": {
-												"$ref": "AAAAAAFkCcYulONSKWc="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGPAD9CAFw="
-											},
-											"font": "Arial;13;2",
-											"left": 109,
-											"top": 471,
-											"width": 380.38330078125,
-											"height": 13,
-											"text": "#init()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCcYulONaVRk=",
-											"_parent": {
-												"$ref": "AAAAAAFkCcYulONSKWc="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGcIj9Iavg="
-											},
-											"font": "Arial;13;2",
-											"left": 109,
-											"top": 486,
-											"width": 380.38330078125,
-											"height": 13,
-											"text": "#justColoredVertex(vertex: int)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCcYulONbzE0=",
-											"_parent": {
-												"$ref": "AAAAAAFkCcYulONSKWc="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGtST9OWkY="
-											},
-											"font": "Arial;13;2",
-											"left": 109,
-											"top": 501,
-											"width": 380.38330078125,
-											"height": 13,
-											"text": "#justColoredEdge(edge: SimpleUndirectedEdge)",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 104,
 									"top": 391,
 									"width": 390.38330078125,
-									"height": 128
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -675,7 +624,7 @@
 							"left": 104,
 							"top": 328,
 							"width": 390.38330078125,
-							"height": 191,
+							"height": 146,
 							"nameCompartment": {
 								"$ref": "AAAAAAFkCcYulONJXoA="
 							},
@@ -3087,7 +3036,7 @@
 											"top": 739,
 											"width": 456.3076171875,
 											"height": 13,
-											"text": "+TCFlexSet(vertices: List<int>, value: int)",
+											"text": "#TCFlexSet(vertices: List<int>, value: int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3104,7 +3053,7 @@
 											"top": 754,
 											"width": 456.3076171875,
 											"height": 13,
-											"text": "+TCFlexSet(edges: List<SimpleUndirectedEdge>, value: int)",
+											"text": "#TCFlexSet(edges: List<SimpleUndirectedEdge>, value: int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3121,7 +3070,7 @@
 											"top": 769,
 											"width": 456.3076171875,
 											"height": 13,
-											"text": "+TCFlexSet(vertices: List<int>, edges: List<SimpleUndirectedEdge>, value: int)",
+											"text": "#TCFlexSet(vertices: List<int>, edges: List<SimpleUndirectedEdge>, value: int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3138,7 +3087,7 @@
 											"top": 784,
 											"width": 456.3076171875,
 											"height": 13,
-											"text": "+getVertices(): List<int>",
+											"text": "#getVertices(): List<int>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3155,7 +3104,7 @@
 											"top": 799,
 											"width": 456.3076171875,
 											"height": 13,
-											"text": "+getEdges(): List<SimpleUndirectedEdge>",
+											"text": "#getEdges(): List<SimpleUndirectedEdge>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3172,7 +3121,7 @@
 											"top": 814,
 											"width": 456.3076171875,
 											"height": 13,
-											"text": "+getValue(): int",
+											"text": "#getValue(): int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -13715,7 +13664,7 @@
 											"top": 422,
 											"width": 484.84033203125,
 											"height": 13,
-											"text": "+equals(heuristic: TCHeuristic)",
+											"text": "+equals(heuristic: TCHeuristic): bool",
 											"horizontalAlignment": 0
 										}
 									],
@@ -13818,7 +13767,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFkAk3xQTmEWTY="
 											},
-											"font": "Arial;13;3",
+											"font": "Arial;13;1",
 											"left": 149,
 											"top": 359,
 											"width": 320.48046875,
@@ -14016,64 +13965,13 @@
 											"height": 13,
 											"text": "+setEdgeColor(edge: SimpleUndirectedEdge, color: int)",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkAmGPIT9FO+g=",
-											"_parent": {
-												"$ref": "AAAAAAFkAk3xQjmK43M="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGPAD9CAFw="
-											},
-											"font": "Arial;13;2",
-											"left": 149,
-											"top": 495,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#init()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkAmGcQT9L+TQ=",
-											"_parent": {
-												"$ref": "AAAAAAFkAk3xQjmK43M="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGcIj9Iavg="
-											},
-											"font": "Arial;13;2",
-											"left": 149,
-											"top": 510,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#justColoredVertex(vertex: int)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkAmGtZz9RjXM=",
-											"_parent": {
-												"$ref": "AAAAAAFkAk3xQjmK43M="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGtST9OWkY="
-											},
-											"font": "Arial;13;2",
-											"left": 149,
-											"top": 525,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#justColoredEdge(edge: SimpleUndirectedEdge)",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 144,
 									"top": 415,
 									"width": 390.38330078125,
-									"height": 128
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -14352,6 +14250,23 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAFkUTTScXcorug=",
+											"_parent": {
+												"$ref": "AAAAAAFkB+Zsz0N9lGE="
+											},
+											"model": {
+												"$ref": "AAAAAAFkOSW+qofyOhs="
+											},
+											"font": "Arial;13;0",
+											"left": 773,
+											"top": 1408,
+											"width": 377.92041015625,
+											"height": 13,
+											"text": "+TCData(graph: SimpleUndirectedGraph)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAFkB+565kUUek8=",
 											"_parent": {
 												"$ref": "AAAAAAFkB+Zsz0N9lGE="
@@ -14361,7 +14276,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 773,
-											"top": 1408,
+											"top": 1423,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#init()",
@@ -14378,7 +14293,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 773,
-											"top": 1423,
+											"top": 1438,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#justColoredVertex(vertex: int)",
@@ -14395,7 +14310,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 773,
-											"top": 1438,
+											"top": 1453,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#justColoredEdge(edge: SimpleUndirectedEdge)",
@@ -14412,7 +14327,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1453,
+											"top": 1468,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#removeFreeColor(vertex: int, color: int)",
@@ -14429,7 +14344,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1468,
+											"top": 1483,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#removeFreeColor(edge: SimpleUndirectedEdge, color: int)",
@@ -14446,7 +14361,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1483,
+											"top": 1498,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(vertices: List<int>): int",
@@ -14463,7 +14378,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1498,
+											"top": 1513,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(edges: List<SimpleUndirectedEdge>): int",
@@ -14480,7 +14395,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1513,
+											"top": 1528,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(vertices: List<int>, edges: List<SimpleUndirectedEdge>): int",
@@ -14497,7 +14412,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1528,
+											"top": 1543,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getColorWeight(color: int): int",
@@ -14514,7 +14429,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1543,
+											"top": 1558,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#setColorWeight(color: int, weight: int)",
@@ -14531,7 +14446,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1558,
+											"top": 1573,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFreeVertexColors(vertex: int): List<int>",
@@ -14548,7 +14463,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1573,
+											"top": 1588,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFreeEdgeColors(edge: SimpleUndirectedEdge): List<int>",
@@ -14565,7 +14480,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1588,
+											"top": 1603,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getNeighborhood(vertex: int): List<int>",
@@ -14576,7 +14491,7 @@
 									"left": 768,
 									"top": 1403,
 									"width": 408.8740234375,
-									"height": 203
+									"height": 218
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -16188,63 +16103,8 @@
 									"type": "int"
 								}
 							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAFkAmGPAD9CAFw=",
-							"_parent": {
-								"$ref": "AAAAAAFkAk3xQTmB2Uc="
-							},
-							"name": "init",
-							"visibility": "protected",
-							"isAbstract": true
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAFkAmGcIj9Iavg=",
-							"_parent": {
-								"$ref": "AAAAAAFkAk3xQTmB2Uc="
-							},
-							"name": "justColoredVertex",
-							"visibility": "protected",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFkAmI6zT9WcCo=",
-									"_parent": {
-										"$ref": "AAAAAAFkAmGcIj9Iavg="
-									},
-									"name": "vertex",
-									"type": "int"
-								}
-							],
-							"isAbstract": true
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAFkAmGtST9OWkY=",
-							"_parent": {
-								"$ref": "AAAAAAFkAk3xQTmB2Uc="
-							},
-							"name": "justColoredEdge",
-							"visibility": "protected",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFkAmL2XT9aulI=",
-									"_parent": {
-										"$ref": "AAAAAAFkAmGtST9OWkY="
-									},
-									"name": "edge",
-									"type": {
-										"$ref": "AAAAAAFjxnX4SjQuJ7A="
-									}
-								}
-							],
-							"isAbstract": true
 						}
-					],
-					"isAbstract": true
+					]
 				},
 				{
 					"_type": "UMLClass",
@@ -17145,6 +17005,7 @@
 										"$ref": "AAAAAAFkOB8ItNkr3bk="
 									},
 									"name": "TCFlexSet",
+									"visibility": "protected",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -17173,6 +17034,7 @@
 										"$ref": "AAAAAAFkOB8ItNkr3bk="
 									},
 									"name": "TCFlexSet",
+									"visibility": "protected",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -17201,6 +17063,7 @@
 										"$ref": "AAAAAAFkOB8ItNkr3bk="
 									},
 									"name": "TCFlexSet",
+									"visibility": "protected",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -17238,6 +17101,7 @@
 										"$ref": "AAAAAAFkOB8ItNkr3bk="
 									},
 									"name": "getVertices",
+									"visibility": "protected",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -17257,6 +17121,7 @@
 										"$ref": "AAAAAAFkOB8ItNkr3bk="
 									},
 									"name": "getEdges",
+									"visibility": "protected",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -17276,6 +17141,7 @@
 										"$ref": "AAAAAAFkOB8ItNkr3bk="
 									},
 									"name": "getValue",
+									"visibility": "protected",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -17929,7 +17795,7 @@
 											"top": 422,
 											"width": 484.84033203125,
 											"height": 13,
-											"text": "+equals(heuristic: TCHeuristic)",
+											"text": "+equals(heuristic: TCHeuristic): bool",
 											"horizontalAlignment": 0
 										}
 									],
@@ -18032,7 +17898,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFkCbFIUoZMwrA="
 											},
-											"font": "Arial;13;3",
+											"font": "Arial;13;1",
 											"left": 149,
 											"top": 359,
 											"width": 320.48046875,
@@ -18230,64 +18096,13 @@
 											"height": 13,
 											"text": "+setEdgeColor(edge: SimpleUndirectedEdge, color: int)",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCbFIUoZc23Y=",
-											"_parent": {
-												"$ref": "AAAAAAFkCbFIUoZVUCg="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGPAD9CAFw="
-											},
-											"font": "Arial;13;2",
-											"left": 149,
-											"top": 495,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#init()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCbFIUoZd6w4=",
-											"_parent": {
-												"$ref": "AAAAAAFkCbFIUoZVUCg="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGcIj9Iavg="
-											},
-											"font": "Arial;13;2",
-											"left": 149,
-											"top": 510,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#justColoredVertex(vertex: int)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCbFIUoZegcM=",
-											"_parent": {
-												"$ref": "AAAAAAFkCbFIUoZVUCg="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGtST9OWkY="
-											},
-											"font": "Arial;13;2",
-											"left": 149,
-											"top": 525,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#justColoredEdge(edge: SimpleUndirectedEdge)",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 144,
 									"top": 415,
 									"width": 390.38330078125,
-									"height": 128
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -18566,6 +18381,23 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAFkUTTSfncrF7k=",
+											"_parent": {
+												"$ref": "AAAAAAFkCbFIVIcawNU="
+											},
+											"model": {
+												"$ref": "AAAAAAFkOSW+qofyOhs="
+											},
+											"font": "Arial;13;0",
+											"left": 773,
+											"top": 1408,
+											"width": 377.92041015625,
+											"height": 13,
+											"text": "+TCData(graph: SimpleUndirectedGraph)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAFkCbFIVIcbPqs=",
 											"_parent": {
 												"$ref": "AAAAAAFkCbFIVIcawNU="
@@ -18575,7 +18407,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 773,
-											"top": 1408,
+											"top": 1423,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#init()",
@@ -18592,7 +18424,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 773,
-											"top": 1423,
+											"top": 1438,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#justColoredVertex(vertex: int)",
@@ -18609,7 +18441,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 773,
-											"top": 1438,
+											"top": 1453,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#justColoredEdge(edge: SimpleUndirectedEdge)",
@@ -18626,7 +18458,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1453,
+											"top": 1468,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#removeFreeColor(vertex: int, color: int)",
@@ -18643,7 +18475,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1468,
+											"top": 1483,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#removeFreeColor(edge: SimpleUndirectedEdge, color: int)",
@@ -18660,7 +18492,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1483,
+											"top": 1498,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(vertices: List<int>): int",
@@ -18677,7 +18509,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1498,
+											"top": 1513,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(edges: List<SimpleUndirectedEdge>): int",
@@ -18694,7 +18526,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1513,
+											"top": 1528,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(vertices: List<int>, edges: List<SimpleUndirectedEdge>): int",
@@ -18711,7 +18543,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1528,
+											"top": 1543,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getColorWeight(color: int): int",
@@ -18728,7 +18560,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1543,
+											"top": 1558,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#setColorWeight(color: int, weight: int)",
@@ -18745,7 +18577,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1558,
+											"top": 1573,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFreeVertexColors(vertex: int): List<int>",
@@ -18762,7 +18594,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1573,
+											"top": 1588,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFreeEdgeColors(edge: SimpleUndirectedEdge): List<int>",
@@ -18779,7 +18611,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 773,
-											"top": 1588,
+											"top": 1603,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getNeighborhood(vertex: int): List<int>",
@@ -18790,7 +18622,7 @@
 									"left": 768,
 									"top": 1403,
 									"width": 408.8740234375,
-									"height": 203
+									"height": 218
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -20803,7 +20635,7 @@
 											"top": 424,
 											"width": 497.86572265625,
 											"height": 13,
-											"text": "+equals(heuristic: TCHeuristic)",
+											"text": "+equals(heuristic: TCHeuristic): bool",
 											"horizontalAlignment": 0
 										}
 									],
@@ -20906,7 +20738,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFkCbJr141offY="
 											},
-											"font": "Arial;13;3",
+											"font": "Arial;13;1",
 											"left": 154,
 											"top": 361,
 											"width": 320.48046875,
@@ -21104,64 +20936,13 @@
 											"height": 13,
 											"text": "+setEdgeColor(edge: SimpleUndirectedEdge, color: int)",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCbJr1414iQs=",
-											"_parent": {
-												"$ref": "AAAAAAFkCbJr141xQig="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGPAD9CAFw="
-											},
-											"font": "Arial;13;2",
-											"left": 154,
-											"top": 497,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#init()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCbJr1415duQ=",
-											"_parent": {
-												"$ref": "AAAAAAFkCbJr141xQig="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGcIj9Iavg="
-											},
-											"font": "Arial;13;2",
-											"left": 154,
-											"top": 512,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#justColoredVertex(vertex: int)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFkCbJr1416yyM=",
-											"_parent": {
-												"$ref": "AAAAAAFkCbJr141xQig="
-											},
-											"model": {
-												"$ref": "AAAAAAFkAmGtST9OWkY="
-											},
-											"font": "Arial;13;2",
-											"left": 154,
-											"top": 527,
-											"width": 320.48046875,
-											"height": 13,
-											"text": "#justColoredEdge(edge: SimpleUndirectedEdge)",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 149,
 									"top": 417,
 									"width": 390.38330078125,
-									"height": 128
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -21440,6 +21221,23 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAFkUTTSjXcuIs4=",
+											"_parent": {
+												"$ref": "AAAAAAFkCbJr2Y42R3c="
+											},
+											"model": {
+												"$ref": "AAAAAAFkOSW+qofyOhs="
+											},
+											"font": "Arial;13;0",
+											"left": 778,
+											"top": 1410,
+											"width": 377.92041015625,
+											"height": 13,
+											"text": "+TCData(graph: SimpleUndirectedGraph)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAFkCbJr2Y43yRI=",
 											"_parent": {
 												"$ref": "AAAAAAFkCbJr2Y42R3c="
@@ -21449,7 +21247,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 778,
-											"top": 1410,
+											"top": 1425,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#init()",
@@ -21466,7 +21264,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 778,
-											"top": 1425,
+											"top": 1440,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#justColoredVertex(vertex: int)",
@@ -21483,7 +21281,7 @@
 											},
 											"font": "Arial;13;2",
 											"left": 778,
-											"top": 1440,
+											"top": 1455,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#justColoredEdge(edge: SimpleUndirectedEdge)",
@@ -21500,7 +21298,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1455,
+											"top": 1470,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#removeFreeColor(vertex: int, color: int)",
@@ -21517,7 +21315,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1470,
+											"top": 1485,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#removeFreeColor(edge: SimpleUndirectedEdge, color: int)",
@@ -21534,7 +21332,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1485,
+											"top": 1500,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(vertices: List<int>): int",
@@ -21551,7 +21349,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1500,
+											"top": 1515,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(edges: List<SimpleUndirectedEdge>): int",
@@ -21568,7 +21366,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1515,
+											"top": 1530,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFlex(vertices: List<int>, edges: List<SimpleUndirectedEdge>): int",
@@ -21585,7 +21383,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1530,
+											"top": 1545,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getColorWeight(color: int): int",
@@ -21602,7 +21400,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1545,
+											"top": 1560,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#setColorWeight(color: int, weight: int)",
@@ -21619,7 +21417,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1560,
+											"top": 1575,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFreeVertexColors(vertex: int): List<int>",
@@ -21636,7 +21434,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1575,
+											"top": 1590,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getFreeEdgeColors(edge: SimpleUndirectedEdge): List<int>",
@@ -21653,7 +21451,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 778,
-											"top": 1590,
+											"top": 1605,
 											"width": 377.92041015625,
 											"height": 13,
 											"text": "#getNeighborhood(vertex: int): List<int>",
@@ -21664,7 +21462,7 @@
 									"left": 773,
 									"top": 1405,
 									"width": 408.8740234375,
-									"height": 203
+									"height": 218
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
