@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Pflichtenheft},
+bookmarks = true
+}
+\usepackage[toc]{glossaries}
+
+\usepackage{graphicx}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{placeins}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%\usepackage{svg}
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{fancyvrb}
+%\usepackage{tgcursor}
+%\fvset{frame=single,framesep=1mm,fontfamily=courier,fontsize=\scriptsize,numbers=left,framerule=.3mm,numbersep=1mm,commandchars=\\\{\}}
+
+
+
+
+\usepackage{fix-cm}
+\newcommand{\titlesize}{\fontsize{30pt}{20pt}\selectfont}
+\newcommand{\themesize}{\fontsize{20pt}{20pt}\selectfont}
+\newcommand{\authorsize}{\fontsize{15pt}{20pt}\selectfont}
+
+\newcommand{\mypackage}[1]{\subsection*{Package #1} \label{#1} \addcontentsline{toc}{subsection}{\nameref{#1}}}
+\newcommand{\myclass}[1]{\subsubsection*{Class #1} \label{#1} \addcontentsline{toc}{subsubsection}{\nameref{#1}}}
+\newcommand{\myinterface}[1]{\subsubsection*{Interface #1} \label{#1} \addcontentsline{toc}{subsubsection}{\nameref{#1}}}
+
+%\makeglossaries
+
+
+
+%\titlehead{\centering \includegraphics{images/title}}
+%\title{RaGE Pflichtenheft}
+%\author{Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen}
+
+\begin{document}
+	%\maketitle
+	
+	%\newpage
+	
+	\begin{titlepage}
+		%\centering \includegraphics[width=0.7\textwidth]{images/title}
+		
+		\titlesize \hspace*{.5cm} Random Graph Coloring Evaluation
+		~\newline~\newline
+		
+		\themesize \hspace*{3cm} Entwurfsdokument
+		\newline~\newline
+		
+		\authorsize Jonas Kasper, Bernard Hohmann, Thomas Fischer, Christian Jung, Jonas Linßen
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\input{anmerkung}	
+	\input{uebersicht}
+	~\newpage
+	\input{model}
+	
+	
+\input{view}	
+	
+	
+\input{controller}
+	
+\input{resources}
+	
+%\input{controller2}
+\input{io}
+	\section{Utils}
+	\section{Addendum: Heuristiken}
+	\section{Addendum: RAGE-Datenformate}
+	
+\end{document}

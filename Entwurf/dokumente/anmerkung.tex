@@ -1,0 +1,66 @@
+\section{Anmerkungen zum Pflichtenheft}
+	\subsection{Klarstellungen}
+	\subsection{Änderungen}	
+	\subsubsection{GUI}
+			%\begin{enumerate}
+			\paragraph{Graphen-Vorschau}
+				%Worum geht es?
+				In der Graph-Preview Ansicht in der GUI werden die einzelnen Graphen, seien sie generiert oder importiert, unter einem neuen Tab angezeigt.
+				
+				%Wie war es bisher?
+				Diese Anzeige war bisher so gestaltet, dass die Graphen in einer Grid-View gesetzt werden.
+				Dies würde in einer tabellenartigen Darstellung resultieren, bei der Beispielsweise 2 Spalten und 3 Reihen für die Graphen gleichzeitig dargestellt werden.
+				
+				%Was war Grund der Änderung:
+				Diese Ansicht hatte den Nachteil, dass der User immer gezeichnete Graphen vor sich sieht.
+				Dies führt zu deutlich geringerer Übersichtlichkeit.
+				Außerdem bestand kein großes Interesse des Kunden daran, dass man die zuvor generierten Graphen sofort betrachten kann.
+					Das graphische Darstellen der Graphen wurde eher an anderer Stelle gewünscht.
+				Darüber hinaus ist diese Art der Ansicht nicht besonders gut skalierbar, wenn der User die Fenstergröße anpassen möchte, besteht die Gefahr, dass die Graphen-Bilder zu klein werden, um anschaulich zu sein.
+				
+				%Was ist die Änderung?
+				Aus diesem Grund haben wir die Ansicht zu einer Tab-View geändert.
+				Dies bedeutet, dass man nun eine Liste an ausklappbaren Tabs mit den jeweiligen Graphen-Namen vor sich sieht.
+				Demzufolge kann man bei Interesse die Graphen-Tabs ausklappen.
+					Beim Ausklappen wird dann genau dieser zu betrachtende Graph gezeichnet.
+					Daraus folgt, dass man nicht mehr mit Graphen-Zeichnungen überschüttet wird.
+				
+				%Folgen für das weitere Programm
+				Durch diese Änderung entsteht ein weiterer Vorteil.
+				Die Performance des Programms wird verbessert, da das Programm nicht sofort alle Graphen zeichnen muss, sondern diesen Task erst bei Bedarf starten muss.
+			
+		
+		\paragraph{Graphen-Generierung}
+			%Worum geht es?
+			Möchte man die Heuristiken anwenden, benötigt man selbstverständlich hierfür erst einmal Graphen.
+			Unser Programm stellt zu diesem Zweck mehrere Beschaffungsmöglichkeiten zur Verfügung:
+				Automatische zufällige Generierung mit zuvor getätigten Einstellungen.
+				Import bereits generierter Graphen.
+				Im Graph-Editor von Grund auf neue Graphen von Hand erstellen.
+			
+			%Wie war es bisher?
+			Unter dem Tab "Graphen Generieren" der GUI war es bisher so gehalten, dass man als erstes die möglichen Einstellungsmöglichkeiten zur Generierung hat und sich darunter dann die verschiedenen Knöpfe befinden, welche die Generierung, den Import, oder das Zeichnen von Hand starten.
+			
+			%Was war Grund der Änderung:
+			Diese Anordnung macht nur wenig Sinn, da man im Falle eines Imports oder auch des Editors keine Einstellungsmöglichkeiten benötigt.
+			
+			%Was ist die Änderung?
+			Aus diesem Grund befinden sich nun die Buttons, welche die einzelnen möglichen Aktionen (Starten der Generierung, des Zeichnens oder Imports) ausführen, an oberster Stelle.
+			Außerdem werden die Einstellungsmöglichkeiten zur zufälligen Generierung so lange vor dem User verborgen, bis er/sie aktiv auswählt diese Funktionalität wirklich zu benutzen.
+		
+	
+		\paragraph{Graphen-Editor}
+			%Worum geht es?
+			Beim Graph-Editor kann man standardmäßig sowohl einen „Simple-Undirected-Graph“, als auch „Simple-Hyper-Graph“ editieren oder auch erstellen.
+			Dabei gibt es unterschiedliche Funktionen, die dem User geboten werden um dies zu tun.
+			
+			%Wie war es bisher?
+			Bisher wurden diese nicht auf spezielle Graphentypen eingeschränkt.
+			
+			%Was war Grund der Änderung:
+			Allerdings entsteht bei einigen der angebotenen Funktionen die Gefahr, dass der User den Graphentyp durch die gemachten Änderungen verändert, oder gar den gesamten Graphen ungültig für die weitere Bearbeitung macht.
+			
+			%Was ist die Änderung?
+			Die daraus von uns getroffene Anpassung war es die Funktionen auf den Graphen-Typ einzuschränken und den Graph-Editor den Typ des editierten Graphen überprüfen zu lassen.
+		
+		%\end{enumerate}
