@@ -2159,13 +2159,11 @@ bookmarks = true
 		return complete coloring
 	\end{verbatim}
 	
-	~\newline
-	
 	\subsection{TCGreedyOne}
 	
 	\textbf{Beschreibung}
 	
-	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie (ebenfalls in der Reihenfolge einer Breitensuche) der Reihe nach alle Kanten inzident zu einem gemeinsamen Knoten, wenn es grad keine Kanten gibt, die genau eine freie Farbe haben. Letztere werden bevorzugt koloriert.
+	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie der Reihe nach alle Kanten inzident zu einem gemeinsamen Knoten  (ebenfalls in der Reihenfolge einer Breitensuche). Wenn es jedoch Kanten gibt, die genau eine freie Farbe haben, werden diese bevorzugt koloriert.
 	
 	\textbf{Pseudocode}
 	\begin{verbatim}
@@ -2178,7 +2176,8 @@ bookmarks = true
 		for every vertex v in the order of a breadth first search
 		    for every uncolored edge e incident to v in the order defined on edges
 		        while there are uncolored edges with exactly one free color
-		            get minimal uncolored edge with exactly one free color f
+		            get uncolored edge with exactly one free color f which is minimal with respect to 
+		            the order given on edges
 		            color f with its unique free color
 		            
 		        if e is colored already
@@ -2195,7 +2194,7 @@ bookmarks = true
 	
 	\textbf{Beschreibung}
 	
-	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie (ebenfalls in der Reihenfolge einer Breitensuche) der Reihe nach alle Kanten inzident zu einem gemeinsamen Knoten, wenn es grad keine Kanten gibt, die weniger freie Farben haben. Letztere werden bevorzugt koloriert.
+	Diese Heuristik färbt zuerst die Knoten mithilfe einer Breitensuche. Anschließend färbt sie der Reihe nach alle Kanten inzident zu einem gemeinsamen Knoten(ebenfalls in der Reihenfolge einer Breitensuche). Wenn es jedoch Kanten gibt, die weniger freie Farben haben, als die aktuell zu kolorierende, werden diese bevorzugt gefärbt.
 	
 	\textbf{Pseudocode}
 	\begin{verbatim}
@@ -2208,7 +2207,7 @@ bookmarks = true
 		for every vertex v in the order of a breadth first search
 		    for every uncolored edge e incident to v in the order defined on edges
 		        while there are uncolored edges with less free colors than e and lower order than e
-		            get minimal uncolored edge f
+		            get such uncolored edge f which is minimal with respect to the order given on edges
 		            if f cannot be colored
 		                return incomplete coloring
 		            get minimally used free color c of f with respect to the color weights
@@ -2327,7 +2326,7 @@ bookmarks = true
 		            get the vertex w with exactly one free color and minimal index
 		            color w with its unique free color
 			        else
-		            get the minimal edge f with exactly one free color with respect to the order
+		            get the edge f with exactly one free color which is minimal with respect to the order
 		            defined on edges
 		            color f with its unique free color
 		
@@ -2343,7 +2342,7 @@ bookmarks = true
 		                get the vertex w with exactly one free color and minimal index
 		                color w with its unique free color
 		            else
-		                get the minimal edge f with exactly one free color with respect to the order 
+		                get the edge f with exactly one free color which is minimal with respect to the order 
 		                defined on edges
 		                color f with its unique free color
 				    
@@ -2486,7 +2485,8 @@ bookmarks = true
 		for every vertex v in the order of a breadth first search
 		    for every uncolored edge e incident to v in the order defined on edges
 		        while there are uncolored edges with exactly one free color
-		            get minimal uncolored edge with exactly one free color f
+		            get uncolored edge with exactly one free color f which is minimal with respect to 
+		            the order given on edges
 		            color f with its unique free color
 		            
 		        if e is colored already
@@ -2504,14 +2504,14 @@ bookmarks = true
 	
 	\textbf{Beschreibung}
 	
-	Diese Heuristik färbt (in der Reihenfolge einer Breitensuche) der Reihe nach alle Hyperkanten inzident zu einem gemeinsamen Knoten, wenn es grad keine Hyperkanten gibt, die weniger freie Farben haben. Letztere werden bevorzugt koloriert.
+	Diese Heuristik färbt der Reihe nach alle Hyperkanten inzident zu einem gemeinsamen Knoten (in der Reihenfolge einer Breitensuche). Wenn es Hyperkanten gibt, die weniger freie Farben haben, werden diese bevorzugt koloriert.
 	
 	\textbf{Pseudocode}
 	\begin{verbatim}  
 		for every vertex v in the order of a breadth first search
 		    for every uncolored edge e incident to v in the order defined on edges
 		        while there are uncolored edges with less free colors than e and lower order than e
-		            get minimal uncolored edge f
+		            get such uncolored edge f which is minimal with respect to the order given on edges
 		            if f cannot be colored
 		                return incomplete coloring
 		            get minimally used free color c of f with respect to the color weights
