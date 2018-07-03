@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package heuristic;
+package plugins;
 
 import graph.Graph;
+import heuristic.Heuristic;
 
 /**
  *
- * @author Thomas Fischer
+ * @author tfi
  * @param <G>
  */
-public abstract interface Heuristic<G extends Graph>{        
-    public abstract void applyTo(G g);
+public interface HeuristicFactory<G extends Graph> {
+    public abstract Heuristic<G> getHeuristicInstance();
 }

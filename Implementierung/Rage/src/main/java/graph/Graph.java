@@ -11,11 +11,16 @@ import java.util.List;
 /**
  *
  * @author Thomas Fischer
+ * @param <E>
 
  */
 public abstract class Graph<E extends Edge> {    
     protected List<E> edges = new ArrayList<>();   
     
+    /**
+     *
+     * @return
+     */
     public List<E> getEdges() {
         return edges;
     }

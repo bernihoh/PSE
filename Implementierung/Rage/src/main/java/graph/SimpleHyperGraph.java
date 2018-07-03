@@ -13,6 +13,10 @@ import java.util.List;
  */
 public class SimpleHyperGraph extends Graph{
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Integer> getVertices() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

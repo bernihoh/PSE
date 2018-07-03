@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author tfi
  */
-public class TestGraph extends Graph{
+public class UselessGraph extends Graph{
 
     @Override
     public List<Integer> getVertices() {

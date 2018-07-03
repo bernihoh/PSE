@@ -20,7 +20,7 @@ import java.util.TreeSet;
  */
 public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
 
-    private SortedSet<Integer> vertices = new TreeSet<>();
+    private final SortedSet<Integer> vertices = new TreeSet<>();
     private int[][] adjMatrix;
     private boolean adjMatrixValid = false;
 

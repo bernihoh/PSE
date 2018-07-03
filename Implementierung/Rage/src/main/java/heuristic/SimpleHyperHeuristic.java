@@ -5,13 +5,12 @@
  */
 package heuristic;
 
-import graph.Graph;
+import graph.SimpleHyperGraph;
 
 /**
  *
- * @author Thomas Fischer
- * @param <G>
+ * @author tfi
  */
-public abstract interface Heuristic<G extends Graph>{        
-    public abstract void applyTo(G g);
+public interface SimpleHyperHeuristic extends Heuristic<SimpleHyperGraph>{
+    
 }

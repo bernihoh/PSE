@@ -7,15 +7,14 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  *
  * @author tfi
  */
 public class SimpleUndirectedEdge extends Edge{
-    private Integer vertex1;
-    private Integer vertex2;
+    private final Integer vertex1;
+    private final Integer vertex2;
     
     public SimpleUndirectedEdge(Integer vertex1,Integer vertex2) {
         this.vertex1 = vertex1;
@@ -24,7 +23,7 @@ public class SimpleUndirectedEdge extends Edge{
     
     @Override
     public List<Integer> getVertices() {
-        List<Integer> l = new ArrayList<Integer>();
+        List<Integer> l = new ArrayList<>();
         l.add(vertex1);
         l.add(vertex2);
         return l;

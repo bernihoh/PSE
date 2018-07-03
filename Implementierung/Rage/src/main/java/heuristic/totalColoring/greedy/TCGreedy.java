@@ -5,19 +5,19 @@
  */
 package heuristic.totalColoring.greedy;
 
-import graph.Graph;
 import graph.SimpleUndirectedGraph;
-import heuristic.Heuristic;
+import heuristic.SimpleUndirectedHeuristic;
 
 /**
  *
  * @author tfi
  */
-public class TCGreedy extends Heuristic<SimpleUndirectedGraph>{
-    
+public class TCGreedy implements SimpleUndirectedHeuristic{
+
     @Override
-    public void applyTo(SimpleUndirectedGraph g) {
-        
+    public void applyTo(SimpleUndirectedGraph g) {        
     }
+    
+  
     
 }

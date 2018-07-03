@@ -10,7 +10,6 @@ import java.util.List;
 /**
  *
  * @author Thomas Fischer
- * @param <E>
  */
 public abstract class Edge {
     abstract public List<Integer> getVertices();    

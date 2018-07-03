@@ -5,13 +5,12 @@
  */
 package heuristic;
 
-import graph.Graph;
-
 /**
  *
- * @author Thomas Fischer
- * @param <G>
+ * @author tfi
  */
-public abstract interface Heuristic<G extends Graph>{        
-    public abstract void applyTo(G g);
+public abstract class AbstractNotWorkingHeuristic implements Heuristic{
+
+    
+    
 }
