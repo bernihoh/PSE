@@ -7,6 +7,7 @@ package heuristic.totalColoring.greedy;
 
 import graph.Graph;
 import heuristic.AbstractNotWorkingHeuristic;
+import heuristic.HeuristicResult;
 
 /**
  *
@@ -15,7 +16,7 @@ import heuristic.AbstractNotWorkingHeuristic;
 public class NotWorkingHeuristic extends AbstractNotWorkingHeuristic{
 
     @Override
-    public void applyTo(Graph g) {
+    public HeuristicResult applyTo(Graph g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

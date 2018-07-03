@@ -13,6 +13,6 @@ import graph.Graph;
  * @param <G>
  */
 public interface Heuristic<G extends Graph>{        
-    public abstract void applyTo(G g);
+    public abstract HeuristicResult applyTo(G g);    
   
 }

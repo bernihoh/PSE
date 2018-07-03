@@ -12,8 +12,7 @@ import java.util.Map;
 
 /**
  *
- * @author Thomas Fischer
- * @param <E>
+ * @author Thomas Fischer 
  */
 public class HeuristicResult {
     private final Graph graph;
@@ -23,7 +22,7 @@ public class HeuristicResult {
      private final Map<Edge,Integer> edgeColors;
     private final Map<Integer,Integer> vertexColors;
     
-    HeuristicResult(Graph g, Heuristic h,boolean success, 
+    public HeuristicResult(Graph g, Heuristic h,boolean success, 
             Map<Edge,Integer> edgeColors,
             Map<Integer,Integer> vertexColors ) {
         graph = g;

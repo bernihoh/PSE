@@ -3,6 +3,7 @@ package application;
 import graph.UselessGraph;
 import heuristic.Heuristic;
 import heuristic.HeuristicContainer;
+import heuristic.HeuristicResult;
 import heuristic.SimpleHyperHeuristic;
 import heuristic.totalColoring.greedy.TCGreedy;
 import heuristic.totalColoring.greedy.TestH;
@@ -68,7 +69,9 @@ public class Main {
           //TCGreedy greedy = new TCGreedy();
           if (greedy != null) {
               System.out.print("Running greedy heuristic. Output:");
-            greedy.applyTo(null);
+            
+            HeuristicResult result = greedy.applyTo(null);
+            System.out.println("-");
           }
       } catch (InstantiationException | IllegalAccessException ex) {
           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

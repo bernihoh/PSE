@@ -6,6 +6,7 @@
 package heuristic.totalColoring.greedy;
 
 import graph.SimpleHyperGraph;
+import heuristic.HeuristicResult;
 import heuristic.SimpleHyperHeuristic;
 
 /**
@@ -15,7 +16,7 @@ import heuristic.SimpleHyperHeuristic;
 public class TestH implements SimpleHyperHeuristic {
 
     @Override
-    public void applyTo(SimpleHyperGraph g) {
+    public HeuristicResult applyTo(SimpleHyperGraph g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
