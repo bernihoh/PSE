@@ -12,6 +12,6 @@ import graph.Graph;
  * @author Thomas Fischer
  * @param <G>
  */
-public abstract interface Heuristic<G extends Graph>{        
+public interface Heuristic<G extends Graph>{        
     public abstract void applyTo(G g);
 }

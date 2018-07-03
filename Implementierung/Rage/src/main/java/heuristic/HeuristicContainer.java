@@ -5,8 +5,6 @@
  */
 package heuristic;
 
-import graph.SimpleHyperGraph;
-import graph.SimpleUndirectedGraph;
 import java.util.HashMap;
 import java.util.Map;
 

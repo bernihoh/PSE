@@ -10,7 +10,7 @@ package graph;
  * @author Thomas Fischer
  */
 public abstract class GraphBuilder {
-    public static Graph generateSimpleUndirectedGraph() {
+    public static SimpleUndirectedGraph generateSimpleUndirectedGraph() {
         SimpleUndirectedGraph g = new SimpleUndirectedGraph();
         g.createEdge(0, 1);
         g.createEdge(1, 2);

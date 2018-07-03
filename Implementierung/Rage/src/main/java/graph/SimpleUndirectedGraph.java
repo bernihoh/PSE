@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Queue;
 import java.util.SortedSet;
@@ -85,7 +86,7 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
          * standart bfs implementation
          */
         List<Integer> l = new ArrayList<>();
-        HashMap<Integer, Boolean> visited = new HashMap<>();
+        Map<Integer, Boolean> visited = new HashMap<>();
 
         //create adjmatrix for faster child access
         int[][] adjM = getAdjMatrix();        

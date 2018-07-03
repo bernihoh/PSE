@@ -31,7 +31,7 @@ public class Main {
           urls[0] = new URL(url);
           //urls[0] = new URL("file:///C:/Users/tfi/Documents/PSE/PSE/Implementierung/Rage/plugins/Rage_Plugin.jar");          
           URLClassLoader ucl = new URLClassLoader(urls);
-           pluginClass = ucl.loadClass("plugins.TCPluginHeuristic"); 
+          pluginClass = ucl.loadClass("plugins.TCPluginHeuristic"); 
       } catch (MalformedURLException ex) {
           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
       //} catch (ClassNotFoundException ex) {
