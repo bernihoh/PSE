@@ -28,12 +28,12 @@ public class HeuristicContainer {
         Object o = clazz.newInstance();
         if (o instanceof  SimpleUndirectedHeuristic) {
             undirectedContainer.put(clazz.getName(),clazz);
-            System.out.println("SimpleUndirectedHeuristic registered");
+            System.out.println(clazz.getName() + " of Type SimpleUndirectedHeuristic registered");
         }else if (o instanceof SimpleHyperHeuristic) {
             hyperContainer.put(clazz.getName(),clazz);
-            System.out.println("SimpleHyperHeuristic registered");
+            System.out.println(clazz.getName() +" of Type SimpleHyperHeuristic registered");
         }else {
-            System.out.println("invalid heuristic type");
+            System.out.println("invalid heuristic type "+clazz.getName());
             //TODO: throw exception
         }
     }

@@ -1,15 +1,26 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName='application.Main'
 
 version = '0.1'
 jar {
     manifest {
         attributes 'Implementation-Title': 'Rage',
-                   'Implementation-Version': version
+                   'Implementation-Version': version,
+        'Main-Class': 'graph.Main'
     }
     archiveName='Rage.jar'
     
+    
 }
+
+run {
+    main = 'application.Main'
+}
+
+
 
 repositories {
     mavenCentral()
