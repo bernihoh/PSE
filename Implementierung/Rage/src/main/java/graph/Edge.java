@@ -5,10 +5,13 @@
  */
 package graph;
 
+import java.util.List;
+
 /**
  *
  * @author Thomas Fischer
+ * @param <E>
  */
-public class GraphProperties {
-    
+public abstract class Edge {
+    abstract public List<Integer> getVertices();    
 }
