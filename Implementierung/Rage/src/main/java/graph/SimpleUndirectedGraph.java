@@ -18,7 +18,7 @@ import java.util.TreeSet;
  *
  * @author Thomas Fischer
  */
-public class SimpleUndirectedGraph extends Graph {
+public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
 
     private SortedSet<Integer> vertices = new TreeSet<>();
     private int[][] adjMatrix;

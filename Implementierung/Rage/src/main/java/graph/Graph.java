@@ -13,10 +13,10 @@ import java.util.List;
  * @author Thomas Fischer
 
  */
-public abstract class Graph {    
-    protected List<Edge> edges = new ArrayList<>();   
+public abstract class Graph<E extends Edge> {    
+    protected List<E> edges = new ArrayList<>();   
     
-    public List<Edge> getEdges() {
+    public List<E> getEdges() {
         return edges;
     }
     
