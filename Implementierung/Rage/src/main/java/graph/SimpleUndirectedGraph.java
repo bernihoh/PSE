@@ -47,8 +47,14 @@ public class SimpleUndirectedGraph extends Graph {
     public int getNumberOfVertices() {
         return vertices.size();
     }
-
+    
+    /**
+     * Creates a adjacenzmatrix and stores it. When the graph is changed
+     * the matrix is invalidad in will be created again.
+     * @return The adjazenzmatrix of the graph.
+     */
     private int[][] getAdjMatrix() {
+        
         if (!adjMatrixValid) {
             adjMatrix = new int[vertices.size()][vertices.size()];
             for (int i = 0; i < vertices.size(); i++) {
@@ -75,14 +81,14 @@ public class SimpleUndirectedGraph extends Graph {
 
     @Override
     public List<Integer> getVerticesBFS(Integer startVertex) {
+        /**
+         * standart bfs implementation
+         */
         List<Integer> l = new ArrayList<>();
         HashMap<Integer, Boolean> visited = new HashMap<>();
 
-        int[][] adjM = getAdjMatrix();
-
-        for (Integer v : vertices) {
-
-        }
+        //create adjmatrix for faster child access
+        int[][] adjM = getAdjMatrix();        
 
         Queue<Integer> queue = new LinkedList<>();
         for (Integer v : vertices) {
@@ -97,8 +103,9 @@ public class SimpleUndirectedGraph extends Graph {
             Integer v = queue.remove();
 
             //get all childs of v
-            for (int i = 0; i < vertices.size(); i++) {
+            for (int i = 0; i < vertices.size(); i++) {                
                 if (adjM[v][i] == 1) {
+                    //not visited
                     if (Objects.equals(visited.get(i), Boolean.FALSE)) {
                         queue.add(i);
                         visited.put(i, Boolean.TRUE);
