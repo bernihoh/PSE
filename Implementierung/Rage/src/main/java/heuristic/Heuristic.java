@@ -14,4 +14,5 @@ import graph.Graph;
  */
 public interface Heuristic<G extends Graph>{        
     public abstract void applyTo(G g);
+  
 }

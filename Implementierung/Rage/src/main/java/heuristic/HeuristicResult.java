@@ -15,21 +15,36 @@ import java.util.Map;
  * @author Thomas Fischer
  * @param <E>
  */
-public abstract class HeuristicResult<E extends Edge> {
+public class HeuristicResult {
     private final Graph graph;
     private final Heuristic heuristic;
     private final boolean success;
     private final Map<String,String> resultValues = new HashMap<>();
+     private final Map<Edge,Integer> edgeColors;
+    private final Map<Integer,Integer> vertexColors;
     
-    HeuristicResult(Graph g, Heuristic h,boolean success) {
+    HeuristicResult(Graph g, Heuristic h,boolean success, 
+            Map<Edge,Integer> edgeColors,
+            Map<Integer,Integer> vertexColors ) {
         graph = g;
         heuristic = h;
         this.success = success;
+        this.edgeColors = edgeColors;
+        this.vertexColors = vertexColors;
     }
 
-    public abstract Integer getColor(E e);
+    public Integer getColor(Edge e) {
+            if (edgeColors == null || edgeColors.get(e) == null) {
+            return -1;
+        }
+        
+        Integer color = edgeColors.get(e);
+        return color; 
+    };
     
-    public abstract Integer getColor(Integer v);
+    public Integer getColor(Integer v) {
+        return 0;
+    }
     
     public boolean success() {
         return success;

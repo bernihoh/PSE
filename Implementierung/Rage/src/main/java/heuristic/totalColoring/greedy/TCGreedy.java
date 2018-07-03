@@ -19,7 +19,8 @@ public class TCGreedy implements SimpleUndirectedHeuristic,
 
     @Override
     public void applyTo(SimpleUndirectedGraph g) {
-        if (g.getVertices().size() < 1) {
+        
+        if (g == null || g.getVertices().size() < 1) {
             //empty graph
             return;
         }

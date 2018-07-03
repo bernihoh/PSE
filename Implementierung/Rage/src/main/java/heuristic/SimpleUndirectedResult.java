@@ -5,6 +5,7 @@
  */
 package heuristic;
 
+import graph.Edge;
 import graph.Graph;
 import graph.SimpleUndirectedEdge;
 import java.util.Map;
@@ -13,14 +14,14 @@ import java.util.Map;
  *
  * @author tfi
  */
-public class SimpleUndirectedResult extends HeuristicResult<SimpleUndirectedEdge>{
-    private final Map<SimpleUndirectedEdge,Integer> edgeColors;
+public class SimpleUndirectedResult extends HeuristicResult{
+    private final Map<Edge,Integer> edgeColors;
     private final Map<Integer,Integer> vertexColors;
     
-    public SimpleUndirectedResult(Graph g, Heuristic h,
-            Map<SimpleUndirectedEdge,Integer> edgeColors,
+    public SimpleUndirectedResult(Graph g, Heuristic h,boolean success,
+            Map<Edge,Integer> edgeColors,
             Map<Integer,Integer> vertexColors) {
-        super(g, h);
+        super(g, h,success,edgeColors,vertexColors);
         this.edgeColors = edgeColors;
         this.vertexColors = vertexColors;
     }
@@ -30,15 +31,16 @@ public class SimpleUndirectedResult extends HeuristicResult<SimpleUndirectedEdge
     public Integer getColor(Integer v) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
+    
 
     @Override
-    public Integer getColor(SimpleUndirectedEdge e) {
+    public Integer getColor(Edge e) {
          if (edgeColors == null || edgeColors.get(e) == null) {
             return -1;
         }
         
         Integer color = edgeColors.get(e);
-        return color;
+        return color;        
     }
     
 }
