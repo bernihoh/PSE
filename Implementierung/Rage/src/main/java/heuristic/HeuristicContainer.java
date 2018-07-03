@@ -15,8 +15,8 @@ import java.util.Map;
  * @author Thomas Fischer
  */
 public class HeuristicContainer {
-    private final Map<String,Class<? extends SimpleUndirectedGraph >> undirectedContainer;
-    private final Map<String,Class<? extends SimpleHyperGraph >> hyperContainer;
+    private final Map<String,Class<? extends SimpleUndirectedHeuristic >> undirectedContainer;
+    private final Map<String,Class<? extends SimpleHyperHeuristic >> hyperContainer;
     
 
     public HeuristicContainer() {
@@ -27,10 +27,10 @@ public class HeuristicContainer {
     public void registerByClass(Class clazz) throws InstantiationException, IllegalAccessException  {
         Object o = clazz.newInstance();
         if (o instanceof  SimpleUndirectedHeuristic) {
-            undirectedContainer.put(clazz.toString(),clazz);
+            undirectedContainer.put(clazz.getName(),clazz);
             System.out.println("SimpleUndirectedHeuristic registered");
         }else if (o instanceof SimpleHyperHeuristic) {
-            hyperContainer.put(clazz.toString(),clazz);
+            hyperContainer.put(clazz.getName(),clazz);
             System.out.println("SimpleHyperHeuristic registered");
         }else {
             System.out.println("invalid heuristic type");
@@ -44,6 +44,44 @@ public class HeuristicContainer {
         
         
         registerByClass(clazz);
+    }
+    
+    public SimpleUndirectedHeuristic createSimpleUndirectedHeuristicByClass(Class clazz) 
+            throws InstantiationException, IllegalAccessException {
+        
+        return createSimpleUndirectedHeuristicByName(clazz.getName());
+    }
+    
+    public SimpleHyperHeuristic createSimpleHyperHeuristicByClass(Class clazz) throws InstantiationException, IllegalAccessException {
+        return createSimpleHyperHeuristicByName(clazz.getName());        
+        
+    }
+    
+    public SimpleUndirectedHeuristic createSimpleUndirectedHeuristicByName(String name) throws InstantiationException, IllegalAccessException {
+        Class clazz;
+        if ((clazz = undirectedContainer.get(name))!=null) {
+            Object o = clazz.newInstance();
+            
+            if (o instanceof SimpleUndirectedHeuristic) {
+                return (SimpleUndirectedHeuristic) o;
+            }else {
+                return null;
+            }
+        }
+        return null;
+    }
+    
+    public SimpleHyperHeuristic createSimpleHyperHeuristicByName(String name) throws InstantiationException, IllegalAccessException {
+        Class clazz;
+        if ((clazz = hyperContainer.get(name)) != null) {
+            Object o = clazz.newInstance();
+            if (o instanceof SimpleUndirectedHeuristic) {
+                return (SimpleHyperHeuristic) o;
+            }else {
+                return null;
+            }            
+        }
+        return null;
     }
     
     //public Heuristic<SimpleUndirectedGraph> createHeuristic

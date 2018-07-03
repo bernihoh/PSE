@@ -15,7 +15,8 @@ import heuristic.SimpleUndirectedHeuristic;
 public class TCGreedy implements SimpleUndirectedHeuristic{
 
     @Override
-    public void applyTo(SimpleUndirectedGraph g) {        
+    public void applyTo(SimpleUndirectedGraph g) {
+        System.out.println("greedy");
     }
     
   

@@ -13,14 +13,15 @@ import java.util.logging.Logger;
 public class Main {
 
   public static void main(String[] args) {
-      TCGreedy greedy = new TCGreedy();
+      //Example of the Heuristic Container
+      
       Heuristic<UselessGraph> h;
      // h = greedy.create();
       System.out.println("test");
-      
+      System.out.println(TCGreedy.class.toString());
       HeuristicContainer c = new HeuristicContainer();
-      try {
-          c.registerByClass(TCGreedy.class);
+      try {          
+          c.registerByName("heuristic.totalColoring.greedy.TCGreedy");
           c.registerByClass(TestH.class);
           c.registerByClass(NotWorkingHeuristic.class);
           // TODO Auto-generated method stub
@@ -28,7 +29,19 @@ public class Main {
           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
       } catch (IllegalAccessException ex) {
           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (ClassNotFoundException ex) {
+          Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
       }
+      
+      try {
+          TCGreedy greedy = (TCGreedy) c.createSimpleUndirectedHeuristicByName("heuristic.totalColoring.greedy.TCGreedy");
+          //TCGreedy greedy = new TCGreedy();
+          if (greedy != null)
+            greedy.applyTo(null);
+      } catch (InstantiationException | IllegalAccessException ex) {
+          Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+      }
+      
 
   }
 
