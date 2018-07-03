@@ -1,0 +1,4 @@
+1. Unter webservice\libs die Rage.jar einfügen (Standartmässig ist eine dabei).
+2. webservice\start.bat ausführen (benutzt den port 8090)
+3. frontend\start.bat ausführen (benutzt den port 8080)
+4. unter localhost:8080\graph.html kann das ui benutzt werden
