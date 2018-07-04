@@ -16,14 +16,13 @@ import java.util.Map;
  */
 public class SimpleUndirectedResult extends HeuristicResult{
     private final Map<Edge,Integer> edgeColors;
-    private final Map<Integer,Integer> vertexColors;
-    
+    private final Map<Integer, Integer> vertexColors1 = vertexColors;
     public SimpleUndirectedResult(Graph g, Heuristic h,boolean success,
             Map<Edge,Integer> edgeColors,
             Map<Integer,Integer> vertexColors) {
         super(g, h,success,edgeColors,vertexColors);
         this.edgeColors = edgeColors;
-        this.vertexColors = vertexColors;
+
     }
  
 
