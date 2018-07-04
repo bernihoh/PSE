@@ -30,6 +30,9 @@ public abstract class Graph<E extends Edge> {
     public abstract int getNumberOfVertices();
     
     public abstract List<Integer> getVerticesBFS(Integer startVertex);
+    
+    public abstract int maxDegree();
+    public abstract int degree(Integer vertex);
             
   /*  public static Graph create(List edges) {
         Graph g = new Graph(edges);         

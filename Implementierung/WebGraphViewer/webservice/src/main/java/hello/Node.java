@@ -5,13 +5,15 @@ public class Node {
     private String label;
     private String x;
     private String y;
-    private String size;   
-    public Node(String id,String x,String y,String label) {
+    private String size;  
+    private String color; 
+    public Node(String id,String x,String y,String label,String color) {
         this.id = id;
         this.size="1";
         this.label =label;
         this.x = x;
         this.y = y;
+        this.color = color;
     }
 
     public String getId() {
@@ -32,5 +34,9 @@ public class Node {
 
     public String getY() {
         return y;
+    }
+
+    public String getColor() {
+        return color;
     }
 }

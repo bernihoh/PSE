@@ -3,6 +3,16 @@
 <head>
   <title>Basic sigma.js example</title>
   <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>-->
+  <script type="text/javascript">
+  function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="graph.js"></script>  
   <style type="text/css">
@@ -11,8 +21,8 @@
     }
     #container {
       position: absolute;
-      top :100px;
-      left :30px;
+      top :200px;
+      left :00px;
       
       width: 50%;
       height: 50%;
@@ -20,7 +30,7 @@
     }
   </style>
 </head>
-<body ng-app="myApp" ng-controller="Hello">
+<body>
   
   <script src="./sigma/src/sigma.core.js"></script>
 <script src="./sigma/src/conrad.js"></script>
@@ -78,8 +88,15 @@
 <div id="container">  
 
 </div>
+<div ng-controller="Hello">
+nOfVertice:<br>
+  <input type="text" name="nOfVertices" ng-model="nOfVertices"><br>
+MaxDegree:<br>
+  <input type="text" name="maxDegree" ng-model="maxDegree">
 
-<p><button ng-click="bfs()" ng-disabled="bfs_dis" >BFS-Berechnen</button></p>
-<p><button ng-click="bfs_next()" ng-disabled="next_dis" >Berechneten BFS schrittweise anzeigen</button></p>
+<div><button ng-click="genGraph()" >Gen Graph</button><button ng-click="runHeuristic()" ng-disabled="dis_heuristic" >runHeuristic</button></div>
+<div><button ng-click="bfs()"  ng-disabled="dis_bfs" >BFS</button> <button ng-click="bfs_next()" ng-disabled="dis_bfs_next" >BFS-Next</button></div>
+</div>
+
 </body>
 </html>

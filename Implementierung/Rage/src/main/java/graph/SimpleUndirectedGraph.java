@@ -52,6 +52,8 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
     /**
      * Creates a adjacenzmatrix and stores it. When the graph is changed
      * the matrix is invalidad in will be created again.
+     * Element is -1 if not connect, else the position of the edge connecting
+     * the verices in the internal array list.
      * @return The adjazenzmatrix of the graph.
      */
     private int[][] getAdjMatrix() {
@@ -60,18 +62,19 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
             adjMatrix = new int[vertices.size()][vertices.size()];
             for (int i = 0; i < vertices.size(); i++) {
                 for (int j = 0; j < vertices.size(); j++) {
-                    adjMatrix[i][j] = 0;
+                    adjMatrix[i][j] = -1;
                 }
             }
-
+            int pos = 0;
             for (Edge e : getEdges()) {
                 try {
                     SimpleUndirectedEdge sue = (SimpleUndirectedEdge) e;
-                    adjMatrix[sue.getFirstVertex()][sue.getSecondVertex()] = 1;
-                    adjMatrix[sue.getSecondVertex()][sue.getFirstVertex()] = 1;
+                    adjMatrix[sue.getFirstVertex()][sue.getSecondVertex()] = pos;
+                    adjMatrix[sue.getSecondVertex()][sue.getFirstVertex()] = pos;
                 } catch (ClassCastException ex) {
                     ex.printStackTrace();
                 }
+                pos++;
 
             }
 
@@ -105,7 +108,7 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
 
             //get all childs of v
             for (int i = 0; i < vertices.size(); i++) {                
-                if (adjM[v][i] == 1) {
+                if (adjM[v][i] > -1) {
                     //not visited
                     if (Objects.equals(visited.get(i), Boolean.FALSE)) {
                         queue.add(i);
@@ -117,5 +120,72 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
         }
 
         return l;
+    }
+
+    @Override
+    public int maxDegree() {
+        List<Integer> vertices = getVertices();
+        int maxDegree = 0;
+        for (Integer v : vertices) {
+            int degree = this.degree(v);
+            if (degree > maxDegree) maxDegree = degree;
+        }
+        return maxDegree;
+    }
+
+    @Override
+    public int degree(Integer vertex) {
+        int[][] adjM = getAdjMatrix(); 
+        int degree=0;
+        if (vertex >= adjM.length) {
+            return 0;
+        }
+        for (int i = 0;i<adjM.length;i++) {
+            if (adjM[vertex][i] > -1) {
+                degree++;
+            }
+        }
+        return degree;
+    }
+    
+    public List<Integer> getAdjazentVertices(Integer vertex) {
+        int[][] adjMatrix = getAdjMatrix();
+        List<Integer> l = new ArrayList<>();
+        if (vertex <= adjMatrix.length) {
+            for (int i=0;i<adjMatrix.length;i++) {
+                if (adjMatrix[vertex][i] > -1) {
+                    l.add(i);
+                }
+            }
+            return l;
+        }else {
+            //TODO: exception?
+            return l;
+        }
+    }
+    
+    public List<SimpleUndirectedEdge> getIncidentEdges(Integer vertex) {
+        List<SimpleUndirectedEdge> l = new ArrayList<>();
+        int[][] adjMatrix = getAdjMatrix();
+        if (vertex < adjMatrix.length) {
+            for (int i=0;i<adjMatrix.length;i++) {
+                if (adjMatrix[vertex][i] >=0) {
+                    SimpleUndirectedEdge e = this.edges.get(i);
+                    l.add(e);
+                }
+            }
+        }
+        
+        return l;
+    }
+    
+    public List<SimpleUndirectedEdge> getIncidentEdges(SimpleUndirectedEdge edge) {
+        List<SimpleUndirectedEdge> l1 = getIncidentEdges(edge.getFirstVertex());
+        List<SimpleUndirectedEdge> l2 = getIncidentEdges(edge.getSecondVertex());
+        
+        l1.addAll(l2);
+        l1.remove(this);
+        
+        return l1;
     }
 }

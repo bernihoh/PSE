@@ -16,10 +16,20 @@ public class HeuristicContainer {
     private final Map<String,Class<? extends SimpleUndirectedHeuristic >> undirectedContainer;
     private final Map<String,Class<? extends SimpleHyperHeuristic >> hyperContainer;
     
-
-    public HeuristicContainer() {
+    /**
+     * Idiom for thread save singleton. See.... Uses java static class creation contract
+     * to ensure atomic creation of the instance.
+     */
+    public static class Holder {
+        public static HeuristicContainer instance = new HeuristicContainer();
+    }
+    protected HeuristicContainer() {
         this.undirectedContainer = new HashMap<>();
         this.hyperContainer = new HashMap<>();
+    }
+    
+    public static HeuristicContainer getInstance() {
+        return Holder.instance;
     }
     
     public void registerByClass(Class clazz) throws InstantiationException, IllegalAccessException  {

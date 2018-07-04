@@ -1,5 +1,7 @@
 package application;
 
+import graph.Graph;
+import graph.SimpleUndirectedGraph;
 import graph.UselessGraph;
 import heuristic.Heuristic;
 import heuristic.HeuristicContainer;
@@ -18,12 +20,14 @@ public class Main {
 
   public static void main(String[] args)  {
       //Example of the Heuristic Container
+      SimpleUndirectedGraph g = graph.GraphBuilder.generateSimpleUndirectedGraph(6,3,0);
+      System.out.println(g.maxDegree());
       
       Heuristic<UselessGraph> h;
      // h = greedy.create();
       System.out.println("test");
       System.out.println(TCGreedy.class.toString());
-      HeuristicContainer c = new HeuristicContainer();
+      HeuristicContainer c =  HeuristicContainer.getInstance();
       
       URL[] urls = new URL[1];
       Class pluginClass = null;
@@ -70,7 +74,7 @@ public class Main {
           if (greedy != null) {
               System.out.print("Running greedy heuristic. Output:");
             
-            HeuristicResult result = greedy.applyTo(null);
+            HeuristicResult result = greedy.applyTo(g);
             System.out.println("-");
           }
       } catch (InstantiationException | IllegalAccessException ex) {

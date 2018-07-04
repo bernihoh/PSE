@@ -8,10 +8,12 @@ public class Edge implements Serializable {
     private String source;
     private String target;   
     private String label; 
-    public Edge(String id,String source,String target) {
+    private String color;
+    public Edge(String id,String source,String target,String color ) {
         this.id = id;
         this.source = source;
         this.target = target;
+        this.color = color;
     }
 
     public String getId() {
@@ -24,5 +26,9 @@ public class Edge implements Serializable {
 
     public String getTarget() {
     	return target;
+    }
+
+    public String getColor() {
+        return color;
     }
 }

@@ -20,7 +20,7 @@ public class HeuristicResult {
     private final boolean success;
     private final Map<String,String> resultValues = new HashMap<>();
      private final Map<Edge,Integer> edgeColors;
-    private final Map<Integer,Integer> vertexColors;
+    private final Map<Integer,Integer> vertexColors;    
     
     public HeuristicResult(Graph g, Heuristic h,boolean success, 
             Map<Edge,Integer> edgeColors,
@@ -31,6 +31,15 @@ public class HeuristicResult {
         this.edgeColors = edgeColors;
         this.vertexColors = vertexColors;
     }
+    
+    public Graph getGraph() {
+        return graph;
+    }
+    
+    public Heuristic getHeuristic() {
+        return heuristic;
+    }
+    
 
     public Integer getColor(Edge e) {
             if (edgeColors == null || edgeColors.get(e) == null) {
@@ -42,7 +51,13 @@ public class HeuristicResult {
     };
     
     public Integer getColor(Integer v) {
-        return 0;
+        System.out.println("getting vertex color: "+v);
+        System.out.println(vertexColors.toString());
+        if (vertexColors == null || vertexColors.get(v) == null) {
+            return -1;
+        }
+        System.out.println("returning "+vertexColors.get(v));
+        return vertexColors.get(v);
     }
     
     public boolean success() {
