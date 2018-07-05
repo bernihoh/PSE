@@ -1,22 +1,24 @@
+package Source.Controller.LogicController;
 
+import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
 
 /**
- * Class GraphEditorController
- * Manages the manipulated or created graph by the user and adds it to the right
- * DataPool.
+ * Class GraphEditorController Manages the manipulated or created graph by the
+ * user and adds it to the right DataPool.
  */
 public class GraphEditorController {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public GraphEditorController() {
+    }
 
-  
-  //
-  // Constructors
-  //
-  public GraphEditorController () { };
-  
+    ;
+
   //
   // Methods
   //
@@ -38,38 +40,33 @@ by the GraphGeneratorController, it will create an
 If it was created by the
    * DetailViesController, it will get a graph to the new instance.
    */
-  public void GraphEditorController()
-  {
-  }
+  public void GraphEditorController() {
+    }
 
+    /**
+     * Sets the graph of this instance.
+     *
+     * @param graph Sets the graph of this instance.
+     */
+    public void setGraph(VisualGraph graph) {
+    }
 
-  /**
-   * Sets the graph of this instance.
-   * @param        graph Sets the graph of this instance.
-   */
-  public void setGraph(uCrEnQqDIUZVj graph)
-  {
-  }
+    /**
+     * Adapts the created visualGraph to a Graph and adds the created graph to
+     * the DataPool. If there is no DataPool, it will create a new one.
+     *
+     * @param vGraph The created visualGraph.
+     */
+    public void addGraph(VisualGraph vGraph) {
+    }
 
-
-  /**
-   * Adapts the created visualGraph to a Graph and adds the created graph to the
-   * DataPool. If there is no
-DataPool, it will create a new one.
-   * @param        vGraph The created visualGraph.
-   */
-  public void addGraph(uf0fd9uPbY6Sl vGraph)
-  {
-  }
-
-
-  /**
-   * Returns the Graph of this instance as a visualGraph.
-   * @return       uf0fd9uPbY6Sl
-   */
-  public uf0fd9uPbY6Sl getVisualGraph()
-  {
-  }
-
+    /**
+     * Returns the Graph of this instance as a visualGraph.
+     *
+     * @return uf0fd9uPbY6Sl
+     */
+    public VisualGraph getVisualGraph() {
+        return null;
+    }
 
 }

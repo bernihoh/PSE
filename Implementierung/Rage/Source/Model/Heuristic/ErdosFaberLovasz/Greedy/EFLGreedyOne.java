@@ -1,34 +1,28 @@
-
+package Source.Model.Heuristic.ErdosFaberLovasz.Greedy;
 
 /**
- * Class EFLGreedyOne
- * This class implements the EFLGreedyOne heuristic which tries to calculate a
- * hyperedge coloring as specified
-in the addendum.
+ * Class EFLGreedyOne This class implements the EFLGreedyOne heuristic which
+ * tries to calculate a hyperedge coloring as specified in the addendum.
  */
 public class EFLGreedyOne {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public EFLGreedyOne() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public EFLGreedyOne () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

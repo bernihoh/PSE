@@ -1,37 +1,30 @@
-
+package Source.Model.Heuristic.ErdosFaberLovasz;
 
 /**
- * Class EFLHeuristic
- * This abstract class is the abstrac interface for an Erdös-Faber-Lovasz
- * heuristic. It assures that every EFLheuristic
-is calculated on SimpleHyperGraphs
- * and returns an EFLResult as result. It provides some methods
-which any
- * EFL-heuristic needs, such as coloring edges.
+ * Class EFLHeuristic This abstract class is the abstrac interface for an
+ * Erdï¿½s-Faber-Lovasz heuristic. It assures that every EFLheuristic is
+ * calculated on SimpleHyperGraphs and returns an EFLResult as result. It
+ * provides some methods which any EFL-heuristic needs, such as coloring edges.
  */
 abstract public class EFLHeuristic {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public EFLHeuristic() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public EFLHeuristic () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

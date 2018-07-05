@@ -1,35 +1,29 @@
-
+package Source.Model.Heuristic.ErdosFaberLovasz.Greedy;
 
 /**
- * Class EFLGreedyData
- * Since EFLData is abstract this class is required such that the EFLGreedy
- * heuristic has its own data class,
-even if with respect to EFLData no additional
- * attributes or methods are added.
+ * Class EFLGreedyData Since EFLData is abstract this class is required such
+ * that the EFLGreedy heuristic has its own data class, even if with respect to
+ * EFLData no additional attributes or methods are added.
  */
 public class EFLGreedyData {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public EFLGreedyData() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public EFLGreedyData () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

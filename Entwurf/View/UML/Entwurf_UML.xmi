@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmi.version="1.2" timestamp="2018-07-03T16:41:33" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
+<XMI verified="false" xmi.version="1.2" timestamp="2018-07-04T10:51:12" xmlns:UML="http://schema.omg.org/spec/UML/1.4">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -536,7 +536,7 @@
                <UML:Classifier.feature>
                 <UML:Operation stereotype="uiRlYFx1Gx7pi" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uqPX6YrrI0h6N" comment="The Constructor of this Class." isOverride="false" name="Graph">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u2T2ElL4f264Z" type="ufVp1kkgdKwwe" value="" comment="the edges belonging to this graph" name="edges"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u2T2ElL4f264Z" type="uCrEnQqDIUZVj" value="" comment="the edges belonging to this graph" name="edges"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="ublwkW1J9uxMf" type="uDDdo5Ay7C13h" value="" comment="the number of vertices this graph&#xa;has" name="numVertices"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
@@ -552,14 +552,14 @@
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ulvtCd1f6fqcc" comment="@return returns the edges giving the graph its structure" isOverride="false" name="getEdges">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="uNYOimllRIT6S" type="ufVp1kkgdKwwe"/>
+                  <UML:Parameter kind="return" xmi.id="uNYOimllRIT6S" type="uCrEnQqDIUZVj"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ujDpdHqUmTIp3" comment="@return returns true iff the vertex is incident to the given edge&#xa;@throws GraphInconstistencyException if vertex is an invalid vertex index or edge is not an&#xa;edge of the graph" isOverride="false" name="areIncident">
                  <UML:BehavioralFeature.parameter>
                   <UML:Parameter kind="return" xmi.id="uxftCY4Ses1PH" type="uZLSB8lOho0lC"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="uW18asL5ppbA2" type="uDDdo5Ay7C13h" value="" comment="vertex the index of a vertex of the graph ie. in [0 ... numVertices#xdc00;1]" name="vertex"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uHVGOfKcECbk0" type="uFozHsithoqJo" value="" comment="edge an edge of the graph" name="edge"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uHVGOfKcECbk0" type="uCrEnQqDIUZVj" value="" comment="edge an edge of the graph" name="edge"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uNagjXNAikgh7" comment="@return returns true iff there is an edge which is incident to both vertices&#xa;@throws GraphInconsistencyException if vertex1 or vertex2 is not a valid vertex index" isOverride="false" name="areAdjacent">
@@ -572,8 +572,8 @@
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubHxqtdn6sUda" comment="@return returns true iff there is a vertex which is incident to both edges&#xa;@throws GraphInconsistencyException if edge1 or edge2 is not an edge of the graph" isOverride="false" name="areAdjacent">
                  <UML:BehavioralFeature.parameter>
                   <UML:Parameter kind="return" xmi.id="uTHp3PYXVvtfQ" type="uZLSB8lOho0lC"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uhBnutSaZjYYY" type="uFozHsithoqJo" value="" comment="edge1 an edge of the graph" name="edge1"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5E8X3jIGXajU" type="uFozHsithoqJo" value="" comment="edge2 another edge of the graph" name="edge2"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uhBnutSaZjYYY" type="uCrEnQqDIUZVj" value="" comment="edge1 an edge of the graph" name="edge1"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5E8X3jIGXajU" type="uCrEnQqDIUZVj" value="" comment="edge2 another edge of the graph" name="edge2"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uAbylHm2E09ju" comment="@return returns the list of all vertices which are adjacent to vertex&#xa;@throws GraphInconsistencyException if vertex is not a valid vertex index" isOverride="false" name="getAdjacentVertices">
@@ -584,20 +584,20 @@
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uDMQV4nkAjRXt" comment="@return returns the list of all edges which are adjacent to edge&#xa;@throws GraphInconsistencyException if edge is not an edge of the graph" isOverride="false" name="getAdjacentEdges">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="un3L2oqvg56Jq" type="ufVp1kkgdKwwe"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uagkhTVHAci1t" type="uFozHsithoqJo" value="" comment="edge an edge of the graph" name="edge"/>
+                  <UML:Parameter kind="return" xmi.id="un3L2oqvg56Jq" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uagkhTVHAci1t" type="uCrEnQqDIUZVj" value="" comment="edge an edge of the graph" name="edge"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u3EzJl9eoNWMu" comment="@return returns the list of all edges incident to vertex&#xa;@throws GraphInconsistencyException if vertex is an invalid vertex index" isOverride="false" name="getIncidentEdges">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="uMOQDNaQh2Urs" type="ufVp1kkgdKwwe"/>
+                  <UML:Parameter kind="return" xmi.id="uMOQDNaQh2Urs" type="uCrEnQqDIUZVj"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="uy4w9W87pBemC" type="uDDdo5Ay7C13h" value="" comment="vertex the index of a vertex of the graph ie. in [0 ... numVertices#xdc00;1]" name="vertex"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uML22xEFMQ8Hk" comment="@return returns the list of all vertices which are incident to any of the edges in the list&#xa;@throws GraphInconsistencyException if there is an edge in edges, which is not an edge of the&#xa;graph" isOverride="false" name="getIncidentVertices">
                  <UML:BehavioralFeature.parameter>
                   <UML:Parameter kind="return" xmi.id="uV2nPfyhan0vm" type="umgFSLDYCXrQe"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="ulGhnB0RVYPtx" type="ufVp1kkgdKwwe" value="" comment="edges a list of edges of the graph" name="edges"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="ulGhnB0RVYPtx" type="uCrEnQqDIUZVj" value="" comment="edges a list of edges of the graph" name="edges"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u5NctKagvwPYj" comment="@return returns the line-by-line representation of the graph as specified in the RAGE-data format" isOverride="false" name="toRAGE">
@@ -617,13 +617,13 @@
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="utFux3PTfJaEg" comment="@return returns true iff edge equals the edge this method is invoked upon. Note that the notion of&#xa;equality depends on the concrete implementation." isOverride="false" name="equals">
                  <UML:BehavioralFeature.parameter>
                   <UML:Parameter kind="return" xmi.id="uMDxK9i9Que4R" type="uZLSB8lOho0lC"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uikfprU68s7tw" type="uFozHsithoqJo" value="" comment="The edge that should be compared to this one." name="edge"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uikfprU68s7tw" type="uCrEnQqDIUZVj" value="" comment="The edge that should be compared to this one." name="edge"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ushJx2mO3KCrS" comment="@return returns -1/0/1 if edge is greater/equal/smaller than the edge this method is invoked upon.&#xa;Note that the notions of order and equality depend on the concrete implementation." isOverride="false" name="compareTo">
                  <UML:BehavioralFeature.parameter>
                   <UML:Parameter kind="return" xmi.id="uWnL1gN6oWyh4" type="uDDdo5Ay7C13h"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="urDAhxkjqUCmW" type="uFozHsithoqJo" value="" comment="The edge that should be compared." name="edge"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="urDAhxkjqUCmW" type="uCrEnQqDIUZVj" value="" comment="The edge that should be compared." name="edge"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                </UML:Classifier.feature>
@@ -632,49 +632,49 @@
                <UML:Classifier.feature>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="uvIOL62BKqp9U" comment="@return returns a randomly generated graph satisfying the specified properties" isOverride="false" name="generateGraph">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="u2D2ufNPugL2r" type="u3PI0pw4cPjH2"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="ukMc5EsspVaUp" type="u5d1yahaUiqIv" value="" comment="properties the properties which the generated graphs will have" name="properties"/>
+                  <UML:Parameter kind="return" xmi.id="u2D2ufNPugL2r" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="ukMc5EsspVaUp" type="uCrEnQqDIUZVj" value="" comment="properties the properties which the generated graphs will have" name="properties"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="u2uDfqgiKxdHS" comment="@return returns a modified copy of graph in which the vertex with index vertex and all edges incident&#xa;to it are deleted&#xa;@throws GraphInconsistencyException if graph has no vertex with index vertex" isOverride="false" name="deleteVertex">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="uVgXPt5ZAeWy4" type="u3PI0pw4cPjH2"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uz0kIqz6658gR" type="u3PI0pw4cPjH2" value="" comment="graph the graph which is going to be modified" name="graph"/>
+                  <UML:Parameter kind="return" xmi.id="uVgXPt5ZAeWy4" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uz0kIqz6658gR" type="uCrEnQqDIUZVj" value="" comment="graph the graph which is going to be modified" name="graph"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="usiH30Tj4kstJ" type="uDDdo5Ay7C13h" value="" comment="vertex the index of a vertex of graph, which will be deleted" name="vertex"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="uvYPI72X51Hgx" comment="@return returns a modified copy of graph which has precisely one isolated vertex more" isOverride="false" name="addVertex">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="uKFfSffeZ3MQj" type="u3PI0pw4cPjH2"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uGbR2UAt8XT2B" type="u3PI0pw4cPjH2" value="" comment="graph the graph which is going to be modified" name="graph"/>
+                  <UML:Parameter kind="return" xmi.id="uKFfSffeZ3MQj" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uGbR2UAt8XT2B" type="uCrEnQqDIUZVj" value="" comment="graph the graph which is going to be modified" name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="uhoykZCv9hoaz" comment="@return returns a modified copy of graph in which the vertices having index vertex1 and vertex2&#xa;swap indices. Note this results in a different but isomorphic graph to graph&#xa;@throws GraphInconsistencyException if graph has no vertex with index vertex1 or vertex2" isOverride="false" name="swapVertices">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="uoTzXBrQU0bcj" type="u3PI0pw4cPjH2"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5NoqFPXGHrPO" type="u3PI0pw4cPjH2" value="" comment="graph the graph which is going to be modified" name="graph"/>
+                  <UML:Parameter kind="return" xmi.id="uoTzXBrQU0bcj" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5NoqFPXGHrPO" type="uCrEnQqDIUZVj" value="" comment="graph the graph which is going to be modified" name="graph"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="ulJJ915tB0oC7" type="uDDdo5Ay7C13h" value="" comment="vertex1 the index of a vertex of graph" name="vertex1"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="uzqfiOcLrDWdA" type="uDDdo5Ay7C13h" value="" comment="vertex2 the index of another vertex of graph" name="vertex2"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="uPeRm79GL6GPf" comment="@return returns a modified copy of graph in which edge is deleted, if it was an edge in graph.&#xa;Otherwise it just returns graph" isOverride="false" name="deleteEdge">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="u48ubL3j7Q9Lm" type="u3PI0pw4cPjH2"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uxWn8NL00DSYR" type="u3PI0pw4cPjH2" value="" comment="graph the graph which is going to be modified" name="graph"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u9tmIV0Qnd6C1" type="uFozHsithoqJo" value="" comment="edge the edge which is going to be deleted" name="edge"/>
+                  <UML:Parameter kind="return" xmi.id="u48ubL3j7Q9Lm" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uxWn8NL00DSYR" type="uCrEnQqDIUZVj" value="" comment="graph the graph which is going to be modified" name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u9tmIV0Qnd6C1" type="uCrEnQqDIUZVj" value="" comment="edge the edge which is going to be deleted" name="edge"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="uFJBGwT3Jg0Nt" comment="addEdge(graph: G, edge: E): G&#xa;@param graph the graph which is going to be modified&#xa;@param edge the edge which is going to be inserted&#xa;@return returns a modified copy of graph in which edge is inserted if it wasnt already an edge&#xa;in graph otherwise it returns just graph. Note that the edge may contain vertices which are not in&#xa;graph, since missing vertices will automatically be added" isOverride="false" name="addEdge">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="uFq8VSvYpDEKk" type="u3PI0pw4cPjH2"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uwpHiGHZMdKQd" type="u3PI0pw4cPjH2" value="" comment="graph the graph which is going to be modified" name="graph"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uZIw3RYI1ZxcY" type="uFozHsithoqJo" value="" comment="edge the edge which is going to be inserted" name="edge"/>
+                  <UML:Parameter kind="return" xmi.id="uFq8VSvYpDEKk" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uwpHiGHZMdKQd" type="uCrEnQqDIUZVj" value="" comment="graph the graph which is going to be modified" name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uZIw3RYI1ZxcY" type="uCrEnQqDIUZVj" value="" comment="edge the edge which is going to be inserted" name="edge"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" ownerScope="classifier" isRoot="false" xmi.id="uLvSBp1HJKwYC" comment="@return returns a modified copy of graph in which all isolated vertices are deleted" isOverride="false" name="deleteIsolatedVertices">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="u8LoURvHVd9xh" type="u3PI0pw4cPjH2"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uhpkLsBnSfdNL" type="u3PI0pw4cPjH2" value="" comment="the graph which is going to be modified" name="graph"/>
+                  <UML:Parameter kind="return" xmi.id="u8LoURvHVd9xh" type="uCrEnQqDIUZVj"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uhpkLsBnSfdNL" type="uCrEnQqDIUZVj" value="" comment="the graph which is going to be modified" name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                </UML:Classifier.feature>
@@ -714,7 +714,7 @@
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uqoFaez7nvRIQ" comment="@return returns the result of the heuristic application" isOverride="false" name="applyTo">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u8GKsomX9cMiK" type="u3PI0pw4cPjH2" value="" comment="graph the graph of type G on which the heuristic will be applied" name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u8GKsomX9cMiK" type="uCrEnQqDIUZVj" value="" comment="graph the graph of type G on which the heuristic will be applied" name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                </UML:Classifier.feature>
@@ -724,18 +724,18 @@
                <UML:Classifier.feature>
                 <UML:Operation stereotype="uiRlYFx1Gx7pi" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u1fZy9gQeSSrS" comment="The constructor of this class" isOverride="false" name="HeuristicResult">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uuOsU91gxeMWe" type="u3PI0pw4cPjH2" value="" comment="graph the graph this heuristic was calculated upon" name="graph"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u6YYeVEHLss22" type="uUYeXXaJUHIC4" value="" comment="heuristic the heuristic by which the result was calculated" name="heuristic"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uuOsU91gxeMWe" type="uCrEnQqDIUZVj" value="" comment="graph the graph this heuristic was calculated upon" name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u6YYeVEHLss22" type="uCrEnQqDIUZVj" value="" comment="heuristic the heuristic by which the result was calculated" name="heuristic"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ugk5zjcKW6F64" comment="@return returns the graph this result was calculated upon" isOverride="false" name="getGraph">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="ugTvpFvDQsBYI" type="u3PI0pw4cPjH2"/>
+                  <UML:Parameter kind="return" xmi.id="ugTvpFvDQsBYI" type="uCrEnQqDIUZVj"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u9wMroGSr3kvu" comment="@return returns the heuristic by which this result was calculated" isOverride="false" name="getHeuristic">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="usddw7Fsm3738" type="uUYeXXaJUHIC4"/>
+                  <UML:Parameter kind="return" xmi.id="usddw7Fsm3738" type="uCrEnQqDIUZVj"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u1FljbE7GFpAv" comment="@return returns the line-by-line representation of this heuristic result as specified in the RAGE data&#xa;format" isOverride="false" name="toRAGE">
@@ -755,30 +755,30 @@
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uedpM2m2LvaM6" comment="@return returns the list of heuristics currently in this data pool" isOverride="false" name="getHeuristics"/>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uTkb3MDlCP5sV" comment="@throws DataInconsistencyException if heuristic may not be applied on graphs of type G or does&#xa;not has results of type R" isOverride="false" name="addHeuristic">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="urMMQvmqpZNZt" type="uUYeXXaJUHIC4" value="" comment="heuristic the heuristic to be added to data pool, which then will be applied to every graph&#xa;in the data pool" name="heuristic"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="urMMQvmqpZNZt" type="uCrEnQqDIUZVj" value="" comment="heuristic the heuristic to be added to data pool, which then will be applied to every graph&#xa;in the data pool" name="heuristic"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="unrSLykmQBFDq" comment="@return returns the list of graphs currently in this data pool" isOverride="false" name="getGraphs"/>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uexzkThS73QSG" comment="@throws DataInconsistencyException if heuristics of type H may not be applied on this graph" isOverride="false" name="addGraph">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uPFvPfCWSgi8I" type="u3PI0pw4cPjH2" value="" comment="graph the graph to be added to the data pool, on which then all heuristics in the data pool&#xa;will be applied" name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uPFvPfCWSgi8I" type="uCrEnQqDIUZVj" value="" comment="graph the graph to be added to the data pool, on which then all heuristics in the data pool&#xa;will be applied" name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u1pB8Sfa7AbaS" comment="@return returns the list of all results calculated on graphs by heuristics in this data pool" isOverride="false" name="getResults"/>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="udJB0bL2sRb19" comment="@return returns all results calculated by heuristic on graphs in this data pool" isOverride="false" name="getResults">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uyZkZt2eMmJNx" type="uUYeXXaJUHIC4" value="" comment="heuristic the heuristic the results were calculated by" name="heuristic"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uyZkZt2eMmJNx" type="uCrEnQqDIUZVj" value="" comment="heuristic the heuristic the results were calculated by" name="heuristic"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uPWUZaX1iWEbT" comment="@return returns all results calculated on graph by heuristics in this data pool" isOverride="false" name="getResults">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uIzIaW7wigHwp" type="u3PI0pw4cPjH2" value="" comment="the graph the results were calculated upon" name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uIzIaW7wigHwp" type="uCrEnQqDIUZVj" value="" comment="the graph the results were calculated upon" name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uby8LdiYeAxIA" comment="@return returns the statistic gathered for heuristic&#xa;@throws DataInconsistencyException if heuristic is not a heuristic of this data pool" isOverride="false" name="getStatistics">
                  <UML:BehavioralFeature.parameter>
                   <UML:Parameter kind="return" xmi.id="uG2gHBUbjeafl" type="urcnTrs0XtwAX"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u8bUzlcYOA70G" type="uUYeXXaJUHIC4" value="" comment="the heuristic whose statistics are requested" name="heuristic"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u8bUzlcYOA70G" type="uCrEnQqDIUZVj" value="" comment="the heuristic whose statistics are requested" name="heuristic"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u8kbKJKIQIiZW" comment="@return returns the line by line representation of this data pool as specified in the RAGE data format" isOverride="false" name="toRAGE">
@@ -934,23 +934,23 @@
                <UML:Classifier.feature>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="utLScii4gqv5U" comment="Creates a new Detail View Controller and creates an empty localHeuristicsList." isOverride="false" name="DetailViewController">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uZK3m4SR1llec" type="u3PI0pw4cPjH2" value="" comment="The graph, thatshouldbe loaded in to the DetailViewController." name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uZK3m4SR1llec" type="uCrEnQqDIUZVj" value="" comment="The graph, thatshouldbe loaded in to the DetailViewController." name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uQ68g21gdnxy5" comment="Applies the local Heuristics to the one graph in the DetailView." isOverride="false" name="startCalculation">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u53xRqtVVcdcn" type="u3PI0pw4cPjH2" value="" comment="The graph that get colloerd by the local heuristics." name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u53xRqtVVcdcn" type="uCrEnQqDIUZVj" value="" comment="The graph that get colloerd by the local heuristics." name="graph"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="uzjclkYVwoFC8" type="u65ORQEVVZe2j" value="" comment="The list of local heuristics, that collors the one graph." name="localHeuristicsList"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYimftAfrDtQE" comment="Creates a GraphEditorController instance with the one graph." isOverride="false" name="modifyGraph">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uurHHuipUmmeI" type="u3PI0pw4cPjH2" value="" comment="The graph that should be modified." name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uurHHuipUmmeI" type="uCrEnQqDIUZVj" value="" comment="The graph that should be modified." name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u8E8EiRjY486z" comment="Loads the modified graph into the DataPool and in to the DetailViewController." isOverride="false" name="loadModifiedGraph">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="usRdlWVxIhk5o" type="u3PI0pw4cPjH2" value="" comment="The modified graph." name="modGraph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="usRdlWVxIhk5o" type="uCrEnQqDIUZVj" value="" comment="The modified graph." name="modGraph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ud6wnfpQjdgLa" comment="Adds the local heuristics chosen by the user to the localHeuristics." isOverride="false" name="addLocalHeuristics">
@@ -997,7 +997,7 @@
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubhT5tq9lYk3Q" comment="Adds one Graph to the DataPool, that belongs to the TabController instance.&#xa;@throws EXCEPTION if the type of the Graph is not of the same graph type in the DataPool." isOverride="false" name="addGraphToDataPool">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="ue2GWXBRSGHfy" type="u3PI0pw4cPjH2" value="" comment="The graph that should be added to the DataPool." name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="ue2GWXBRSGHfy" type="uCrEnQqDIUZVj" value="" comment="The graph that should be added to the DataPool." name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uZvDfIaIi750d" comment="Merges two DataPools under one of the two TabController. The other TabController with its DataPool&#xa;remains untouched.&#xa;&#xa;@throws EXCEPTION if the graph type of both DataPools is not equal." isOverride="false" name="mergeDataPool">
@@ -1082,7 +1082,7 @@
                 <UML:Operation stereotype="uiRlYFx1Gx7pi" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uxsYk2rqWkWOJ" comment="Constructor: Creates a GraphEditorController and it will get a DataPool instance. When it was created&#xa;by the GraphGeneratorController, it will create an GraphEditorController without a graph.&#xa;If it was created by the DetailViesController, it will get a graph to the new instance." isOverride="false" name="GraphEditorController"/>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uMYt9xpOVgJYU" comment="Sets the graph of this instance." isOverride="false" name="setGraph">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uoOQpAAAIHcvS" type="u3PI0pw4cPjH2" value="" comment="Sets the graph of this instance." name="graph"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uoOQpAAAIHcvS" type="uCrEnQqDIUZVj" value="" comment="Sets the graph of this instance." name="graph"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="unTVV7ecOGJfL" comment="Adapts the created visualGraph to a Graph and adds the created graph to the DataPool. If there is no&#xa;DataPool, it will create a new one." isOverride="false" name="addGraph">
@@ -1139,8 +1139,8 @@
                 <UML:Operation visibility="private" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uAWPMk7qdkAuy" comment="Creates a new preview tab, with a graph liast and a heuristics list.&#xa;&#xa;@return TabController." isOverride="false" name="createTabController">
                  <UML:BehavioralFeature.parameter>
                   <UML:Parameter kind="return" xmi.id="uliHaU1DGjKLo" type="uMRvKkfFwVmYy"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u31Pzb4N6mpYl" type="unTJKA5tr2Svh" value="" comment="List of graphs that should be taken to the new tab." name="graphList"/>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u0MWT1p0AEKJP" type="uHK5ncRYqCLnS" value="" comment="List of heuristics that should be taken to the new tab." name="heurList"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u31Pzb4N6mpYl" type="uCrEnQqDIUZVj" value="" comment="List of graphs that should be taken to the new tab." name="graphList"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u0MWT1p0AEKJP" type="uCrEnQqDIUZVj" value="" comment="List of heuristics that should be taken to the new tab." name="heurList"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u4PocPE5l1qXv" comment="Creates a new preview tab with its own DataPool, and calls the GrapgGeneratorController to generate&#xa;graphs for the DataPool and it will show the graphs in the preview Tab.&#xa;&#xa;@return TabController." isOverride="false" name="createTabController">
@@ -1594,18 +1594,18 @@
                <UML:Classifier.feature>
                 <UML:Operation stereotype="uiRlYFx1Gx7pi" visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ukPmCv7V8lDMP" comment="A constructor of this class" isOverride="false" name="PropertyValue">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u8ZRKhBIabucD" type="uKNnDR3ZuJvg0" value="" comment="the value of this PropertyValue" name="value"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="u8ZRKhBIabucD" type="uCrEnQqDIUZVj" value="" comment="the value of this PropertyValue" name="value"/>
                   <UML:Parameter visibility="private" isSpecification="false" xmi.id="uOFkkXvaqLqSQ" type="uZLSB8lOho0lC" value="" comment="whether the value is constant ie. might not be altered after its initialization" name="const"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u70GXGE6Hm1qa" comment="@return returns the value stored in this PropertyValue" isOverride="false" name="getValue">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter kind="return" xmi.id="upAekJmbr0zSj" type="uKNnDR3ZuJvg0"/>
+                  <UML:Parameter kind="return" xmi.id="upAekJmbr0zSj" type="uCrEnQqDIUZVj"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="utMFauSgwQhkG" comment="@throws DataInconsistencyException if the const flag is set" isOverride="false" name="setValue">
                  <UML:BehavioralFeature.parameter>
-                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uDuB9tzB3H6or" type="uKNnDR3ZuJvg0" value="" comment="the value which will be stored in this PropertyValue" name="value"/>
+                  <UML:Parameter visibility="private" isSpecification="false" xmi.id="uDuB9tzB3H6or" type="uCrEnQqDIUZVj" value="" comment="the value which will be stored in this PropertyValue" name="value"/>
                  </UML:BehavioralFeature.parameter>
                 </UML:Operation>
                 <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uCSzll4OlZqpY" comment="@return returns true iff this PropertyValue is constant ie. the const flag is set" isOverride="false" name="isConstant">
@@ -1663,27 +1663,27 @@
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uC6ADV9Y6xzoI" comment="A constructor of this class" isOverride="false" name="Tuple">
                <UML:BehavioralFeature.parameter>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="ucgSSLms1mApL" type="uEeqsvSugwmpa" value="" comment="the first entry of this tuple" name="x"/>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="uzDvAwvLH6DfX" type="ugJ8NpsfIuMDm" value="" comment="the second entry of this tuple" name="y"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="uzDvAwvLH6DfX" type="uCrEnQqDIUZVj" value="" comment="the second entry of this tuple" name="y"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uG5HwubSv6sqO" comment="@return returns the first component of this tuple" isOverride="false" name="getX">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter kind="return" xmi.id="uIEp3LvOD8cbb" type="uABvQgtl7AdGP"/>
+                <UML:Parameter kind="return" xmi.id="uIEp3LvOD8cbb" type="uCrEnQqDIUZVj"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uDyYfYftl14vQ" isOverride="false" name="setX">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="uMUyGZLSpnfvl" type="uABvQgtl7AdGP" value="" comment="the value to be assigned to the first component of this tuple" name="x"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="uMUyGZLSpnfvl" type="uCrEnQqDIUZVj" value="" comment="the value to be assigned to the first component of this tuple" name="x"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uVaWAVd1zuZiV" comment="@return returns the first component of this tuple" isOverride="false" name="getY">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter kind="return" xmi.id="uIEp3LvOD8cbb" type="ugJ8NpsfIuMDm"/>
+                <UML:Parameter kind="return" xmi.id="uIEp3LvOD8cbb" type="uCrEnQqDIUZVj"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uDfIq9vyJ4FWL" isOverride="false" name="setY">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="uUV1qoDAblr1v" type="ugJ8NpsfIuMDm" value="" comment="the value to be assigned to the second component of this tuple" name="y"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="uUV1qoDAblr1v" type="uCrEnQqDIUZVj" value="" comment="the value to be assigned to the second component of this tuple" name="y"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
              </UML:Classifier.feature>
@@ -1692,33 +1692,33 @@
              <UML:Classifier.feature>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uYcxdcjGeWP2e" comment="@return returns the minimal value of evaluation" isOverride="false" name="getMinimalValue">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="u68ioooV67mo5" type="ufROKJ9eJfUWH" value="" comment="the collection on which evaluation will be minimized" name="collection"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="u68ioooV67mo5" type="uCrEnQqDIUZVj" value="" comment="the collection on which evaluation will be minimized" name="collection"/>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="uJryW21z5ph3x" type="usgcOGn0ZLSxt" value="" comment="the evaluation / cost function which will be minimized" name="evaluation"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u5inaazPbCbk6" comment="@return returns the minimal value of evaluation" isOverride="false" name="getMinimalArgument">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter kind="return" xmi.id="" type="uKNnDR3ZuJvg0"/>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="upuyFAcV7iRp2" type="ufROKJ9eJfUWH" value="" comment="the collection on which evaluation will be minimized" name="collection"/>
+                <UML:Parameter kind="return" xmi.id="" type="uCrEnQqDIUZVj"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="upuyFAcV7iRp2" type="uCrEnQqDIUZVj" value="" comment="the collection on which evaluation will be minimized" name="collection"/>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="ulQORLPm9a9qp" type="usgcOGn0ZLSxt" value="" comment="the evaluation / cost function which will be minimized" name="evaluation"/>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="unKp4R6Njv5cV" type="uZLSB8lOho0lC" value="" comment="if false the first entry in the collection minimizing evaluation will be returned, otherwise&#xa;the last one will be returned" name="leq"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uzciLqHJF4aVR" comment="@return returns the minimal value of evaluation" isOverride="false" name="getMinimalArgumentValue">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="upuyFAcV7iRp2" type="ufROKJ9eJfUWH" value="" comment="the collection on which evaluation will be minimized" name="collection"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="upuyFAcV7iRp2" type="uCrEnQqDIUZVj" value="" comment="the collection on which evaluation will be minimized" name="collection"/>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="ulQORLPm9a9qp" type="usgcOGn0ZLSxt" value="" comment="the evaluation / cost function which will be minimized" name="evaluation"/>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="unKp4R6Njv5cV" type="uZLSB8lOho0lC" value="" comment="if false the first entry in the collection minimizing evaluation will be returned, otherwise&#xa;the last one will be returned" name="leq"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uno0Oxtm9evFa" comment="@return returns the list of subcollections of collection (in lexicographic order, if collection is sorted)" isOverride="false" name="getSubCollections">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5jlMTP5PQCtY" type="ufROKJ9eJfUWH" value="" comment="the collection whose subcollections shall be retrieved" name="collection"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5jlMTP5PQCtY" type="uCrEnQqDIUZVj" value="" comment="the collection whose subcollections shall be retrieved" name="collection"/>
                </UML:BehavioralFeature.parameter>
               </UML:Operation>
               <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uEmqxJRLd12NI" comment="@return returns the list of subcollections of collection (in lexicographic order, if collection is sorted)" isOverride="false" name="getSubCollections">
                <UML:BehavioralFeature.parameter>
-                <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5jlMTP5PQCtY" type="ufROKJ9eJfUWH" value="" comment="the collection whose subcollections shall be retrieved" name="collection"/>
+                <UML:Parameter visibility="private" isSpecification="false" xmi.id="u5jlMTP5PQCtY" type="uCrEnQqDIUZVj" value="" comment="the collection whose subcollections shall be retrieved" name="collection"/>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="uUox0G3h5C1uG" type="uDDdo5Ay7C13h" value="" comment="the minimal size of the subcollections returned" name="minSize"/>
                 <UML:Parameter visibility="private" isSpecification="false" xmi.id="uEohfmSesySKV" type="uDDdo5Ay7C13h" value="" comment="the maximal size of the subcollections returned" name="maxSize"/>
                </UML:BehavioralFeature.parameter>
@@ -3402,7 +3402,7 @@
        <UML:Namespace.ownedElement/>
        <XMI.extension xmi.extender="umbrello">
         <diagrams resolution="96">
-         <diagram showopsig="1" linecolor="#0000ff" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000080" isopen="1" showpackage="0" showpubliconly="0" showstereotype="1" name="ClassDiaram_Model" font="Times New Roman,12,-1,5,50,0,0,0,0,0" canvasheight="200" canvaswidth="450" localid="-1" snapcsgrid="1" showgrid="1" showops="1" griddotcolor="#c3c3c3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#3296ff" zoom="187" xmi.id="uMfm9JSA5Vd8a" documentation="" showscope="1" snapgrid="1" showatts="1" type="1">
+         <diagram showopsig="1" linecolor="#0000ff" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000080" isopen="0" showpackage="0" showpubliconly="0" showstereotype="1" name="ClassDiaram_Model" font="Times New Roman,12,-1,5,50,0,0,0,0,0" canvasheight="200" canvaswidth="450" localid="-1" snapcsgrid="1" showgrid="1" showops="1" griddotcolor="#c3c3c3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#3296ff" zoom="187" xmi.id="uMfm9JSA5Vd8a" documentation="" showscope="1" snapgrid="1" showatts="1" type="1">
           <widgets>
            <packagewidget width="75" showstereotype="1" x="275" usesdiagramusefillcolor="0" y="-625" usesdiagramfillcolor="0" isinstance="0" localid="uvkb0yR1LK7UD" fillcolor="#3296ff" height="50" linecolor="#0000ff" xmi.id="ud1KAqz5JbHa8" autoresize="1" textcolor="#000080" usefillcolor="1" linewidth="0" font="Times New Roman,12,-1,5,50,0,0,0,0,0"/>
            <packagewidget width="75" showstereotype="1" x="275" usesdiagramusefillcolor="0" y="-475" usesdiagramfillcolor="0" isinstance="0" localid="ucuDRIT3wc8cL" fillcolor="#3296ff" height="50" linecolor="#0000ff" xmi.id="uyEBl97Ln0gAW" autoresize="1" textcolor="#000080" usefillcolor="1" linewidth="0" font="Times New Roman,12,-1,5,50,0,0,0,0,0"/>
@@ -3657,7 +3657,7 @@
          </assocwidget>
         </associations>
        </diagram>
-       <diagram showopsig="1" linecolor="#0000ff" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000080" isopen="0" showpackage="0" showpubliconly="0" showstereotype="1" name="ClassDiaram_Utils" font="Times New Roman,12,-1,5,50,0,0,0,0,0" canvasheight="550" canvaswidth="1008" localid="-1" snapcsgrid="1" showgrid="1" showops="1" griddotcolor="#c3c3c3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#3296ff" zoom="106" xmi.id="uSVdw2K3qMNgp" documentation="" showscope="1" snapgrid="1" showatts="1" type="1">
+       <diagram showopsig="1" linecolor="#0000ff" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000080" isopen="0" showpackage="0" showpubliconly="0" showstereotype="1" name="ClassDiaram_Utils" font="Times New Roman,12,-1,5,50,0,0,0,0,0" canvasheight="375" canvaswidth="1008" localid="-1" snapcsgrid="1" showgrid="1" showops="1" griddotcolor="#c3c3c3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#3296ff" zoom="106" xmi.id="uSVdw2K3qMNgp" documentation="" showscope="1" snapgrid="1" showatts="1" type="1">
         <widgets>
          <packagewidget width="75" showstereotype="1" x="275" usesdiagramusefillcolor="0" y="-625" usesdiagramfillcolor="0" isinstance="0" localid="uvkb0yR1LK7UD" fillcolor="#3296ff" height="50" linecolor="#0000ff" xmi.id="ud1KAqz5JbHa8" autoresize="1" textcolor="#000080" usefillcolor="1" linewidth="0" font="Times New Roman,12,-1,5,50,0,0,0,0,0"/>
          <packagewidget width="75" showstereotype="1" x="275" usesdiagramusefillcolor="0" y="-525" usesdiagramfillcolor="0" isinstance="0" localid="uBBNxigmsbXSg" fillcolor="#3296ff" height="50" linecolor="#0000ff" xmi.id="uCc3hargVTvbI" autoresize="1" textcolor="#000080" usefillcolor="1" linewidth="0" font="Times New Roman,12,-1,5,50,0,0,0,0,0"/>
@@ -3864,7 +3864,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings viewid="uMfm9JSA5Vd8a" uniqueid="uK768kOIcd90T" documentation=""/>
+  <docsettings viewid="uPsW4RXqPWRja" uniqueid="ueH0oNGofvFxK" documentation=""/>
   <listview>
    <listitem open="1" type="800" id="Views">
     <listitem open="1" type="821" id="Component_View"/>
@@ -4005,7 +4005,7 @@
      <listitem open="0" type="803" id="ut7dEioz545nb">
       <listitem open="0" type="807" id="uMfm9JSA5Vd8a" label="ClassDiaram_Model"/>
      </listitem>
-     <listitem open="0" type="818" id="ud1KAqz5JbHa8">
+     <listitem open="1" type="818" id="ud1KAqz5JbHa8">
       <listitem open="0" type="818" id="u1vUcc8gqEisP">
        <listitem open="1" type="818" id="u5ENfV9VhsWW8">
         <listitem open="1" type="818" id="uw9I9nnQ37BtK"/>
@@ -4027,7 +4027,7 @@
        <listitem open="1" type="818" id="uS4cOgGKRecI6"/>
        <listitem open="1" type="818" id="uKdw5fVfmgYtS"/>
       </listitem>
-      <listitem open="0" type="818" id="uCc3hargVTvbI">
+      <listitem open="1" type="818" id="uCc3hargVTvbI">
        <listitem open="0" type="818" id="uDxn86sIfE3nX">
         <listitem open="0" type="818" id="u67sqDI3KYNf7">
          <listitem open="0" type="813" id="uoiR0rQ39ILav">
@@ -4297,7 +4297,7 @@
          </listitem>
         </listitem>
        </listitem>
-       <listitem open="0" type="813" id="ua0vqaaAxpmvw">
+       <listitem open="1" type="813" id="ua0vqaaAxpmvw">
         <listitem open="1" type="815" id="ugfALtSxzVF1L"/>
         <listitem open="1" type="815" id="uMaDpyjKAkxRg"/>
        </listitem>
@@ -4418,7 +4418,7 @@
         </listitem>
         <listitem open="1" type="813" id="u84cwqvutG08f"/>
        </listitem>
-       <listitem open="1" type="818" id="ub61nHiH6J4hz">
+       <listitem open="0" type="818" id="ub61nHiH6J4hz">
         <listitem open="0" type="813" id="ulIOJJ0lQJyNV">
          <listitem open="1" type="815" id="u5inaazPbCbk6"/>
          <listitem open="1" type="815" id="uzciLqHJF4aVR"/>

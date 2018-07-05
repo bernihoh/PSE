@@ -1,38 +1,30 @@
-
+package Source.Model.Heuristic;
 
 /**
- * Class HeuristicProperties
- * This class serves as collection of data for exchange between controller and
- * model, especially to transfer
-properties of heuristics. It assures that the
- * following properties may be retrieved and set at any time:
-– ”name” – ein
- * String
-– "valid- ein Boolean
+ * Class HeuristicProperties This class serves as collection of data for
+ * exchange between controller and model, especially to transfer properties of
+ * heuristics. It assures that the following properties may be retrieved and set
+ * at any time: ï¿½ ï¿½nameï¿½ ï¿½ ein String ï¿½ "valid- ein Boolean
  */
 public class HeuristicProperties {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public HeuristicProperties() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public HeuristicProperties () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

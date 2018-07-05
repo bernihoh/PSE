@@ -1,45 +1,32 @@
-
+package Source.Model.Graph.SimpleUndirectedGraph;
 
 /**
- * Class SimpleUndirectedGraphProperties
- * This class is an extension of the GraphProperties class and serves as collection
- * of data for exchange between
-controller and model, especially to signal the
- * settings required for generating simple undirected graphs. It
-assures that the
- * following properties can be retrieved and set at all times:
-– ”minDegree” – a
- * nonnegative integer
-– ”maxDegree” – a nonnegative integer
-– ”connected” – a
- * boolean
-– ”forest” – a boolean
-– ”bipartite” – a boolean
-– ”planar” – a boolean
+ * Class SimpleUndirectedGraphProperties This class is an extension of the
+ * GraphProperties class and serves as collection of data for exchange between
+ * controller and model, especially to signal the settings required for
+ * generating simple undirected graphs. It assures that the following properties
+ * can be retrieved and set at all times: ï¿½ ï¿½minDegreeï¿½ ï¿½ a nonnegative integer
+ * ï¿½ ï¿½maxDegreeï¿½ ï¿½ a nonnegative integer ï¿½ ï¿½connectedï¿½ ï¿½ a boolean ï¿½ ï¿½forestï¿½ ï¿½
+ * a boolean ï¿½ ï¿½bipartiteï¿½ ï¿½ a boolean ï¿½ ï¿½planarï¿½ ï¿½ a boolean
  */
 public class SimpleUndirectedGraphProperties {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public SimpleUndirectedGraphProperties() {
+    }
 
-  
-  //
-  // Constructors
-  //
-  public SimpleUndirectedGraphProperties () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+    //
+    // Methods
+    //
+    //
+    // Accessor methods
+    //
+    //
+    // Other methods
+    //
 }

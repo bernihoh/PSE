@@ -1,34 +1,28 @@
-
+package Source.Model.Heuristic.TotalColoring.Greedy;
 
 /**
- * Class TCGreedyFewData
- * This class stores all uncolored edges sorted first by their amount of free
- * colors and then by the order defined
-on edges.
+ * Class TCGreedyFewData This class stores all uncolored edges sorted first by
+ * their amount of free colors and then by the order defined on edges.
  */
 public class TCGreedyFewData {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public TCGreedyFewData() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public TCGreedyFewData () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

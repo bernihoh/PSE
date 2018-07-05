@@ -1,34 +1,28 @@
-
+package Source.Model.Heuristic.TotalColoring.MixedGreedy;
 
 /**
- * Class TCMixedGreedyFew
- * This class implements the TCMixedGreedyFew heuristic which tries to calculate a
- * total coloring as specified
-in the addendum.
+ * Class TCMixedGreedyFew This class implements the TCMixedGreedyFew heuristic
+ * which tries to calculate a total coloring as specified in the addendum.
  */
 public class TCMixedGreedyFew {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public TCMixedGreedyFew() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public TCMixedGreedyFew () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

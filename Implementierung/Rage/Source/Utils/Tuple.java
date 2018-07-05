@@ -1,77 +1,61 @@
-
+package Source.Utils;
 
 /**
- * Class Tuple
- * This class represents a tuple of two variables x and y of types X and Y
- * respectively.
+ * Class Tuple This class represents a tuple of two variables x and y of types X
+ * and Y respectively.
  */
-public class Tuple {
+public class Tuple<X, Y> {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public Tuple() {
+    }
 
-  
-  //
-  // Constructors
-  //
-  public Tuple () { };
-  
-  //
-  // Methods
-  //
+    //
+    // Methods
+    //
+    /**
+     * A constructor of this class
+     *
+     * @param x the first entry of this tuple
+     * @param y the second entry of this tuple
+     */
+    public Tuple(X x, Y y) {
+    }
 
+    //
+    // Accessor methods
+    //
+    /**
+     * @return returns the first component of this tuple
+     * @return undef
+     */
+    public X getX() {
+        return null;
+    }
 
-  //
-  // Accessor methods
-  //
+    /**
+     * @param x the value to be assigned to the first component of this tuple
+     */
+    public void setX(X x) {
+    }
 
-  //
-  // Other methods
-  //
+    /**
+     * @return returns the first component of this tuple
+     * @return undef
+     */
+    public Y getY() {
+        return null;
+    }
 
-  /**
-   * A constructor of this class
-   * @param        x the first entry of this tuple
-   * @param        y the second entry of this tuple
-   */
-  public void Tuple(X x, undef y)
-  {
-  }
-
-
-  /**
-   * @return returns the first component of this tuple
-   * @return       undef
-   */
-  public undef getX()
-  {
-  }
-
-
-  /**
-   * @param        x the value to be assigned to the first component of this tuple
-   */
-  public void setX(undef x)
-  {
-  }
-
-
-  /**
-   * @return returns the first component of this tuple
-   * @return       undef
-   */
-  public undef getY()
-  {
-  }
-
-
-  /**
-   * @param        y the value to be assigned to the second component of this tuple
-   */
-  public void setY(undef y)
-  {
-  }
-
+    /**
+     * @param y the value to be assigned to the second component of this tuple
+     */
+    public void setY(Y y) {
+    }
 
 }

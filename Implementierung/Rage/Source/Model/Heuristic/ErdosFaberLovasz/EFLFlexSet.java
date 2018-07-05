@@ -1,35 +1,29 @@
-
+package Source.Model.Heuristic.ErdosFaberLovasz;
 
 /**
- * Class EFLFlexSet
- * This class represents a subset of edges of a graph with a given flexibility
- * value (ie. # colors free for all
-edges – # edges) used heavily in some
- * EFLHeuristics.
+ * Class EFLFlexSet This class represents a subset of edges of a graph with a
+ * given flexibility value (ie. # colors free for all edges ï¿½ # edges) used
+ * heavily in some EFLHeuristics.
  */
 public class EFLFlexSet {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public EFLFlexSet() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public EFLFlexSet () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

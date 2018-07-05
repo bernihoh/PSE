@@ -1,31 +1,26 @@
-
+package Source.Model;
 
 /**
  * Class Statistic
  */
 public class Statistic {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public Statistic() {
+    }
 
-  
-  //
-  // Constructors
-  //
-  public Statistic () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+    //
+    // Methods
+    //
+    //
+    // Accessor methods
+    //
+    //
+    // Other methods
+    //
 }

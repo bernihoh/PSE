@@ -1,42 +1,32 @@
-
+package Source.Model.Graph;
 
 /**
- * Class GraphProperties
- * This class is required for exchanging data between controller and model,
- * especially to signal the settings
-required to generate graphs. It assures that
- * the following graph-properties can be retrieved and set at all
-times:
-–
- * ”graphTypes” – a const list of strings, initialised with
- * [”simpleUndirectedGraph”, ”simpleHyperGraph”]
-– ”type” – a string
-–
- * ”numVertices” – a nonnegative integer
+ * Class GraphProperties This class is required for exchanging data between
+ * controller and model, especially to signal the settings required to generate
+ * graphs. It assures that the following graph-properties can be retrieved and
+ * set at all times: ï¿½ ï¿½graphTypesï¿½ ï¿½ a const list of strings, initialised with
+ * [ï¿½simpleUndirectedGraphï¿½, ï¿½simpleHyperGraphï¿½] ï¿½ ï¿½typeï¿½ ï¿½ a string ï¿½
+ * ï¿½numVerticesï¿½ ï¿½ a nonnegative integer
  */
 public class GraphProperties {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public GraphProperties() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public GraphProperties () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }

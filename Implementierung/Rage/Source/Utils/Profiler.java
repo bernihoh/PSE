@@ -1,84 +1,67 @@
-
+package Source.Utils;
 
 /**
- * Class Profiler
- * This class is used to gather statistics about timing.
+ * Class Profiler This class is used to gather statistics about timing.
  */
 public class Profiler {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public Profiler() {
+    }
 
-  
-  //
-  // Constructors
-  //
-  public Profiler () { };
-  
-  //
-  // Methods
-  //
+    //
+    // Methods
+    //
+    /**
+     * starts measuring the time
+     */
+    public void startMeasurement() {
+    }
 
+    /**
+     * ends the running measurement and adds it to the collected data
+     */
+    public void endMeasurement() {
+    }
 
-  //
-  // Accessor methods
-  //
+    //
+    // Accessor methods
+    //
+    /**
+     * @return returns the minimal time measured by this Profiler
+     * @return Double
+     */
+    public Double getMinTime() {
+        return null;
+    }
 
-  //
-  // Other methods
-  //
+    /**
+     * @return returns the maximal time measured by this Profiler
+     * @return Double
+     */
+    public Double getMaxTime() {
+        return null;
+    }
 
-  /**
-   * starts measuring the time
-   */
-  public void startMeasurement_()
-  {
-  }
+    /**
+     * @return returns the average time measured by this Profiler
+     * @return Double
+     */
+    public Double getAvgTime() {
+        return null;
+    }
 
-
-  /**
-   * ends the running measurement and adds it to the collected data
-   */
-  public void endMeasurement()
-  {
-  }
-
-
-  /**
-   * @return returns the minimal time measured by this Profiler
-   * @return       Double
-   */
-  public Double getMinTime()
-  {
-  }
-
-
-  /**
-   * @return returns the maximal time measured by this Profiler
-   * @return       Double
-   */
-  public Double getMaxTime()
-  {
-  }
-
-
-  /**
-   * @return returns the average time measured by this Profiler
-   * @return       Double
-   */
-  public Double getAvgTime()
-  {
-  }
-
-
-  /**
-   * @return returns the number of measurements taken by this Profiler
-   * @return       Integer
-   */
-  public Integer getNumMeasurements()
-  {
-  }
-
+    /**
+     * @return returns the number of measurements taken by this Profiler
+     * @return Integer
+     */
+    public Integer getNumMeasurements() {
+        return null;
+    }
 
 }

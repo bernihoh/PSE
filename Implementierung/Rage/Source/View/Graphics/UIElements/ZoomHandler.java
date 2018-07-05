@@ -1,20 +1,21 @@
-
+package Source.View.Graphics.UIElements;
 
 /**
  * Class ZoomHandler
  */
 class ZoomHandler {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public ZoomHandler() {
+    }
 
-  
-  //
-  // Constructors
-  //
-  public ZoomHandler () { };
-  
+    ;
+
   //
   // Methods
   //
@@ -31,9 +32,7 @@ class ZoomHandler {
   /**
    * @param        scrollEvent
    */
-  public void handle(uCrEnQqDIUZVj scrollEvent)
-  {
-  }
-
+  public void handle(uCrEnQqDIUZVj scrollEvent) {
+    }
 
 }

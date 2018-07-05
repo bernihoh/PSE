@@ -1,35 +1,29 @@
-
+package Source.Model.Heuristic.TotalColoring;
 
 /**
- * Class TCResult
- * This class represents a total coloring of a simple undirected graph ie. a
- * coloring of vertices and edges, such
-that no two adjacent or incident objects
- * share the same color. Colors are represented as integers.
+ * Class TCResult This class represents a total coloring of a simple undirected
+ * graph ie. a coloring of vertices and edges, such that no two adjacent or
+ * incident objects share the same color. Colors are represented as integers.
  */
 public class TCResult {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    //
+    // Constructors
+    //
+    public TCResult() {
+    }
+;
 
-  
-  //
-  // Constructors
-  //
-  public TCResult () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
+//
+// Methods
+//
+//
+// Accessor methods
+//
+//
+// Other methods
+//
 }
