@@ -109,11 +109,17 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
     /**
      * Add a new Vertex to the List of Vertices of this graph. The Vertex will
      * be generated automatically by searching for the next unused Vertex-ID.
+     *
+     * @return The VisualVertex that was generated and then added to the List.
+     * This Return-Value is needed so that the duplicate-Method could get's the
+     * ID of the newly added Vertex.
      */
-    public void addVertex() {
+    public V addVertex() {
         VisualVertex newVisualVertex = new VisualVertex(this.getFreeVertexID());
 
         this.addVertex((V) newVisualVertex);
+
+        return (V) newVisualVertex;
     }
 
     /**
@@ -250,6 +256,8 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param vertexID The Vertex-ID of the Vertex that should be duplicated.
      */
     public void duplicateVertex(Integer vertexID) {
+        //Create a new Vertex.
+        VisualVertex duplicateVertex = new VisualVertex(this.getFreeVertexID());
     }
 
     /**

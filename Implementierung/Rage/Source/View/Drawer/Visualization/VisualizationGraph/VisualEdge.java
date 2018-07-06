@@ -96,6 +96,18 @@ public class VisualEdge {
     }
 
     /**
+     * Checks if the given Vertex-ID is at the List of connected-Vertes-Id's of
+     * this Edge.
+     *
+     * @param vertexId The Integer Vertex-Id that should be Checked.
+     * @return true if the given vertexId is at the List of
+     * connected-VerticeId's, false if not.
+     */
+    public Boolean conectsVertex(Integer vertexId) {
+        return this.connectedVerticesID.contains(vertexId);
+    }
+
+    /**
      * This Method overwrites the standard toString-Method.
      *
      * @return It returns a String-Representation of this VisualEdge.
