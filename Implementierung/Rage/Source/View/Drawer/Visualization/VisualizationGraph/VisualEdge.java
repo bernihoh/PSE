@@ -60,6 +60,27 @@ public class VisualEdge {
     }
 
     /**
+     * Add the given VertexId to the List of connectedVerticesID. Before that it
+     * is checked so that the Vertex is not already at the List.
+     *
+     * @param vertexID The Vertex-Id to add.
+     */
+    public void addVertex(Integer vertexID) {
+        //Check if the List is null.
+        if (this.connectedVerticesID == null) {
+            this.connectedVerticesID = new ArrayList<>();
+        }
+
+        //Check if the given Vertex is already at the List and therefore cannot be added.
+        if (this.connectedVerticesID.contains(vertexID)) {
+            //Given vertex already at the List.
+            System.out.println("The given Vertex is already at the Graph.");
+        } else {
+            this.connectedVerticesID.add(vertexID);
+        }
+    }
+
+    /**
      * Get the value of connectedVerticesID This List contains all Vertices-ID's
      * from the Vertices this Edge connects.
      *

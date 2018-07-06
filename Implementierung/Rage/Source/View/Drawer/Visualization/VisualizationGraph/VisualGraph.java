@@ -256,8 +256,17 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param vertexID The Vertex-ID of the Vertex that should be duplicated.
      */
     public void duplicateVertex(Integer vertexID) {
-        //Create a new Vertex.
-        VisualVertex duplicateVertex = new VisualVertex(this.getFreeVertexID());
+        //Create a new Vertex and add it to the List.
+        VisualVertex duplicateVertex = this.addVertex();
+
+        //Duplicate the Neighbourhood.
+        for (E edge : this.edges) {
+            //Check if the current Edge contains the Vertex-Id.
+            if (edge.conectsVertex(vertexID)) {
+                //Add the duplicated-Vertex to the List of connectedVertices.
+                edge.addVertex(duplicateVertex.getID());
+            }
+        }
     }
 
     /**
@@ -302,6 +311,11 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
     //
     // Other Methods
     //
+    /**
+     * Get the newxt free Vertex-ID that is not used by now.
+     *
+     * @return The actual highest Vertex-Id +1.
+     */
     private Integer getFreeVertexID() {
         //Sort the List of VisualVertices after their ID.
         ArrayList<V> sortedList = new ArrayList<>();
