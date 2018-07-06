@@ -6,12 +6,12 @@
 package heuristic.totalColoring.greedy;
 
 import graph.Edge;
+import graph.Graph;
 import graph.SimpleUndirectedEdge;
 import graph.SimpleUndirectedGraph;
 import heuristic.HeuristicResult;
-import heuristic.HeuristicSingleStep;
 import heuristic.SimpleUndirectedHeuristic;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,16 +20,33 @@ import java.util.Map;
  *
  * @author tfi
  */
-public class TCGreedy implements SimpleUndirectedHeuristic,
-        HeuristicSingleStep<SimpleUndirectedGraph> {
+//public class TCGreedy<G extends SimpleUndirectedGraph<? extends SimpleUndirectedEdge>> extends SimpleUndirectedHeuristic<G> {
+public class TCGreedy<G extends SimpleUndirectedGraph<E>,E extends SimpleUndirectedEdge> extends SimpleUndirectedHeuristic<G,E> {
+
+
+    public TCGreedy() {
+        super(null);
+    }
 
     @Override
-    public HeuristicResult applyTo(SimpleUndirectedGraph g) {
+    public HeuristicResult applyTo(G g) {
+        //super.applyTo(g);
+        //System.out.println("CLAZZ:" + graphTypeToken.getRawType().getClass().toString());
+        System.out.println("Greedy CLAZZ2:" + graphTypeToken.getRawType().toString());
+        testToke(g);
+        try {
+            Object o = graphTypeToken.getRawType().newInstance();
+            System.out.println(o.getClass().getName());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         boolean success = false;
 
         Map<Edge, Integer> edgeColors = new HashMap<>();
         Map<Integer, Integer> vertexColors = new HashMap<>();
-        HeuristicResult result = null;
+        HeuristicResult result;
         if (g == null || g.getVertices().size() < 1) {
             result = new HeuristicResult(g, this, false, edgeColors, vertexColors);
 
@@ -47,22 +64,21 @@ public class TCGreedy implements SimpleUndirectedHeuristic,
         int totalColorsUsed = 0;
 
         //starting at first vertex                
-        Integer startVertex = g.getVertices().get(0);
-
+        Integer startVertex = (Integer) g.getVertices().get(0);
         //breath first search ordering of vertices
         List<Integer> bfsVertices = g.getVerticesBFS(startVertex);
         for (Integer v : bfsVertices) {
-            System.out.println("Coloring vertex " + v);
+            //System.out.println("Coloring vertex " + v);
             //get minimal free used color
             if (totalColorsUsed < colorsNUsed.length) {
-                System.out.println(colorsNUsed.length - totalColorsUsed + "free colors left");
+                //System.out.println(colorsNUsed.length - totalColorsUsed + "free colors left");
                 //still a free color available->use it
                 colorsNUsed[totalColorsUsed] = colorsNUsed[totalColorsUsed] + 1;
 
                 vertexColors.put(v, totalColorsUsed);
                 totalColorsUsed++;
             } else {
-                System.out.println("no free color left");
+                //System.out.println("no free color left");
                 //are there usable colors?->get minimal used
                 //TODO:=>put in method?
                 int minColor = -1;
@@ -169,32 +185,9 @@ public class TCGreedy implements SimpleUndirectedHeuristic,
             eColor++;
             edgeColors.put(e,eColor);
         }*/
-            result = new HeuristicResult(g, this, true, edgeColors, vertexColors);
-            System.out.println("greedy succesfully finished");
-            return result;
-
-        }
-
-        @Override
-        public boolean applyToSingleStep
-        (SimpleUndirectedGraph g
-        
-            ) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public void restart
-        
-            () {
-        throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        public boolean finished
-        
-            () {
-        throw new UnsupportedOperationException("Not supported yet.");
-        }
+        result = new HeuristicResult(g, this, true, edgeColors, vertexColors);
+        System.out.println("greedy succesfully finished");
+        return result;
 
     }
+}

@@ -9,7 +9,7 @@ package heuristic;
  *
  * @author tfi
  */
-public abstract class AbstractNotWorkingHeuristic implements Heuristic{
+public abstract class AbstractNotWorkingHeuristic extends SimpleHyperHeuristic {
 
     
     

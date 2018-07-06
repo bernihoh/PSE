@@ -15,6 +15,11 @@ import java.util.List;
 public class SimpleUndirectedEdge extends Edge{
     private final Integer vertex1;
     private final Integer vertex2;
+
+    public SimpleUndirectedEdge() {
+        vertex1 = null;
+        vertex2 = null;
+    };
     
     public SimpleUndirectedEdge(Integer vertex1,Integer vertex2) {
         this.vertex1 = vertex1;

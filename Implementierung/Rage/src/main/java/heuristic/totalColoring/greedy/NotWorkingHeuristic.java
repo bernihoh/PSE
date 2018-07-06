@@ -5,7 +5,8 @@
  */
 package heuristic.totalColoring.greedy;
 
-import graph.Graph;
+import graph.SimpleHyperGraph;
+import graph.SimpleUndirectedGraph;
 import heuristic.AbstractNotWorkingHeuristic;
 import heuristic.HeuristicResult;
 
@@ -14,10 +15,17 @@ import heuristic.HeuristicResult;
  * @author tfi
  */
 public class NotWorkingHeuristic extends AbstractNotWorkingHeuristic{
-
     @Override
-    public HeuristicResult applyTo(Graph g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public HeuristicResult applyTo(SimpleHyperGraph simpleHyperGraph) {
+        return null;
     }
-    
+
+    // @Override
+   // public HeuristicResult applyTo(Graph g) {
+   //     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
+
+    //private HeuristicResult applyTo(SimpleUndirectedGraph simpleUndirectedGraph) {
+      //  return null;
+    //}
 }

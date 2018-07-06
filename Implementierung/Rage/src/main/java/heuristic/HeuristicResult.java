@@ -48,7 +48,7 @@ public class HeuristicResult {
         
         Integer color = edgeColors.get(e);
         return color; 
-    };
+    }
     
     public Integer getColor(Integer v) {
         System.out.println("getting vertex color: "+v);

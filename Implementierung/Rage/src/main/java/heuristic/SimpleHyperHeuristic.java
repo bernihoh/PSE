@@ -5,12 +5,13 @@
  */
 package heuristic;
 
+import graph.SimpleHyperEdge;
 import graph.SimpleHyperGraph;
 
 /**
  *
  * @author tfi
  */
-public interface SimpleHyperHeuristic extends Heuristic<SimpleHyperGraph>{
+public abstract class SimpleHyperHeuristic extends Heuristic<SimpleHyperGraph, SimpleHyperEdge> {
     
 }

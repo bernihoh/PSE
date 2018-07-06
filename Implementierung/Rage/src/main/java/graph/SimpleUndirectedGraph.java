@@ -19,7 +19,7 @@ import java.util.TreeSet;
  *
  * @author Thomas Fischer
  */
-public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
+public class SimpleUndirectedGraph<E extends SimpleUndirectedEdge> extends Graph<E> {
 
     private final SortedSet<Integer> vertices = new TreeSet<>();
     private int[][] adjMatrix;
@@ -30,7 +30,7 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
         SimpleUndirectedEdge e = new SimpleUndirectedEdge(vertex1, vertex2);
         vertices.add(vertex1);
         vertices.add(vertex2);
-        this.edges.add(e);
+        this.edges.add((E) e);
         return e;
     }
 
@@ -184,7 +184,7 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
         List<SimpleUndirectedEdge> l2 = getIncidentEdges(edge.getSecondVertex());
         
         l1.addAll(l2);
-        l1.remove(this);
+        l1.remove(edge);
         
         return l1;
     }

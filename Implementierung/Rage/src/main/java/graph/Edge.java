@@ -12,8 +12,12 @@ import java.util.List;
  * @author Thomas Fischer
  */
 public abstract class Edge {
-    abstract public List<Integer> getVertices(); 
-    
+    abstract public List<Integer> getVertices();
+
+    public Edge() {
+
+    }
+
     @Override
     public int hashCode() {
       return getVertices().hashCode();  
@@ -31,6 +35,6 @@ public abstract class Edge {
             return false;
         }
         final Edge other = (Edge) obj;
-        return this.getVertices().equals(other);        
+        return other.getVertices().equals(this.getVertices());
     }
 }

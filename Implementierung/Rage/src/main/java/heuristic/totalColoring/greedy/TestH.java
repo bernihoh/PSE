@@ -13,9 +13,9 @@ import heuristic.SimpleHyperHeuristic;
  *
  * @author tfi
  */
-public class TestH implements SimpleHyperHeuristic {
+public class TestH extends SimpleHyperHeuristic {
 
-    @Override
+    //@Override
     public HeuristicResult applyTo(SimpleHyperGraph g) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

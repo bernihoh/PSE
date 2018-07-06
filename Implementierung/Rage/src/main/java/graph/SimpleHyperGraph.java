@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author tfi
  */
-public class SimpleHyperGraph extends Graph{
+public class SimpleHyperGraph extends Graph<SimpleHyperEdge>{
 
     /**
      *

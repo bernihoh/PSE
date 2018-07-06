@@ -5,6 +5,9 @@
  */
 package heuristic;
 
+import graph.Edge;
+import graph.Graph;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,8 +16,10 @@ import java.util.Map;
  * @author Thomas Fischer
  */
 public class HeuristicContainer {
-    private final Map<String,Class<? extends SimpleUndirectedHeuristic >> undirectedContainer;
-    private final Map<String,Class<? extends SimpleHyperHeuristic >> hyperContainer;
+    private final Map<String,Class<? extends SimpleUndirectedHeuristic>> undirectedContainer;
+    private final Map<String,Class<? extends SimpleHyperHeuristic>> hyperContainer;
+
+    private final Map<String,Class<? extends Heuristic<?,?>>> heuristics;
     
     /**
      * Idiom for thread save singleton. See.... Uses java static class creation contract
@@ -26,6 +31,7 @@ public class HeuristicContainer {
     protected HeuristicContainer() {
         this.undirectedContainer = new HashMap<>();
         this.hyperContainer = new HashMap<>();
+        this.heuristics = new HashMap<>();
     }
     
     public static HeuristicContainer getInstance() {
@@ -34,7 +40,7 @@ public class HeuristicContainer {
     
     public void registerByClass(Class clazz) throws InstantiationException, IllegalAccessException  {
         Object o = clazz.newInstance();
-        if (o instanceof  SimpleUndirectedHeuristic) {
+        if (o instanceof SimpleUndirectedHeuristic) {
             undirectedContainer.put(clazz.getName(),clazz);
             System.out.println(clazz.getName() + " of Type SimpleUndirectedHeuristic registered");
         }else if (o instanceof SimpleHyperHeuristic) {
@@ -45,6 +51,43 @@ public class HeuristicContainer {
             //TODO: throw exception
         }
     }
+
+    public void registerByClass2(Class<? extends Heuristic<?,?>> clazz) {
+        heuristics.put(clazz.getName(),clazz);
+    }
+
+    public <G extends Graph<E>,E extends Edge> void listHeuristicsForGraphType(Class<G> clazz) {
+        //Class<? extends Heuristic<?>> h = heuristics.get(null);
+      for ( Class<? extends Heuristic<?,?>> h: heuristics.values()) {
+          try {
+              Heuristic<?,?> o = h.newInstance();
+              o.testToke(null);
+
+          } catch (InstantiationException e) {
+              e.printStackTrace();
+          } catch (IllegalAccessException e) {
+              e.printStackTrace();
+          }
+      }
+    }
+
+    public <G extends Graph<E>, E extends Edge> Heuristic<G,E> getHeuristicByClass(Class<Heuristic<G,E>> clazz) {
+        Class<? extends Heuristic<?,?>> h = heuristics.get(clazz.getName());
+        try {
+            Heuristic<?,?> o = h.newInstance();
+            if (o.isCastable(clazz)) {
+                System.out.println("Applyable");
+            }
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //public Heuristic<?> getHeuristicByName()
     
     public void registerByName(String className) 
             throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -54,7 +97,7 @@ public class HeuristicContainer {
         registerByClass(clazz);
     }
     
-    public SimpleUndirectedHeuristic createSimpleUndirectedHeuristicByClass(Class clazz) 
+    public SimpleUndirectedHeuristic createSimpleUndirectedHeuristicByClass(Class clazz)
             throws InstantiationException, IllegalAccessException {
         
         return createSimpleUndirectedHeuristicByName(clazz.getName());
@@ -83,7 +126,7 @@ public class HeuristicContainer {
         Class clazz;
         if ((clazz = hyperContainer.get(name)) != null) {
             Object o = clazz.newInstance();
-            if (o instanceof SimpleUndirectedHeuristic) {
+            if (o instanceof SimpleHyperHeuristic) {
                 return (SimpleHyperHeuristic) o;
             }else {
                 return null;
