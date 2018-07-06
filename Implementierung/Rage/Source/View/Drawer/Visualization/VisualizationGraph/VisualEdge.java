@@ -21,6 +21,9 @@ public class VisualEdge {
     //
     // Constructors
     //
+    /**
+     * The Empty-Constructor of this Class.
+     */
     public VisualEdge() {
     }
 
@@ -91,19 +94,6 @@ public class VisualEdge {
     }
 
     /**
-     * Checks if the given VisualEdge is an edge between the Same Vertices as
-     * this Edge.
-     *
-     * @return If the two Edges are conections between the same Vertices it
-     * returns true, else false.
-     * @param compareEdge The Edge of which the connected-Vertices should be
-     * checked with.
-     */
-    public Boolean connectsSame(VisualEdge compareEdge) {
-        return null;
-    }
-
-    /**
      * Checks if the given List of Vertex-ID's are the same as the Vertices this
      * Edge is connecting.
      *
@@ -113,7 +103,25 @@ public class VisualEdge {
      * should be checked with.
      */
     public Boolean connectsSame(List<Integer> connectedVerticesIDs) {
-        return null;
+        //Check if the given List has the same Dimension as the List of this Edge.
+        if (this.connectedVerticesID.size() == connectedVerticesIDs.size()) {
+            //Check if they connecting the same Vertices.
+            return this.connectedVerticesID.containsAll(connectedVerticesID);
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the given VisualEdge is an edge between the Same Vertices as
+     * this Edge.
+     *
+     * @return If the two Edges are conections between the same Vertices it
+     * returns true, else false.
+     * @param compareEdge The Edge of which the connected-Vertices should be
+     * checked with.
+     */
+    public Boolean connectsSame(VisualEdge compareEdge) {
+        return this.connectsSame(compareEdge.getConnectedVerticesID());
     }
 
     /**
