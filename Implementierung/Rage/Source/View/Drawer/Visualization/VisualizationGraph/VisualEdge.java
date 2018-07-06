@@ -84,6 +84,15 @@ public class VisualEdge {
     }
 
     /**
+     * Remove the given VertexId of the List of connectedVerticesIDs.
+     *
+     * @param vertexID The Vertex-Id to remove.
+     */
+    public void removeVertex(Integer vertexID) {
+        this.connectedVerticesID.remove(vertexID);
+    }
+
+    /**
      * Get the value of connectedVerticesID This List contains all Vertices-ID's
      * from the Vertices this Edge connects.
      *
@@ -91,6 +100,38 @@ public class VisualEdge {
      */
     private List<Integer> getConnectedVerticesID() {
         return this.connectedVerticesID;
+    }
+
+    /**
+     * Check if this Edge is a Loop and therefore connects less or equal than
+     * one Vertex.
+     *
+     * @return true if the List of connected Vertices by this Edge is less or
+     * equal one, false otherwise.
+     */
+    public Boolean isLoop() {
+        return this.connectedVerticesID.size() == 1;
+    }
+
+    /**
+     * Check if this Edge is Empty and therefore connects less or equal than
+     * zero Vertices.
+     *
+     * @return true if the List of connected Vertices by this Edge is less or
+     * equal zero, false otherwise.
+     */
+    public Boolean isEmpty() {
+        return this.connectedVerticesID.size() <= 0;
+    }
+
+    /**
+     * Check if this Edge is a Loop or Empty and therefore calls the isLoop and
+     * isEmpty Methods.
+     *
+     * @return true if the isLoop or the isEmpty Method is true, false if not.
+     */
+    public Boolean isLoopOrEmpty() {
+        return this.isLoop() || this.isEmpty();
     }
 
     /**
@@ -132,7 +173,7 @@ public class VisualEdge {
      * @return true if the given vertexId is at the List of
      * connected-VerticeId's, false if not.
      */
-    public Boolean conectsVertex(Integer vertexId) {
+    public Boolean connectsVertex(Integer vertexId) {
         return this.connectedVerticesID.contains(vertexId);
     }
 

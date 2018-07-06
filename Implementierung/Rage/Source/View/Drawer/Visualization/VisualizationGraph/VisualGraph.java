@@ -205,8 +205,16 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      *
      * @param vertex The Vertex that should be removed.
      */
-    public void removeVertex(VisualVertex vertex) {
+    public void removeVertex(V vertex) {
+        //Remove ther Vertex.
         this.vertices.remove(vertex);
+        //Remove the Vertex from every Edge.
+        for (E edge : this.edges) {
+            edge.removeVertex(vertex.getID());
+            if (edge.isLoopOrEmpty()) {
+                this.edges.remove(edge);
+            }
+        }
     }
 
     /**
@@ -262,7 +270,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
         //Duplicate the Neighbourhood.
         for (E edge : this.edges) {
             //Check if the current Edge contains the Vertex-Id.
-            if (edge.conectsVertex(vertexID)) {
+            if (edge.connectsVertex(vertexID)) {
                 //Add the duplicated-Vertex to the List of connectedVertices.
                 edge.addVertex(duplicateVertex.getID());
             }
@@ -278,6 +286,9 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param verticesIDs The List of the given VertricesID's.
      */
     public void contractVertices(List<Integer> verticesIDs) {
+//        for (Integer vertexID : verticesIDs) {
+//            this.removeVertex(vertexID);
+//        }
     }
 
     /**
