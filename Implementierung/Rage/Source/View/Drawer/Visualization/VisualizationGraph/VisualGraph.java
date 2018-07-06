@@ -111,15 +111,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * be generated automatically by searching for the next unused Vertex-ID.
      */
     public void addVertex() {
-        //Sort the List of VisualVertices after their ID.
-        ArrayList<V> sortedList = new ArrayList<>();
-        sortedList.addAll(this.vertices);
-        sortedList.sort((V v1, V v2) -> v1.getID() - v2.getID());
-
-        //Get the highest Numbered ID and get the next higher int as the ID of the Vertex that will be added.
-        Integer highestID = sortedList.get(sortedList.size() - 1).getID();
-
-        VisualVertex newVisualVertex = new VisualVertex(highestID + 1);
+        VisualVertex newVisualVertex = new VisualVertex(this.getFreeVertexID());
 
         this.addVertex((V) newVisualVertex);
     }
@@ -297,6 +289,21 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
                 }
             }
         }
+    }
+
+    //
+    // Other Methods
+    //
+    private Integer getFreeVertexID() {
+        //Sort the List of VisualVertices after their ID.
+        ArrayList<V> sortedList = new ArrayList<>();
+        sortedList.addAll(this.vertices);
+        sortedList.sort((V v1, V v2) -> v1.getID() - v2.getID());
+
+        //Get the highest Numbered ID and get the next higher int as the ID of the Vertex that will be added.
+        Integer highestID = sortedList.get(sortedList.size() - 1).getID();
+
+        return highestID + 1;
     }
 
     //
