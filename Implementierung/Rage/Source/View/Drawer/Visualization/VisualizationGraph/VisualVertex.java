@@ -43,7 +43,7 @@ public class VisualVertex {
      *
      * @return the value of ID
      */
-    private Integer getID() {
+    public Integer getID() {
         return this.ID;
     }
 

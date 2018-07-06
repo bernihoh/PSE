@@ -226,6 +226,21 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param order The order the Vertex should be set to.
      */
     public void setVertexOrder(Integer vertexID, Integer order) {
+        //Go through all Vertices and look for the given VertexID at the List.
+        for (V vertex : this.vertices) {
+            if (vertex.getID() == vertexID) {
+                //Found the given VertexID.
+                //Get the Position of the Vertex.
+                int currentVertexPosition = this.vertices.indexOf(vertex);
+                //Check if the current-Position is already the position that should be set.
+                if (currentVertexPosition != order) {
+                    //Delete the Vertex at the Old Position.
+                    this.vertices.remove(currentVertexPosition);
+                    //Change the Position to the given Order.
+                    this.vertices.add(order, vertex);
+                }
+            }
+        }
     }
 
     //
@@ -274,7 +289,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @return the value of edges
      */
     public List<E> getEdges() {
-        return edges;
+        return this.edges;
     }
 
 }
