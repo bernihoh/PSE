@@ -83,6 +83,19 @@ public class VisualEdge {
     }
 
     /**
+     * Checks if the given List of Vertex-ID's are the same as the Vertices this
+     * Edge is connecting.
+     *
+     * @return If the given Vertice-ID's are the same as the ones of this Edge
+     * returns true, else false.
+     * @param connectedVerticesIDs The Edge of which the connected-Vertices
+     * should be checked with.
+     */
+    public Boolean connectsSame(List<Integer> connectedVerticesIDs) {
+        return null;
+    }
+
+    /**
      * This Method overwrites the standard toString-Method.
      *
      * @return It returns a String-Representation of this VisualEdge.

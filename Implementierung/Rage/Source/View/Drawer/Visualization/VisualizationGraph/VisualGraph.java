@@ -233,7 +233,8 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      *
      * @param edge The Edge of the VisualGraph that should be removed.
      */
-    public void removeEdge(VisualEdge edge) {
+    public void removeEdge(E edge) {
+        this.edges.remove(edge);
     }
 
     /**
@@ -243,6 +244,11 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * between, that should be removed.
      */
     public void removeEdge(List<Integer> verticesIDs) {
+        for (E edge : this.edges) {
+            if (edge.connectsSame(verticesIDs)) {
+                this.removeEdge(edge);
+            }
+        }
     }
 
     /**
