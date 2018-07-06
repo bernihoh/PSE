@@ -157,7 +157,19 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * Check if this Edge contains valid VertexID's and if it only connects
      * Vertices that are not currently connected.
      */
-    public void addEdge(VisualEdge edge) {
+    public void addEdge(E edge) {
+        //Check if the List is null.
+        if (this.edges == null) {
+            this.edges = new ArrayList<>();
+        }
+
+        //Check if the given Edge is already at the List and therefore cannot be added.
+        if (this.edges.contains(edge)) {
+            //Given vertex already at the List.
+            System.out.println("The given Edge is already at the Graph.");
+        } else {
+            this.edges.add(edge);
+        }
     }
 
     /**
@@ -168,6 +180,9 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param edges A List of Edges that should be added.
      */
     public void addEdges(List<E> edges) {
+        for (E edge : edges) {
+            this.addEdge(edge);
+        }
     }
 
     /**
@@ -176,10 +191,12 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * This is done by creating an new VisualEdge-Object with the given List as
      * Parameter and then calling the addEdge-Method.
      *
-     * @param vertriceIDs The List of Vertice-ID's that should be connected by
+     * @param verticeIDs The List of Vertice-ID's that should be connected by
      * Edge that should be added.
      */
-    public void addEdge(List<Integer> vertriceIDs) {
+    public void addEdge(List<Integer> verticeIDs) {
+        VisualEdge newEdge = new VisualEdge(verticeIDs);
+        this.edges.add((E) newEdge);
     }
 
     /**
