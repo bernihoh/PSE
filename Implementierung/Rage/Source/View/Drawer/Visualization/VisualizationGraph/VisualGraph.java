@@ -1,8 +1,8 @@
 package Source.View.Drawer.Visualization.VisualizationGraph;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class VisualGraph This is the VisualGraph. It is the Graph-Construct that is
@@ -208,6 +208,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param vertex The Vertex that should be removed.
      */
     public void removeVertex(VisualVertex vertex) {
+        this.vertices.remove(vertex);
     }
 
     /**
@@ -220,6 +221,11 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * the Graph.
      */
     public void removeVertex(Integer vertexID) {
+        for (V vertex : this.vertices) {
+            if (Objects.equals(vertex.getID(), vertexID)) {
+                this.removeVertex(vertex);
+            }
+        }
     }
 
     /**
@@ -272,7 +278,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
     public void setVertexOrder(Integer vertexID, Integer order) {
         //Go through all Vertices and look for the given VertexID at the List.
         for (V vertex : this.vertices) {
-            if (vertex.getID() == vertexID) {
+            if (Objects.equals(vertex.getID(), vertexID)) {
                 //Found the given VertexID.
                 //Get the Position of the Vertex.
                 int currentVertexPosition = this.vertices.indexOf(vertex);
