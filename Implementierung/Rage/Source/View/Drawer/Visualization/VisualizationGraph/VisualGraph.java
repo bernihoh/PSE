@@ -1,5 +1,7 @@
 package Source.View.Drawer.Visualization.VisualizationGraph;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -63,31 +65,32 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
     }
 
     /**
-     * Add a new Vertex to the List of Vertices of this Graph.
-     *
-     * If the List is not instanciated yet this will be done.
-     *
-     * To add a new Vertex this Method searches for the next unused Integer-ID
-     * that could be used for a new Node and created the VisualVertex-Object
-     * with this Parameter. This created Object will be added to the List.
-     */
-    public void addVertex() {
-    }
-
-    /**
      * Add the given Vertice to the List of Vertices.
      *
      * If the List is not instanciated yet this will be done.
      *
-     * Also it is checked that the Vertex-ID is not already used by another
-     * Vertex. If so the given Vertex will not be added.
+     * Also it is checked that the Vertex is not already used by another Vertex.
+     * If so the given Vertex will not be added.
      *
      * @return If the Vertex-ID was added this Method returns true, otherwise
      * false.
      * @param vertex The Vertex that should be added to this Graph.
      */
-    public Boolean addVertex(VisualVertex vertex) {
-        return null;
+    public Boolean addVertex(V vertex) {
+        //Check if the List is null.
+        if (this.vertices == null) {
+            this.vertices = new ArrayList<>();
+        }
+
+        //Check if the given Vertex is already at the List and therefore cannot be added.
+        if (this.vertices.contains(vertex)) {
+            //Given vertex already at the List.
+            System.out.println("The given Vertex is already at the Graph.");
+            return false;
+        } else {
+            this.vertices.add(vertex);
+            return true;
+        }
     }
 
     /**
@@ -98,6 +101,27 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param vertices The List of Vertices that should be added to the List.
      */
     public void addVertices(List<V> vertices) {
+        for (V vertex : vertices) {
+            this.addVertex(vertex);
+        }
+    }
+
+    /**
+     * Add a new Vertex to the List of Vertices of this graph. The Vertex will
+     * be generated automatically by searching for the next unused Vertex-ID.
+     */
+    public void addVertex() {
+        //Sort the List of VisualVertices after their ID.
+        ArrayList<V> sortedList = new ArrayList<>();
+        sortedList.addAll(this.vertices);
+        sortedList.sort((V v1, V v2) -> v1.getID() - v2.getID());
+
+        //Get the highest Numbered ID and get the next higher int as the ID of the Vertex that will be added.
+        Integer highestID = sortedList.get(sortedList.size() - 1).getID();
+
+        VisualVertex newVisualVertex = new VisualVertex(highestID + 1);
+
+        this.addVertex((V) newVisualVertex);
     }
 
     /**
@@ -108,6 +132,9 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param amount The amount of Vertices the user wants to add to this Graph.
      */
     public void addVerticesAmount(Integer amount) {
+        for (int a = 0; a < amount; a++) {
+            this.addVertex();
+        }
     }
 
     /**
