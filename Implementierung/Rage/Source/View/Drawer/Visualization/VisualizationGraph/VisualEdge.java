@@ -93,6 +93,18 @@ public class VisualEdge {
     }
 
     /**
+     * Replace the given currentVertexId with the given newVertexId at the List
+     * of connected Vertices.
+     *
+     * @param currentVertexId The VertexId that will be replaced.
+     * @param newVertexId The Vertex Id that replaces.
+     */
+    public void replaceVertex(Integer currentVertexId, Integer newVertexId) {
+        int position = this.connectedVerticesID.indexOf(currentVertexId);
+        this.connectedVerticesID.set(position, newVertexId);
+    }
+
+    /**
      * Get the value of connectedVerticesID This List contains all Vertices-ID's
      * from the Vertices this Edge connects.
      *
