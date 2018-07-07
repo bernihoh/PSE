@@ -12,34 +12,63 @@ import java.util.List;
 public class Main {
 
   public static void main(String[] args)  {
-     // DataPool<SimpleUndirectedGraph,SimpleUndirectedEdge,Heuristic<SimpleUndirectedGraph>> pool = new DataPool<>();
+     TestBase base = new TestImpl();
+     OtherImpl other = new OtherImpl();
+     base.test(other);
+
+      // DataPool<SimpleUndirectedGraph,SimpleUndirectedEdge,Heuristic<SimpleUndirectedGraph>> pool = new DataPool<>();
       // DataPool<Graph<Edge>,Edge,Heuristic<Graph<Edge>>> pool2 =
         //      new DataPool<>();
-      TCGreedy<SimpleUndirectedGraph<SimpleUndirectedEdge>,SimpleUndirectedEdge> greedy= new
-              TCGreedy<>();
-      greedy.testToke(null);
-      Class clazz = greedy.getClass();
+     // TCGreedy<SimpleUndirectedGraph<SimpleUndirectedEdge>,SimpleUndirectedEdge> greedy= new
+       //       TCGreedy<>();
+      TCGreedy<SimpleUndirectedGraph<SimpleUndirectedEdgeNamed>,SimpleUndirectedEdgeNamed> greedy = null;
+      //greedy.testToke(null);
+      //Class clazz = greedy.getClass();
+      Class clazz = TCGreedy.class;
       TestH hyperHeuristic = new TestH();
       try {
-          greedy = (TCGreedy<SimpleUndirectedGraph<SimpleUndirectedEdge>,SimpleUndirectedEdge>) clazz.newInstance();
+          greedy = (TCGreedy<SimpleUndirectedGraph<SimpleUndirectedEdgeNamed>,SimpleUndirectedEdgeNamed>) clazz.newInstance();
           greedy.applyTo(null);
       } catch (InstantiationException e) {
           e.printStackTrace();
       } catch (IllegalAccessException e) {
           e.printStackTrace();
       }
+
       System.out.println("-----------");
       HeuristicContainer container =HeuristicContainer.getInstance();
       container.registerByClass2(clazz);
       container.registerByClass2(hyperHeuristic.getClass());
       container.listHeuristicsForGraphType(null);
+      SimpleUndirectedGraph<SimpleUndirectedEdge> gtest = null;//class;
+
+      //Integer.class;
+      //G
+      //((SimpleUndirectedGraph.class <SimpleUndirectedEdge>.class;
       System.out.println("-----------");
       //Class<? extends TestH> cl = hyperHeuristic.getClsass();
-      //Class<? extends TCGreedy> grcl = greedy.getClass();
-      //container.getHeuristicByClass(greedy.getClass());
+      //Class<? extensds TCGreedy> grcl = greedy.getClass();
+      Heuristic<? extends Graph, ? extends Edge> heu = container.getHeuristicByClass(greedy.getClass(),
+              SimpleUndirectedGraph.class,
+              SimpleUndirectedEdge.class);
+
+      greedy = (TCGreedy<SimpleUndirectedGraph<SimpleUndirectedEdgeNamed>, SimpleUndirectedEdgeNamed>) heu;
+
+      greedy.testToke(null);
+
+      SimpleUndirectedGraphBuilder<SimpleUndirectedGraph<SimpleUndirectedEdgeNamed>,SimpleUndirectedEdgeNamed>
+              myBuilder = new SimpleUndirectedGraphBuilder<>();
+      GraphProperties properties = new GraphProperties();
+      properties.setMaxDegree(20);
+      properties.setNumOfVertices(10);
+      properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+      SimpleUndirectedGraph<SimpleUndirectedEdgeNamed> genGraph = myBuilder.generateGraph(properties);
+      greedy.applyTo(genGraph);
+
+
       System.out.println("-----------");
-      SimpleUndirectedGraph<SimpleUndirectedEdge> simpleGraph = new SimpleUndirectedGraph<SimpleUndirectedEdge>();
-        greedy.applyTo(simpleGraph);
+      //SimpleUndirectedGraph<SimpleUndirectedEdge> simpleGraph = new SimpleUndirectedGraph<SimpleUndirectedEdge>();
+        //greedy.applyTo(simpleGraph);
       //Heuristic<? extends Graph<? extends Edge>> he = new TCGreedy(){};
       //pool.poolTest((Heuristic<SimpleUndirectedGraph>) he);
       //SimpleUndirectedHeuristic<SimpleUndirectedGraph> hg;
@@ -59,16 +88,16 @@ public class Main {
       //Example of the Heuristic Container
       SimpleUndirectedGraph g = null;//graphBuilder.generateSimpleUndirectedGraph(100,900,0);
 
-      GraphProperties properties = new GraphProperties();
-      properties.setMaxDegree(20);
-      properties.setNumOfVertices(10);
-      properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+      //GraphProperties properties = new GraphProperties();
+      //properties.setMaxDegree(20);
+      //properties.setNumOfVertices(10);
+      //properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
 
-      Graph graph = RageGraphLibrary.getInstance().getGraphBuilder().generateGraph(properties);
+      //Graph graph = RageGraphLibrary.getInstance().getGraphBuilder().generateGraph(properties);
 
 
-      SimpleUndirectedGraph uGraph = (SimpleUndirectedGraph) graph;
-      greedy.applyTo(uGraph);
+      //SimpleUndirectedGraph uGraph = (SimpleUndirectedGraph) graph;
+      //greedy.applyTo(uGraph);
      // h.applyTo(uGraph);
 
       //GraphBuilder graphBuilder = GraphBuilder.simpleUndirectedGraphBuilder();

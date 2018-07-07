@@ -15,7 +15,7 @@ public class RageGraphLibrary {
 
     public void init() {
         GraphBuilder.getInstance().registerGraphBuilder(
-                GraphType.SIMPLE_UNDIRECTED_GRAPH,SimpleUndirectedGraphBuilder.class);
+                GraphType.SIMPLE_UNDIRECTED_GRAPH.toString(),SimpleUndirectedGraphBuilder.class);
     }
 
     public DataPoolFactory getDataPoolFactory() {

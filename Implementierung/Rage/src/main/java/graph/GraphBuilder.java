@@ -14,7 +14,7 @@ public class GraphBuilder {
         public static GraphBuilder instance = new GraphBuilder();
     }
 
-    protected void registerGraphBuilder(GraphType type,Class<?> builder){
+    protected void registerGraphBuilder(String type,Class<?> builder){
         builderContainer.put(type.toString(),builder);
     }
 

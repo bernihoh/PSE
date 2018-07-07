@@ -71,12 +71,18 @@ public class HeuristicContainer {
       }
     }
 
-    public <G extends Graph<E>, E extends Edge> Heuristic<G,E> getHeuristicByClass(Class<Heuristic<G,E>> clazz) {
+    public  Heuristic<? extends Graph,? extends Edge>
+        getHeuristicByClass(Class<? extends Heuristic> clazz,
+                            Class<? extends Graph> graphClazz,
+                            Class<? extends Edge> edgeClazz) {
         Class<? extends Heuristic<?,?>> h = heuristics.get(clazz.getName());
         try {
             Heuristic<?,?> o = h.newInstance();
-            if (o.isCastable(clazz)) {
+
+            if (o.isCastable(graphClazz,edgeClazz)) {
                 System.out.println("Applyable");
+                Heuristic<?,?> retH = (Heuristic<?, ?>) o;
+                return retH;
             }
 
         } catch (InstantiationException e) {

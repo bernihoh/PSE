@@ -26,9 +26,10 @@ public abstract class Heuristic<G extends Graph<E>,E extends Edge>{
          }
          return false;
      }
-    public <G2 extends Graph<E2>,E2 extends Edge> boolean isCastable(Class<? extends Heuristic<G2,E2>> clazz) {
-     if (graphTypeToken.getRawType().getName().equals(clazz.getName()) &&
-            edgeTypeToken.getRawType().getName().equals((clazz.getName()))) {
+    public boolean isCastable(
+            Class<? extends Graph> graphClazz,Class<? extends Edge> edgeClazz) {
+     if (graphTypeToken.getRawType().getName().equals( graphClazz.getName()) &&
+            edgeTypeToken.getRawType().getName().equals((edgeClazz.getName()))) {
         return true;
     }
          return false;

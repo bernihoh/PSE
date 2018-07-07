@@ -5,6 +5,7 @@
  */
 package graph;
 
+import com.google.common.reflect.TypeToken;
 import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -13,12 +14,16 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author Thomas Fischer
  */
-public class SimpleUndirectedGraphBuilder extends
+public class SimpleUndirectedGraphBuilder<G extends SimpleUndirectedGraph<E>,E extends SimpleUndirectedEdge> extends
         GraphBuilder {
     static private XoRoShiRo128PlusRandom randomGen = new XoRoShiRo128PlusRandom();
     static private ThreadLocalRandom randomGen2 ;//= new ThreadLocalRandom();
 
-    protected SimpleUndirectedGraphBuilder() {
+    protected final TypeToken<E> edgeTypeToken = new TypeToken<E>(getClass()) {};
+    protected final TypeToken<G> graphTypeToken = new TypeToken<G>(getClass()) {};
+
+
+    public SimpleUndirectedGraphBuilder() {
 
     }
 
@@ -88,19 +93,19 @@ public class SimpleUndirectedGraphBuilder extends
         return vertex;
     }
     @Override
-    public Graph generateGraph(GraphProperties properties) {
+    public G generateGraph(GraphProperties properties) {
         properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
-        return generateUndirectedGraph(properties);
+        return (G) generateUndirectedGraph(properties);
     }
 
     // @Override
-    private SimpleUndirectedGraph generateUndirectedGraph(GraphProperties properties) {
+    private G generateUndirectedGraph(GraphProperties properties) {
         int maxDegree = properties.getMaxDegree();
         int nOfVertices = properties.getNumOfVertices();
         return generateGraph(nOfVertices,maxDegree,0);
     }
 
-    public  SimpleUndirectedGraph generateGraph(
+    public  G generateGraph(
             int nOfVertices, int maxDegree, int minDegree)  {
 
         long startTime = System.currentTimeMillis();
@@ -197,8 +202,19 @@ public class SimpleUndirectedGraphBuilder extends
                }
             }
         }
+        G g2 = null;
+        try {
+            Object o = graphTypeToken.getRawType().newInstance();
+            g2 = (G) o;
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         SimpleUndirectedGraph g = new SimpleUndirectedGraph();
-        
+
+
+
         for (int i=0;i<nOfVertices;i++) {
             for (int j=0;j<nOfVertices;j++) {
                 if (adjMatrix[i][j]==1) {
@@ -221,7 +237,7 @@ public class SimpleUndirectedGraphBuilder extends
         //g.createEdge(0, 3);        
         //g.createEdge(4, 2);        
         g.createEdge(0, 4);        */
-        return g;   
+        return g2;
     }
 
     //@Override
