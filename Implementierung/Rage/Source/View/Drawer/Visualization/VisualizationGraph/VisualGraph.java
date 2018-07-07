@@ -286,9 +286,18 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param verticesIDs The List of the given VertricesID's.
      */
     public void contractVertices(List<Integer> verticesIDs) {
-//        for (Integer vertexID : verticesIDs) {
-//            this.removeVertex(vertexID);
-//        }
+        VisualVertex contractionVertex = new VisualVertex(this.getFreeVertexID());
+
+        for (Integer vertexID : verticesIDs) {
+            //Remove the Vertex from every Edge.
+            for (E edge : this.edges) {
+                edge.replaceVertex(vertexID, contractionVertex.getID());
+            }
+
+            //Remove this currently considered Vertex from the Graph.
+            this.removeVertex(vertexID);
+            //Because the VertexId is replaced at every Edge this only sould have removed the Vertex from the List.
+        }
     }
 
     /**
