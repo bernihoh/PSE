@@ -1,20 +1,85 @@
 package application;
 
-import graph.*;
-import heuristic.Heuristic;
-import heuristic.HeuristicContainer;
-import heuristic.SimpleUndirectedHeuristic;
-import heuristic.totalColoring.greedy.TCGreedy;
-import heuristic.totalColoring.greedy.TestH;
 
-import java.util.List;
+import model.graph.*;
+import model.heuristic.Heuristic;
+import model.heuristic.SimpleTestHeuristic;
+import model.heuristic.SimpleUndirectedHeuristic;
 
 public class Main {
 
   public static void main(String[] args)  {
-     TestBase base = new TestImpl();
-     OtherImpl other = new OtherImpl();
-     base.test(other);
+     //TestBase base = new TestImpl();
+     //OtherImpl other = new OtherImpl();
+     //base.test(other);
+
+
+
+
+      //-----------------------------
+      //generate heuristics
+      //-----------------------------
+      Heuristic h = new SimpleUndirectedHeuristic();
+      Heuristic testH = new SimpleTestHeuristic();
+
+      //-----------------------------
+      //generate graph
+      //-----------------------------
+      GraphProperties properties = new GraphProperties();
+      properties.setMaxDegree(300);
+      properties.setNumOfVertices(100);
+      properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+      GraphBuilder builder = GraphBuilder.getGraphBuilder(properties);
+      Graph graph = builder.generateGraph(properties);
+
+      properties.setMaxDegree(300);
+      properties.setNumOfVertices(100);
+      properties.setGraphType(GraphType.TEST_GRAPH);
+      builder = GraphBuilder.getGraphBuilder(properties);
+      Graph testGraph = builder.generateGraph(properties);
+
+      //DataPool<SimpleUndirectedGraph> pool = DataPool.create();
+      //DataPool<SimpleUndirectedGraph> pool = new DataPool<SimpleUndirectedGraph>() {};
+      DataPool<SimpleUndirectedGraph> pool = DataPool.createSimpleUndirectedDataPool();
+      DataPool<SimpleUndirectedTestGraph> poolTest = DataPool.createTestDataPool();
+      boolean ret;
+      System.out.println("**************");
+      System.out.println("running pool 1 (SimpleUndirectedGraph)");
+      System.out.println("**************");
+      pool.addGraph((SimpleUndirectedGraph) graph);
+      ret = pool.addHeuristic(testH);
+      System.out.println("adding Simple Test Heuristic:"+ret);
+      ret = pool.addHeuristic(h);
+      System.out.println("adding Simple Undirected Heuristic:"+ret);
+      System.out.println("running heuristics:");
+      pool.runHeuristics();
+
+      System.out.println("**************");
+      System.out.println("running pool 2(SimpleUndirectedTestGraph extends SimpleUndirectedGraph)");
+      System.out.println("**************");
+
+        poolTest.addGraph((SimpleUndirectedTestGraph) testGraph);
+      ret = poolTest.addHeuristic(testH);
+      System.out.println("adding Simple Test Heuristic:"+ret);
+      ret = poolTest.addHeuristic(h);
+      System.out.println("adding Simple Undirected Heuristic:"+ret);
+      System.out.println("running heuristics:");
+      poolTest.runHeuristics();
+
+
+
+
+   /*   Class listClass = ArrayList.class;
+
+      try {
+
+          ArrayList list = (ArrayList) listClass.newInstance();
+
+      } catch (InstantiationException e) {
+          e.printStackTrace();
+      } catch (IllegalAccessException e) {
+          e.printStackTrace();
+      }
 
       // DataPool<SimpleUndirectedGraph,SimpleUndirectedEdge,Heuristic<SimpleUndirectedGraph>> pool = new DataPool<>();
       // DataPool<Graph<Edge>,Edge,Heuristic<Graph<Edge>>> pool2 =
@@ -93,16 +158,16 @@ public class Main {
       //properties.setNumOfVertices(10);
       //properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
 
-      //Graph graph = RageGraphLibrary.getInstance().getGraphBuilder().generateGraph(properties);
+      //Graph generic.model.graph = RageGraphLibrary.getInstance().getGraphBuilder().generateGraph(properties);
 
 
-      //SimpleUndirectedGraph uGraph = (SimpleUndirectedGraph) graph;
+      //SimpleUndirectedGraph uGraph = (SimpleUndirectedGraph) generic.model.graph;
       //greedy.applyTo(uGraph);
      // h.applyTo(uGraph);
 
       //GraphBuilder graphBuilder = GraphBuilder.simpleUndirectedGraphBuilder();
 
-
+*/
       //SimpleUndirectedGraph undirectedGraph = (SimpleUndirectedGraph) graphBuilder.generateGraph(properties);
       //System.out.println(properties.getGraphType().toString());
       return;
@@ -132,7 +197,7 @@ public class Main {
       try {          
           if (pluginClass != null)
               c.registerByClass(pluginClass);
-          c.registerByName("heuristic.totalColoring.greedy.TCGreedy");
+          c.registerByName("generic.heuristic.totalColoring.greedy.TCGreedy");
           c.registerByClass(TestH.class);
           c.registerByClass(NotWorkingHeuristic.class);
           // TODO Auto-generated method stub
@@ -146,15 +211,15 @@ public class Main {
       
       System.out.println("--------------------");
       try {
-          TCGreedy greedy = (TCGreedy) c.createSimpleUndirectedHeuristicByName("heuristic.totalColoring.greedy.TCGreedy");
-          Heuristic heuristic = c.createSimpleUndirectedHeuristicByClass(pluginClass);
-          if (heuristic != null) {
-              System.out.print("Running plugin heuristic. Output:");
-              heuristic.applyTo(null);
+          TCGreedy greedy = (TCGreedy) c.createSimpleUndirectedHeuristicByName("generic.heuristic.totalColoring.greedy.TCGreedy");
+          Heuristic generic.heuristic = c.createSimpleUndirectedHeuristicByClass(pluginClass);
+          if (generic.heuristic != null) {
+              System.out.print("Running plugin generic.heuristic. Output:");
+              generic.heuristic.applyTo(null);
           }
           //TCGreedy greedy = new TCGreedy();
           if (greedy != null) {
-              System.out.print("Running greedy heuristic. Output:");
+              System.out.print("Running greedy generic.heuristic. Output:");
             
             HeuristicResult result = greedy.applyTo(g);
             System.out.println("-");

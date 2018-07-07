@@ -5,8 +5,8 @@
  */
 package plugins;
 
-import graph.SimpleUndirectedGraph;
-import heuristic.SimpleUndirectedHeuristic;
+import generic.graph.SimpleUndirectedGraph;
+import generic.heuristic.SimpleUndirectedHeuristic;
 
 /**
  *
@@ -16,7 +16,7 @@ public class TCPluginHeuristic implements SimpleUndirectedHeuristic{
 
     @Override
     public void applyTo(SimpleUndirectedGraph g) {
-        System.out.println("plugin heuristic");
+        System.out.println("plugin generic.heuristic");
     }
     
   
