@@ -2,6 +2,7 @@ package application;
 
 
 import model.graph.*;
+import model.graph.testing.*;
 import model.heuristic.Heuristic;
 import model.heuristic.SimpleTestHeuristic;
 import model.heuristic.SimpleUndirectedHeuristic;
@@ -9,6 +10,14 @@ import model.heuristic.SimpleUndirectedHeuristic;
 public class Main {
 
   public static void main(String[] args)  {
+/*      TPool<TSimpleGraphNamed,TSimpleEdge,TSimpleHeuristic> tpool = new TPool<>();
+      THeuristic<?,?> heuristicBase = new TSimpleHeuristic();
+      TSimpleHeuristic th = (TSimpleHeuristic)heuristicBase;
+
+      TSimpleGraphNamed tgNamed = null;
+      tpool.add(th);
+      tpool.add(tgNamed);*/
+
      //TestBase base = new TestImpl();
      //OtherImpl other = new OtherImpl();
      //base.test(other);
@@ -82,7 +91,7 @@ public class Main {
       }
 
       // DataPool<SimpleUndirectedGraph,SimpleUndirectedEdge,Heuristic<SimpleUndirectedGraph>> pool = new DataPool<>();
-      // DataPool<Graph<Edge>,Edge,Heuristic<Graph<Edge>>> pool2 =
+      // DataPool<TGraph<Edge>,Edge,Heuristic<TGraph<Edge>>> pool2 =
         //      new DataPool<>();
      // TCGreedy<SimpleUndirectedGraph<SimpleUndirectedEdge>,SimpleUndirectedEdge> greedy= new
        //       TCGreedy<>();
@@ -113,7 +122,7 @@ public class Main {
       System.out.println("-----------");
       //Class<? extends TestH> cl = hyperHeuristic.getClsass();
       //Class<? extensds TCGreedy> grcl = greedy.getClass();
-      Heuristic<? extends Graph, ? extends Edge> heu = container.getHeuristicByClass(greedy.getClass(),
+      Heuristic<? extends TGraph, ? extends Edge> heu = container.getHeuristicByClass(greedy.getClass(),
               SimpleUndirectedGraph.class,
               SimpleUndirectedEdge.class);
 
@@ -134,7 +143,7 @@ public class Main {
       System.out.println("-----------");
       //SimpleUndirectedGraph<SimpleUndirectedEdge> simpleGraph = new SimpleUndirectedGraph<SimpleUndirectedEdge>();
         //greedy.applyTo(simpleGraph);
-      //Heuristic<? extends Graph<? extends Edge>> he = new TCGreedy(){};
+      //Heuristic<? extends TGraph<? extends Edge>> he = new TCGreedy(){};
       //pool.poolTest((Heuristic<SimpleUndirectedGraph>) he);
       //SimpleUndirectedHeuristic<SimpleUndirectedGraph> hg;
       //pool2.poolTest(hg);
@@ -146,7 +155,7 @@ public class Main {
       //GraphBuilderReflect graphBuilder = RageGraphLibrary.getInstance().getGraphBuilder();
       //GraphBuilderReflect<SimpleUndirectedGraph,SimpleUndirectedEdge> b =
         //      new GraphBuilderReflect<SimpleUndirectedGraph,SimpleUndirectedEdge>() {};
-      //Graph<SimpleUndirectedEdge> g2 =b.generateGraph((GraphProperties) null);
+      //TGraph<SimpleUndirectedEdge> g2 =b.generateGraph((GraphProperties) null);
      // SimpleUndirectedGraph g = (SimpleUndirectedGraph) b.generateGraph((GraphProperties) null);
       //SimpleUndirectedGraph g3 = (SimpleUndirectedGraph) g2;
       //b.generateGraph(null);
@@ -158,7 +167,7 @@ public class Main {
       //properties.setNumOfVertices(10);
       //properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
 
-      //Graph generic.model.graph = RageGraphLibrary.getInstance().getGraphBuilder().generateGraph(properties);
+      //TGraph generic.model.graph = RageGraphLibrary.getInstance().getGraphBuilder().generateGraph(properties);
 
 
       //SimpleUndirectedGraph uGraph = (SimpleUndirectedGraph) generic.model.graph;

@@ -1,10 +1,11 @@
 package model.graph;
 
-import model.graph.util.GraphBFS;
+import model.graph.util.SimpleUndirectedBFS;
 import model.heuristic.Heuristic;
 
 public class SimpleUndirectedTestGraph extends SimpleUndirectedGraph {
-    public SimpleUndirectedTestGraph(GraphBFS bfsImpl) {
+
+    public SimpleUndirectedTestGraph(SimpleUndirectedBFS bfsImpl) {
         super(bfsImpl);
     }
 

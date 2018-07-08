@@ -6,9 +6,9 @@
 package model.graph;
 
 import model.graph.util.RandomNumberGenerator;
-import model.graph.util.SimpleUndirectedGraphBFS;
+import model.graph.util.SimpleUndirectedBFSImpl;
 
-/**  Abstract Factory for building different Graph types.
+/**  Abstract Factory for building different TGraph types.
  *
  * @author Thomas Fischer
  */
@@ -86,7 +86,7 @@ public class SimpleUndirectedGraphBuilder extends GraphBuilder {
 
         long startTime = System.currentTimeMillis();
 
-        SimpleUndirectedGraph graph = new SimpleUndirectedGraph(new SimpleUndirectedGraphBFS());
+        SimpleUndirectedGraph graph = new SimpleUndirectedGraph(new SimpleUndirectedBFSImpl());
 
         int[][] adjMatrix = new int[nOfVertices][nOfVertices];
 
@@ -192,7 +192,7 @@ public class SimpleUndirectedGraphBuilder extends GraphBuilder {
 
         long stopTime = System.currentTimeMillis();
         long runTime = stopTime - startTime;
-        System.out.println("Graph gen run time: " + runTime);
+        System.out.println("TGraph gen run time: " + runTime);
 
         return graph;
     }

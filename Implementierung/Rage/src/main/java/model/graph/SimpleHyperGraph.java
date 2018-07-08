@@ -1,13 +1,12 @@
 package model.graph;
 
-import model.graph.util.GraphBFS;
 import model.heuristic.Heuristic;
 
 import java.util.List;
 
 public class SimpleHyperGraph extends Graph<SimpleHyperEdge> {
-    public SimpleHyperGraph(GraphBFS bfsImpl) {
-        super(bfsImpl);
+    public SimpleHyperGraph() {
+
     }
 
     @Override

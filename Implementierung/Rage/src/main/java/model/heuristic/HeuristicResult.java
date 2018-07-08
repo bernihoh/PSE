@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package generic.heuristic;
+package model.heuristic;
 
-import generic.graph.Edge;
-import generic.graph.Graph;
+
+import model.graph.Edge;
+import model.graph.Graph;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,11 +22,11 @@ public class HeuristicResult {
     private final boolean success;
     private final Map<String,String> resultValues = new HashMap<>();
      private final Map<Edge,Integer> edgeColors;
-    private final Map<Integer,Integer> vertexColors;    
-    
-    public HeuristicResult(Graph g, Heuristic h,boolean success, 
-            Map<Edge,Integer> edgeColors,
-            Map<Integer,Integer> vertexColors ) {
+    private final Map<Integer,Integer> vertexColors;
+
+    public HeuristicResult(Graph g, Heuristic h, boolean success,
+                           Map<Edge,Integer> edgeColors,
+                           Map<Integer,Integer> vertexColors ) {
         graph = g;
         heuristic = h;
         this.success = success;

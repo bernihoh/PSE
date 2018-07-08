@@ -6,7 +6,6 @@
 package model.graph;
 
 import com.google.common.reflect.TypeToken;
-import model.graph.util.GraphBFS;
 import model.heuristic.Heuristic;
 
 import java.util.ArrayList;
@@ -22,13 +21,13 @@ import java.util.TreeSet;
 public abstract class Graph<E extends Edge> {
     protected List<E> edges = new ArrayList<>();
     protected SortedSet<Integer> vertices = new TreeSet<>();
-    protected GraphBFS bfsImpl;
+    //protected GraphBFS bfsImpl;
 
     protected final TypeToken<E> edgeTypeToken = new TypeToken<E>(getClass()) {};
 
-    public Graph(GraphBFS bfsImpl) {
-        this.bfsImpl = bfsImpl;
-    }
+    //public Graph(GraphBFS bfsImpl) {
+       // this.bfsImpl = bfsImpl;
+    //}
 
     public abstract void applyHeuristic(Heuristic heuristic);
 
@@ -48,10 +47,14 @@ public abstract class Graph<E extends Edge> {
     public int getNumberOfVertices() {
         return vertices.size();
     };
-    
+
     public List<Integer> getVerticesBFS(Integer startVertex) {
-        return bfsImpl.getBFSVertices();
-    };
+        return new ArrayList<>();
+    }
+    
+    //public List<Integer> getVerticesBFS(Integer startVertex) {
+      //  return bfsImpl.getBFSVertices();
+    //};
     
     public abstract int maxDegree();
 

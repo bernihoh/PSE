@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package generic.heuristic.totalColoring.greedy;
+package model.heuristic.greedy;
 
-import generic.graph.Edge;
-import generic.graph.SimpleUndirectedEdge;
-import generic.graph.SimpleUndirectedGraph;
-import generic.heuristic.HeuristicResult;
-import generic.heuristic.SimpleUndirectedHeuristic;
+import model.graph.Edge;
+import model.graph.SimpleUndirectedGraph;
+import model.heuristic.HeuristicResult;
+import model.heuristic.SimpleUndirectedHeuristic;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,28 +18,11 @@ import java.util.Map;
  *
  * @author tfi
  */
-//public class TCGreedy<G extends SimpleUndirectedGraph<? extends SimpleUndirectedEdge>> extends SimpleUndirectedHeuristic<G> {
-public class TCGreedy<G extends SimpleUndirectedGraph<E>,E extends SimpleUndirectedEdge> extends SimpleUndirectedHeuristic<G,E> {
+public class TCGreedy extends SimpleUndirectedHeuristic {
+    //public HeuristicResult
 
-
-    public TCGreedy() {
-        super(null);
-    }
-
-    @Override
-    public HeuristicResult applyTo(G g) {
-        //super.applyTo(g);
-        //System.out.println("CLAZZ:" + graphTypeToken.getRawType().getClass().toString());
-        System.out.println("Greedy CLAZZ2:" + graphTypeToken.getRawType().toString());
-        testToke(g);
-        try {
-            Object o = graphTypeToken.getRawType().newInstance();
-            System.out.println(o.getClass().getName());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+   @Override
+    public HeuristicResult applyTo(SimpleUndirectedGraph g) {
         boolean success = false;
 
         Map<Edge, Integer> edgeColors = new HashMap<>();

@@ -5,37 +5,30 @@
  */
 package model.heuristic;
 
-import com.google.common.reflect.TypeToken;
-import generic.graph.Edge;
-import generic.heuristic.HeuristicResult;
-import model.graph.Graph;
-import model.graph.SimpleHyperGraph;
-import model.graph.SimpleUndirectedGraph;
-import model.graph.SimpleUndirectedTestGraph;
+import model.graph.*;
 
 /**
  *
  * @author Thomas Fischer
  */
 public abstract class Heuristic{
-
      public  HeuristicResult applyTo(Graph g) {
          //TODO: throw exception
-         System.out.println("Unsupported Graph Type");
+         System.out.println("Unsupported TGraph Type");
          return null;
      };
 
 
      public  HeuristicResult applyTo(SimpleUndirectedGraph g) {
          //TODO: throw exception
-         System.out.println("Unsupported Graph Type:simpleUndirectedGraph");
+         System.out.println("Unsupported TGraph Type:simpleUndirectedGraph");
          return null;
 
      }
 
     public  HeuristicResult applyTo(SimpleHyperGraph g) {
         //TODO: throw exception
-        System.out.println("Unsupported Graph Type:simpleHyperGraph");
+        System.out.println("Unsupported TGraph Type:simpleHyperGraph");
         return null;
 
     }
