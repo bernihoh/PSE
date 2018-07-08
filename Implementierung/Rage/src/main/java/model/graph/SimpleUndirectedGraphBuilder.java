@@ -73,20 +73,27 @@ public class SimpleUndirectedGraphBuilder extends GraphBuilder {
         return vertex;
     }
 
+    @Override
     public SimpleUndirectedGraph generateGraph(GraphProperties properties) {
         //properties.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+        long startTime = System.currentTimeMillis();
         int maxDegree = properties.getMaxDegree();
         int nOfVertices = properties.getNumOfVertices();
-        return generateGraph(nOfVertices,maxDegree,0);
+        int[][] adjMatrix = generateGraphAsMatrix(nOfVertices,maxDegree,0);
+        SimpleUndirectedGraph graph = transformMatrixToGraph(adjMatrix);
+        long stopTime = System.currentTimeMillis();
+        long runTime = stopTime - startTime;
+        System.out.println("TGraph gen run time: " + runTime);
+        return graph;
     }
 
 
-    private  SimpleUndirectedGraph generateGraph(
+    protected  int[][]  generateGraphAsMatrix(
             int nOfVertices, int maxDegree, int minDegree)  {
 
-        long startTime = System.currentTimeMillis();
 
-        SimpleUndirectedGraph graph = new SimpleUndirectedGraph(new SimpleUndirectedBFSImpl());
+
+
 
         int[][] adjMatrix = new int[nOfVertices][nOfVertices];
 
@@ -181,19 +188,19 @@ public class SimpleUndirectedGraphBuilder extends GraphBuilder {
             }
         }
 
-        for (int i=0;i<nOfVertices;i++) {
-            for (int j=0;j<nOfVertices;j++) {
+        return adjMatrix;
+    }
+
+    protected SimpleUndirectedGraph transformMatrixToGraph(int[][] adjMatrix) {
+        SimpleUndirectedGraph graph = new SimpleUndirectedGraph(new SimpleUndirectedBFSImpl());
+        for (int i=0;i<adjMatrix.length;i++) {
+            for (int j=0;j<adjMatrix[i].length;j++) {
                 if (adjMatrix[i][j]==1) {
                     graph.createEdge(i, j);
                     adjMatrix[j][i]=0;
                 }
             }
         }
-
-        long stopTime = System.currentTimeMillis();
-        long runTime = stopTime - startTime;
-        System.out.println("TGraph gen run time: " + runTime);
-
         return graph;
     }
 }

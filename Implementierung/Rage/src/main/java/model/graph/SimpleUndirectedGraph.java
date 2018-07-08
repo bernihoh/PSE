@@ -43,6 +43,9 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
                     adjMatrix[sue.getSecondVertex()][sue.getFirstVertex()] = pos;
                 } catch (ClassCastException ex) {
                     ex.printStackTrace();
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    //TODO: vertices need to be contracted, there is one vertex id not used
+                    ex.printStackTrace();
                 }
                 pos++;
 

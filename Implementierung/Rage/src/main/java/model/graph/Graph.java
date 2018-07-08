@@ -60,21 +60,5 @@ public abstract class Graph<E extends Edge> {
     public abstract int maxDegree();
 
     public abstract int degree(Integer vertex);
-
-    public E createEdge() {
-        System.out.println("creating Edge of type "+edgeTypeToken.getRawType().getName());
-        /*try {
-
-           // E e = (E) edgeTypeToken.getRawType().newInstance();
-
-           // return e;
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }*/
-        return null;
-
-    }
     
 }
