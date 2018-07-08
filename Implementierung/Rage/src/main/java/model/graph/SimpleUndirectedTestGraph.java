@@ -2,6 +2,7 @@ package model.graph;
 
 import model.graph.util.SimpleUndirectedBFS;
 import model.heuristic.Heuristic;
+import model.heuristic.HeuristicResult;
 
 public class SimpleUndirectedTestGraph extends SimpleUndirectedGraph {
 
@@ -10,7 +11,8 @@ public class SimpleUndirectedTestGraph extends SimpleUndirectedGraph {
     }
 
     @Override
-    public void applyHeuristic(Heuristic heuristic) {
-        heuristic.applyTo(this);
+    public HeuristicResult applyHeuristic(Heuristic heuristic) {
+        return heuristic.applyTo(this);
+
     }
 }

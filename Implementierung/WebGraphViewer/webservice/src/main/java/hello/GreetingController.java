@@ -1,28 +1,26 @@
 package hello;
 
 import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import model.graph.*;
+import model.heuristic.Heuristic;
+import model.heuristic.HeuristicContainer;
+import model.heuristic.HeuristicResult;
+import model.heuristic.greedy.TCGreedy;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import graph.Graph;
-import graph.GraphBuilder;
+
 import java.util.List;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
-import heuristic.HeuristicContainer;
-import heuristic.HeuristicResult;
-import heuristic.totalColoring.greedy.TCGreedy;
-import heuristic.Heuristic;
 
 
 @RestController
@@ -30,7 +28,7 @@ public class GreetingController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
-    private  Graph g;
+    private Graph g;
     @CrossOrigin
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
@@ -59,26 +57,27 @@ public class GreetingController {
         logger.info("Request runHeuristic received");
         if (g == null) return null;
 
-         HeuristicContainer c =  HeuristicContainer.getInstance();
-         HeuristicResult result = null;
-         try {
-          Heuristic greedy =  c.createSimpleUndirectedHeuristicByClass(TCGreedy.class);          
+        Heuristic heuristic = null;
+        try {
+            heuristic = HeuristicContainer.getInstance().getHeuristicForGraphByClass(SimpleUndirectedGraph.class, TCGreedy.class);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+        if (heuristic == null) return  null;
+        HeuristicResult result = g.applyHeuristic(heuristic);
          
-          //TCGreedy greedy = new TCGreedy();
-          if (greedy != null) {
-              System.out.print("Running greedy heuristic. Output:");            
-              result = greedy.applyTo(g);            
-          }
-      } catch (InstantiationException | IllegalAccessException ex) {
-        logger.info("SEVERE ERROR");          
 
-      }
+
+
         if (result == null) return null;
-        List<graph.Edge> edges = result.getGraph().getEdges();
+
+        List<model.graph.Edge> edges = result.getGraph().getEdges();
         List<Integer> vertices = result.getGraph().getVertices();
         Integer n= 0;
         GraphData gd = new GraphData();
-        for (graph.Edge e : edges) {
+        for (model.graph.Edge e : edges) {
             List<Integer> l = e.getVertices();
             Integer i1 = l.get(0);
             Integer i2 = l.get(1);
@@ -131,13 +130,21 @@ public class GreetingController {
 		//@RequestParam("nOfVertices") int nOfVertices
 		) {
     	logger.info("Request Graph received");
-	
-		g = GraphBuilder.generateSimpleUndirectedGraph(nOfVertices,maxDegree,0);
-        List<graph.Edge> edges = g.getEdges();
+    	GraphProperties prop = new GraphProperties();
+    	prop.setMaxDegree(maxDegree);
+    	prop.setNumOfVertices(nOfVertices);
+    	prop.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+        g = GraphBuilder.getGraphBuilder(prop).generateGraph(prop);
+
+
+
+		//g = GraphBuilder.generateSimpleUndirectedGraph(nOfVertices,maxDegree,0);
+        List<model.graph.Edge> edges = g.getEdges();
         List<Integer> vertices = g.getVertices();
 		Integer n= 0;
 		GraphData gd = new GraphData();
-        for (graph.Edge e : edges) {
+        for (model.graph.Edge e : edges) {
+
 			List<Integer> l = e.getVertices();
 			Integer i1 = l.get(0);
 			Integer i2 = l.get(1);

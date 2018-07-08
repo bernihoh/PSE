@@ -2,6 +2,7 @@ package model.graph;
 
 import model.graph.util.SimpleUndirectedBFS;
 import model.heuristic.Heuristic;
+import model.heuristic.HeuristicResult;
 
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
     }
 
     @Override
-    public void applyHeuristic(Heuristic heuristic) {
-        heuristic.applyTo(this);
+    public HeuristicResult applyHeuristic(Heuristic heuristic) {
+        return heuristic.applyTo(this);
     }
 
     public List<Integer> getVerticesBFS(Integer startVertex) {

@@ -7,6 +7,7 @@ package model.graph;
 
 import com.google.common.reflect.TypeToken;
 import model.heuristic.Heuristic;
+import model.heuristic.HeuristicResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public abstract class Graph<E extends Edge> {
        // this.bfsImpl = bfsImpl;
     //}
 
-    public abstract void applyHeuristic(Heuristic heuristic);
+    public abstract HeuristicResult applyHeuristic(Heuristic heuristic);
 
     public List<E> getEdges() {
         return edges;

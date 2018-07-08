@@ -1,6 +1,7 @@
 package model.graph;
 
 import model.heuristic.Heuristic;
+import model.heuristic.HeuristicResult;
 
 import java.util.List;
 
@@ -10,8 +11,9 @@ public class SimpleHyperGraph extends Graph<SimpleHyperEdge> {
     }
 
     @Override
-    public void applyHeuristic(Heuristic heuristic) {
-        heuristic.applyTo(this);
+    public HeuristicResult applyHeuristic(Heuristic heuristic) {
+        return heuristic.applyTo(this);
+
     }
 
     @Override

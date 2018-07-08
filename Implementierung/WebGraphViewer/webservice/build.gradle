@@ -26,6 +26,6 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-	compile fileTree(dir: 'libs', include: '*.jar')
+	compile fileTree(dir: '/../../Rage/build/libs', include: '*all*.jar')
     compile("org.springframework.boot:spring-boot-starter-web")        
 }
