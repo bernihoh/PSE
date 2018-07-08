@@ -1,13 +1,9 @@
-<!doctype html>
-<html ng-app="demo" ng-controller="Hello">
-	<head>
-		<title>Hello AngularJS</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    	<script src="graph.js"></script>
-		<script src="sigma-factory.js"></script>
-		<script src="sigma-controller.js"></script>
-		
-		  <script type="text/javascript">
+<!DOCTYPE html>
+<html ng-app="demo">
+<head>
+  <title>Basic sigma.js example</title>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>-->
+  <script type="text/javascript">
   function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -15,27 +11,28 @@
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
-  
-    <script src="graph.js"></script>  
+}
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="graph_d.js"></script>  
   <style type="text/css">
     body {
       margin: 0;
     }
     #container {
       position: absolute;
-      top :100px;
-      left :30px;
+      top :200px;
+      left :00px;
       
       width: 50%;
       height: 50%;
       border:1px solid black;
     }
   </style>
+</head>
+<body>
   
-	</head>
-
-	<body>
- <script src="./sigma/src/sigma.core.js"></script>
+  <script src="./sigma/src/sigma.core.js"></script>
 <script src="./sigma/src/conrad.js"></script>
 <script src="./sigma/src/utils/sigma.utils.js"></script>
 <script src="./sigma/src/utils/sigma.polyfills.js"></script>
@@ -82,20 +79,31 @@
 <script src="./sigma/src/misc/sigma.misc.bindDOMEvents.js"></script>
 <script src="./sigma/src/misc/sigma.misc.drawHovers.js"></script>
 
-<script src="../plugins/sigma.renderers.edgeLabels/settings.js"></script>
-<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
-<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
-<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>	
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/settings.js"></script>
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
+
 
 <div id="container">  
 
 </div>
+<select ng-model="address" ng-options="x for x in addresses" ng-disabled="dis_heur_sel"></select>
 <div ng-controller="Hello">
-<p><button ng-click="bfs()"  ng-disabled="dis_bfs" >BFS</button></p>
+nOfVertice:<br>
+  <input type="text" name="nOfVertices" ng-model="nOfVertices"><br>
+MaxDegree:<br>
+  <input type="text" name="maxDegree" ng-model="maxDegree">
+
+<div><button ng-click="genGraph()" >Gen Graph</button>
+<select ng-model="selectedGraphType" ng-options="x for x in graphTypes"></select>
 </div>
-		<div ng-controller="Hello">
-			<p>The ID is {{greeting.id}}</p>
-			<p>The content is {{greeting.content}}</p>
-		</div>
-	</body>
+<div>
+<button ng-click="runHeuristic()" ng-disabled="dis_heuristic" >runHeuristic</button>
+<select ng-model="selectedHeuristic" ng-options="x for x in heuristics" ng-disabled="dis_heur_sel"></select>
+</div>
+<div><button ng-click="bfs()"  ng-disabled="dis_bfs" >BFS</button> <button ng-click="bfs_next()" ng-disabled="dis_bfs_next" >BFS-Next</button></div>
+</div>
+
+</body>
 </html>
