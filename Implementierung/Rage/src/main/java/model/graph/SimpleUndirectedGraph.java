@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
-    private int[][] adjMatrix;
-    private boolean adjMatrixValid = false;
-    private SimpleUndirectedBFS bfsImpl = null;
+    protected int[][] adjMatrix;
+    protected boolean adjMatrixValid = false;
+    protected SimpleUndirectedBFS bfsImpl = null;
 
     public SimpleUndirectedGraph(SimpleUndirectedBFS bfsImpl) {
         this.bfsImpl = bfsImpl;
@@ -85,7 +85,8 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
     }
 
     public SimpleUndirectedEdge createEdge(Integer vertex1, Integer vertex2) {
-        //adjMatrixValid = false;
+        //TODO make protected method to invalidade matrix
+        adjMatrixValid = false;
         SimpleUndirectedEdge e = new SimpleUndirectedEdge(vertex1, vertex2);
         vertices.add(vertex1);
         vertices.add(vertex2);

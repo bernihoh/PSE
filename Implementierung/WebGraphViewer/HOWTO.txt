@@ -7,8 +7,8 @@ gradle muss installiert sein
 4. unter localhost:8080/graph.html kann das ui benutzt werden
 
 
-die befehler in den *.bat sollten auch unter mac/linux laufen.
+die befehle in den *.bat sollten auch unter mac/linux laufen.
 
-Alternative hab ich eine version der webservices auf einem internet host laufen:
+Alternative hab ich eine version der webservices und der applikation auf einem internet host laufen:
 1. frontend\start.bat ausführen ->startet lokalen webserver mit der ui(benutzt den port 8080)
 2. unter localhost:8080/index.html kann das ui benutzt werden

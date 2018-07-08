@@ -21,7 +21,7 @@ public class SimpleUndirectedTestGraph extends SimpleUndirectedGraph {
          return createLabeledEdge(vertex1, vertex2,"");
     }
     public SimpleUndirectedLabeledEdge createLabeledEdge(Integer vertex1, Integer vertex2,String label) {
-        //adjMatrixValid = false;
+        adjMatrixValid = false;
         SimpleUndirectedLabeledEdge e = new SimpleUndirectedLabeledEdge(vertex1, vertex2,label);
         vertices.add(vertex1);
         vertices.add(vertex2);
