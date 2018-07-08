@@ -4,6 +4,7 @@ apply plugin: 'eclipse'
 apply plugin: 'application'
 
 mainClassName='application.Main'
+//mainClassName='sample.Main'
 
 version = '0.1'
 jar {
@@ -21,12 +22,47 @@ run {
     main = 'application.Main'
 }
 
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+    }
+}
+
+
+
+apply plugin: 'javafx-gradle-plugin'
+
+
+
 
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
+jfx {
+    // minimal requirement for jfxJar-task
+    mainClass = 'fxsample.Main'
+
+    // minimal requirement for jfxNative-task
+    vendor = 'YourName'
+}
+
+sourceSets.main {
+    java {
+        srcDir 'src/main/java' //assume that your source codes are inside this path
+    }
+    resources {
+        srcDirs = ['src/main/java', 'src/main/resources']
+        exclude "**/*.java"
+    }
+}
 
 
 dependencies {

@@ -23,8 +23,6 @@ public class Main {
      //base.test(other);
 
 
-
-
       //-----------------------------
       //generate heuristics
       //-----------------------------
