@@ -1,5 +1,6 @@
 gradle muss installiert sein
 
+
 1. webservice\build.bat ausführen
 2. webservice\start.bat ausführen (benutzt den port 8090)
 3. frontend\start.bat ausführen (benutzt den port 8080)
