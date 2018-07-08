@@ -1,6 +1,8 @@
 package model.graph;
 
-public class GraphProperties extends GenericGraphProperties {
+import model.graph.util.Properties;
+
+public class GraphProperties extends Properties {
     public enum PropertyKey {
         GRAPH_TYPE("GraphType"),
         NUMBER_OF_VERTICES("NumOfVertices"),

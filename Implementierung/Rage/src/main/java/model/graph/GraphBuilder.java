@@ -16,6 +16,7 @@ public abstract class GraphBuilder {
     private static class Holder {
         public static GraphBuilder simpleUndirectedInstance = new SimpleUndirectedGraphBuilder(new XoRoShiRandomGenerator());
         public static GraphBuilder simpleTestInstance = new SimpleTestGraphBuilder(new XoRoShiRandomGenerator());
+        public static GraphBuilder simpleHyperInstance = new SimpleHyperGraphBuilder();
       //  public static GraphBuilder simpleHyperInstance = new GraphBuilder();
     }
 
@@ -29,7 +30,7 @@ public abstract class GraphBuilder {
             case SIMPLE_UNDIRECTED_GRAPH:
                 return Holder.simpleUndirectedInstance;
             case SIMPLE_HYPER_GRAPH:
-                return null;
+                return Holder.simpleHyperInstance;
             case TEST_GRAPH:
                 return Holder.simpleTestInstance;
             default:

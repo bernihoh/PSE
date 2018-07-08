@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.graph;
+package model.graph.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author Thomas Fischer
  */
-public class GenericGraphProperties {
+public class Properties {
     protected Map<String,String> properties = new HashMap();
 
     public void setProperty(String id,String value) {

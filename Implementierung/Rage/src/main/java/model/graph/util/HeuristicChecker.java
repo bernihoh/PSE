@@ -20,6 +20,11 @@ public class HeuristicChecker {
     }
     public static boolean isApplicable(Heuristic h, Class<?> graphClazz) {
         Class clazz = h.getClass();
+        return isApplicable(clazz,graphClazz);
+    }
+
+    public static boolean isApplicable(Class<? extends Heuristic> heuristicClazz, Class<?> graphClazz) {
+        Class clazz = heuristicClazz;
         Method[] allMethods = clazz.getDeclaredMethods();
         for (Method m:allMethods) {
             if (m.getName().equals(APPLY_METHOD_NAME)) {
@@ -47,7 +52,6 @@ public class HeuristicChecker {
 
             }
         }
-
         return false;
     }
 }

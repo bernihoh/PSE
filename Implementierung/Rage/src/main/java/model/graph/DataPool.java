@@ -18,11 +18,15 @@ public class DataPool<G extends Graph> {
 
     //}
 
-    public void addGraph(G g) {
+    public boolean addGraph(G g) {
+        if (g== null) return false;
         graphList.add(g);
+        return true;
     }
 
     public boolean addHeuristic(Heuristic h) {
+        if (h == null)
+            return false;
         //does the heuristic run on the graph?
         //Class<?> graphClass = graphTypeToken.getRawType().getClass();
         if (HeuristicChecker.isApplicable(h,graphTypeToken.getRawType().getTypeName())) {

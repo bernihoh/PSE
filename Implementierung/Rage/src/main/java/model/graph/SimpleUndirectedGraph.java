@@ -22,7 +22,7 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
     }
 
     public List<Integer> getVerticesBFS(Integer startVertex) {
-        return bfsImpl.getVerticesBFS(startVertex,this);
+        return bfsImpl.getVerticesBFS(startVertex, this);
     }
 
     public int[][] getAdjMatrix() {
@@ -56,13 +56,13 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
         int[][] adjMatrix = getAdjMatrix();
         List<Integer> l = new ArrayList<>();
         if (vertex <= adjMatrix.length) {
-            for (int i=0;i<adjMatrix.length;i++) {
+            for (int i = 0; i < adjMatrix.length; i++) {
                 if (adjMatrix[vertex][i] > -1) {
                     l.add(i);
                 }
             }
             return l;
-        }else {
+        } else {
             //TODO: exception?
             return l;
         }
@@ -77,10 +77,11 @@ public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
     @Override
     public int degree(Integer vertex) {
         return 0;
+
     }
 
     public SimpleUndirectedEdge createEdge(Integer vertex1, Integer vertex2) {
-       //adjMatrixValid = false;
+        //adjMatrixValid = false;
         SimpleUndirectedEdge e = new SimpleUndirectedEdge(vertex1, vertex2);
         vertices.add(vertex1);
         vertices.add(vertex2);
