@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic sigma.js example</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    #container {
+      position: absolute;
+      top :100px;
+      left :30px;
+      
+      width: 50%;
+      height: 50%;
+      border:1px solid black;
+    }
+  </style>
+</head>
+<body>
+  
+  <script src="./sigma/src/sigma.core.js"></script>
+<script src="./sigma/src/conrad.js"></script>
+<script src="./sigma/src/utils/sigma.utils.js"></script>
+<script src="./sigma/src/utils/sigma.polyfills.js"></script>
+<script src="./sigma/src/sigma.settings.js"></script>
+<script src="./sigma/src/classes/sigma.classes.dispatcher.js"></script>
+<script src="./sigma/src/classes/sigma.classes.configurable.js"></script>
+<script src="./sigma/src/classes/sigma.classes.graph.js"></script>
+<script src="./sigma/src/classes/sigma.classes.camera.js"></script>
+<script src="./sigma/src/classes/sigma.classes.quad.js"></script>
+<script src="./sigma/src/classes/sigma.classes.edgequad.js"></script>
+<script src="./sigma/src/captors/sigma.captors.mouse.js"></script>
+<script src="./sigma/src/captors/sigma.captors.touch.js"></script>
+<script src="./sigma/src/renderers/sigma.renderers.canvas.js"></script>
+<script src="./sigma/src/renderers/sigma.renderers.webgl.js"></script>
+<script src="./sigma/src/renderers/sigma.renderers.svg.js"></script>
+<script src="./sigma/src/renderers/sigma.renderers.def.js"></script>
+<script src="./sigma/src/renderers/webgl/sigma.webgl.nodes.def.js"></script>
+<script src="./sigma/src/renderers/webgl/sigma.webgl.nodes.fast.js"></script>
+<script src="./sigma/src/renderers/webgl/sigma.webgl.edges.def.js"></script>
+<script src="./sigma/src/renderers/webgl/sigma.webgl.edges.fast.js"></script>
+<script src="./sigma/src/renderers/webgl/sigma.webgl.edges.arrow.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.labels.def.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.hovers.def.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.nodes.def.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edges.def.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edges.curve.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edges.arrow.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edgehovers.def.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edgehovers.curve.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+<script src="./sigma/src/renderers/canvas/sigma.canvas.extremities.def.js"></script>
+<script src="./sigma/src/renderers/svg/sigma.svg.utils.js"></script>
+<script src="./sigma/src/renderers/svg/sigma.svg.nodes.def.js"></script>
+<script src="./sigma/src/renderers/svg/sigma.svg.edges.def.js"></script>
+<script src="./sigma/src/renderers/svg/sigma.svg.edges.curve.js"></script>
+<script src="./sigma/src/renderers/svg/sigma.svg.labels.def.js"></script>
+<script src="./sigma/src/renderers/svg/sigma.svg.hovers.def.js"></script>
+<script src="./sigma/src/middlewares/sigma.middlewares.rescale.js"></script>
+<script src="./sigma/src/middlewares/sigma.middlewares.copy.js"></script>
+<script src="./sigma/src/misc/sigma.misc.animation.js"></script>
+<script src="./sigma/src/misc/sigma.misc.bindEvents.js"></script>
+<script src="./sigma/src/misc/sigma.misc.bindDOMEvents.js"></script>
+<script src="./sigma/src/misc/sigma.misc.drawHovers.js"></script>
+
+<div id="container">
+  
+</div>
+
+  <script>
+    // Let's first initialize sigma:
+    var s = new sigma('container');
+
+    // Then, let's add some data to display:
+    s.graph.addNode({
+      // Main attributes:
+      id: 'n0',
+      label: 'Hello',
+      // Display attributes:
+      x: 0,
+      y: 0,
+      size: 1,
+      color: '#f00'
+    }).addNode({
+      // Main attributes:
+      id: 'n1',
+      label: 'World !',
+      // Display attributes:
+      x: 1,
+      y: 0.5,
+      size: 1,
+      color: '#00f'
+    }).addEdge({
+      id: 'e0',
+      // Reference extremities:
+      source: 'n0',
+      target: 'n1'
+    });
+
+    // Finally, let's ask our sigma instance to refresh:
+    s.refresh();
+  </script>
+</body>
+</html>

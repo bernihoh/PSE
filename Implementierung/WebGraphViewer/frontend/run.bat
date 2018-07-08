@@ -1,0 +1,1 @@
+spring\bin\spring run app.groovy
