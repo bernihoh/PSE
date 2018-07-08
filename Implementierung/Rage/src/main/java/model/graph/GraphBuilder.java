@@ -1,6 +1,7 @@
 package model.graph;
 
 
+import model.graph.util.DefaultRandomGenerator;
 import model.graph.util.XoRoShiRandomGenerator;
 
 import java.util.HashMap;
@@ -14,8 +15,8 @@ public abstract class GraphBuilder {
     }
 
     private static class Holder {
-        public static GraphBuilder simpleUndirectedInstance = new SimpleUndirectedGraphBuilder(new XoRoShiRandomGenerator());
-        public static GraphBuilder simpleTestInstance = new SimpleTestGraphBuilder(new XoRoShiRandomGenerator());
+        public static GraphBuilder simpleUndirectedInstance = new SimpleUndirectedGraphBuilder(new DefaultRandomGenerator());
+        public static GraphBuilder simpleTestInstance = new SimpleTestGraphBuilder(new DefaultRandomGenerator());
         public static GraphBuilder simpleHyperInstance = new SimpleHyperGraphBuilder();
       //  public static GraphBuilder simpleHyperInstance = new GraphBuilder();
     }
