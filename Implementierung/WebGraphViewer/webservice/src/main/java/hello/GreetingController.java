@@ -1,5 +1,6 @@
 package hello;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 import model.graph.*;
@@ -53,14 +54,18 @@ public class GreetingController {
 
     @CrossOrigin
     @GetMapping("/runHeuristic")
-    public GraphData runHeuristic(@RequestParam(value="name", defaultValue="World") String name) {
-        logger.info("Request runHeuristic received");
+    public GraphData runHeuristic(@RequestParam(value="name", defaultValue="model.heuristic.TCGreedy") String name) {
+        logger.info("Request runHeuristic "+name+" received");
+
         if (g == null) return null;
 
         Heuristic heuristic = null;
         try {
-            heuristic = HeuristicContainer.getInstance().getHeuristicForGraphByClass(SimpleUndirectedGraph.class, TCGreedy.class);
+            Class clazz = Class.forName(name);
+            heuristic = HeuristicContainer.getInstance().getHeuristicForGraphByClass(g.getClass(), clazz);
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -85,10 +90,18 @@ public class GreetingController {
               //  System.out.print(i+" ");              
             //}Intexer      
             Integer color = result.getColor(e);
-            Edge edge = new Edge(n.toString(),i1.toString(),i2.toString(),color.toString());
+
+            Edge edge;
+
+            if (g instanceof SimpleUndirectedTestGraph) {
+                SimpleUndirectedLabeledEdge labeledEdge = (SimpleUndirectedLabeledEdge) e;
+                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "",labeledEdge.getLabel());
+            } else {
+                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "","");
+            }
+
             gd.addEdge(edge);
             n = n+1;
-            System.out.println("");
         }
         n= 0;
         double deltaPhi = 2*Math.PI / vertices.size();
@@ -100,7 +113,6 @@ public class GreetingController {
             double y = r*sin(phi)+0.5;
             String sx = String.valueOf(x);
             String sy = String.valueOf(y);
-            System.out.println(x+" "+y);
             Integer color = result.getColor(i);
             Node node = new Node(i.toString(),sx,sy,i.toString(),color.toString());            
             gd.addNode(node);
@@ -120,20 +132,55 @@ public class GreetingController {
 		//return genGraph(3,6);
 		return null;
 	}
+    @CrossOrigin
+    @GetMapping("/getGraphTypeList")
+    public List<String> getGraphTypeList() {
+        List<String> list = new ArrayList<>();
+        list.add("SimpleUndirectedGraph");
+        list.add("SimpleUndirectedLabeledGraph");
+        return list;
+    }
+
+    @CrossOrigin
+    @GetMapping("/getHeuristicList")
+    public List<String> getHeuristicList(){
+        logger.info("Request Heuristic List received");
+        List<String> list = new ArrayList<>();
+        if (g == null) return  list;
+
+        List<Class<? extends Heuristic>> hc = HeuristicContainer.getInstance().getHeuristicClassesForGraph(g.getClass());
+        for (Class<? extends Heuristic> h : hc) {
+            list.add(h.getTypeName());
+            System.out.println(h.getTypeName());
+        }
+        return list;
+
+    }
 
     @CrossOrigin
     @GetMapping("/genGraph")
     public GraphData genGraph(
 		@RequestParam(value="maxDegree", defaultValue="3") int maxDegree,
-		@RequestParam(value="nOfVertices", defaultValue="6") int nOfVertices
+		@RequestParam(value="nOfVertices", defaultValue="6") int nOfVertices,
+        @RequestParam(value="graphType",defaultValue = "SimpleUndirectedGraph") String type
 		//@RequestParam("nOfVertices") int nOfVertices,
 		//@RequestParam("nOfVertices") int nOfVertices
 		) {
+
     	logger.info("Request Graph received");
     	GraphProperties prop = new GraphProperties();
     	prop.setMaxDegree(maxDegree);
     	prop.setNumOfVertices(nOfVertices);
-    	prop.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+    	switch(type) {
+            case "SimpleUndirectedGraph":
+                prop.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+                break;
+            case "SimpleUndirectedLabeledGraph":
+                prop.setGraphType(GraphType.TEST_GRAPH);
+                break;
+            default:
+                prop.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+        }
         g = GraphBuilder.getGraphBuilder(prop).generateGraph(prop);
 
 
@@ -152,10 +199,16 @@ public class GreetingController {
               //  System.out.print(i+" ");				
             //}Intexer		
 			
-			Edge edge = new Edge(n.toString(),i1.toString(),i2.toString(),"");
+			Edge edge;
+			if (g instanceof SimpleUndirectedTestGraph) {
+			    SimpleUndirectedLabeledEdge labeledEdge = (SimpleUndirectedLabeledEdge) e;
+
+                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "",labeledEdge.getLabel());
+            } else {
+                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "","");
+            }
 			gd.addEdge(edge);
 			n = n+1;
-            System.out.println("");
         }
 		n= 0;
 		double deltaPhi = 2*Math.PI / vertices.size();
@@ -167,13 +220,16 @@ public class GreetingController {
 			double y = r*sin(phi)+0.5;
             String sx = String.valueOf(x);
 			String sy = String.valueOf(y);
-			System.out.println(x+" "+y);
 			Node node = new Node(i.toString(),sx,sy,i.toString(),"");            
 			gd.addNode(node);
 			n = n+1;
 			phi+=deltaPhi;
         }
-		
+
+        List<Class<? extends Heuristic>> hc = HeuristicContainer.getInstance().getHeuristicClassesForGraph(g.getClass());
+        for (Class<? extends Heuristic> h : hc) {
+            System.out.println(h.getTypeName());
+        }
     	
 		logger.info(nOfVertices+" "+maxDegree);
     	logger.info("Servlet thread released");
