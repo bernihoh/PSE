@@ -79,10 +79,10 @@
 <script src="./sigma/src/misc/sigma.misc.bindDOMEvents.js"></script>
 <script src="./sigma/src/misc/sigma.misc.drawHovers.js"></script>
 
-<script src="../plugins/sigma.renderers.edgeLabels/settings.js"></script>
-<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
-<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
-<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/settings.js"></script>
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
+<script src="./sigma/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
 
 
 <div id="container">  
@@ -94,7 +94,13 @@ nOfVertice:<br>
 MaxDegree:<br>
   <input type="text" name="maxDegree" ng-model="maxDegree">
 
-<div><button ng-click="genGraph()" >Gen Graph</button><button ng-click="runHeuristic()" ng-disabled="dis_heuristic" >runHeuristic</button></div>
+<div><button ng-click="genGraph()" >Gen Graph</button>
+<select ng-model="selectedGraphType" ng-options="x for x in graphTypes"></select>
+</div>
+<div>
+<button ng-click="runHeuristic()" ng-disabled="dis_heuristic" >runHeuristic</button>
+<select ng-model="selectedHeuristic" ng-options="x for x in heuristics" ng-disabled="dis_heur_sel"></select>
+</div>
 <div><button ng-click="bfs()"  ng-disabled="dis_bfs" >BFS</button> <button ng-click="bfs_next()" ng-disabled="dis_bfs_next" >BFS-Next</button></div>
 </div>
 

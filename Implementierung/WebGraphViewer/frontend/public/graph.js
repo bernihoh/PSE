@@ -2,12 +2,20 @@ angular.module('demo', [])
 .controller('Hello', function($scope, $http) {	
     $http.get('http://localhost:8090/graph').
 	 //$http.get('http://localhost:8090/greeting').
-        then(function(response) {
+        then(function(response) {   
+        	var response = $http.get('http://localhost:8090/getGraphTypeList').
+				then(function(response) {
+					$scope.graphTypes = response.data;
+					$scope.selectedGraphType  = response.data[0];
+				});	
+
+
            $scope.greeting = 'thomas';	
 			
 			$scope.dis_bfs = true;
 			$scope.dis_bfs_next = true;
-			$scope.dis_heuristic = true;
+			$scope.dis_heuristic = true;	
+			$scope.dis_heur_sel = true;		
 			//$scope.s.startForceAtlas2();
         });
 		
@@ -21,7 +29,7 @@ angular.module('demo', [])
 			$scope.s.graph.clear();
 			$scope.s.refresh();								
 			//n.color = '#000';
-			var response = $http.get('http://localhost:8090/runHeuristic').								
+			var response = $http.get('http://localhost:8090/runHeuristic',{params: {'name': $scope.selectedHeuristic}}).								
 			then(function(response) {
 				$scope.re = response;
 				var i;
@@ -48,18 +56,21 @@ angular.module('demo', [])
 			$scope.dis_bfs_next = true;
 				$scope.s = new sigma({ 
 			graph: response.data,
-			container: 'container',
+			renderer: {
+    			container: 'container',
+    			type: 'canvas'
+  			},
 			settings: {
 				defaultNodeColor: '#ec5148',
-				edgeLabelSize: 'proportional'
+				edgeLabelSize: 'proportional',
+				drawEdgeLabels: 'true'
 			}
 			});		   
 			$scope.s.refresh();						
         });			
 		};
 		
-		$scope.genGraph = function() {
-			
+		$scope.genGraph = function() {			
 			
 			if ($scope.s != null) {
 			$scope.s.graph.clear();
@@ -96,21 +107,37 @@ angular.module('demo', [])
 			$scope.dis_bfs = false;
 			$scope.dis_bfs_next = true;
 			$scope.dis_heuristic = false;
-			var response = $http.get('http://localhost:8090/genGraph',{params: {'nOfVertices': nOfVertices,'maxDegree':maxDegree}}).
+			var response = $http.get('http://localhost:8090/genGraph',{params: {'nOfVertices': nOfVertices,'maxDegree':maxDegree,
+				'graphType':$scope.selectedGraphType}}).
 				then(function(response) {
+					$scope.dis_heur_sel = false;		
 						$scope.s = new sigma({ 
 			graph: response.data,
-			container: 'container',
+			renderer: {
+    			container: 'container',
+    			type: 'canvas'
+  			},
+			//container: 'container',
+			//type: 'canvas',
 			settings: {
 				defaultNodeColor: '#ec5148',
-				edgeLabelSize: 'proportional'
+				edgeLabelSize: 'proportional',
+				drawEdgeLabels: 'true'
 			}
 			});		   
+			var i;			
 			$scope.s.refresh();			
-					
+			var response = $http.get('http://localhost:8090/getHeuristicList').
+				then(function(response) {
+					$scope.heuristics = response.data;
+					$scope.selectedHeuristic  = response.data[0];
+				});		
 				
 			
-		});};
+		});
+				
+
+		};
 		
 		$scope.bfs = function() {
 			$scope.dis_bfs = true;
