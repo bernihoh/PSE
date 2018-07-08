@@ -193,7 +193,6 @@ public class SimpleTestGraphBuilder extends GraphBuilder {
         long stopTime = System.currentTimeMillis();
         long runTime = stopTime - startTime;
         System.out.println("TestGraph gen run time: " + runTime);
-
         return graph;
     }
 }
