@@ -10,11 +10,11 @@
     <content>
         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="-Infinity" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints/>
+                <RowConstraints maxHeight="-Infinity" valignment="BOTTOM" />
             </rowConstraints>
             <children>
                 <SplitPane dividerPositions="0.26002055498458376" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
@@ -145,7 +145,7 @@
                     </GridPane.margin>
                 </SplitPane>
                 <!-- Import the MenuBar-->
-                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml"/>
+                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </content>

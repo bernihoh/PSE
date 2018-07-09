@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <Tab text="Statistik" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <content>
@@ -17,14 +18,14 @@
                 <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <!-- Import the MenuBar-->
-                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml" />
                 <TableView fx:id="tableStatistics">
                     <columns>
                         <TableColumn prefWidth="75.0" text="Eigenschaft" />
                         <TableColumn prefWidth="75.0" text="Wert" />
                     </columns>
                 </TableView>
+                <!-- Import the MenuBar-->
+                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </content>
