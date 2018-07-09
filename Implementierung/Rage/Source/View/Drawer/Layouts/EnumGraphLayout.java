@@ -21,6 +21,6 @@ package Source.View.Drawer.Layouts;
  * recompile the Pogram and therefore can expand the Enum as well.
  *
  */
-public enum GraphLayoutEnum {
+public enum EnumGraphLayout {
 
 }
