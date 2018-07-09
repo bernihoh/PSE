@@ -1,6 +1,7 @@
 package Source.View.Drawer.Visualization.VisualizationGraph;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -114,6 +115,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * This Return-Value is needed so that the duplicate-Method could get's the
      * ID of the newly added Vertex.
      */
+    @SuppressWarnings("unchecked")
     public V addVertex() {
         VisualVertex newVisualVertex = new VisualVertex(this.getFreeVertexID());
 
@@ -192,6 +194,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @param verticeIDs The List of Vertice-ID's that should be connected by
      * Edge that should be added.
      */
+    @SuppressWarnings("unchecked")
     public void addEdge(List<Integer> verticeIDs) {
         VisualEdge newEdge = new VisualEdge(verticeIDs);
         this.edges.add((E) newEdge);
@@ -375,7 +378,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @return the value of vertices
      */
     public List<V> getVertices() {
-        return this.vertices;
+        return Collections.unmodifiableList(this.vertices);
     }
 
     /**
@@ -394,7 +397,7 @@ public class VisualGraph<V extends VisualVertex, E extends VisualEdge> {
      * @return the value of edges
      */
     public List<E> getEdges() {
-        return this.edges;
+        return Collections.unmodifiableList(this.edges);
     }
 
 }

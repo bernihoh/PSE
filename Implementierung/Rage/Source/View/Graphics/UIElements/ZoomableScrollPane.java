@@ -1,111 +1,99 @@
+package Source.View.Graphics.UIElements;
 
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.transform.Scale;
 
 /**
  * Class ZoomableScrollPane
- * @author
-https://www.pixelduke.com/2012/09/16/zooming-inside-a-scrollpane/
+ *
+ * @author https://www.pixelduke.com/2012/09/16/zooming-inside-a-scrollpane/
  */
 public class ZoomableScrollPane {
 
-  //
-  // Fields
-  //
+    //
+    // Fields
+    //
+    public Group zoomGroup;
 
-  public uCrEnQqDIUZVj zoomGroup;
-  
-  //
-  // Constructors
-  //
-  public ZoomableScrollPane () { };
-  
-  //
-  // Methods
-  //
+    //
+    // Constructors
+    //
+    public ZoomableScrollPane() {
+    }
 
+    //
+    // Methods
+    //
+    //
+    // Accessor methods
+    //
+    /**
+     * Set the value of zoomGroup
+     *
+     * @param newVar the new value of zoomGroup
+     */
+    public void setZoomGroup(Group newVar) {
+        zoomGroup = newVar;
+    }
 
-  //
-  // Accessor methods
-  //
+    /**
+     * Get the value of zoomGroup
+     *
+     * @return the value of zoomGroup
+     */
+    public Group getZoomGroup() {
+        return zoomGroup;
+    }
 
-  /**
-   * Set the value of zoomGroup
-   * @param newVar the new value of zoomGroup
-   */
-  public void setZoomGroup (uCrEnQqDIUZVj newVar) {
-    zoomGroup = newVar;
-  }
+    //
+    // Other methods
+    //
+    /**
+     * This is the Constructor of this Class.
+     *
+     * @param content
+     */
+    public void ZoomableScrollPane(Node content) {
+    }
 
-  /**
-   * Get the value of zoomGroup
-   * @return the value of zoomGroup
-   */
-  public uCrEnQqDIUZVj getZoomGroup () {
-    return zoomGroup;
-  }
+    /**
+     * @return uZD8ZajiFrx8N
+     */
+    public Scale getScaleValue() {
+        return null;
+    }
 
-  //
-  // Other methods
-  //
+    /**
+     */
+    public void zoomToActual() {
+    }
 
-  /**
-   * This is the Constructor of this Class.
-   * @param        content
-   */
-  public void ZoomableScrollPane(uCrEnQqDIUZVj content)
-  {
-  }
+    /**
+     * @param scaleValue
+     */
+    public void zoomTo(Scale scaleValue) {
+    }
 
+    /**
+     */
+    public void zoomActual() {
+    }
 
-  /**
-   * @return       uZD8ZajiFrx8N
-   */
-  public uZD8ZajiFrx8N getScaleValue()
-  {
-  }
+    /**
+     */
+    public void zoomOut() {
+    }
 
+    /**
+     */
+    public void zoomIn() {
+    }
 
-  /**
-   */
-  public void zoomToActual()
-  {
-  }
-
-
-  /**
-   * @param        scaleValue
-   */
-  public void zoomTo(uZD8ZajiFrx8N scaleValue)
-  {
-  }
-
-
-  /**
-   */
-  public void zoomActual()
-  {
-  }
-
-
-  /**
-   */
-  public void zoomOut()
-  {
-  }
-
-
-  /**
-   */
-  public void zoomIn()
-  {
-  }
-
-
-  /**
-   * @param        minimizeOnly
-   */
-  public void zoomToFit(ucZSInXxx8ieP minimizeOnly)
-  {
-  }
-
+    /**
+     * @param minimizeOnly
+     */
+    public void zoomToFit(double minimizeOnly) {
+    }
 
 }

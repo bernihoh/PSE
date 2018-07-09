@@ -13,7 +13,7 @@ import javafx.scene.control.TabPane;
  * FxController. It is the only FxController that communicates with any
  * SuperController and passes on the needed Values to the other FxController.
  */
-public class FxRageController {
+public class FxRageController extends FxController {
 
     //
     // Fields
@@ -68,23 +68,23 @@ public class FxRageController {
     public FxRageController() {
     }
 
-    ;
+    //
+    // Methods
+    //
+    @Override
+    public void init() {
+        //TODO
+    }
 
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of tpRage
-   * The Main-TabPane of the Program.
-   * @param newTabPane the new value of tpRage
-   */
-  private void setTpRage(TabPane newTabPane) {
+    //
+    // Accessor methods
+    //
+    /**
+     * Set the value of tpRage The Main-TabPane of the Program.
+     *
+     * @param newTabPane the new value of tpRage
+     */
+    private void setTpRage(TabPane newTabPane) {
         tpRage = newTabPane;
     }
 

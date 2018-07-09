@@ -1,5 +1,7 @@
 package Source.View.Graphics.UIElements;
 
+import javafx.scene.input.ScrollEvent;
+
 /**
  * Class ZoomHandler
  */
@@ -32,7 +34,7 @@ class ZoomHandler {
   /**
    * @param        scrollEvent
    */
-  public void handle(uCrEnQqDIUZVj scrollEvent) {
+  public void handle(ScrollEvent scrollEvent) {
     }
 
 }

@@ -3,8 +3,11 @@ package Source.Model.Graph;
 /**
  * Class GraphBuilder This class is a factory class to generate graphs of type G
  * by given GraphProperties G as well as to modify graphs of this type.
+ *
+ * @param <E>
+ * @param <G>
  */
-public class GraphBuilder<G extends Graph> {
+public class GraphBuilder<E extends Edge, G extends Graph<E>> {
 
     //
     // Constructors
@@ -22,7 +25,7 @@ public class GraphBuilder<G extends Graph> {
      * @param properties properties the properties which the generated graphs
      * will have
      */
-    public static G generateGraph(G properties) {
+    public G generateGraph(G properties) {
         return null;
     }
 
@@ -36,7 +39,7 @@ public class GraphBuilder<G extends Graph> {
      * @param vertex vertex the index of a vertex of graph, which will be
      * deleted
      */
-    public static G deleteVertex(G graph, Integer vertex) {
+    public G deleteVertex(G graph, Integer vertex) {
         return null;
     }
 
@@ -46,7 +49,7 @@ public class GraphBuilder<G extends Graph> {
      * @return uCrEnQqDIUZVj
      * @param graph graph the graph which is going to be modified
      */
-    public static G addVertex(G graph) {
+    public G addVertex(G graph) {
         return null;
     }
 
@@ -61,7 +64,7 @@ public class GraphBuilder<G extends Graph> {
      * @param vertex1 vertex1 the index of a vertex of graph
      * @param vertex2 vertex2 the index of another vertex of graph
      */
-    public static G swapVertices(G graph, Integer vertex1, Integer vertex2) {
+    public G swapVertices(G graph, Integer vertex1, Integer vertex2) {
         return null;
     }
 
@@ -72,7 +75,7 @@ public class GraphBuilder<G extends Graph> {
      * @param graph graph the graph which is going to be modified
      * @param edge edge the edge which is going to be deleted
      */
-    public static G deleteEdge(G graph, E edge) {
+    public G deleteEdge(G graph, E edge) {
         return null;
     }
 
@@ -89,7 +92,7 @@ public class GraphBuilder<G extends Graph> {
      * @param graph graph the graph which is going to be modified
      * @param edge edge the edge which is going to be inserted
      */
-    public static G addEdge(G graph, E edge) {
+    public G addEdge(G graph, E edge) {
         return null;
     }
 
@@ -99,7 +102,7 @@ public class GraphBuilder<G extends Graph> {
      * @return uCrEnQqDIUZVj
      * @param graph the graph which is going to be modified
      */
-    public static G deleteIsolatedVertices(G graph) {
+    public G deleteIsolatedVertices(G graph) {
         return null;
     }
 
