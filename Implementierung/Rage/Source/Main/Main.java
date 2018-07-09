@@ -1,5 +1,7 @@
 package Source.Main;
 
+import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.stage.Stage;
 
 /**
@@ -8,38 +10,16 @@ import javafx.stage.Stage;
  * This Class will be started by JavaFx. From here everything else will be
  * started and then the Program can work as wished.
  */
-public class Main {
-
-    //
-    // Fields
-    //
-    //
-    // Constructors
-    //
-    public Main() {
-    }
-
-    ;
-
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
+public class Main extends Application {
 
     /**
-   * This Method is the Start-Method of the Application.
-
-It starts the GUI.
-   * @param        primaryStage
-   */
+     * This Method is the Start-Method of the Application.
+     *
+     * It starts the GUI.
+     *
+     * @param primaryStage
+     */
+    @Override
     public void start(Stage primaryStage) {
     }
 
@@ -53,6 +33,7 @@ It starts the GUI.
      * @param args Argument String-Array of the Main-Method.
      */
     public static void main(String[] args) {
+        launch(args);
     }
 
 }
