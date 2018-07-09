@@ -5,7 +5,7 @@ import model.heuristic.HeuristicResult;
 
 import java.util.List;
 
-public class SimpleHyperGraph extends Graph<SimpleHyperEdge> {
+public class SimpleHyperGraph extends Graph {
     public SimpleHyperGraph() {
 
     }

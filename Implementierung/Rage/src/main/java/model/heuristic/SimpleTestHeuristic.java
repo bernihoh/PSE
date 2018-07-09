@@ -1,7 +1,6 @@
 package model.heuristic;
 
 import model.graph.Edge;
-import model.graph.Graph;
 import model.graph.SimpleUndirectedLabeledEdge;
 import model.graph.SimpleUndirectedTestGraph;
 import model.graph.util.SimpleUndirectedBFSImpl;

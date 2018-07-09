@@ -8,7 +8,7 @@ import model.heuristic.HeuristicResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleUndirectedGraph extends Graph<SimpleUndirectedEdge> {
+public class SimpleUndirectedGraph extends Graph {
     protected int[][] adjMatrix;
     protected boolean adjMatrixValid = false;
     protected SimpleUndirectedBFS bfsImpl = null;

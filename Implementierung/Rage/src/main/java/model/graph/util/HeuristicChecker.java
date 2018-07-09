@@ -43,6 +43,7 @@ public class HeuristicChecker {
                 Class parameterClazz = null;
                 try {
                     parameterClazz = Class.forName(t.getTypeName());
+
                     if (parameterClazz.isAssignableFrom(graphClazz)) {
                         return true;
                     }
