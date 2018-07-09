@@ -2,7 +2,6 @@ package application;
 
 
 import model.graph.*;
-import model.graph.testing.*;
 import model.heuristic.Heuristic;
 import model.heuristic.HeuristicContainer;
 import model.heuristic.SimpleTestHeuristic;
