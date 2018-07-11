@@ -1,6 +1,6 @@
-package Source.Controller.LogicController;
+package src.main.java.Controller.LogicController;
 
-import Source.Model.Graph.GraphProperties;
+import src.main.java.Model.Graph.GraphProperties;
 
 /**
  * Class GraphGeneratorController The controller for the graph generation

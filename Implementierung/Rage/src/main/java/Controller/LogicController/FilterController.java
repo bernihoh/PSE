@@ -1,6 +1,6 @@
-package Source.Controller.LogicController;
+package src.main.java.Controller.LogicController;
 
-import Source.Model.Heuristic.HeuristicProperties;
+import src.main.java.Model.Heuristic.HeuristicProperties;
 import java.util.List;
 
 /**

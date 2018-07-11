@@ -1,6 +1,6 @@
-package Source.Controller.ViewController.FxController;
+package src.main.java.Controller.ViewController.FxController;
 
-import Source.Controller.LogicController.HeuristicController;
+import src.main.java.Controller.LogicController.HeuristicController;
 
 /**
  * Class FxHeuristicSettingsController The FxController for the

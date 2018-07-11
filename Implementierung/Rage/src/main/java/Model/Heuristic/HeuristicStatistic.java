@@ -1,4 +1,4 @@
-package Source.Model.Heuristic;
+package src.main.java.Model.Heuristic;
 
 /**
  * Class HeuristicStatistic This class collects some statistics overt the

@@ -1,6 +1,6 @@
-package Source.Model.Heuristic;
+package src.main.java.Model.Heuristic;
 
-import Source.Model.Graph.Graph;
+import src.main.java.Model.Graph.Graph;
 import java.util.List;
 
 /**

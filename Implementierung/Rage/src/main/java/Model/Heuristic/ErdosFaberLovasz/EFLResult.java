@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.ErdosFaberLovasz;
+package src.main.java.Model.Heuristic.ErdosFaberLovasz;
 
 /**
  * Class EFLResult This class represents an edge coloring of a simple hypergraph

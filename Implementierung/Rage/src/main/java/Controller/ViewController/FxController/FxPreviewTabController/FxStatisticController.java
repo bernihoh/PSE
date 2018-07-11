@@ -1,6 +1,6 @@
-package Source.Controller.ViewController.FxController.FxPreviewTabController;
+package src.main.java.Controller.ViewController.FxController.FxPreviewTabController;
 
-import Source.Controller.LogicController.StatisticController;
+import src.main.java.Controller.LogicController.StatisticController;
 import javafx.scene.control.TableView;
 
 /**

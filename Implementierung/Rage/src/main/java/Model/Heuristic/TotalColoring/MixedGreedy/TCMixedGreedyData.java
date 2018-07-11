@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring.MixedGreedy;
+package src.main.java.Model.Heuristic.TotalColoring.MixedGreedy;
 
 /**
  * Class TCMixedGreedyData Since TCData is abstract this class is required such
