@@ -1,8 +1,8 @@
-package Source.View.Drawer.Layouts;
+package src.main.java.View.Drawer.Layouts;
 
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualEdge;
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualVertex;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualEdge;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualVertex;
 
 /**
  * Class GraphLayoutCircle This is the Circle Layout of the Graph. Therfore this

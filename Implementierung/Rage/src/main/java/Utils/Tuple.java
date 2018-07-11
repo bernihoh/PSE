@@ -1,4 +1,4 @@
-package Source.Utils;
+package src.main.java.Utils;
 
 /**
  * Class Tuple This class represents a tuple of two variables x and y of types X

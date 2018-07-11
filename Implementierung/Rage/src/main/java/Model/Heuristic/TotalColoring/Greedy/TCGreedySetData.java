@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring.Greedy;
+package src.main.java.Model.Heuristic.TotalColoring.Greedy;
 
 /**
  * Class TCGreedySetData This class stores for any vertex v the subset of all

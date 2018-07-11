@@ -1,4 +1,4 @@
-package Source.View.Drawer.Visualization.VisualizationGraph;
+package src.main.java.View.Drawer.Visualization.VisualizationGraph;
 
 import javafx.scene.shape.Circle;
 

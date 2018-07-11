@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.ErdosFaberLovasz.Greedy;
+package src.main.java.Model.Heuristic.ErdosFaberLovasz.Greedy;
 
 /**
  * Class EFLGreedyData Since EFLData is abstract this class is required such

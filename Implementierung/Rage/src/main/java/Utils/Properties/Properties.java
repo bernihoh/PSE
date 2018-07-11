@@ -1,4 +1,4 @@
-package Source.Utils.Properties;
+package src.main.java.Utils.Properties;
 
 import java.util.List;
 

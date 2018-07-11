@@ -1,7 +1,7 @@
-package Source.Utils;
+package src.main.java.Utils;
 
-import Source.Model.Graph.Graph;
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.Model.Graph.Graph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
 
 /**
  * Class GraphAdapter

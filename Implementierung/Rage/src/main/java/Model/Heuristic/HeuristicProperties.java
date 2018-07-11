@@ -1,4 +1,4 @@
-package Source.Model.Heuristic;
+package src.main.java.Model.Heuristic;
 
 /**
  * Class HeuristicProperties This class serves as collection of data for

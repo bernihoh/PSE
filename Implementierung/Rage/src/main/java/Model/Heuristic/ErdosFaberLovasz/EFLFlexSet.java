@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.ErdosFaberLovasz;
+package src.main.java.Model.Heuristic.ErdosFaberLovasz;
 
 /**
  * Class EFLFlexSet This class represents a subset of edges of a graph with a

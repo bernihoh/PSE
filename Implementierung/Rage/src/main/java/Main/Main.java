@@ -1,7 +1,13 @@
-package Source.Main;
+package src.main.java.Main;
 
+import src.main.java.Controller.ViewController.FxController.FxRageController;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -21,6 +27,17 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/RaGE_GUI.fxml"));
+            Scene scene = new Scene(loader.load());
+            FxRageController fxRageController = loader.getController();
+            fxRageController.init();
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

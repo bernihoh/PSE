@@ -1,4 +1,4 @@
-package Source.Model.Graph;
+package src.main.java.Model.Graph;
 
 import java.util.List;
 

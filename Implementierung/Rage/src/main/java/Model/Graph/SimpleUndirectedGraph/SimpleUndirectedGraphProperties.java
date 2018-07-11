@@ -1,4 +1,4 @@
-package Source.Model.Graph.SimpleUndirectedGraph;
+package src.main.java.Model.Graph.SimpleUndirectedGraph;
 
 /**
  * Class SimpleUndirectedGraphProperties This class is an extension of the

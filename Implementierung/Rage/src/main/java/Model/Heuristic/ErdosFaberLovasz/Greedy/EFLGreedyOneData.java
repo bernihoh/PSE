@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.ErdosFaberLovasz.Greedy;
+package src.main.java.Model.Heuristic.ErdosFaberLovasz.Greedy;
 
 /**
  * Class EFLGreedyOneData This class stores all uncolored edges with exactly one

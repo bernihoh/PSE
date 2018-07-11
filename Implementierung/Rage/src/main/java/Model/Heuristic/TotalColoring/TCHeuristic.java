@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring;
+package src.main.java.Model.Heuristic.TotalColoring;
 
 /**
  * Class TCHeuristic This abstract class is the abstract interface for a total

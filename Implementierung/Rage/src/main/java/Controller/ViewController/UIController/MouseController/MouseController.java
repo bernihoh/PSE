@@ -1,4 +1,4 @@
-package Source.Controller.ViewController.UIController.MouseController;
+package src.main.java.Controller.ViewController.UIController.MouseController;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
