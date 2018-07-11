@@ -7,7 +7,6 @@ import model.graph.*;
 import model.heuristic.Heuristic;
 import model.heuristic.HeuristicContainer;
 import model.heuristic.HeuristicResult;
-import model.heuristic.greedy.TCGreedy;
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -95,9 +94,9 @@ public class GreetingController {
 
             if (g instanceof SimpleUndirectedTestGraph) {
                 SimpleUndirectedLabeledEdge labeledEdge = (SimpleUndirectedLabeledEdge) e;
-                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "",labeledEdge.getLabel());
+                edge = new Edge("e"+n.toString(), i1.toString(), i2.toString(), "1",labeledEdge.getLabel());
             } else {
-                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "","");
+                edge = new Edge("e"+n.toString(), i1.toString(), i2.toString(), "1","");
             }
 
             gd.addEdge(edge);
@@ -114,7 +113,7 @@ public class GreetingController {
             String sx = String.valueOf(x);
             String sy = String.valueOf(y);
             Integer color = result.getColor(i);
-            Node node = new Node(i.toString(),sx,sy,i.toString(),color.toString());            
+            Node node = new Node(i.toString(),sx,sy,i.toString(),color.toString());
             gd.addNode(node);
             n = n+1;
             phi+=deltaPhi;
@@ -153,6 +152,7 @@ public class GreetingController {
             list.add(h.getTypeName());
             System.out.println(h.getTypeName());
         }
+        System.out.println("size:"+list.size());
         return list;
 
     }
@@ -162,7 +162,7 @@ public class GreetingController {
     public GraphData genGraph(
 		@RequestParam(value="maxDegree", defaultValue="3") int maxDegree,
 		@RequestParam(value="nOfVertices", defaultValue="6") int nOfVertices,
-        @RequestParam(value="graphType",defaultValue = "SimpleUndirectedGraph") String type
+        @RequestParam(value="graphType") String type
 		//@RequestParam("nOfVertices") int nOfVertices,
 		//@RequestParam("nOfVertices") int nOfVertices
 		) {
@@ -174,11 +174,14 @@ public class GreetingController {
     	switch(type) {
             case "SimpleUndirectedGraph":
                 prop.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
+                logger.info("simple undirected");
                 break;
             case "SimpleUndirectedLabeledGraph":
                 prop.setGraphType(GraphType.TEST_GRAPH);
+                logger.info("labeled graph type");
                 break;
             default:
+                logger.info("default graph type");
                 prop.setGraphType(GraphType.SIMPLE_UNDIRECTED_GRAPH);
         }
         g = GraphBuilder.getGraphBuilder(prop).generateGraph(prop);
@@ -190,6 +193,9 @@ public class GreetingController {
         List<Integer> vertices = g.getVertices();
 		Integer n= 0;
 		GraphData gd = new GraphData();
+
+
+
         for (model.graph.Edge e : edges) {
 
 			List<Integer> l = e.getVertices();
@@ -203,9 +209,9 @@ public class GreetingController {
 			if (g instanceof SimpleUndirectedTestGraph) {
 			    SimpleUndirectedLabeledEdge labeledEdge = (SimpleUndirectedLabeledEdge) e;
 
-                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "",labeledEdge.getLabel());
+                edge = new Edge("n"+n.toString(), i1.toString(), i2.toString(), "1",labeledEdge.getLabel());
             } else {
-                edge = new Edge(n.toString(), i1.toString(), i2.toString(), "","");
+                edge = new Edge("n"+n.toString(), i1.toString(), i2.toString(), "1","");
             }
 			gd.addEdge(edge);
 			n = n+1;
@@ -220,7 +226,7 @@ public class GreetingController {
 			double y = r*sin(phi)+0.5;
             String sx = String.valueOf(x);
 			String sy = String.valueOf(y);
-			Node node = new Node(i.toString(),sx,sy,i.toString(),"");            
+			Node node = new Node(i.toString(),sx,sy,i.toString(),"1");
 			gd.addNode(node);
 			n = n+1;
 			phi+=deltaPhi;

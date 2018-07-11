@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphData {
-   private List<Edge> edges = new ArrayList<Edge>();
-    private List<Node> nodes = new ArrayList<Node>();
+   private List<Edge> edges = new ArrayList<>();
+    private List<Node> nodes = new ArrayList<>();
     public GraphData() {
         
-        /*Node node = new Node("n1","0.1","0.1");            
+        /*NodeData node = new NodeData("n1","0.1","0.1");
         nodes.add(node);
-        node = new Node("n2","0.9","0.9");
+        node = new NodeData("n2","0.9","0.9");
         Edge edge = new Edge("e1","n1","n2");
         edges.add(edge);
         nodes.add(node);*/
