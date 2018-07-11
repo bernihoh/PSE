@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <MenuBar nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <menus>
@@ -17,9 +16,9 @@
                     </items>
                 </Menu>
                 <Menu fx:id="menuLanguages" mnemonicParsing="false" text="Sprachauswahl">
-					<!-- Benutze eine ToggelButtonGroup für die Sprachauswahl. -->
-					<fx:define>
-                            <ToggleGroup fx:id="ToggleGroupLanguage"/>
+                    <!-- Benutze eine ToggelButtonGroup für die Sprachauswahl. -->
+                    <fx:define>
+                        <ToggleGroup fx:id="ToggleGroupLanguage"/>
                     </fx:define>
                     <items>
                         <MenuItem fx:id="miLanguageEnglish" mnemonicParsing="false" text="English" />
