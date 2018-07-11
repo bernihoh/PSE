@@ -1,7 +1,7 @@
-package Source.Controller.LogicController;
+package src.main.java.Controller.LogicController;
 
-import Source.Model.Heuristic.Heuristic;
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.Model.Heuristic.Heuristic;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
 import java.util.List;
 
 /**

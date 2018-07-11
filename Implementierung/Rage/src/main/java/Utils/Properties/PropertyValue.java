@@ -1,4 +1,4 @@
-package Source.Utils.Properties;
+package src.main.java.Utils.Properties;
 
 /**
  * Class PropertyValue This class stores data of the type T, which might be

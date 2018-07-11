@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.ErdosFaberLovasz.Greedy;
+package src.main.java.Model.Heuristic.ErdosFaberLovasz.Greedy;
 
 /**
  * Class EFLGreedySetData This class stores for any vertex v the subset of all

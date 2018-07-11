@@ -1,6 +1,6 @@
-package Source.Controller.ViewController.FxController.FxMenuBarController;
+package src.main.java.Controller.ViewController.FxController.FxMenuBarController;
 
-import Source.Controller.ViewController.FxController.FxRageController;
+import src.main.java.Controller.ViewController.FxController.FxRageController;
 import javafx.scene.control.Menu;
 import javafx.scene.control.ToggleGroup;
 

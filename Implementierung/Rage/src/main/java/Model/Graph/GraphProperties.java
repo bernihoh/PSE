@@ -1,4 +1,4 @@
-package Source.Model.Graph;
+package src.main.java.Model.Graph;
 
 /**
  * Class GraphProperties This class is required for exchanging data between

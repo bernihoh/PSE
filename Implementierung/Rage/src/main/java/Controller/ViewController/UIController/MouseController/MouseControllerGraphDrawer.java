@@ -1,6 +1,6 @@
-package Source.Controller.ViewController.UIController.MouseController;
+package src.main.java.Controller.ViewController.UIController.MouseController;
 
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 

@@ -1,8 +1,8 @@
-package Source.Controller.ViewController.FxController;
+package src.main.java.Controller.ViewController.FxController;
 
-import Source.Controller.LogicController.GraphEditorController;
-import Source.Controller.ViewController.UIController.MouseController.MouseController;
-import Source.View.Drawer.GraphDrawer.GraphDrawer;
+import src.main.java.Controller.LogicController.GraphEditorController;
+import src.main.java.Controller.ViewController.UIController.MouseController.MouseController;
+import src.main.java.View.Drawer.GraphDrawer.GraphDrawer;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 

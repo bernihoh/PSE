@@ -1,7 +1,7 @@
-package Source.Controller.ViewController.FxController.FxPreviewTabController;
+package src.main.java.Controller.ViewController.FxController.FxPreviewTabController;
 
-import Source.Controller.LogicController.TabController;
-import Source.Controller.ViewController.FxController.FxRageController;
+import src.main.java.Controller.LogicController.TabController;
+import src.main.java.Controller.ViewController.FxController.FxRageController;
 import java.util.ArrayList;
 import java.util.List;
 

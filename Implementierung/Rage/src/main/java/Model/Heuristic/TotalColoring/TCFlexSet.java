@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring;
+package src.main.java.Model.Heuristic.TotalColoring;
 
 /**
  * Class TCFlexSet This class represents a subset of vertices and edges of a

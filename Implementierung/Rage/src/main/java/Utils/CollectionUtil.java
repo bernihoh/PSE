@@ -1,4 +1,4 @@
-package Source.Utils;
+package src.main.java.Utils;
 
 import java.util.Collection;
 import java.util.function.Function;

@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring.Greedy;
+package src.main.java.Model.Heuristic.TotalColoring.Greedy;
 
 /**
  * Class TCGreedyFew This class implements the TCGreedyFew heuristic, which

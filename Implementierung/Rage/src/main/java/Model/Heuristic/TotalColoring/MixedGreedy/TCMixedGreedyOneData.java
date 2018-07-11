@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring.MixedGreedy;
+package src.main.java.Model.Heuristic.TotalColoring.MixedGreedy;
 
 /**
  * Class TCMixedGreedyOneData This class stores all uncolored vertices and all

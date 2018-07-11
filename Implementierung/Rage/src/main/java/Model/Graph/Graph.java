@@ -1,4 +1,4 @@
-package Source.Model.Graph;
+package src.main.java.Model.Graph;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import java.util.List;
  * the concrete graph type. The class has methods for retrieving the relations
  * given by the edges. Vertices are identified with their unique index and thus
  * are not saved explicitly.
+ *
+ * @param <E>
  */
 abstract public class Graph<E> {
 
