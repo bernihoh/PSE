@@ -1,4 +1,10 @@
-package Source.Controller.IOController;
+package src.main.java.Controller.IOController;
+
+import src.main.java.Model.Heuristic.Heuristic;
+import src.main.java.Model.Heuristic.HeuristicProperties;
+import src.main.java.Model.Heuristic.HeuristicResult;
+import java.util.List;
+import java.util.ServiceLoader;
 
 /**
  * Class PluginController Loads all Heuristic, HeuristicResult and
@@ -10,145 +16,22 @@ public class PluginController {
     //
     // Fields
     //
-    static private u7NlwHaIHOMIn service;
-    private uPM7li6vHhKny heuristicLoader;
-    private uMLKqNGRUu57V heuristicResultLoader;
-    private uHk7vZj7n33N0 heuristicPropertiesLoader;
-    private u65ORQEVVZe2j heuristics;
-    private ugysYugrmkMFH heuristicsResults;
-    private uvgHMnkt8uLJ8 heuristicsProperties;
+    static private PluginController service;
+    private ServiceLoader<Heuristic> heuristicLoader;
+    private ServiceLoader<HeuristicResult> heuristicResultLoader;
+    private ServiceLoader<HeuristicProperties> heuristicPropertiesLoader;
+    private List<Heuristic> heuristics;
+    private List<HeuristicResult> heuristicsResults;
+    private List<HeuristicProperties> heuristicsProperties;
 
     //
     // Constructors
     //
-    public PluginController() {
+    private PluginController() {
     }
 
     //
     // Methods
-    //
-    //
-    // Accessor methods
-    //
-    /**
-     * Get the value of service
-     *
-     * @return the value of service
-     */
-    private u7NlwHaIHOMIn getService() {
-        return service;
-    }
-
-    /**
-     * Set the value of heuristicLoader
-     *
-     * @param newVar the new value of heuristicLoader
-     */
-    private void setHeuristicLoader(uPM7li6vHhKny newVar) {
-        heuristicLoader = newVar;
-    }
-
-    /**
-     * Get the value of heuristicLoader
-     *
-     * @return the value of heuristicLoader
-     */
-    private uPM7li6vHhKny getHeuristicLoader() {
-        return heuristicLoader;
-    }
-
-    /**
-     * Set the value of heuristicResultLoader
-     *
-     * @param newVar the new value of heuristicResultLoader
-     */
-    private void setHeuristicResultLoader(uMLKqNGRUu57V newVar) {
-        heuristicResultLoader = newVar;
-    }
-
-    /**
-     * Get the value of heuristicResultLoader
-     *
-     * @return the value of heuristicResultLoader
-     */
-    private uMLKqNGRUu57V getHeuristicResultLoader() {
-        return heuristicResultLoader;
-    }
-
-    /**
-     * Set the value of heuristicPropertiesLoader
-     *
-     * @param newVar the new value of heuristicPropertiesLoader
-     */
-    private void setHeuristicPropertiesLoader(uHk7vZj7n33N0 newVar) {
-        heuristicPropertiesLoader = newVar;
-    }
-
-    /**
-     * Get the value of heuristicPropertiesLoader
-     *
-     * @return the value of heuristicPropertiesLoader
-     */
-    private uHk7vZj7n33N0 getHeuristicPropertiesLoader() {
-        return heuristicPropertiesLoader;
-    }
-
-    /**
-     * Set the value of heuristics
-     *
-     * @param newVar the new value of heuristics
-     */
-    private void setHeuristics(u65ORQEVVZe2j newVar) {
-        heuristics = newVar;
-    }
-
-    /**
-     * Get the value of heuristics
-     *
-     * @return the value of heuristics
-     */
-    private u65ORQEVVZe2j getHeuristics() {
-        return heuristics;
-    }
-
-    /**
-     * Set the value of heuristicsResults
-     *
-     * @param newVar the new value of heuristicsResults
-     */
-    private void setHeuristicsResults(ugysYugrmkMFH newVar) {
-        heuristicsResults = newVar;
-    }
-
-    /**
-     * Get the value of heuristicsResults
-     *
-     * @return the value of heuristicsResults
-     */
-    private ugysYugrmkMFH getHeuristicsResults() {
-        return heuristicsResults;
-    }
-
-    /**
-     * Set the value of heuristicsProperties
-     *
-     * @param newVar the new value of heuristicsProperties
-     */
-    private void setHeuristicsProperties(uvgHMnkt8uLJ8 newVar) {
-        heuristicsProperties = newVar;
-    }
-
-    /**
-     * Get the value of heuristicsProperties
-     *
-     * @return the value of heuristicsProperties
-     */
-    private uvgHMnkt8uLJ8 getHeuristicsProperties() {
-        return heuristicsProperties;
-    }
-
-    //
-    // Other methods
     //
     /**
      * This method is the only way to access the PluginController. Creates a new
@@ -157,7 +40,8 @@ public class PluginController {
      * @return returns the PluginController itself.
      * @return u7NlwHaIHOMIn
      */
-    public u7NlwHaIHOMIn getInstance() {
+    public PluginController getInstance() {
+        return null;
     }
 
     /**
@@ -166,7 +50,8 @@ public class PluginController {
      * @return returns a list with all Heuristics.
      * @return u65ORQEVVZe2j
      */
-    public u65ORQEVVZe2j getHeuristics() {
+    public synchronized List<Heuristic> getHeuristics() {
+        return null;
     }
 
     /**
@@ -175,7 +60,8 @@ public class PluginController {
      * @return returns a list with all HeuristicResult classes.
      * @return ugysYugrmkMFH
      */
-    public ugysYugrmkMFH getHeuristicResults() {
+    public synchronized List<HeuristicResult> getHeuristicResults() {
+        return null;
     }
 
     /**
@@ -184,18 +70,14 @@ public class PluginController {
      * @return returns a list with all HeuristicProperties classes.
      * @return uvgHMnkt8uLJ8
      */
-    public uvgHMnkt8uLJ8 getHeuristicProperties() {
+    public synchronized List<HeuristicProperties> getHeuristicProperties() {
+        return null;
     }
 
     /**
      * Clears the pluginlists and then loads all plugins.
      */
-    public void reloadPlugins() {
-    }
-
-    /**
-     */
-    private void PluginController() {
+    public synchronized void reloadPlugins() {
     }
 
 }

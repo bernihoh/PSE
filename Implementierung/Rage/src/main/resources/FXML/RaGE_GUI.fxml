@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<TabPane fx:id="rage" prefHeight="650.0" prefWidth="975.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-    <tabs>
-        <fx:include fx:id="tabStart" source="StartTab/RaGE_GUI_Start.fxml"/>
-        <fx:include fx:id="tabGraphGeneration" source="GraphGenerationTab/RaGE_GUI_GraphGeneration.fxml"/>
-        <fx:include fx:id="tabPreview" source="PreviewTab/RaGE_GUI_Preview.fxml"/>
-    </tabs>
-</TabPane>
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <TabPane fx:id="rage">
+            <tabs>
+                <fx:include fx:id="tabStart" source="StartTab/RaGE_GUI_Start.fxml"/>
+                <fx:include fx:id="tabGraphGeneration" source="GraphGenerationTab/RaGE_GUI_GraphGeneration.fxml"/>
+                <fx:include fx:id="tabPreview" source="PreviewTab/RaGE_GUI_Preview.fxml"/>
+            </tabs>
+        </TabPane>
+        <!-- Import the MenuBar -->
+        <fx:include source="MenuBar/RaGE_GUI_MenuBar.fxml" GridPane.rowIndex="1" />
+    </children>
+</GridPane>

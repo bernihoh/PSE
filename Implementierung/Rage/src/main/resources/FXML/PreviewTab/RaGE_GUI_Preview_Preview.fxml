@@ -14,7 +14,6 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints/>
-                <RowConstraints maxHeight="-Infinity" valignment="BOTTOM" />
             </rowConstraints>
             <children>
                 <SplitPane dividerPositions="0.26002055498458376" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
@@ -144,8 +143,6 @@
                         <Insets />
                     </GridPane.margin>
                 </SplitPane>
-                <!-- Import the MenuBar-->
-                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </content>

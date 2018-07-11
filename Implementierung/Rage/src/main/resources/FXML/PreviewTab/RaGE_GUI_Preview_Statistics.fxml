@@ -11,11 +11,10 @@
     <content>
         <GridPane>
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+                <RowConstraints />
             </rowConstraints>
             <children>
                 <TableView fx:id="tableStatistics">
@@ -24,8 +23,6 @@
                         <TableColumn prefWidth="75.0" text="Wert" />
                     </columns>
                 </TableView>
-                <!-- Import the MenuBar-->
-                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </content>

@@ -149,8 +149,6 @@
                         </BorderPane>
                     </items>
                 </SplitPane>
-                <!-- Import the MenuBar-->
-                <fx:include source="../MenuBar/RaGE_GUI_MenuBar.fxml" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </content>
