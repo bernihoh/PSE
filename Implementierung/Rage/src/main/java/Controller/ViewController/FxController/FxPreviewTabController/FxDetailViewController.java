@@ -1,7 +1,7 @@
-package Source.Controller.ViewController.FxController.FxPreviewTabController;
+package src.main.java.Controller.ViewController.FxController.FxPreviewTabController;
 
-import Source.Controller.LogicController.DetailViewController;
-import Source.View.Drawer.GraphDrawer.GraphDrawer;
+import src.main.java.Controller.LogicController.DetailViewController;
+import src.main.java.View.Drawer.GraphDrawer.GraphDrawer;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;

@@ -1,8 +1,8 @@
-package Source.View.Drawer.GraphDrawer;
+package src.main.java.View.Drawer.GraphDrawer;
 
-import Source.View.Drawer.ColourManager.ColourManager;
-import Source.View.Drawer.Layouts.GraphLayoutEnum;
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.ColourManager.ColourManager;
+import src.main.java.View.Drawer.Layouts.EnumGraphLayout;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
 import java.util.List;
 import javafx.scene.Node;
 
@@ -119,7 +119,7 @@ public class GraphDrawer {
      * @param layout The Enum that indicates which Layout the Drawer should use.
      * If it is null the Drawer will use the Circle Layout.
      */
-    public void drawGraph(GraphLayoutEnum layout) {
+    public void drawGraph(EnumGraphLayout layout) {
     }
 
     /**

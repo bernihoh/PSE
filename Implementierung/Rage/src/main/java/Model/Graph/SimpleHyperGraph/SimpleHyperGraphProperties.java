@@ -1,4 +1,4 @@
-package Source.Model.Graph.SimpleHyperGraph;
+package src.main.java.Model.Graph.SimpleHyperGraph;
 
 /**
  * Class SimpleHyperGraphProperties This class is an extension of the

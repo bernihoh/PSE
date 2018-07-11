@@ -1,6 +1,8 @@
-package Source.View.Drawer.Layouts;
+package src.main.java.View.Drawer.Layouts;
 
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualEdge;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualVertex;
 
 /**
  * Class GraphLayoutCircle This is the Circle Layout of the Graph. Therfore this
@@ -8,7 +10,7 @@ import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
  *
  * It is an Child-Class of the abstract GraphLayout-Class.
  */
-class GraphLayoutCircle extends GraphLayout {
+class GraphLayoutCircle<V extends VisualVertex, E extends VisualEdge, G extends VisualGraph<V, E>> extends GraphLayout<V, E, G> {
 
     //
     // Fields
@@ -45,8 +47,21 @@ class GraphLayoutCircle extends GraphLayout {
      * This is the overwritten Method from the abstract-Parent-Class.
      */
     @Override
-    public VisualGraph executeLayout(VisualGraph graph) {
-        return null;
+    public G executeLayout(G graph) {
+        final double increment = 360 / graph.getVertices().size();
+        double degree = 0;
+        //Go through all Vertices of the given Graph and set the Position of it.
+        for (V vertex : graph.getVertices()) {
+            //Set the Vertex-Position.
+            double x = radius * Math.cos(Math.toRadians(degree)) + vertex.getBoundsInLocal().getWidth() / 2;
+            double y = radius * Math.sin(Math.toRadians(degree)) + vertex.getBoundsInLocal().getHeight() / 2;
+
+            vertex.relocate(x, y);
+
+            degree += increment;
+        }
+
+        return graph;
     }
 
     //
@@ -58,7 +73,7 @@ class GraphLayoutCircle extends GraphLayout {
      *
      * @param newRadius the new value of radius
      */
-    private void setRadius(Double newRadius) {
+    public final void setRadius(Double newRadius) {
         this.radius = newRadius;
     }
 
@@ -68,7 +83,7 @@ class GraphLayoutCircle extends GraphLayout {
      *
      * @return the value of radius
      */
-    private Double getRadius() {
+    public Double getRadius() {
         return this.radius;
     }
 

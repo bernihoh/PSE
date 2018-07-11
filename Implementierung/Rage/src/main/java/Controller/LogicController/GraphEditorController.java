@@ -1,6 +1,6 @@
-package Source.Controller.LogicController;
+package src.main.java.Controller.LogicController;
 
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
 
 /**
  * Class GraphEditorController Manages the manipulated or created graph by the

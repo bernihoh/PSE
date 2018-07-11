@@ -1,4 +1,4 @@
-package Source.Model;
+package src.main.java.Model;
 
 /**
  * Class Statistic

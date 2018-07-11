@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.ErdosFaberLovasz;
+package src.main.java.Model.Heuristic.ErdosFaberLovasz;
 
 /**
  * Class EFLHeuristic This abstract class is the abstrac interface for an

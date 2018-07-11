@@ -1,4 +1,4 @@
-package Source.Controller.ViewController.FxController;
+package src.main.java.Controller.ViewController.FxController;
 
 import java.util.List;
 import java.util.ResourceBundle;

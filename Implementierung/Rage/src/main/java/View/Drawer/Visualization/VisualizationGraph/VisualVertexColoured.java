@@ -1,4 +1,4 @@
-package Source.View.Drawer.Visualization.VisualizationGraph;
+package src.main.java.View.Drawer.Visualization.VisualizationGraph;
 
 /**
  * Class VisualVertexColoured Extends the VisualVertex Class.

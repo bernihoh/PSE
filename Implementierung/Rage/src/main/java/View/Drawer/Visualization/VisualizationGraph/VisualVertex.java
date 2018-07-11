@@ -1,10 +1,12 @@
-package Source.View.Drawer.Visualization.VisualizationGraph;
+package src.main.java.View.Drawer.Visualization.VisualizationGraph;
+
+import javafx.scene.shape.Circle;
 
 /**
  * Class VisualVertex The Vertex of an Visual-Graph. It is the Child of the
  * JavaFx-Circle Object so this Vertex can be drawn.
  */
-public class VisualVertex {
+public class VisualVertex extends Circle {
 
     //
     // Fields

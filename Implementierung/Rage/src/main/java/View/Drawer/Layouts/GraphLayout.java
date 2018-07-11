@@ -1,14 +1,20 @@
-package Source.View.Drawer.Layouts;
+package src.main.java.View.Drawer.Layouts;
 
-import Source.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualEdge;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualGraph;
+import src.main.java.View.Drawer.Visualization.VisualizationGraph.VisualVertex;
 
 /**
  * Class GraphLayout This is the Layout of the Drawing of the Graph.
  *
  * It is an abstract class so that there could be multiple Layouts for the
  * Representation that implements this.
+ *
+ * @param <V> The VisualVertex that is used at the Graph.
+ * @param <E> The VisualEdge that is used at the Graph.
+ * @param <G> The Graph type that extends the VisualGraph
  */
-abstract public class GraphLayout {
+abstract public class GraphLayout<V extends VisualVertex, E extends VisualEdge, G extends VisualGraph<V, E>> {
 
     //
     // Fields
@@ -24,8 +30,6 @@ abstract public class GraphLayout {
     public GraphLayout() {
     }
 
-    ;
-  
     //
     // Methods
     //
@@ -42,7 +46,7 @@ abstract public class GraphLayout {
      * Elements of this given Graph will be relocated to the calculated Position
      * this Method calculates.
      */
-    abstract public VisualGraph executeLayout(VisualGraph graph);
+    abstract public G executeLayout(G graph);
 
     //
     // Accessor methods

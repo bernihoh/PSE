@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.ErdosFaberLovasz;
+package src.main.java.Model.Heuristic.ErdosFaberLovasz;
 
 /**
  * Class EFLData This abstract class encapsulates the data required temporarly

@@ -1,13 +1,14 @@
-package Source.View.Drawer.Visualization.VisualizationGraph;
+package src.main.java.View.Drawer.Visualization.VisualizationGraph;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.shape.Polygon;
 
 /**
  * Class VisualEdge The Edge of an Visual-Graph. It is the Child of the
  * JavaFx-Polygon Object so this Edge can be drawn.
  */
-public class VisualEdge {
+public class VisualEdge extends Polygon {
 
     //
     // Fields

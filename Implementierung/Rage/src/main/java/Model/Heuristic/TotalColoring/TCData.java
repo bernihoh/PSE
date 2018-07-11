@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring;
+package src.main.java.Model.Heuristic.TotalColoring;
 
 /**
  * Class TCData This abstract class encapsulates the data required temporarly to

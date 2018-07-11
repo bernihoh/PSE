@@ -1,7 +1,7 @@
-package Source.Controller.ViewController.FxController.FxPreviewTabController;
+package src.main.java.Controller.ViewController.FxController.FxPreviewTabController;
 
-import Source.Controller.LogicController.FilterController;
-import Source.View.Drawer.GraphDrawer.GraphDrawer;
+import src.main.java.Controller.LogicController.FilterController;
+import src.main.java.View.Drawer.GraphDrawer.GraphDrawer;
 import javafx.scene.control.ScrollPane;
 
 /**

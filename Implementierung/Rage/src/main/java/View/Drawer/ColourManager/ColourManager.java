@@ -1,4 +1,4 @@
-package Source.View.Drawer.ColourManager;
+package src.main.java.View.Drawer.ColourManager;
 
 import java.util.HashMap;
 import java.util.List;
