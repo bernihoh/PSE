@@ -1,8 +1,8 @@
-package Source.Controller.ViewController.FxController.FxGraphGenerationTabController;
+package src.main.java.Controller.ViewController.FxController.FxGraphGenerationTabController;
 
-import Source.Controller.LogicController.GraphGeneratorController;
-import Source.Controller.ViewController.FxController.FxRageController;
-import Source.Model.Graph.GraphProperties;
+import src.main.java.Controller.LogicController.GraphGeneratorController;
+import src.main.java.Controller.ViewController.FxController.FxRageController;
+import src.main.java.Model.Graph.GraphProperties;
 import javafx.scene.control.ComboBox;
 
 /**

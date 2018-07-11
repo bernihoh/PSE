@@ -1,6 +1,6 @@
-package Source.Controller.ViewController.FxController;
+package src.main.java.Controller.ViewController.FxController;
 
-import Source.Controller.LogicController.FilterController;
+import src.main.java.Controller.LogicController.FilterController;
 
 /**
  * Class FxFilterController This is the FxController for the Filter-Window. This

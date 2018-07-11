@@ -1,8 +1,8 @@
-package Source.Controller.IOController;
+package src.main.java.Controller.IOController;
 
-import Source.Model.Heuristic.Heuristic;
-import Source.Model.Heuristic.HeuristicProperties;
-import Source.Model.Heuristic.HeuristicResult;
+import src.main.java.Model.Heuristic.Heuristic;
+import src.main.java.Model.Heuristic.HeuristicProperties;
+import src.main.java.Model.Heuristic.HeuristicResult;
 import java.util.List;
 import java.util.ServiceLoader;
 

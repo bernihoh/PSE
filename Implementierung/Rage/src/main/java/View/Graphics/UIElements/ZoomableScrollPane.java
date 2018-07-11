@@ -1,4 +1,4 @@
-package Source.View.Graphics.UIElements;
+package src.main.java.View.Graphics.UIElements;
 
 import javafx.scene.Group;
 import javafx.scene.Node;

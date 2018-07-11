@@ -1,6 +1,6 @@
-package Source.Model.Heuristic;
+package src.main.java.Model.Heuristic;
 
-import Source.Model.Graph.Graph;
+import src.main.java.Model.Graph.Graph;
 
 /**
  * Class Heuristic The class is the abstract interface of a heuristic which is

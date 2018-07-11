@@ -1,4 +1,4 @@
-package Source.Utils;
+package src.main.java.Utils;
 
 /**
  * Class Profiler This class is used to gather statistics about timing.

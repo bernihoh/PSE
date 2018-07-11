@@ -1,4 +1,4 @@
-package Source.Controller.ViewController.UIController.KeyController;
+package src.main.java.Controller.ViewController.UIController.KeyController;
 
 import java.util.List;
 import javafx.scene.input.KeyEvent;
@@ -34,7 +34,7 @@ abstract public class KeyController {
     }
 
     ;
-  
+
   //
   // Methods
   //

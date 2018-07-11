@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring;
+package src.main.java.Model.Heuristic.TotalColoring;
 
 /**
  * Class TCResult This class represents a total coloring of a simple undirected

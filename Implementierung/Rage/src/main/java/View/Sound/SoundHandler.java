@@ -1,4 +1,4 @@
-package Source.View.Sound;
+package src.main.java.View.Sound;
 
 import java.util.ArrayList;
 import java.util.List;

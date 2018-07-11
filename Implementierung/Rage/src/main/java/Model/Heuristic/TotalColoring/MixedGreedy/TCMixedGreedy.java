@@ -1,4 +1,4 @@
-package Source.Model.Heuristic.TotalColoring.MixedGreedy;
+package src.main.java.Model.Heuristic.TotalColoring.MixedGreedy;
 
 /**
  * Class TCMixedGreedy This class implements the TCMixedGreedy heuristic which

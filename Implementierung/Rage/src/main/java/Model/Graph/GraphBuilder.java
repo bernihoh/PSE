@@ -1,4 +1,4 @@
-package Source.Model.Graph;
+package src.main.java.Model.Graph;
 
 /**
  * Class GraphBuilder This class is a factory class to generate graphs of type G
